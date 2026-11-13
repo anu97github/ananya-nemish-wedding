@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1100" fill="none">
+ <defs>
+  <linearGradient id="bg" x1="900" y1="0" x2="900" y2="1100" gradientUnits="userSpaceOnUse"><stop stop-color="#829078"/><stop offset=".48" stop-color="#4d6652"/><stop offset="1" stop-color="#293c31"/></linearGradient>
+  <radialGradient id="sun"><stop stop-color="#f2dfbc" stop-opacity=".92"/><stop offset=".45" stop-color="#dfcba9" stop-opacity=".34"/><stop offset="1" stop-color="#dfcba9" stop-opacity="0"/></radialGradient>
+  <linearGradient id="arch" x1="900" y1="120" x2="900" y2="900" gradientUnits="userSpaceOnUse"><stop stop-color="#f2dfc0" stop-opacity=".72"/><stop offset="1" stop-color="#c3a681" stop-opacity=".12"/></linearGradient>
+  <linearGradient id="water" x1="900" y1="740" x2="900" y2="1100" gradientUnits="userSpaceOnUse"><stop stop-color="#829985" stop-opacity=".72"/><stop offset="1" stop-color="#263b32" stop-opacity=".05"/></linearGradient>
+  <filter id="blur"><feGaussianBlur stdDeviation="28"/></filter>
+  <g id="leaf" fill="#9ba989" fill-opacity=".78"><path d="M0 0C-36-43-35-76 0-95 36-76 36-43 0 0Z"/><path d="M0 0C-44-26-63-53-43-82-7-69 5-39 0 0Z" opacity=".7"/></g>
+  <g id="blossom"><g fill="#ead7c2" fill-opacity=".88"><ellipse cy="-18" rx="8" ry="17"/><ellipse cy="18" rx="8" ry="17"/><ellipse cx="18" rx="17" ry="8"/><ellipse cx="-18" rx="17" ry="8"/><ellipse cx="13" cy="-13" rx="8" ry="15" transform="rotate(45 13 -13)"/><ellipse cx="-13" cy="13" rx="8" ry="15" transform="rotate(45 -13 13)"/><ellipse cx="-13" cy="-13" rx="8" ry="15" transform="rotate(-45 -13 -13)"/><ellipse cx="13" cy="13" rx="8" ry="15" transform="rotate(-45 13 13)"/></g><circle r="7" fill="#c9a178"/></g>
+ </defs>
+ <path fill="url(#bg)" d="M0 0h1800v1100H0z"/>
+ <ellipse cx="895" cy="420" rx="670" ry="520" fill="url(#sun)"/>
+ <path d="M0 635 160 525l140 41 166-120 165 100 180-148 190 118 160-125 185 93 155-107 159 105v478H0V635Z" fill="#344c3d" fill-opacity=".72"/>
+ <path d="m0 744 190-120 160 85 200-154 150 115 181-84 156 111 183-118 185 94 195-112v439H0V744Z" fill="#789078" fill-opacity=".48"/>
+ <path d="M0 830q250-92 490-32t435 5q288-79 875-1v298H0V830Z" fill="url(#water)"/>
+ <g opacity=".4" stroke="#ead8b9" stroke-width="2"><path d="M130 885h450m-360 38h630m-545 38h420m470-70h440m-540 41h490m-380 38h330"/></g>
+ <path d="M820 755h160l170 345H650l170-345Z" fill="#e9d6b5" fill-opacity=".08" filter="url(#blur)"/>
+ <path d="M492 910V430a408 408 0 0 1 816 0v480" stroke="url(#arch)" stroke-width="5" stroke-opacity=".75"/>
+ <path d="M535 910V430a365 365 0 0 1 730 0v480" stroke="#e9d8be" stroke-width="1.5" stroke-opacity=".55"/>
+ <path d="M602 910V432a298 298 0 0 1 596 0v478" stroke="#e9d8be" stroke-width="1" stroke-opacity=".35"/>
+ <path d="M490 910h820M536 870h728" stroke="#d4b996" stroke-width="2" stroke-opacity=".5"/>
+ <g stroke="#e4cfad" stroke-opacity=".72" stroke-width="2"><path d="M900 34v166m-8-135h16m-8 135-28 36m28-36 28 36"/><path d="M900 200c-38 0-60 20-60 42 22 1 47-9 60-30 13 21 38 31 60 30 0-22-22-42-60-42Z" fill="#d0b68c" fill-opacity=".18"/></g>
+ <g stroke="#e8d5b5" stroke-width="2" stroke-opacity=".65" fill="#d6b98e" fill-opacity=".13"><path d="M700 0v140m-20 0h40l-8 30h-24l-8-30Zm20 30v24m-12 0h24"/><path d="M1100 0v140m-20 0h40l-8 30h-24l-8-30Zm20 30v24m-12 0h24"/><path d="M360 160v115m-18 0h36l-8 27h-20l-8-27Z"/><path d="M1440 160v115m-18 0h36l-8 27h-20l-8-27Z"/></g>
+ <g stroke="#9eaa8e" stroke-width="3" stroke-linecap="round" stroke-opacity=".78"><path d="M0 0q170 170 268 363t80 310M0 190q165 65 260 211M90 0q70 150 65 263M160 90q90 68 130 157"/></g>
+ <g transform="translate(240 280) rotate(-30) scale(1.1)"><use href="#leaf"/><use href="#leaf" transform="translate(60 50) rotate(85) scale(.8)"/><use href="#leaf" transform="translate(-64 100) rotate(-45) scale(.9)"/><use href="#leaf" transform="translate(32 170) rotate(55) scale(.7)"/></g>
+ <g transform="translate(90 470) rotate(-58) scale(.9)"><use href="#leaf"/><use href="#leaf" transform="translate(55 48) rotate(85)"/><use href="#leaf" transform="translate(-60 93) rotate(-45)"/><use href="#leaf" transform="translate(42 170) rotate(65) scale(.75)"/></g>
+ <g transform="translate(330 600) scale(.8)"><use href="#blossom"/><use href="#blossom" transform="translate(55 55) scale(.6)"/><use href="#blossom" transform="translate(-56 76) scale(.5)"/></g>
+ <g stroke="#9eaa8e" stroke-width="3" stroke-linecap="round" stroke-opacity=".78"><path d="M1800 0q-170 170-268 363t-80 310M1800 190q-165 65-260 211m170-401q-70 150-65 263m-5-173q-90 68-130 157"/></g>
+ <g transform="translate(1560 280) rotate(30) scale(-1.1 1.1)"><use href="#leaf"/><use href="#leaf" transform="translate(60 50) rotate(85) scale(.8)"/><use href="#leaf" transform="translate(-64 100) rotate(-45) scale(.9)"/><use href="#leaf" transform="translate(32 170) rotate(55) scale(.7)"/></g>
+ <g transform="translate(1710 470) rotate(58) scale(-.9 .9)"><use href="#leaf"/><use href="#leaf" transform="translate(55 48) rotate(85)"/><use href="#leaf" transform="translate(-60 93) rotate(-45)"/><use href="#leaf" transform="translate(42 170) rotate(65) scale(.75)"/></g>
+ <g transform="translate(1470 600) scale(.8)"><use href="#blossom"/><use href="#blossom" transform="translate(-55 55) scale(.6)"/><use href="#blossom" transform="translate(56 76) scale(.5)"/></g>
+ <g fill="#f3e4c5" fill-opacity=".72"><circle cx="405" cy="230" r="2"/><circle cx="1380" cy="270" r="2"/><circle cx="1190" cy="480" r="2.5"/><circle cx="600" cy="520" r="1.8"/><circle cx="1020" cy="315" r="2"/><circle cx="760" cy="675" r="1.7"/></g>
+</svg>
