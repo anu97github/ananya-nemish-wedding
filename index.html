@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f8f5ed">
+  <meta name="theme-color" content="#fbf7f0">
   <meta name="description" content="Ananya Shrivastava and Nemish Doshi invite you to celebrate their wedding on 2–3 February 2027 at Happy Retreats KAI, Chikkaballapur, Karnataka.">
   <title>Ananya &amp; Nemish | Wedding Invitation · 2–3 February 2027</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script defer src="script.js"></script>
 </head>
@@ -18,83 +18,167 @@
     <span class="sound-symbol" aria-hidden="true">♫</span><span id="soundLabel">SOUND OFF</span>
   </button>
 
-  <header class="site-header">
-    <a class="brand" href="#home" aria-label="Ananya and Nemish, back to beginning"><img src="assets/monogram.svg" alt="Interlocked N and A monogram"></a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false" type="button"><span></span><span></span></button>
-    <nav class="site-nav" id="siteNav" aria-label="Main navigation">
-      <a href="#families">OUR FAMILIES</a>
-      <a href="#venue">THE VENUE</a>
-      <a href="#haldi">HALDI</a>
-      <a href="#mehendi">MEHENDI</a>
-      <a href="#wedding">WEDDING</a>
-      <a class="nav-rsvp" href="#rsvp">RSVP</a>
-    </nav>
-  </header>
-
   <main id="home">
-    <section class="hero paper-section" aria-labelledby="heroTitle">
-      <div class="paper-frame"></div>
-      <div class="floral floral-tl" aria-hidden="true"></div>
-      <div class="floral floral-br" aria-hidden="true"></div>
-      <div class="hero-inner">
-        <img class="hero-mark" src="assets/monogram.svg" alt="">
-        <p class="eyebrow">WITH THE BLESSINGS OF OUR FAMILIES</p>
-        <p class="invite-line">WE INVITE YOU TO THE WEDDING OF</p>
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero-border" aria-hidden="true"></div>
+      <div class="hero-floral hero-floral-left" aria-hidden="true"></div>
+      <div class="hero-floral hero-floral-right" aria-hidden="true"></div>
+      <div class="hero-arch" aria-hidden="true"></div>
+      <div class="hero-content">
+        <img class="hero-monogram" src="assets/na-monogram.svg" alt="Interlocked N and A monogram">
+        <p class="eyebrow">WE INVITE YOU TO THE WEDDING OF</p>
         <h1 id="heroTitle" class="couple-names"><span>Ananya</span><i>&amp;</i><span>Nemish</span></h1>
-        <div class="gold-divider"><span></span><b>✧</b><span></span></div>
-        <p class="hero-date">2 &amp; 3 FEBRUARY 2027</p>
-        <p class="hero-venue">HAPPY RETREATS KAI <span>·</span> CHIKKABALLAPUR, KARNATAKA</p>
-        <p class="hero-note">Two days of love, laughter and togetherness.</p>
-        <a class="scroll-cue" href="#families"><span>SCROLL TO EXPLORE</span><b aria-hidden="true">↓</b></a>
+        <div class="ornament-divider"><span></span><b>✥</b><span></span></div>
+        <p class="hero-date">2–3 FEBRUARY 2027</p>
+        <p class="hero-venue">HAPPY RETREATS KAI <span>·</span> CHIKKABALLAPUR</p>
+        <div class="hero-countdown" id="countdownClock" aria-label="Countdown to the celebrations">
+          <div><strong data-unit="days">—</strong><span>DAYS</span></div>
+          <i></i>
+          <div><strong data-unit="hours">—</strong><span>HOURS</span></div>
+          <i></i>
+          <div><strong data-unit="minutes">—</strong><span>MINUTES</span></div>
+          <i></i>
+          <div><strong data-unit="seconds">—</strong><span>SECONDS</span></div>
+        </div>
+        <a class="scroll-link" href="#families">SCROLL TO EXPLORE <span>↓</span></a>
       </div>
     </section>
 
-    <section class="countdown-band" aria-label="Countdown to the celebrations">
-      <p class="eyebrow">THE CELEBRATION BEGINS IN</p>
-      <div class="countdown" id="countdownClock">
-        <div><strong data-unit="days">—</strong><span>DAYS</span></div>
-        <i></i>
-        <div><strong data-unit="hours">—</strong><span>HOURS</span></div>
-        <i></i>
-        <div><strong data-unit="minutes">—</strong><span>MINUTES</span></div>
-        <i></i>
-        <div><strong data-unit="seconds">—</strong><span>SECONDS</span></div>
-      </div>
-    </section>
-
-    <section class="families section-pad" id="families">
-      <div class="section-heading">
-        <p class="eyebrow">A UNION OF TWO FAMILIES</p>
-        <h2>WITH LOVE AND BLESSINGS</h2>
+    <section class="families-section" id="families">
+      <div class="section-floral section-floral-left" aria-hidden="true"></div>
+      <div class="section-floral section-floral-right" aria-hidden="true"></div>
+      <div class="families-heading">
+        <p class="eyebrow">AN UNION OF TWO FAMILIES</p>
+        <h2>with love &amp; blessings</h2>
+        <div class="ornament-divider"><span></span><b>✥</b><span></span></div>
       </div>
       <div class="family-grid">
-        <article class="family-card">
-          <span class="family-kicker">THE BRIDE</span>
+        <article class="family-card bride-card">
+          <p class="family-role">THE BRIDE</p>
           <h3>Ananya Shrivastava</h3>
-          <p class="family-parents family-parents-formal">D/o Mr. Arun Shrivastava <span>&amp;</span> Mrs. Mamta Shrivastava</p>
+          <p class="parent-line">D/o Mr. Arun Shrivastava</p>
+          <p class="parent-line">Mrs. Mamta Shrivastava</p>
         </article>
-        <div class="family-ornament" aria-hidden="true"><img src="assets/monogram.svg" alt=""></div>
-        <article class="family-card">
-          <span class="family-kicker">THE GROOM</span>
+        <div class="family-emblem" aria-hidden="true">
+          <span class="emblem-rule"></span>
+          <img src="assets/na-monogram.svg" alt="">
+          <span class="emblem-rule"></span>
+        </div>
+        <article class="family-card groom-card">
+          <p class="family-role">THE GROOM</p>
           <h3>Nemish Doshi</h3>
-          <p class="family-parents family-parents-formal">S/o Mr. Tushar Doshi <span>&amp;</span> Mrs. Heena Doshi</p>
+          <p class="parent-line">S/o Mr. Tushar Doshi</p>
+          <p class="parent-line">Mrs. Heena Doshi</p>
         </article>
       </div>
-      <div class="fine-rule"><span>TOGETHER WITH OUR FAMILIES</span></div>
     </section>
 
-    <section class="venue-section section-pad" id="venue">
-      <div class="venue-art"><img class="venue-photo" src="assets/venue-arch.svg" alt="Ivory and blush floral entrance arch with hanging flowers and warm lantern light"></div>
-      <div class="venue-copy">
-        <p class="eyebrow">SAVE THE DATE · 2–3 FEBRUARY 2027</p>
-        <h2>LET'S CELEBRATE<br><em>TOGETHER.</em></h2>
-        <p class="venue-name">HAPPY RETREATS KAI</p>
-        <p class="venue-address">Agalagurki, Chikkaballapur<br>Karnataka 562103, India<br>Near Bengaluru</p>
-        <div class="venue-links">
-          <a href="https://www.google.com/maps/place/Happy+Retreats+-+KAI/@13.4023201,77.7413702,17z/data=!3m1!4b1!4m9!3m8!1s0x3bb1e5ae74ca9563:0xf264302c69f61a44!5m2!4m1!1i2!8m2!3d13.4023201!4d77.7439451!16s%2Fg%2F11y5snzdbr?entry=ttu&amp;g_ep=EgoyMDI2MTExMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">VIEW VENUE ON MAPS ↗</a>
-          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Happy%20Retreats%20KAI%2C%20Agalagurki%2C%20Chikkaballapur%2C%20Karnataka%20562103" target="_blank" rel="noopener noreferrer">GET DIRECTIONS ↗</a>
+    <section class="celebrate-section reveal-section" id="celebrate">
+      <div class="celebrate-image">
+        <img src="assets/celebrate-arch.webp" alt="A floral arch with white and blush flowers and soft hanging greenery">
+      </div>
+      <div class="celebrate-copy">
+        <p class="eyebrow">THREE BEAUTIFUL CELEBRATIONS</p>
+        <h2>Let’s Celebrate<br><em>Together</em></h2>
+        <div class="ornament-divider"><span></span><b>✥</b><span></span></div>
+        <p>One joyful gathering.<br>A lifetime of memories.</p>
+      </div>
+      <div class="celebrate-floral" aria-hidden="true"></div>
+    </section>
+
+    <section class="event-band haldi-band reveal-section" id="haldi" aria-labelledby="haldiTitle">
+      <div class="event-photo">
+        <img src="assets/haldi-stage.webp" alt="Golden Haldi canopy with marigold garlands, lanterns and warm ivory seating">
+      </div>
+      <div class="event-title">
+        <p class="event-kicker">THE FIRST CELEBRATION</p>
+        <h2 id="haldiTitle">Haldi</h2>
+        <p class="event-subtitle">CEREMONY</p>
+        <span class="small-flourish">✥</span>
+      </div>
+      <div class="event-details">
+        <div class="event-facts">
+          <p><span class="fact-icon">▦</span><span class="fact-label">TUESDAY, 2ND FEBRUARY 2027</span></p>
+          <p><span class="fact-icon">◷</span><strong>2:00 PM ONWARDS</strong></p>
         </div>
-        <div class="stay-row">
+        <div class="dress-code">
+          <h3><span></span> DRESS CODE PALETTE <span></span></h3>
+          <div class="palette-grid">
+            <div class="palette-swatch"><span class="paint-mark" style="--swatch:#FFF7E6"></span><b>IVORY</b><code>#FFF7E6</code></div>
+            <div class="palette-swatch"><span class="paint-mark" style="--swatch:#FFE699"></span><b>BUTTER YELLOW</b><code>#FFE699</code></div>
+            <div class="palette-swatch"><span class="paint-mark" style="--swatch:#F7B04A"></span><b>SUNSHINE YELLOW</b><code>#F7B04A</code></div>
+            <div class="palette-swatch"><span class="paint-mark" style="--swatch:#D6B282"></span><b>MUSTARD YELLOW</b><code>#D6B282</code></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="event-band mehendi-band reveal-section" id="mehendi" aria-labelledby="mehendiTitle">
+      <div class="event-photo">
+        <img src="assets/mehendi-lounge.webp" alt="Blush Mehendi lounge with a floral arch, acoustic guitar, patterned cushions and glowing lanterns">
+      </div>
+      <div class="event-title">
+        <p class="event-kicker">AN EVENING OF MELODIES</p>
+        <h2 id="mehendiTitle">Mehendi</h2>
+        <p class="event-subtitle">&amp; MUSIC NIGHT</p>
+        <span class="small-flourish">✥</span>
+      </div>
+      <div class="event-details">
+        <div class="event-facts">
+          <p><span class="fact-icon">▦</span><span class="fact-label">TUESDAY, 2ND FEBRUARY 2027</span></p>
+          <p><span class="fact-icon">◷</span><strong>6:30 PM ONWARDS</strong></p>
+          <p><span class="fact-icon music-note">♫</span><span class="fact-label">ACOUSTIC MUSIC</span><strong>8:00 PM – 11:00 PM</strong></p>
+        </div>
+        <div class="dress-code">
+          <h3><span></span> DRESS CODE PALETTE <span></span></h3>
+          <div class="palette-grid">
+            <div class="palette-swatch"><span class="paint-mark" style="--swatch:#7A3E4A"></span><b>DEEP MAUVE</b><code>#7A3E4A</code></div>
+            <div class="palette-swatch"><span class="paint-mark" style="--swatch:#682D36"></span><b>WINE BURGUNDY</b><code>#682D36</code></div>
+            <div class="palette-swatch"><span class="paint-mark" style="--swatch:#5A2E57"></span><b>DEEP PLUM</b><code>#5A2E57</code></div>
+            <div class="palette-swatch"><span class="paint-mark" style="--swatch:#556B45"></span><b>DARK GREEN</b><code>#556B45</code></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="event-band wedding-band reveal-section" id="wedding" aria-labelledby="weddingTitle">
+      <div class="event-photo">
+        <img src="assets/wedding-mandap.webp" alt="Ivory floral mandap over a reflective pool with lotus flowers and a flower-lined aisle">
+      </div>
+      <div class="event-title">
+        <p class="event-kicker">THE WEDDING DAY</p>
+        <h2 id="weddingTitle">Wedding</h2>
+        <p class="event-subtitle">CEREMONY</p>
+        <span class="small-flourish">✥</span>
+      </div>
+      <div class="event-details">
+        <div class="event-facts">
+          <p><span class="fact-icon">▦</span><span class="fact-label">WEDNESDAY, 3RD FEBRUARY 2027</span></p>
+          <p><span class="fact-icon">◷</span><strong>2:00 PM ONWARDS</strong></p>
+        </div>
+        <div class="dress-code">
+          <h3><span></span> DRESS CODE PALETTE <span></span></h3>
+          <div class="palette-grid">
+            <div class="palette-swatch"><span class="paint-mark" style="--swatch:#C98F91"></span><b>DUSTY ROSE</b><code>#C98F91</code></div>
+            <div class="palette-swatch"><span class="paint-mark" style="--swatch:#BC8067"></span><b>PEACH</b><code>#BC8067</code></div>
+            <div class="palette-swatch"><span class="paint-mark" style="--swatch:#9B829A"></span><b>DUSTY MAUVE</b><code>#9B829A</code></div>
+            <div class="palette-swatch"><span class="paint-mark" style="--swatch:#7E8966"></span><b>MUTED OLIVE</b><code>#7E8966</code></div>
+          </div>
+          <p class="dress-note">Kindly leave ivory and cream for the couple.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="venue-section reveal-section" id="venue">
+      <div class="venue-floral venue-floral-left" aria-hidden="true"></div>
+      <div class="venue-floral venue-floral-right" aria-hidden="true"></div>
+      <div class="venue-content">
+        <p class="eyebrow">THE VENUE</p>
+        <h2>Happy Retreats KAI</h2>
+        <p class="venue-location">CHIKKABALLAPUR · KARNATAKA</p>
+        <p class="venue-address">Agalagurki, Chikkaballapur, Karnataka 562103<br>Near Bengaluru</p>
+        <a class="map-link" href="https://www.google.com/maps/place/Happy+Retreats+-+KAI/@13.4023201,77.7413702,17z/data=!3m1!4b1!4m9!3m8!1s0x3bb1e5ae74ca9563:0xf264302c69f61a44!5m2!4m1!1i2!8m2!3d13.4023201!4d77.7439451!16s%2Fg%2F11y5snzdbr?entry=ttu&amp;g_ep=EgoyMDI2MTExMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">VIEW ON MAP <span>↗</span></a>
+        <div class="stay-details">
           <div><span>CHECK-IN</span><strong>2 FEB 2027</strong><small>12:00 PM</small></div>
           <i></i>
           <div><span>CHECK-OUT</span><strong>4 FEB 2027</strong><small>11:00 AM</small></div>
@@ -102,107 +186,44 @@
       </div>
     </section>
 
-    <section class="events-intro section-pad">
-      <p class="eyebrow">THREE BEAUTIFUL CELEBRATIONS</p>
-      <h2>THE WEDDING<br><em>ITINERARY</em></h2>
-      <p>We cannot wait to celebrate with you.</p>
-      <div class="gold-divider"><span></span><b>✧</b><span></span></div>
-    </section>
-
-    <section class="event-section haldi-event" id="haldi">
-      <div class="event-art"><img src="assets/haldi-stage.svg" alt="Marigold and golden Haldi celebration setting"></div>
-      <div class="event-copy">
-        <p class="eyebrow">TUESDAY · 2 FEBRUARY 2027</p>
-        <h2>Haldi <em>Ceremony</em></h2>
-        <p class="event-time">2:00 PM ONWARDS</p>
-        <p class="event-blurb">A little sunshine, a lot of love.</p>
-        <div class="dress-code">
-          <h3>GUEST DRESS CODE</h3>
-          <p>Shades of yellow, from soft and sunny to golden.</p>
-          <div class="swatch-grid">
-            <div class="swatch"><span style="--swatch:#FFF7E6"></span><b>Ivory</b><code>#FFF7E6</code></div>
-            <div class="swatch"><span style="--swatch:#FFE699"></span><b>Butter Yellow</b><code>#FFE699</code></div>
-            <div class="swatch"><span style="--swatch:#F7B04A"></span><b>Sunshine Yellow</b><code>#F7B04A</code></div>
-            <div class="swatch"><span style="--swatch:#D6B282"></span><b>Mustard Yellow</b><code>#D6B282</code></div>
-          </div>
-        </div>
-      </div>
-      <a class="event-next" href="#mehendi" aria-label="Continue to Mehendi">NEXT CELEBRATION <span>↓</span></a>
-    </section>
-
-    <section class="event-section mehendi-event" id="mehendi">
-      <div class="event-art"><img src="assets/mehendi-stage.svg" alt="Lantern-lit Mehendi evening with cushions and acoustic music"></div>
-      <div class="event-copy">
-        <p class="eyebrow">TUESDAY · 2 FEBRUARY 2027</p>
-        <h2>Mehendi <em>&amp; Music</em></h2>
-        <div class="event-time-list"><p><span>MEHENDI</span><b>6:30 PM ONWARDS</b></p><p><span>ACOUSTIC MUSIC</span><b>8:00–11:00 PM</b></p></div>
-        <p class="event-blurb">Mehendi, melodies and a magical evening.</p>
-        <div class="dress-code">
-          <h3>GUEST DRESS CODE</h3>
-          <p>Rich evening tones with a touch of deep green.</p>
-          <div class="swatch-grid">
-            <div class="swatch"><span style="--swatch:#7A3E4A"></span><b>Deep Mauve</b><code>#7A3E4A</code></div>
-            <div class="swatch"><span style="--swatch:#682D36"></span><b>Wine Burgundy</b><code>#682D36</code></div>
-            <div class="swatch"><span style="--swatch:#5A2E57"></span><b>Deep Plum</b><code>#5A2E57</code></div>
-            <div class="swatch"><span style="--swatch:#556B45"></span><b>Dark Green</b><code>#556B45</code></div>
-          </div>
-        </div>
-      </div>
-      <a class="event-next" href="#wedding" aria-label="Continue to Wedding">NEXT CELEBRATION <span>↓</span></a>
-    </section>
-
-    <section class="event-section wedding-event" id="wedding">
-      <div class="event-art"><img src="assets/wedding-mandap.svg" alt="Ivory floral wedding mandap beside a reflective pool"></div>
-      <div class="event-copy">
-        <p class="eyebrow">WEDNESDAY · 3 FEBRUARY 2027</p>
-        <h2>The Wedding <em>Ceremony</em></h2>
-        <p class="event-time">2:00 PM ONWARDS</p>
-        <p class="event-blurb">A promise, a blessing, a lifetime together.</p>
-        <div class="dress-code">
-          <h3>GUEST DRESS CODE</h3>
-          <p>Soft, muted tones. Kindly leave ivory and cream for the couple.</p>
-          <div class="swatch-grid">
-            <div class="swatch"><span style="--swatch:#C98F91"></span><b>Dusty Rose</b><code>#C98F91</code></div>
-            <div class="swatch"><span style="--swatch:#BC8067"></span><b>Peach</b><code>#BC8067</code></div>
-            <div class="swatch"><span style="--swatch:#9B829A"></span><b>Dusty Mauve</b><code>#9B829A</code></div>
-            <div class="swatch"><span style="--swatch:#7E8966"></span><b>Muted Olive</b><code>#7E8966</code></div>
-          </div>
-        </div>
-      </div>
-      <a class="event-next" href="#rsvp" aria-label="Continue to RSVP">KINDLY RESPOND <span>↓</span></a>
-    </section>
-
-    <section class="rsvp-section section-pad" id="rsvp">
-      <div class="rsvp-floral" aria-hidden="true"></div>
+    <section class="rsvp-section reveal-section" id="rsvp">
+      <div class="rsvp-frame" aria-hidden="true"></div>
+      <div class="rsvp-floral rsvp-floral-left" aria-hidden="true"></div>
+      <div class="rsvp-floral rsvp-floral-right" aria-hidden="true"></div>
       <div class="rsvp-inner">
-        <p class="eyebrow">WE HOPE YOU CAN JOIN US</p>
-        <h2>CONFIRM YOUR<br><em>PRESENCE.</em></h2>
-        <p class="rsvp-intro">Kindly let us know if you’ll be joining us.</p>
+        <p class="eyebrow">WE WOULD LOVE TO CELEBRATE WITH YOU</p>
+        <h2>Kindly <em>RSVP</em></h2>
+        <p class="rsvp-intro">Please let us know if you’ll be joining us.</p>
         <form id="rsvpForm" class="rsvp-form">
-          <div class="form-top"><img src="assets/monogram.svg" alt=""><span>KINDLY RESPOND</span></div>
           <div class="form-grid">
-            <label class="field"><span>TITLE</span><select name="title" required><option value="" disabled selected>Select</option><option>Mr.</option><option>Mrs.</option><option>Ms.</option><option>Dr.</option><option>Other</option></select></label>
-            <label class="field"><span>YOUR NAME</span><input type="text" name="name" autocomplete="name" placeholder="Full name" maxlength="100" required></label>
-            <fieldset class="attendance"><legend>WILL YOU BE JOINING US?</legend>
-              <label><input type="radio" name="attendance" value="accept" required><span><b>Joyfully Accept</b><small>We will be there</small></span></label>
-              <label><input type="radio" name="attendance" value="decline" required><span><b>Regretfully Decline</b><small>Sorry to miss it</small></span></label>
+            <label class="field title-field"><span>TITLE</span><select name="title" required><option value="" disabled selected>Select</option><option>Mr.</option><option>Mrs.</option><option>Ms.</option><option>Dr.</option><option>Other</option></select></label>
+            <label class="field name-field"><span>YOUR NAME</span><input type="text" name="name" autocomplete="name" placeholder="Full name" maxlength="100" required></label>
+            <fieldset class="attendance">
+              <legend>WILL YOU BE JOINING US?</legend>
+              <label><input type="radio" name="attendance" value="accept" required><span><b>Joyfully Accept</b></span></label>
+              <label><input type="radio" name="attendance" value="decline" required><span><b>Regretfully Decline</b></span></label>
             </fieldset>
             <label class="field guest-field" id="guestField"><span>NUMBER OF GUESTS <small>(INCLUDING YOURSELF)</small></span><select name="guestCount" id="guestCount"><option value="1" selected>1 Guest</option><option value="2">2 Guests</option><option value="3">3 Guests</option><option value="4">4 Guests</option><option value="5">5 Guests</option><option value="6">6 Guests</option><option value="7">7 Guests</option><option value="8">8 Guests</option><option value="9">9 Guests</option><option value="10">10 Guests</option></select></label>
-            <label class="field note-field"><span>A NOTE FOR US <small>(OPTIONAL)</small></span><textarea name="note" rows="3" maxlength="500" placeholder="Write a little message…"></textarea></label>
+            <label class="field note-field"><span>A NOTE FOR US <small>(OPTIONAL)</small></span><textarea name="note" rows="2" maxlength="500" placeholder="Write a little message…"></textarea></label>
           </div>
-          <button class="submit-rsvp" type="submit">SEND RSVP <span>↗</span></button>
-          <p class="form-note">RSVP preview only. Responses will not be saved until the guest-list connection is set up.</p>
+          <button class="submit-rsvp" type="submit">SUBMIT RSVP <span>↗</span></button>
+          <p class="form-note">RSVP preview only. Guest responses will not be saved until connected to the guest list.</p>
           <div class="form-feedback" id="rsvpFeedback" role="status" aria-live="polite" hidden></div>
         </form>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <img src="assets/monogram.svg" alt="">
-    <p>ANANYA <span>&amp;</span> NEMISH</p>
-    <small>2–3 FEBRUARY 2027 · HAPPY RETREATS KAI</small>
-    <a href="#home">BACK TO THE BEGINNING ↑</a>
+  <footer class="site-footer" id="footer">
+    <div class="footer-garden" aria-hidden="true"></div>
+    <div class="footer-content">
+      <img src="assets/na-monogram.svg" alt="" class="footer-monogram">
+      <div class="footer-rule"><span></span><b>✥</b><span></span></div>
+      <p class="footer-names">ANANYA <i>&amp;</i> NEMISH</p>
+      <p class="footer-date">2–3 FEBRUARY 2027 <span>·</span> HAPPY RETREATS KAI</p>
+      <p class="footer-thanks">THANK YOU FOR BEING A PART OF OUR JOURNEY</p>
+      <a href="#home" class="back-to-top">BACK TO THE BEGINNING ↑</a>
+    </div>
   </footer>
 </body>
 </html>
