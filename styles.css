@@ -44,3 +44,13 @@ body.invitation-open .opening-cover{opacity:0;visibility:hidden;pointer-events:n
 .muhurat-note b{font:500 21px var(--serif);color:#46523e;white-space:nowrap}
 .page-mehendi .event-page-hero .section-kicker{color:#dfcfb7}
 @media(max-width:700px){.muhurat-note{align-items:flex-start;flex-direction:column;gap:6px}.muhurat-note b{font-size:22px}}
+
+.hero-botanical{animation:botanical-drift 24s ease-in-out infinite alternate}
+@keyframes botanical-drift{from{background-position:left top}to{background-position:12px 8px}}
+.event-art-panel img{animation:cinema-pan 26s ease-in-out infinite alternate}
+.event-card-art img{animation:cinema-card 30s ease-in-out infinite alternate}
+@keyframes cinema-pan{from{transform:scale(1)}to{transform:scale(1.075) translateY(-.7%)}}
+@keyframes cinema-card{from{transform:scale(1)}to{transform:scale(1.055)}}
+.event-page-title{animation:title-arrive 1.4s .2s both}
+@keyframes title-arrive{from{opacity:0;transform:translateY(18px);letter-spacing:.03em}to{opacity:1;transform:translateY(0);letter-spacing:0}}
+@media(prefers-reduced-motion:reduce){.hero-botanical,.event-art-panel img,.event-card-art img,.event-page-title{animation:none}}
