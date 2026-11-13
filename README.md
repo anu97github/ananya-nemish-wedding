@@ -1,29 +1,38 @@
 # Ananya & Nemish — Wedding Invitation
 
-A responsive, multi-page wedding invitation for **2–3 February 2027** at **Happy Retreats KAI**, Agalagurki, Chikkaballapur, Karnataka, near Bengaluru.
+A responsive, event-led wedding invitation for **2–3 February 2027** at **Happy Retreats KAI**, Agalagurki, Chikkaballapur, Karnataka, near Bengaluru.
 
 ## Pages
-- `index.html` — opening envelope, monogram, invitation home, countdown, event navigation, family names, venue and directions, and illustrated personal-moments panel
-- `haldi.html` — Haldi timing, decor palette with hex codes, guest dress palette with hex codes, and event details
-- `mehendi.html` — Mehendi and acoustic Sufi night timing, decor palette with hex codes, guest dress palette with hex codes, and event details
-- `wedding.html` — baraat, welcome, varmala, Saat Phere schedule, muhurat, decor palette with hex codes, and guest dress palette with hex codes
+- `index.html` — opening envelope, interlocking monogram, countdown, event navigation, family names, venue, and the final RSVP section
+- `haldi.html` — Haldi timing, event illustration, decor palette and guest dress palette with hex codes
+- `mehendi.html` — Mehendi and acoustic music timings shown separately, event illustration, decor palette and guest dress palette with hex codes
+- `wedding.html` — simple wedding invitation timing (**2:00 PM onwards**) and wedding decor / guest dress palettes with hex codes
 
-## Shared assets
-- `styles.css` — shared editorial floral styling, responsive layouts, typography and transitions
-- `script.js` — opening interaction, scroll reveals, countdown, mobile navigation and the same ambient sound control on every page
-- `assets/monogram.svg` — custom interlocking A/N symbol
-- `assets/floral-corners.svg` — botanical corner ornaments
-- `assets/haldi-scene.svg`, `assets/mehendi-scene.svg`, `assets/wedding-scene.svg` — original vector event illustrations
-- `assets/moments-illustration.svg` — original illustrated motifs inspired by the mountain proposal and Jaipur architecture
+## Shared assets and behavior
+- `styles.css` — responsive editorial styling, typography, RSVP form and music player
+- `script.js` — opening interaction, countdown, responsive navigation, RSVP preview validation and official soundtrack player
+- `assets/monogram.svg` — interlocking A/N monogram
+- `assets/haldi-scene.svg`, `assets/mehendi-scene.svg`, `assets/wedding-scene.svg` — original event illustrations
+- `assets/floral-corners.svg` — botanical accents
 
-## Interaction and accessibility
-- Reloading the home page returns to the opening invitation; pressing “Open your invitation” starts at the top.
-- All invitation copy is regular HTML text and remains selectable; the script font is typography, not text baked into an image.
-- The ambient score is generated locally in the browser and starts only after a guest taps Sound. A sound toggle is present on every page.
-- The website respects reduced-motion preferences.
+## Soundtrack
+The consistent sound control on all pages uses the official YouTube player for **Jashn-E-Bahaaraa (Instrumental - Flute)** by A. R. Rahman:
+https://www.youtube.com/watch?v=-2w18bd-ZQ4
 
-## Venue
-The primary Maps button uses the full Google Maps place URL supplied by the couple. A separate directions URL is provided as a fallback.
+The recording is embedded from the official YouTube release; it is not downloaded, copied or re-hosted here. Guests must tap the sound control to begin playback. A separate full-page navigation reloads the player, so guests may need to tap play again after moving between event pages.
 
-## RSVP and guestbook
-The visual RSVP area is intentionally marked as pending. Google Sheets-backed RSVP storage and the moderated guestbook still need a backend connection before guests can submit responses.
+## RSVP
+The final homepage section includes a short RSVP preview:
+- Title
+- Name
+- Number of guests (shown when attending)
+- Joyfully accept / Regretfully decline
+- Optional note
+
+The form validates and displays a local preview confirmation only. It does **not** transmit or save responses yet. Connect a Google Sheets endpoint or database before sending the invitation to guests.
+
+## Accessibility and testing notes
+- Invitation copy remains selectable HTML text.
+- The opening returns to the top after a full page reload.
+- The site respects reduced-motion preferences.
+- No RSVP data is persisted by the preview form.

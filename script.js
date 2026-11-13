@@ -2,10 +2,10 @@
   'use strict';
   const body = document.body;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // The invitation always starts at the top after a reload. No remembered "opened" state.
+
+  // Always return to the opening frame after a full reload.
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   window.scrollTo(0, 0);
-
   const openButton = document.getElementById('openInvitation');
   const openingCover = document.getElementById('openingCover');
   const siteShell = document.getElementById('siteShell');
@@ -35,7 +35,7 @@
     menuToggle?.setAttribute('aria-expanded', 'false');
   }));
 
-  // Scroll reveals. Text remains real DOM text and can be selected/copied.
+  // Scroll reveals. Every phrase remains selectable HTML text.
   const reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && !reducedMotion) {
     const observer = new IntersectionObserver((entries, obs) => {
@@ -51,7 +51,7 @@
     reveals.forEach(node => node.classList.add('visible'));
   }
 
-  // Wedding countdown (IST, using the scheduled Haldi start).
+  // Countdown to the first celebration (2 February 2027, 2 PM IST).
   const countdown = document.getElementById('countdownClock');
   const weddingStart = new Date('2027-02-02T14:00:00+05:30').getTime();
   function updateCountdown() {
@@ -71,85 +71,163 @@
   updateCountdown();
   if (countdown) window.setInterval(updateCountdown, 1000);
 
-  // Original soft ambient notes generated locally using Web Audio. Sound only starts
-  // after an explicit tap, and the same control is included on every page.
+  // Official Jashn-E-Bahaaraa (Instrumental - Flute) player.
+  // We embed the official YouTube release; the recording is not copied/re-hosted.
   const soundButton = document.getElementById('soundToggle');
-  const soundText = document.getElementById('soundLabel');
-  let audioContext = null;
-  let master = null;
-  let phraseTimer = null;
+  const soundLabel = document.getElementById('soundLabel');
+  const musicPanel = document.getElementById('musicPanel');
+  const closeMusic = document.getElementById('closeMusic');
+  let ytPlayer = null;
+  let ytApiLoading = false;
+  let ytPlayerReady = false;
+  let wantsPlayback = false;
   let soundOn = false;
-  let phrasePosition = 0;
-  const chords = [
-    [146.83, 220.00, 293.66, 369.99],
-    [130.81, 196.00, 261.63, 329.63],
-    [110.00, 164.81, 220.00, 293.66],
-    [123.47, 185.00, 246.94, 311.13]
-  ];
-  function note(freq, start, duration, level) {
-    const oscillator = audioContext.createOscillator();
-    const envelope = audioContext.createGain();
-    const filter = audioContext.createBiquadFilter();
-    oscillator.type = 'sine';
-    oscillator.frequency.setValueAtTime(freq, start);
-    filter.type = 'lowpass';
-    filter.frequency.setValueAtTime(1450, start);
-    envelope.gain.setValueAtTime(0.0001, start);
-    envelope.gain.exponentialRampToValueAtTime(level, start + 0.05);
-    envelope.gain.exponentialRampToValueAtTime(0.0001, start + duration);
-    oscillator.connect(filter);
-    filter.connect(envelope);
-    envelope.connect(master);
-    oscillator.start(start);
-    oscillator.stop(start + duration + 0.05);
+  function setSoundUI(on, label) {
+    soundOn = on;
+    soundButton?.setAttribute('aria-pressed', String(on));
+    soundButton?.setAttribute('aria-expanded', String(!musicPanel?.hidden));
+    soundButton?.setAttribute('aria-label', on ? 'Pause Jashn-E-Bahaaraa' : 'Play Jashn-E-Bahaaraa');
+    if (soundLabel) soundLabel.textContent = label || (on ? 'SOUND ON' : 'SOUND OFF');
   }
-  function playPhrase() {
-    if (!audioContext || !soundOn) return;
-    const chord = chords[Math.floor(phrasePosition / 4) % chords.length];
-    const now = audioContext.currentTime;
-    note(chord[phrasePosition % 4] * 2, now, 3.2, 0.042);
-    if (phrasePosition % 4 === 0) {
-      note(chord[0], now, 6.2, 0.024);
-      note(chord[2], now + 0.035, 5.3, 0.018);
-    }
-    if (phrasePosition % 4 === 2) note(chord[1] * 2, now + 0.18, 2.6, 0.012);
-    phrasePosition += 1;
-    phraseTimer = window.setTimeout(playPhrase, 1450);
-  }
-  async function toggleSound() {
-    try {
-      if (!audioContext) {
-        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-        if (!AudioContextClass) throw new Error('Audio is not supported in this browser.');
-        audioContext = new AudioContextClass();
-        master = audioContext.createGain();
-        master.gain.value = 0;
-        master.connect(audioContext.destination);
+  function initialiseYouTubePlayer() {
+    if (ytPlayer || !window.YT || !window.YT.Player) return;
+    const mount = document.getElementById('youtubePlayer');
+    if (!mount) return;
+    ytPlayer = new window.YT.Player('youtubePlayer', {
+      width: '280',
+      height: '200',
+      videoId: '-2w18bd-ZQ4',
+      playerVars: {
+        autoplay: 0,
+        controls: 1,
+        playsinline: 1,
+        rel: 0,
+        modestbranding: 1,
+        loop: 1,
+        playlist: '-2w18bd-ZQ4',
+        enablejsapi: 1
+      },
+      events: {
+        onReady: event => {
+          ytPlayerReady = true;
+          event.target.setVolume(62);
+          if (wantsPlayback) {
+            try {
+              event.target.unMute();
+              event.target.playVideo();
+            } catch (error) {
+              setSoundUI(false, 'TAP PLAY BELOW');
+            }
+          }
+        },
+        onStateChange: event => {
+          if (event.data === window.YT.PlayerState.PLAYING) {
+            wantsPlayback = true;
+            setSoundUI(true, 'SOUND ON');
+          } else if (event.data === window.YT.PlayerState.PAUSED || event.data === window.YT.PlayerState.ENDED) {
+            wantsPlayback = false;
+            setSoundUI(false, 'SOUND OFF');
+          }
+        },
+        onError: () => {
+          wantsPlayback = false;
+          setSoundUI(false, 'OPEN TRACK');
+          const fallback = document.getElementById('musicFallback');
+          if (fallback) fallback.hidden = false;
+        }
       }
-      if (soundOn) {
-        soundOn = false;
-        window.clearTimeout(phraseTimer);
-        master.gain.setTargetAtTime(0, audioContext.currentTime, 0.25);
-        soundButton?.setAttribute('aria-pressed', 'false');
-        soundButton?.setAttribute('aria-label', 'Turn ambient music on');
-        if (soundText) soundText.textContent = 'SOUND OFF';
-      } else {
-        await audioContext.resume();
-        soundOn = true;
-        master.gain.setTargetAtTime(0.32, audioContext.currentTime, 0.35);
-        soundButton?.setAttribute('aria-pressed', 'true');
-        soundButton?.setAttribute('aria-label', 'Turn ambient music off');
-        if (soundText) soundText.textContent = 'SOUND ON';
-        playPhrase();
-      }
-    } catch (error) {
-      if (soundText) soundText.textContent = 'AUDIO UNAVAILABLE';
-      console.warn('Could not start the ambient score:', error);
+    });
+  }
+  function loadYouTubeAPI() {
+    if (window.YT && window.YT.Player) {
+      initialiseYouTubePlayer();
+      return;
+    }
+    if (ytApiLoading) return;
+    ytApiLoading = true;
+    window.onYouTubeIframeAPIReady = initialiseYouTubePlayer;
+    const existing = document.querySelector('script[src="https://www.youtube.com/iframe_api"]');
+    if (!existing) {
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      tag.async = true;
+      tag.onerror = () => {
+        ytApiLoading = false;
+        setSoundUI(false, 'OPEN TRACK');
+        const fallback = document.getElementById('musicFallback');
+        if (fallback) fallback.hidden = false;
+      };
+      document.head.appendChild(tag);
     }
   }
-  soundButton?.addEventListener('click', toggleSound);
+  soundButton?.addEventListener('click', () => {
+    if (soundOn || wantsPlayback) {
+      wantsPlayback = false;
+      try { ytPlayer?.pauseVideo(); } catch (_) {}
+      setSoundUI(false, 'SOUND OFF');
+      return;
+    }
+    if (musicPanel) musicPanel.hidden = false;
+    setSoundUI(false, 'LOADING');
+    wantsPlayback = true;
+    loadYouTubeAPI();
+    if (ytPlayerReady && ytPlayer) {
+      try {
+        ytPlayer.unMute();
+        ytPlayer.playVideo();
+      } catch (error) {
+        setSoundUI(false, 'TAP PLAY BELOW');
+      }
+    }
+  });
+  closeMusic?.addEventListener('click', () => {
+    wantsPlayback = false;
+    try { ytPlayer?.pauseVideo(); } catch (_) {}
+    if (musicPanel) musicPanel.hidden = true;
+    setSoundUI(false, 'SOUND OFF');
+  });
 
-  // Mark the current event page in the shared navigation.
+  // RSVP preview: validates the minimal fields and confirms locally only.
+  // No response is transmitted or stored until a database/Sheets endpoint is added.
+  const rsvpForm = document.getElementById('rsvpForm');
+  if (rsvpForm) {
+    const guestField = document.getElementById('guestCountField');
+    const guestCount = document.getElementById('guestCount');
+    const responseInputs = [...rsvpForm.querySelectorAll('input[name="attendance"]')];
+    const feedback = document.getElementById('rsvpFeedback');
+    function syncGuestCount() {
+      const selected = rsvpForm.querySelector('input[name="attendance"]:checked')?.value;
+      const declined = selected === 'decline';
+      if (guestField) guestField.hidden = declined;
+      if (guestCount) {
+        guestCount.disabled = declined;
+        if (declined) guestCount.value = '0';
+        else if (guestCount.value === '0') guestCount.value = '1';
+      }
+    }
+    responseInputs.forEach(input => input.addEventListener('change', syncGuestCount));
+    syncGuestCount();
+    rsvpForm.addEventListener('submit', event => {
+      event.preventDefault();
+      if (!rsvpForm.reportValidity()) return;
+      const data = new FormData(rsvpForm);
+      const title = String(data.get('title') || '');
+      const name = String(data.get('name') || '').trim();
+      const attendance = data.get('attendance') === 'accept';
+      const count = attendance ? String(data.get('guestCount') || '1') : '0';
+      if (feedback) {
+        feedback.hidden = false;
+        feedback.textContent = attendance
+          ? 'Thank you, ' + title + ' ' + name + '. Your RSVP preview shows ' + count + (count === '1' ? ' guest' : ' guests') + ' attending. This preview has not been saved yet.'
+          : 'Thank you, ' + title + ' ' + name + '. Your RSVP preview is marked as unable to attend. This preview has not been saved yet.';
+      }
+      const submit = rsvpForm.querySelector('.rsvp-submit');
+      if (submit) submit.textContent = 'RSVP preview complete';
+      feedback?.scrollIntoView({behavior: reducedMotion ? 'auto' : 'smooth', block: 'nearest'});
+    });
+  }
+
+  // Highlight the active page in the shared navigation.
   const currentPage = body.dataset.page;
   if (currentPage) {
     document.querySelectorAll('[data-page-link]').forEach(link => {

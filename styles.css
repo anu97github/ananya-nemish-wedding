@@ -54,3 +54,81 @@ body.invitation-open .opening-cover{opacity:0;visibility:hidden;pointer-events:n
 .event-page-title{animation:title-arrive 1.4s .2s both}
 @keyframes title-arrive{from{opacity:0;transform:translateY(18px);letter-spacing:.03em}to{opacity:1;transform:translateY(0);letter-spacing:0}}
 @media(prefers-reduced-motion:reduce){.hero-botanical,.event-art-panel img,.event-card-art img,.event-page-title{animation:none}}
+
+
+/* Consistent official soundtrack player */
+.sound-dock{display:flex;flex-direction:column;align-items:flex-end;gap:9px}
+.sound-toggle{box-shadow:0 5px 22px rgba(44,54,38,.12)}
+.music-panel{width:min(318px,calc(100vw - 28px));padding:15px;background:rgba(249,245,235,.97);border:1px solid rgba(144,127,91,.42);box-shadow:0 18px 55px rgba(37,48,38,.22);color:#344135;backdrop-filter:blur(16px);text-align:left;animation:music-panel-in .25s ease both}
+.music-panel[hidden]{display:none!important}
+@keyframes music-panel-in{from{opacity:0;transform:translateY(-7px)}to{opacity:1;transform:translateY(0)}}
+.music-panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+.music-panel-head>div{display:flex;flex-direction:column;gap:2px}
+.music-overline{font-size:7px;letter-spacing:.2em;color:#9b805c}
+.music-panel-head strong{font:500 21px/1.05 var(--serif);color:#344135}
+.music-panel-head small{font-size:9px;color:#7b7c68}
+.music-flute{font:25px var(--serif);color:#a77d63}
+.music-frame{width:100%;height:200px;min-height:200px;background:#1f2d24;overflow:hidden}
+.music-frame iframe{display:block;width:100%;height:200px;min-height:200px;border:0}
+.music-panel-foot{display:flex;justify-content:space-between;gap:12px;padding-top:10px;font-size:8px;letter-spacing:.08em;color:#7b7c68}
+.music-panel-foot a{color:#9c765b;border-bottom:1px solid #c8ae8c;padding-bottom:2px}
+.event-date-stack{display:flex;flex-direction:column;gap:5px;line-height:1.55}
+.event-date-stack span+span{color:#a47760}
+
+/* Confirm your presence — short, elegant RSVP form */
+.rsvp-content{max-width:720px}
+.rsvp-content>p:not(.section-kicker):not(.rsvp-note){max-width:520px;margin-left:auto;margin-right:auto}
+.rsvp-form{max-width:620px;margin:34px auto 0;padding:clamp(22px,4vw,42px);background:#f7f1e5;color:#344136;text-align:left;border:1px solid rgba(219,205,174,.75);box-shadow:0 20px 58px rgba(8,19,12,.2);position:relative}
+.rsvp-form:before{content:"";position:absolute;inset:9px;border:1px solid rgba(160,140,101,.28);pointer-events:none}
+.rsvp-form-intro{display:flex;flex-direction:column;align-items:center;text-align:center;padding:3px 0 25px;border-bottom:1px solid rgba(121,123,91,.22)}
+.rsvp-form-kicker{font-size:8px;letter-spacing:.22em;color:#8a8068}
+.rsvp-form-title{font:clamp(31px,5vw,43px)/1.02 var(--serif);color:#354236;margin-top:8px}
+.rsvp-form-deadline{font-size:8px;letter-spacing:.16em;color:#9a8767;margin-top:8px}
+.rsvp-fields{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.5fr);gap:18px 15px;padding:24px 0 0}
+.rsvp-field{min-width:0;display:flex;flex-direction:column;gap:7px}
+.rsvp-field>span,.rsvp-attendance legend{font-size:9px;letter-spacing:.1em;color:#58624e;text-transform:uppercase}
+.rsvp-field>span small{font-size:9px;letter-spacing:0;text-transform:none;color:#8c8976}
+.rsvp-field select,.rsvp-field input,.rsvp-field textarea{width:100%;min-height:47px;border:1px solid #d5cbb5;background:#fcf9f1;border-radius:0;padding:12px 13px;font:13px var(--sans);font-weight:300;color:#344136;outline:none;transition:border-color .2s,box-shadow .2s}
+.rsvp-field textarea{min-height:86px;resize:vertical}
+.rsvp-field select:focus,.rsvp-field input:focus,.rsvp-field textarea:focus{border-color:#9c8760;box-shadow:0 0 0 3px rgba(185,148,89,.13)}
+.rsvp-attendance{grid-column:1/-1;border:0;padding:0;margin:0;min-width:0}
+.rsvp-attendance legend{padding:0 0 10px}
+.rsvp-attendance{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rsvp-attendance legend{grid-column:1/-1}
+.rsvp-choice{display:block;position:relative;cursor:pointer;min-width:0}
+.rsvp-choice input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;margin:0}
+.rsvp-choice>span{display:flex;flex-direction:column;justify-content:center;min-height:66px;padding:12px 14px;border:1px solid #d5cbb5;background:#fcf9f1;transition:background .2s,border-color .2s,box-shadow .2s}
+.rsvp-choice b{font:500 18px/1.1 var(--serif);color:#465441}
+.rsvp-choice small{font-size:9px;color:#85816e;margin-top:4px}
+.rsvp-choice input:checked+span{background:#e7eadc;border-color:#83916d;box-shadow:inset 0 0 0 1px #83916d}
+.rsvp-choice input:focus-visible+span{outline:2px solid #a57d5f;outline-offset:3px}
+.rsvp-guest-count,.rsvp-note-field{grid-column:1/-1}
+.rsvp-submit{width:100%;display:flex;justify-content:space-between;align-items:center;padding:16px 19px;margin:23px 0 0;border:1px solid #374b3a;background:#374b3a;color:#fbf4e5;font-size:9px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .2s}
+.rsvp-submit:hover{background:#52674e;transform:translateY(-2px)}
+.rsvp-submit b{font-size:17px;font-weight:400}
+.rsvp-privacy{font-size:9px;line-height:1.6;color:#83816f;text-align:center;margin:13px 0 0}
+.rsvp-feedback{margin-top:16px;padding:14px 16px;border:1px solid #aab596;background:#edf0e5;color:#42513f;font-size:12px;line-height:1.7;text-align:center}
+.rsvp-feedback[hidden]{display:none}
+.rsvp-choice:has(input[value="decline"]:checked)~.rsvp-guest-count{opacity:.55}
+@media(max-width:700px){
+ .sound-dock{top:82px;right:12px}
+ .music-panel{width:min(318px,calc(100vw - 24px));padding:12px}
+ .rsvp-form{padding:23px 18px}
+ .rsvp-fields{grid-template-columns:1fr 1.5fr;gap:15px 10px}
+ .rsvp-choice>span{padding:11px 10px;min-height:70px}
+ .rsvp-choice b{font-size:17px}
+}
+@media(max-width:430px){
+ .rsvp-fields{grid-template-columns:1fr}
+ .rsvp-attendance,.rsvp-guest-count,.rsvp-note-field{grid-column:1}
+ .rsvp-attendance{grid-template-columns:1fr 1fr}
+ .rsvp-attendance legend{grid-column:1/-1}
+ .rsvp-choice>span{min-height:65px}
+}
+
+.music-panel-head{align-items:flex-start}
+.music-close{flex:0 0 auto;border:0;background:transparent;color:#7b745f;font:25px/1 var(--serif);padding:0 2px 5px;cursor:pointer}
+.music-close:hover{color:#ad7866}
+.music-panel-foot{align-items:center}
+.music-panel-foot a[hidden]{display:none!important}
+.rsvp-field[hidden]{display:none!important}
