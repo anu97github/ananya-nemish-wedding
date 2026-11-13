@@ -14,7 +14,7 @@
       body.classList.add('invitation-open');
       openingCover.setAttribute('aria-hidden', 'true');
       siteShell.setAttribute('aria-hidden', 'false');
-      window.scrollTo({top: 0, left: 0, behavior: 'instant'});
+      window.scrollTo(0, 0);
       siteShell.querySelectorAll('.reveal').forEach(node => node.classList.add('visible'));
     });
   } else {
