@@ -1,54 +1,43 @@
 (() => {
+  'use strict';
   const body = document.body;
-  const prelude = document.getElementById('prelude');
-  const invitation = document.getElementById('invitation');
-  const openButton = document.getElementById('openInvite');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // The invitation always starts at the top after a reload. No remembered "opened" state.
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
 
-  // A restrained drift of petals; no external image assets are needed.
-  const petalField = document.getElementById('petalField');
-  if (petalField && !reduceMotion) {
-    for (let i = 0; i < 15; i++) {
-      const petal = document.createElement('span');
-      petal.className = 'petal';
-      petal.style.setProperty('--left', String((i * 37 + 11) % 100) + '%');
-      petal.style.setProperty('--duration', String(18 + (i % 7) * 3) + 's');
-      petal.style.setProperty('--delay', String(-(i * 2.1)) + 's');
-      petal.style.setProperty('--sway', String((i % 2 ? 1 : -1) * (35 + i * 5)) + 'px');
-      petal.style.setProperty('--rotation', String(i * 29) + 'deg');
-      petalField.appendChild(petal);
-    }
+  const openButton = document.getElementById('openInvitation');
+  const openingCover = document.getElementById('openingCover');
+  const siteShell = document.getElementById('siteShell');
+  if (openButton && openingCover && siteShell) {
+    openButton.addEventListener('click', () => {
+      body.classList.add('invitation-open');
+      openingCover.setAttribute('aria-hidden', 'true');
+      siteShell.setAttribute('aria-hidden', 'false');
+      window.scrollTo({top: 0, left: 0, behavior: 'instant'});
+      siteShell.querySelectorAll('.reveal').forEach(node => node.classList.add('visible'));
+    });
+  } else {
+    body.classList.add('invitation-open');
+    siteShell?.setAttribute('aria-hidden', 'false');
   }
 
-  function openInvitation() {
-    body.classList.add('opening');
-    body.classList.remove('prelude');
-    invitation.setAttribute('aria-hidden', 'false');
-    window.setTimeout(() => {
-      invitation.classList.add('ready');
-      document.querySelectorAll('#home .reveal').forEach(node => node.classList.add('visible'));
-      prelude?.setAttribute('aria-hidden', 'true');
-      document.getElementById('home')?.focus({preventScroll:true});
-    }, reduceMotion ? 0 : 800);
-  }
-  openButton?.addEventListener('click', openInvitation);
-
-  // Mobile navigation closes after selecting a section.
+  // Mobile navigation.
   const menuToggle = document.getElementById('menuToggle');
   const siteNav = document.getElementById('siteNav');
   menuToggle?.addEventListener('click', () => {
-    const isOpen = siteNav.classList.toggle('open');
-    menuToggle.setAttribute('aria-expanded', String(isOpen));
-    menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+    const open = siteNav?.classList.toggle('open') ?? false;
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
   });
   siteNav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
     siteNav.classList.remove('open');
     menuToggle?.setAttribute('aria-expanded', 'false');
   }));
 
-  // Scroll reveals; graceful fallback for browsers without IntersectionObserver.
-  const revealNodes = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window && !reduceMotion) {
+  // Scroll reveals. Text remains real DOM text and can be selected/copied.
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reducedMotion) {
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -56,108 +45,115 @@
           obs.unobserve(entry.target);
         }
       });
-    }, {threshold: 0.14, rootMargin: '0px 0px -35px 0px'});
-    revealNodes.forEach(node => observer.observe(node));
+    }, {threshold: 0.12, rootMargin: '0px 0px -35px 0px'});
+    reveals.forEach(node => observer.observe(node));
   } else {
-    revealNodes.forEach(node => node.classList.add('visible'));
+    reveals.forEach(node => node.classList.add('visible'));
   }
 
-  // Countdown to the first celebration's scheduled start, India Standard Time.
+  // Wedding countdown (IST, using the scheduled Haldi start).
+  const countdown = document.getElementById('countdownClock');
   const weddingStart = new Date('2027-02-02T14:00:00+05:30').getTime();
-  const clock = document.getElementById('countdownClock');
   function updateCountdown() {
-    if (!clock) return;
-    const remaining = Math.max(0, weddingStart - Date.now());
-    const units = {
-      days: Math.floor(remaining / 86400000),
-      hours: Math.floor((remaining % 86400000) / 3600000),
-      minutes: Math.floor((remaining % 3600000) / 60000),
-      seconds: Math.floor((remaining % 60000) / 1000)
+    if (!countdown) return;
+    const time = Math.max(0, weddingStart - Date.now());
+    const values = {
+      days: Math.floor(time / 86400000),
+      hours: Math.floor((time % 86400000) / 3600000),
+      minutes: Math.floor((time % 3600000) / 60000),
+      seconds: Math.floor((time % 60000) / 1000)
     };
-    Object.entries(units).forEach(([unit, value]) => {
-      const node = clock.querySelector('[data-unit="' + unit + '"]');
+    Object.entries(values).forEach(([key, value]) => {
+      const node = countdown.querySelector('[data-unit="' + key + '"]');
       if (node) node.textContent = String(value).padStart(2, '0');
     });
   }
   updateCountdown();
-  window.setInterval(updateCountdown, 1000);
+  if (countdown) window.setInterval(updateCountdown, 1000);
 
-  // Original ambient score synthesised in the browser; no commercial recording.
-  // It starts only after a guest taps the sound control.
-  const soundToggle = document.getElementById('soundToggle');
-  const soundLabel = document.getElementById('soundLabel');
+  // Original soft ambient notes generated locally using Web Audio. Sound only starts
+  // after an explicit tap, and the same control is included on every page.
+  const soundButton = document.getElementById('soundToggle');
+  const soundText = document.getElementById('soundLabel');
   let audioContext = null;
-  let masterGain = null;
-  let melodyTimer = null;
-  let audioOn = false;
-  let noteIndex = 0;
-  const progression = [
+  let master = null;
+  let phraseTimer = null;
+  let soundOn = false;
+  let phrasePosition = 0;
+  const chords = [
     [146.83, 220.00, 293.66, 369.99],
-    [123.47, 185.00, 246.94, 293.66],
-    [98.00, 146.83, 196.00, 246.94],
-    [110.00, 164.81, 220.00, 277.18]
+    [130.81, 196.00, 261.63, 329.63],
+    [110.00, 164.81, 220.00, 293.66],
+    [123.47, 185.00, 246.94, 311.13]
   ];
-
-  function pluck(frequency, when, duration, volume) {
+  function note(freq, start, duration, level) {
     const oscillator = audioContext.createOscillator();
-    const gain = audioContext.createGain();
+    const envelope = audioContext.createGain();
     const filter = audioContext.createBiquadFilter();
     oscillator.type = 'sine';
-    oscillator.frequency.setValueAtTime(frequency, when);
+    oscillator.frequency.setValueAtTime(freq, start);
     filter.type = 'lowpass';
-    filter.frequency.setValueAtTime(1800, when);
-    gain.gain.setValueAtTime(0.0001, when);
-    gain.gain.exponentialRampToValueAtTime(volume, when + 0.035);
-    gain.gain.exponentialRampToValueAtTime(0.0001, when + duration);
+    filter.frequency.setValueAtTime(1450, start);
+    envelope.gain.setValueAtTime(0.0001, start);
+    envelope.gain.exponentialRampToValueAtTime(level, start + 0.05);
+    envelope.gain.exponentialRampToValueAtTime(0.0001, start + duration);
     oscillator.connect(filter);
-    filter.connect(gain);
-    gain.connect(masterGain);
-    oscillator.start(when);
-    oscillator.stop(when + duration + 0.05);
+    filter.connect(envelope);
+    envelope.connect(master);
+    oscillator.start(start);
+    oscillator.stop(start + duration + 0.05);
   }
-
   function playPhrase() {
-    if (!audioContext || !audioOn) return;
-    const chord = progression[Math.floor(noteIndex / 4) % progression.length];
-    const tone = chord[noteIndex % 4];
+    if (!audioContext || !soundOn) return;
+    const chord = chords[Math.floor(phrasePosition / 4) % chords.length];
     const now = audioContext.currentTime;
-    pluck(tone * 2, now, 2.8, 0.045);
-    if (noteIndex % 4 === 0) {
-      pluck(chord[0], now, 5.8, 0.025);
-      pluck(chord[2], now + 0.03, 5.1, 0.018);
+    note(chord[phrasePosition % 4] * 2, now, 3.2, 0.042);
+    if (phrasePosition % 4 === 0) {
+      note(chord[0], now, 6.2, 0.024);
+      note(chord[2], now + 0.035, 5.3, 0.018);
     }
-    noteIndex += 1;
-    melodyTimer = window.setTimeout(playPhrase, 1350);
+    if (phrasePosition % 4 === 2) note(chord[1] * 2, now + 0.18, 2.6, 0.012);
+    phrasePosition += 1;
+    phraseTimer = window.setTimeout(playPhrase, 1450);
   }
-
   async function toggleSound() {
     try {
       if (!audioContext) {
-        const AudioCtx = window.AudioContext || window.webkitAudioContext;
-        if (!AudioCtx) throw new Error('Audio is not supported in this browser.');
-        audioContext = new AudioCtx();
-        masterGain = audioContext.createGain();
-        masterGain.gain.value = 0.32;
-        masterGain.connect(audioContext.destination);
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) throw new Error('Audio is not supported in this browser.');
+        audioContext = new AudioContextClass();
+        master = audioContext.createGain();
+        master.gain.value = 0;
+        master.connect(audioContext.destination);
       }
-      if (audioOn) {
-        audioOn = false;
-        window.clearTimeout(melodyTimer);
-        masterGain.gain.setTargetAtTime(0, audioContext.currentTime, 0.25);
-        soundToggle?.setAttribute('aria-pressed', 'false');
-        if (soundLabel) soundLabel.textContent = 'SOUND OFF';
+      if (soundOn) {
+        soundOn = false;
+        window.clearTimeout(phraseTimer);
+        master.gain.setTargetAtTime(0, audioContext.currentTime, 0.25);
+        soundButton?.setAttribute('aria-pressed', 'false');
+        soundButton?.setAttribute('aria-label', 'Turn ambient music on');
+        if (soundText) soundText.textContent = 'SOUND OFF';
       } else {
         await audioContext.resume();
-        audioOn = true;
-        masterGain.gain.setTargetAtTime(1, audioContext.currentTime, 0.3);
-        soundToggle?.setAttribute('aria-pressed', 'true');
-        if (soundLabel) soundLabel.textContent = 'SOUND ON';
+        soundOn = true;
+        master.gain.setTargetAtTime(0.32, audioContext.currentTime, 0.35);
+        soundButton?.setAttribute('aria-pressed', 'true');
+        soundButton?.setAttribute('aria-label', 'Turn ambient music off');
+        if (soundText) soundText.textContent = 'SOUND ON';
         playPhrase();
       }
     } catch (error) {
-      if (soundLabel) soundLabel.textContent = 'AUDIO UNAVAILABLE';
-      console.warn('Ambient score could not start:', error);
+      if (soundText) soundText.textContent = 'AUDIO UNAVAILABLE';
+      console.warn('Could not start the ambient score:', error);
     }
   }
-  soundToggle?.addEventListener('click', toggleSound);
+  soundButton?.addEventListener('click', toggleSound);
+
+  // Mark the current event page in the shared navigation.
+  const currentPage = body.dataset.page;
+  if (currentPage) {
+    document.querySelectorAll('[data-page-link]').forEach(link => {
+      if (link.dataset.pageLink === currentPage) link.classList.add('active');
+    });
+  }
 })();
