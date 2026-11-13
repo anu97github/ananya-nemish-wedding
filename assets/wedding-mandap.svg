@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+<defs>
+ <linearGradient id="day" x2="0" y2="1"><stop stop-color="#edf2e9"/><stop offset="1" stop-color="#faf5ed"/></linearGradient>
+ <linearGradient id="water" x2="0" y2="1"><stop stop-color="#b6cbc4"/><stop offset="1" stop-color="#6f958c"/></linearGradient>
+ <linearGradient id="ivory" x2="0" y2="1"><stop stop-color="#fffdfa"/><stop offset="1" stop-color="#e8dfd1"/></linearGradient>
+ <g id="flower"><g fill="#fffdf8" stroke="#d8c9c3" stroke-width="2"><ellipse cy="-18" rx="10" ry="22"/><ellipse cy="-18" rx="10" ry="22" transform="rotate(45)"/><ellipse cy="-18" rx="10" ry="22" transform="rotate(90)"/><ellipse cy="-18" rx="10" ry="22" transform="rotate(135)"/><ellipse cy="-18" rx="10" ry="22" transform="rotate(180)"/><ellipse cy="-18" rx="10" ry="22" transform="rotate(225)"/><ellipse cy="-18" rx="10" ry="22" transform="rotate(270)"/><ellipse cy="-18" rx="10" ry="22" transform="rotate(315)"/></g><circle r="7" fill="#d7b28d"/></g>
+ <g id="lotus"><path d="M0 20Q-40 -4 -30 -35Q0 -17 0 20Q0 -17 30 -35Q40 -4 0 20Z" fill="#f5e3e2" stroke="#c9aaa9" stroke-width="2"/><ellipse cx="0" cy="18" rx="32" ry="8" fill="#789b8b"/></g>
+</defs>
+<rect width="1200" height="900" fill="url(#day)"/>
+<g fill="#607d61" opacity=".55"><circle cx="85" cy="190" r="145"/><circle cx="240" cy="110" r="120"/><circle cx="1020" cy="110" r="160"/><circle cx="1160" cy="250" r="120"/></g>
+<path d="M0 515H1200V900H0Z" fill="#9eb8a6"/>
+<path d="M0 550H1200V900H0Z" fill="url(#water)"/>
+<g stroke="#e0ece2" stroke-width="4" opacity=".55"><path d="M0 660Q300 625 600 660T1200 650"/><path d="M0 785Q300 755 600 785T1200 780"/></g>
+<path d="M440 900L535 520H665L760 900Z" fill="#eee7df" opacity=".92"/>
+<path d="M485 900L565 520H635L715 900Z" fill="#f9f7f1" stroke="#d7cfc4" stroke-width="4"/>
+<g><use href="#lotus" transform="translate(110 630) scale(1.4)"/><use href="#lotus" transform="translate(280 700) scale(1.2)"/><use href="#lotus" transform="translate(920 640) scale(1.3)"/><use href="#lotus" transform="translate(1070 740) scale(1.45)"/></g>
+<g stroke="#8b775b" stroke-width="15" fill="none"><path d="M350 600V270Q600 30 850 270V600"/><path d="M390 600V290Q600 100 810 290V600"/></g>
+<path d="M320 270Q600 15 880 270" stroke="#e8d7c6" stroke-width="36" fill="none"/>
+<path d="M350 265Q600 55 850 265" stroke="#fff9f2" stroke-width="24" fill="none"/>
+<g fill="url(#ivory)" stroke="#d7c9bb" stroke-width="5"><path d="M330 274Q600 70 870 274L840 300Q600 140 360 300Z"/></g>
+<g stroke="#fffaf4" stroke-width="11" fill="none"><path d="M375 275Q390 420 380 580"/><path d="M825 275Q810 420 820 580"/><path d="M465 220Q470 360 465 525"/><path d="M735 220Q730 360 735 525"/></g>
+<g fill="#839a82"><path d="M360 300Q315 260 300 315Q342 345 360 300Z"/><path d="M840 300Q885 260 900 315Q858 345 840 300Z"/><path d="M440 215Q400 180 382 228Q412 254 440 215Z"/><path d="M760 215Q800 180 818 228Q788 254 760 215Z"/></g>
+<g><use href="#flower" transform="translate(350 285) scale(1.3)"/><use href="#flower" transform="translate(405 245) scale(1.15)"/><use href="#flower" transform="translate(470 205) scale(1.1)"/><use href="#flower" transform="translate(540 182) scale(1.0)"/><use href="#flower" transform="translate(600 172) scale(1.2)"/><use href="#flower" transform="translate(660 182) scale(1.0)"/><use href="#flower" transform="translate(730 205) scale(1.1)"/><use href="#flower" transform="translate(795 245) scale(1.15)"/><use href="#flower" transform="translate(850 285) scale(1.3)"/></g>
+<g stroke="#d8cfc0" stroke-width="3"><path d="M430 260V530M485 222V545M540 192V535M660 192V535M715 222V545M770 260V530"/></g>
+<g fill="#fffdf8"><circle cx="430" cy="525" r="10"/><circle cx="485" cy="540" r="10"/><circle cx="540" cy="530" r="10"/><circle cx="660" cy="530" r="10"/><circle cx="715" cy="540" r="10"/><circle cx="770" cy="525" r="10"/></g>
+<g fill="#e8dfd4" stroke="#bda98d" stroke-width="7"><rect x="445" y="515" width="130" height="58" rx="16"/><rect x="625" y="515" width="130" height="58" rx="16"/></g>
+<path d="M0 820H1200" stroke="#f5efe6" stroke-width="5" opacity=".7"/>
+</svg>

@@ -25,3 +25,78 @@ button,input,select,textarea{font:inherit}
 @media(max-width:850px){.couple-names{font-size:clamp(72px,14vw,116px)}.couple-names i{font-size:clamp(26px,4vw,38px)}.event-copy h2{font-size:75px}.site-header{height:70px}.menu-toggle{display:block;z-index:3}.site-nav{display:none;position:absolute;top:69px;left:0;right:0;background:rgba(248,245,237,.98);padding:20px 25px 25px;flex-direction:column;align-items:stretch;gap:0;border-bottom:1px solid var(--line)}.site-nav.open{display:flex}.site-nav a{padding:12px 0;border-bottom:1px solid rgba(155,118,47,.14)}.site-nav .nav-rsvp{margin-top:12px;text-align:center;border:1px solid var(--gold)}.paper-section{min-height:720px;min-height:calc(100svh - 70px);padding-top:55px}.couple-names{font-size:clamp(72px,14vw,116px)}.floral{width:175px;height:175px}.venue-section{grid-template-columns:1fr;max-width:640px}.venue-art{min-height:310px;max-height:350px}.venue-copy{text-align:center}.venue-links,.stay-row{justify-content:center;margin-left:auto;margin-right:auto}.event-section,.mehendi-event{grid-template-columns:1fr;gap:25px;min-height:0;padding-top:55px;padding-bottom:92px}.event-art,.mehendi-event .event-art{order:0;min-height:370px;max-height:430px}.event-copy,.mehendi-event .event-copy{order:1;padding:0 5px}.event-copy h2{font-size:75px}.event-next{bottom:25px}.swatch-grid{gap:10px}.rsvp-floral{background-size:180px}}
 @media(max-width:520px){.site-header{padding:8px 18px}.brand{width:50px}.brand img{width:42px;height:42px}.sound-toggle{right:13px;bottom:13px;min-width:0;padding:10px 12px;font-size:8px}.paper-section{padding:38px 18px 90px;min-height:690px;min-height:calc(100svh - 70px)}.paper-frame{inset:11px}.hero-mark{width:82px;height:77px;margin-bottom:15px}.eyebrow{font-size:8px;letter-spacing:.18em}.invite-line{font-size:9px;letter-spacing:.16em;line-height:1.8;margin-bottom:18px}.couple-names{font-size:clamp(68px,18vw,90px);gap:9px}.couple-names i{font-size:26px;margin-top:15px}.gold-divider{margin:24px auto 16px}.gold-divider span{width:48px}.hero-date{font-size:10px;letter-spacing:.2em}.hero-venue{font-size:7px;letter-spacing:.13em;line-height:1.8}.hero-note{font-size:20px}.scroll-cue{bottom:-76px}.floral{width:125px;height:125px;opacity:.82}.countdown-band{padding:23px 8px}.countdown{gap:12px}.countdown strong{font-size:23px}.countdown span{font-size:6px}.countdown i{height:22px}.section-pad{padding:68px 19px}.section-heading h2,.venue-copy h2,.events-intro h2,.rsvp-inner h2{font-size:25px;letter-spacing:.12em}.family-grid{grid-template-columns:1fr;gap:20px;margin-top:30px}.family-ornament{border:0;justify-content:center}.family-ornament img{width:42px;height:42px}.family-card h3{font-size:17px}.family-card p{font-size:11px}.fine-rule{margin-top:30px;font-size:6px;letter-spacing:.16em}.venue-art{min-height:260px}.venue-copy h2{font-size:31px}.venue-links{gap:17px}.venue-links a{font-size:7px}.stay-row{gap:15px}.stay-row strong{font-size:9px}.events-intro{padding-top:63px;padding-bottom:30px}.event-section,.mehendi-event{padding:38px 16px 82px;gap:22px}.event-section:before{left:8px;right:8px;top:10px;bottom:10px}.event-art,.mehendi-event .event-art{min-height:260px;max-height:330px}.event-copy h2{font-size:67px}.event-copy .eyebrow{font-size:7px;letter-spacing:.17em}.event-time{font-size:9px}.event-blurb{font-size:10px;margin-bottom:23px}.dress-code h3{font-size:8px}.dress-code>p{font-size:9px}.swatch-grid{gap:7px}.swatch>span{height:43px}.swatch b{font-size:7px;line-height:1.25}.swatch code{font-size:6.5px}.event-time-list p{font-size:8px}.event-time-list b{font-size:8px}.event-next{right:23px;font-size:7px}.rsvp-form{padding:22px 16px}.form-grid{grid-template-columns:1fr;gap:13px}.attendance,.guest-field,.note-field{grid-column:1}.attendance label span{padding:10px}.attendance b{font-size:20px}.attendance small{font-size:7px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+
+/* Refined presentation details */
+.family-parents-formal{
+  margin:18px auto 0!important;
+  max-width:420px;
+  font-size:13px!important;
+  line-height:1.9!important;
+  font-weight:500;
+  letter-spacing:.015em!important;
+  color:#675960!important;
+}
+.family-parents-formal span{padding:0 4px;color:#9b777d}
+.family-ornament img{
+  width:104px;height:94px;
+  object-fit:contain;
+  image-rendering:high-quality;
+  filter:drop-shadow(0 1px 0 rgba(91,67,74,.12));
+}
+.hero-mark{width:132px;height:120px;object-fit:contain}
+.brand img{width:70px;height:64px;object-fit:contain}
+.form-top img{width:74px;height:67px}
+.site-footer img{width:78px;height:70px}
+.venue-art,.event-art{isolation:isolate}
+.venue-photo,.event-art img{
+  display:block;
+  width:100%;height:100%;
+  object-fit:cover;
+}
+.venue-art .venue-photo{object-position:center 48%}
+.haldi-event .event-art img{object-position:center 50%}
+.mehendi-event .event-art img{object-position:center 45%}
+.wedding-event .event-art img{object-position:center 48%}
+.swatch>span{
+  display:block;
+  border:0!important;
+  border-radius:0;
+  background-color:var(--swatch);
+  -webkit-mask:url('assets/paint-stroke.svg') center/100% 100% no-repeat;
+  mask:url('assets/paint-stroke.svg') center/100% 100% no-repeat;
+  clip-path:polygon(3% 22%,12% 11%,25% 17%,39% 6%,54% 16%,67% 9%,80% 16%,96% 27%,99% 52%,92% 77%,75% 84%,62% 74%,46% 88%,29% 78%,12% 84%,1% 67%);
+}
+.event-copy h2{letter-spacing:-.025em}
+.event-date{display:block!important}
+.event-time-list{margin-top:4px}
+.event-time-list p b{font-weight:700}
+.event-section .dress-code h3{font-size:11px}
+.event-section .dress-code>p{font-size:12px;line-height:1.6}
+.swatch b{font-size:11px}
+.swatch code{font-size:9px}
+.sound-toggle{border-color:#c7a6ad;background:rgba(255,253,253,.97);color:#54444b}
+.sound-toggle:hover{background:#98767e}
+.sound-symbol{color:#98767e}
+.sound-toggle[aria-pressed=true]{background:#829584;border-color:#829584}
+@media(min-width:851px){
+ .family-card h3{font-size:24px}
+ .family-parents-formal{font-size:14px!important}
+ .venue-art{min-height:525px}
+ .event-art{min-height:500px;aspect-ratio:1.08}
+ .event-copy h2{font-size:clamp(100px,8.5vw,124px)}
+ .event-time{font-size:17px}
+ .event-time-list p b{font-size:15px}
+ .dress-code{margin-top:30px}
+}
+@media(max-width:850px){
+ .family-ornament img{width:86px;height:78px}
+ .event-art,.mehendi-event .event-art{min-height:380px}
+}
+@media(max-width:520px){
+ .family-parents-formal{font-size:11px!important;line-height:1.8!important}
+ .family-ornament img{width:55px;height:50px}
+ .event-copy h2{font-size:clamp(72px,16vw,90px)}
+ .event-date{font-size:10px!important}
+ .event-time-list p b{font-size:12px}
+}
