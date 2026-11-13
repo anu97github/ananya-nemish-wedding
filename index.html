@@ -13,7 +13,11 @@
 <script defer src="script.js"></script>
 </head>
 <body class="home-page">
-<div class="sound-dock"><button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false" aria-label="Turn ambient music on"><span class="sound-icon">♫</span><span id="soundLabel">SOUND OFF</span></button></div>
+<div class="sound-dock"><button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false" aria-label="Play Jashn-E-Bahaaraa"><span class="sound-icon">♫</span><span id="soundLabel">SOUND OFF</span></button><div class="music-panel" id="musicPanel" hidden aria-label="Wedding soundtrack">
+  <div class="music-panel-head"><div><span class="music-overline">OUR SOUNDTRACK</span><strong>Jashn-E-Bahaaraa</strong><small>Instrumental · Flute · A. R. Rahman</small></div><span class="music-flute" aria-hidden="true">♫</span></div>
+  <div class="music-frame"><div id="youtubePlayer"></div></div>
+  <div class="music-panel-foot"><span>Official YouTube audio</span><a href="https://www.youtube.com/watch?v=-2w18bd-ZQ4" target="_blank" rel="noopener noreferrer">OPEN ↗</a></div>
+</div></div>
 
 <section class="opening-cover" id="openingCover" aria-label="Open your wedding invitation">
   <div class="corner top-left" aria-hidden="true"></div><div class="corner bottom-right" aria-hidden="true"></div>
@@ -95,7 +99,7 @@
         <div class="event-card-body">
           <span class="event-number">02 · TUESDAY, 2 FEBRUARY</span>
           <h3>Mehendi <em>&amp; music</em></h3>
-          <span class="event-date">6:30 PM ONWARDS · LIVE MUSIC 8–11 PM</span>
+          <span class="event-date"><span>MEHENDI · 6:30 PM ONWARDS</span><span>LIVE MUSIC · 8:00–11:00 PM</span></span>
           <p>A garden evening of mehendi, lantern light and a little acoustic Sufi magic.</p>
           <div class="event-card-link"><span>EXPLORE MEHENDI</span><b>↗</b></div>
         </div>
@@ -151,26 +155,28 @@
   </div>
 </section>
 
-<section class="moments-section">
-  <div class="moments-grid">
-    <div class="moments-copy reveal">
-      <p class="section-kicker">A FEW LITTLE MOMENTS</p>
-      <h2>From a mountain<br>promise to <em>this day.</em></h2>
-      <p>Some memories become the quietest, happiest part of a story. We’re carrying a few of those with us as we begin this new chapter.</p>
-    </div>
-    <img class="moment-art reveal" src="assets/moments-illustration.svg" alt="An original illustration inspired by a mountain proposal and an ornate Jaipur arch">
-  </div>
-</section>
-
 <section class="rsvp-section" id="rsvp">
-  <div class="rsvp-content reveal">
-    <p class="section-kicker">WE WOULD LOVE TO HAVE YOU WITH US</p>
-    <h2>Save a little<br><em>space for us.</em></h2>
-    <p>We can’t wait to celebrate, laugh, dance and make memories with you.</p>
+  <div class="rsvp-content">
+    <p class="section-kicker">A LITTLE NOTE BEFORE THE CELEBRATION</p>
+    <h2>Confirm your <em>presence.</em></h2>
+    <p>Your presence would mean the world to us. Kindly let us know if you’ll be joining the celebrations.</p>
     <div class="rsvp-line"></div>
-    <p class="rsvp-note">A LITTLE PIECE OF OUR HAPPINESS, SHARED WITH YOU.</p>
-    <div class="rsvp-disabled">RSVP DETAILS TO FOLLOW <span>✿</span></div>
-    <small class="rsvp-small">Your personal RSVP link will be added once guest confirmations are ready.</small>
+    <form class="rsvp-form" id="rsvpForm">
+      <div class="rsvp-form-intro"><span class="rsvp-form-kicker">ANANYA &amp; NEMISH</span><span class="rsvp-form-title">Kindly respond</span><span class="rsvp-form-deadline">2–3 FEBRUARY 2027 · CHIKKABALLAPUR</span></div>
+      <div class="rsvp-fields">
+        <label class="rsvp-field"><span>Title</span><select name="title" required><option value="" selected disabled>Select title</option><option>Mr.</option><option>Mrs.</option><option>Ms.</option><option>Dr.</option><option>Other</option></select></label>
+        <label class="rsvp-field rsvp-name"><span>Your name</span><input name="name" type="text" autocomplete="name" placeholder="Enter your full name" maxlength="100" required></label>
+        <fieldset class="rsvp-attendance"><legend>Will you be joining us?</legend>
+          <label class="rsvp-choice"><input type="radio" name="attendance" value="accept" required><span><b>Joyfully accept</b><small>We’ll be there!</small></span></label>
+          <label class="rsvp-choice"><input type="radio" name="attendance" value="decline" required><span><b>Regretfully decline</b><small>Sorry to miss it</small></span></label>
+        </fieldset>
+        <label class="rsvp-field rsvp-guest-count" id="guestCountField"><span>Number of guests <small>(including yourself)</small></span><select name="guestCount" id="guestCount"><option value="1" selected>1 guest</option><option value="2">2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option><option value="5">5 guests</option><option value="6">6 guests</option><option value="7">7 guests</option><option value="8">8 guests</option><option value="9">9 guests</option><option value="10">10 guests</option></select></label>
+        <label class="rsvp-field rsvp-note-field"><span>A note for us <small>(optional)</small></span><textarea name="note" rows="3" maxlength="500" placeholder="Leave a little message…"></textarea></label>
+      </div>
+      <button class="rsvp-submit" type="submit">Preview my RSVP <b>↗</b></button>
+      <p class="rsvp-privacy">This is a preview form for now. Responses are not being saved yet; we’ll connect the guest list before sharing the invitation.</p>
+      <div class="rsvp-feedback" id="rsvpFeedback" role="status" aria-live="polite" hidden></div>
+    </form>
   </div>
 </section>
 
