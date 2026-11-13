@@ -125,3 +125,10 @@ body.invitation-open .opening-cover{opacity:0;visibility:hidden;pointer-events:n
  .rsvp-attendance legend{grid-column:1/-1}
  .rsvp-choice>span{min-height:65px}
 }
+
+.music-panel-head{align-items:flex-start}
+.music-close{flex:0 0 auto;border:0;background:transparent;color:#7b745f;font:25px/1 var(--serif);padding:0 2px 5px;cursor:pointer}
+.music-close:hover{color:#ad7866}
+.music-panel-foot{align-items:center}
+.music-panel-foot a[hidden]{display:none!important}
+.rsvp-field[hidden]{display:none!important}
