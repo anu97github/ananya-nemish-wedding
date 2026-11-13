@@ -1,38 +1,33 @@
 # Ananya & Nemish — Wedding Invitation
 
-A responsive, event-led wedding invitation for **2–3 February 2027** at **Happy Retreats KAI**, Agalagurki, Chikkaballapur, Karnataka, near Bengaluru.
+A single-page, mobile-responsive wedding invitation for 2–3 February 2027 at Happy Retreats KAI, Agalagurki, Chikkaballapur, Karnataka.
 
-## Pages
-- `index.html` — opening envelope, interlocking monogram, countdown, event navigation, family names, venue, and the final RSVP section
-- `haldi.html` — Haldi timing, event illustration, decor palette and guest dress palette with hex codes
-- `mehendi.html` — Mehendi and acoustic music timings shown separately, event illustration, decor palette and guest dress palette with hex codes
-- `wedding.html` — simple wedding invitation timing (**2:00 PM onwards**) and wedding decor / guest dress palettes with hex codes
+## Visitor flow
+- Opening invitation and couple names
+- Countdown
+- Family blessings and parent details
+- Venue, Google Maps and accommodation details
+- Three vertically stacked celebration sections: Haldi, Mehendi & Acoustic Music, and Wedding
+- Four guest dress-code colours with hex codes for each event
+- Minimal RSVP preview form
 
-## Shared assets and behavior
-- `styles.css` — responsive editorial styling, typography, RSVP form and music player
-- `script.js` — opening interaction, countdown, responsive navigation, RSVP preview validation and official soundtrack player
-- `assets/monogram.svg` — interlocking A/N monogram
-- `assets/haldi-scene.svg`, `assets/mehendi-scene.svg`, `assets/wedding-scene.svg` — original event illustrations
-- `assets/floral-corners.svg` — botanical accents
+## Design and assets
+- Two type families only: Allura for couple names and selected calligraphic accents; Montserrat for all other content
+- Original AN logo traced from the supplied monogram artwork
+- Botanical corner ornament and illustrated event scenes
+- Warm ivory, antique gold, muted olive and dusty rose palette
 
 ## Soundtrack
-The consistent sound control on all pages uses the official YouTube player for **Jashn-E-Bahaaraa (Instrumental - Flute)** by A. R. Rahman:
-https://www.youtube.com/watch?v=-2w18bd-ZQ4
-
-The recording is embedded from the official YouTube release; it is not downloaded, copied or re-hosted here. Guests must tap the sound control to begin playback. A separate full-page navigation reloads the player, so guests may need to tap play again after moving between event pages.
+The sound toggle initiates the official YouTube audio embed after a visitor tap. The player is kept visually hidden; no pop-up or video panel is shown. Browser autoplay policies can prevent sound from starting without a user gesture.
 
 ## RSVP
-The final homepage section includes a short RSVP preview:
-- Title
-- Name
-- Number of guests (shown when attending)
-- Joyfully accept / Regretfully decline
-- Optional note
+The RSVP validates and previews responses in the browser only. It does not transmit or store guest responses until connected to a secure data destination.
 
-The form validates and displays a local preview confirmation only. It does **not** transmit or save responses yet. Connect a Google Sheets endpoint or database before sending the invitation to guests.
-
-## Accessibility and testing notes
-- Invitation copy remains selectable HTML text.
-- The opening returns to the top after a full page reload.
-- The site respects reduced-motion preferences.
-- No RSVP data is persisted by the preview form.
+## Files
+- `index.html` — complete single-page invitation
+- `styles.css` — responsive visual system
+- `script.js` — navigation, countdown, sound control and RSVP preview
+- `assets/monogram.svg` — supplied interlocked AN mark, traced as vector
+- `assets/floral-corners.svg` — botanical ornament
+- `assets/*-scene.svg` — event illustrations
+- `haldi.html`, `mehendi.html`, `wedding.html` — compatibility redirects to event sections
