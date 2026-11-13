@@ -12,3 +12,4 @@
 @media(max-width:390px){.event-row{display:block}.event-row time{display:block;margin-top:7px}.hero-title{font-size:67px}.prelude-names{font-size:47px}.countdown-clock div{min-width:47px}.countdown-clock strong{font-size:34px}.venue-actions{gap:8px}.map-primary,.map-secondary{font-size:7px;padding:14px 12px}.stay-details{gap:12px}.stay-details b{font-size:16px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
 .rsvp-disabled{width:max-content;margin:28px auto 0;opacity:.78;cursor:default}
+@keyframes scroll-pulse{0%,100%{transform:scaleY(.55);transform-origin:top;opacity:.45}50%{transform:scaleY(1);opacity:1}}
