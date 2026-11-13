@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 560" fill="none">
+<defs><linearGradient id="sky" x1="550" y1="0" x2="550" y2="560" gradientUnits="userSpaceOnUse"><stop stop-color="#e7e6d9"/><stop offset="1" stop-color="#f3e7d3"/></linearGradient><linearGradient id="hill" x1="160" y1="150" x2="160" y2="470" gradientUnits="userSpaceOnUse"><stop stop-color="#80917d"/><stop offset="1" stop-color="#435e4b"/></linearGradient><linearGradient id="stone" x1="830" y1="100" x2="830" y2="490" gradientUnits="userSpaceOnUse"><stop stop-color="#e2c8a5"/><stop offset="1" stop-color="#ad875f"/></linearGradient></defs>
+<rect width="1100" height="560" rx="10" fill="url(#sky)"/>
+<path d="M0 333 104 225l74 68 137-168 137 174 85-74 115 108v227H0V333Z" fill="#9daa93" opacity=".68"/>
+<path d="m0 380 163-157 66 57 126-147 137 174 85-72 115 105v220H0V380Z" fill="url(#hill)" opacity=".78"/>
+<path d="M0 450q145-44 285 0t285-5v115H0V450Z" fill="#7c8c71" opacity=".8"/>
+<path d="M660 0h440v560H660V0Z" fill="#eee5d8" opacity=".45"/>
+<path d="M735 486V239a120 120 0 0 1 240 0v247" stroke="url(#stone)" stroke-width="18"/>
+<path d="M760 486V242a95 95 0 0 1 190 0v244" stroke="#fff7e8" stroke-width="4" opacity=".8"/>
+<path d="M708 486h292M738 504h230" stroke="#9e7955" stroke-width="4" opacity=".6"/>
+<path d="M775 160h160m-80-83v84" stroke="#ac8d67" stroke-width="2" opacity=".5"/>
+<g stroke="#6b4538" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+<path d="M208 423q-5-43 3-70m-3 30q-18-11-22-28m23 39q20-12 26-29m-31 33q-14 15-18 37"/>
+<path d="M288 446q5-38 22-57m-14 34q-17 3-28-8m34-3q17-13 18-28"/>
+</g>
+<g fill="#f1e4d1" stroke="#92735a" stroke-width="2"><circle cx="222" cy="340" r="18"/><circle cx="298" cy="378" r="17"/></g>
+<g fill="#9c705f"><path d="M188 369q30-30 55 0l-5 31h-47Z"/><path d="M273 401q30-27 53 0l-7 33h-41Z"/></g>
+<path d="M240 355q30-35 54-12" stroke="#c49a62" stroke-width="4" stroke-dasharray="5 7" opacity=".7"/>
+<g stroke="#7e8c6f" stroke-width="3" stroke-linecap="round"><path d="M660 485q-36-60-22-110m21 65q30-40 61-36m-39-9q-13-35-4-65"/><path d="M1040 485q36-60 22-110m-21 65q-30-40-61-36m39-9q13-35 4-65"/></g>
+<g fill="#c88f86"><circle cx="700" cy="399" r="8"/><circle cx="1000" cy="399" r="8"/><circle cx="675" cy="433" r="6"/><circle cx="1025" cy="433" r="6"/></g>
+<path d="M0 537q275-26 550 0t550 0" stroke="#b9a27c" stroke-width="2" opacity=".6"/>
+</svg>
