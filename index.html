@@ -1,202 +1,185 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#eee7d8">
-  <meta name="description" content="Ananya and Nemish invite you to celebrate their wedding on 2–3 February 2027 at Happy Retreats – KAI, Chikkaballapur.">
-  <title>Ananya & Nemish — The Wedding Invitation</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Italianno&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="script.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f6f0e4">
+<meta name="description" content="With love, Ananya and Nemish invite you to celebrate their wedding on 2 and 3 February 2027 at Happy Retreats KAI, Chikkaballapur, Karnataka.">
+<title>With Love, Ananya &amp; Nemish | 2–3 February 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
 </head>
-<body class="prelude">
-  <div class="film-grain" aria-hidden="true"></div>
-  <div class="petal-field" aria-hidden="true" id="petalField"></div>
+<body class="home-page">
+<div class="sound-dock"><button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false" aria-label="Turn ambient music on"><span class="sound-icon">♫</span><span id="soundLabel">SOUND OFF</span></button></div>
 
-  <!-- Cinematic invitation prelude -->
-  <section class="prelude-screen" id="prelude" aria-label="Open your wedding invitation">
-    <div class="prelude-frame">
-      <div class="prelude-topline">A little celebration of love</div>
-      <div class="monogram" aria-hidden="true"><span>A</span><i>&amp;</i><span>N</span></div>
-      <p class="prelude-caption">AN INVITATION FROM<br>THE FAMILIES OF</p>
-      <h1 class="prelude-names">Ananya <em>&amp;</em> Nemish</h1>
-      <div class="prelude-date">02 — 03 · FEBRUARY · 2027</div>
-      <div class="envelope-wrap" aria-hidden="true">
-        <div class="envelope-letter"><span>With love,</span><b>A + N</b></div>
-        <div class="envelope">
-          <div class="envelope-flap"></div>
-          <div class="envelope-seal">A<span>&amp;</span>N</div>
-        </div>
-      </div>
-      <button class="open-invite" id="openInvite" type="button"><span>Open the invitation</span><b aria-hidden="true">↗</b></button>
-      <p class="prelude-foot">PLEASE JOIN US FOR OUR WEDDING CELEBRATIONS</p>
+<section class="opening-cover" id="openingCover" aria-label="Open your wedding invitation">
+  <div class="corner top-left" aria-hidden="true"></div><div class="corner bottom-right" aria-hidden="true"></div>
+  <div class="opening-card">
+    <img class="monogram" src="assets/monogram.svg" alt="Ananya and Nemish interlocking monogram">
+    <p class="eyebrow opening-kicker">A LITTLE CELEBRATION OF LOVE</p>
+    <p class="section-kicker">THE WEDDING CELEBRATION OF</p>
+    <h1 class="opening-title">Ananya <span class="and-word">&amp;</span> Nemish</h1>
+    <p class="opening-date">2 &amp; 3 FEBRUARY 2027 · KARNATAKA</p>
+    <div class="envelope-stage" aria-hidden="true">
+      <div class="envelope-letter"><span>With love</span><b>THE FAMILIES</b></div>
+      <div class="envelope-body"></div><div class="envelope-flap"></div><div class="envelope-seal">✿</div>
     </div>
-  </section>
+    <button class="open-invitation" id="openInvitation" type="button"><span>Open your invitation</span><b aria-hidden="true">↗</b></button>
+    <p class="opening-foot">WE WOULD BE DELIGHTED TO CELEBRATE WITH YOU</p>
+  </div>
+</section>
 
-  <main id="invitation" class="invitation" aria-hidden="true">
-    <header class="site-header">
-      <a class="brand" href="#home" aria-label="Ananya and Nemish, home"><span>A</span><i>&amp;</i><span>N</span></a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
-      <nav class="site-nav" id="siteNav">
-        <a href="#celebrations">Celebrations</a>
-        <a href="#families">Our families</a>
-        <a href="#venue">The venue</a>
-        <a href="#dress-code">Dress notes</a>
-        <a href="#rsvp" class="nav-rsvp">RSVP</a>
-      </nav>
-    </header>
+<main class="site-shell" id="siteShell" aria-hidden="true">
+<header class="site-header">
+  <a class="brand-link" href="index.html" aria-label="Home"><img class="monogram" src="assets/monogram.svg" alt="Ananya and Nemish monogram"></a>
+  <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-label="Open navigation"><span></span><span></span></button>
+  <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+    <a href="haldi.html" data-page-link="haldi">Haldi</a>
+    <a href="mehendi.html" data-page-link="mehendi">Mehendi</a>
+    <a href="wedding.html" data-page-link="wedding">Wedding</a>
+    <a href="#families">Our families</a>
+    <a href="#venue">The venue</a>
+    <a class="nav-pill" href="#rsvp">RSVP</a>
+  </nav>
+</header>
 
-    <section class="hero scene" id="home">
-      <div class="hero-art" aria-hidden="true"></div>
-      <div class="hero-orbit orbit-one" aria-hidden="true"></div>
-      <div class="hero-orbit orbit-two" aria-hidden="true"></div>
-      <div class="hero-copy">
-        <p class="eyebrow hero-eyebrow reveal">TOGETHER WITH OUR FAMILIES</p>
-        <p class="hero-script reveal">joyfully invite you to celebrate</p>
-        <h1 class="hero-title reveal"><span>Ananya</span><small>&amp;</small><span>Nemish</span></h1>
-        <div class="hero-divider reveal"><span></span><b>✳</b><span></span></div>
-        <p class="hero-date reveal">2 &amp; 3 FEBRUARY 2027</p>
-        <p class="hero-place reveal">HAPPY RETREATS — KAI <i>·</i> CHIKKABALLAPUR, NEAR BENGALURU</p>
-      </div>
-      <a class="scroll-cue" href="#countdown"><span>SCROLL TO EXPLORE</span><b></b></a>
-      <div class="sound-control">
-        <button id="soundToggle" type="button" aria-pressed="false"><span class="sound-icon">♫</span><span id="soundLabel">SOUND OFF</span></button>
-      </div>
-    </section>
+<section class="main-hero" id="home">
+  <div class="hero-border" aria-hidden="true"></div><div class="hero-botanical" aria-hidden="true"></div>
+  <div class="hero-content">
+    <p class="eyebrow hero-kicker reveal">WITH LOVE, ANANYA &amp; NEMISH</p>
+    <p class="hero-script reveal">invite you to celebrate</p>
+    <h1 class="hero-names reveal">Ananya <span class="and-word">&amp;</span> Nemish</h1>
+    <div class="ornament-divider reveal"><span></span><i>✿</i><span></span></div>
+    <p class="hero-date reveal">2–3 FEBRUARY 2027 · KARNATAKA</p>
+    <p class="hero-place reveal">HAPPY RETREATS KAI · CHIKKABALLAPUR, NEAR BENGALURU</p>
+    <p class="hero-bottom-note reveal">a new chapter, surrounded by our favourite people</p>
+  </div>
+  <a class="hero-scroll" href="#countdown"><span>SCROLL TO DISCOVER</span><b></b></a>
+</section>
 
-    <section class="countdown-section paper-section" id="countdown">
-      <div class="section-kicker reveal">THE DAYS ARE DRAWING NEAR</div>
-      <h2 class="countdown-heading reveal">A moment we’ll remember <em>forever.</em></h2>
-      <div class="countdown-clock reveal" id="countdownClock" aria-label="Countdown to the wedding">
-        <div><strong data-unit="days">—</strong><span>DAYS</span></div><i></i>
-        <div><strong data-unit="hours">—</strong><span>HOURS</span></div><i></i>
-        <div><strong data-unit="minutes">—</strong><span>MINUTES</span></div><i></i>
-        <div><strong data-unit="seconds">—</strong><span>SECONDS</span></div>
-      </div>
-      <p class="countdown-note reveal">Two days. A hundred little moments. One beginning.</p>
-      <div class="paper-flower flower-one" aria-hidden="true">✳</div>
-      <div class="paper-flower flower-two" aria-hidden="true">✳</div>
-    </section>
+<section class="countdown-section" id="countdown">
+  <p class="section-kicker reveal">THE DAYS ARE DRAWING NEAR</p>
+  <h2 class="countdown-title reveal">A moment we’ll remember <em>forever.</em></h2>
+  <div class="countdown-clock reveal" id="countdownClock" aria-label="Countdown to the first celebration">
+    <div><strong data-unit="days">—</strong><span>DAYS</span></div><i></i>
+    <div><strong data-unit="hours">—</strong><span>HOURS</span></div><i></i>
+    <div><strong data-unit="minutes">—</strong><span>MINUTES</span></div><i></i>
+    <div><strong data-unit="seconds">—</strong><span>SECONDS</span></div>
+  </div>
+  <p class="countdown-note reveal">Two days. A hundred little moments. One beginning.</p>
+</section>
 
-    <section class="celebrations-section" id="celebrations">
-      <div class="section-heading reveal">
-        <p class="section-kicker">THE WEDDING FESTIVITIES</p>
-        <h2>Come for the rituals.<br><em>Stay for the memories.</em></h2>
-      </div>
-
-      <article class="event-chapter chapter-one reveal">
-        <div class="chapter-visual haldi-visual" aria-hidden="true">
-          <span class="visual-number">01</span>
-          <svg viewBox="0 0 440 480" role="img" aria-label="Abstract marigold illustration">
-            <defs><radialGradient id="marigold"><stop stop-color="#fff1a9"/><stop offset=".52" stop-color="#eab94a"/><stop offset="1" stop-color="#b96d27"/></radialGradient></defs>
-            <g fill="none" stroke="#75805b" stroke-width="2" stroke-linecap="round"><path d="M72 470Q125 340 190 220T340 20"/><path d="M112 400q-75-38-83-104 69 6 96 75"/><path d="M157 315q74-64 145-54-24 66-123 81"/><path d="M203 224q-70-55-64-120 65 20 83 92"/><path d="M262 135q77-65 135-42-36 63-120 67"/></g>
-            <g fill="#a8ad83"><ellipse cx="78" cy="345" rx="30" ry="11" transform="rotate(42 78 345)"/><ellipse cx="263" cy="267" rx="44" ry="13" transform="rotate(-16 263 267)"/><ellipse cx="158" cy="163" rx="34" ry="11" transform="rotate(39 158 163)"/><ellipse cx="333" cy="103" rx="35" ry="12" transform="rotate(-24 333 103)"/></g>
-            <g fill="url(#marigold)"><circle cx="84" cy="132" r="42"/><circle cx="84" cy="132" r="25"/><circle cx="317" cy="330" r="53"/><circle cx="317" cy="330" r="31"/><circle cx="215" cy="72" r="27"/></g>
-            <g fill="#f9e49a"><circle cx="84" cy="132" r="9"/><circle cx="317" cy="330" r="11"/><circle cx="215" cy="72" r="6"/></g>
-          </svg>
+<section class="events-section" id="celebrations">
+  <div class="section-wrap">
+    <div class="section-intro reveal">
+      <p class="section-kicker">THREE CHAPTERS · ONE BEAUTIFUL CELEBRATION</p>
+      <h2>Choose your <em>celebration.</em></h2>
+      <p>Each day has its own mood, colours and little details. Step inside each invitation for the schedule and palette.</p>
+    </div>
+    <div class="event-links">
+      <a class="event-card reveal" href="haldi.html">
+        <div class="event-card-art"><img src="assets/haldi-scene.svg" alt="Illustrated Haldi setting with marigold flowers and a golden canopy"></div>
+        <div class="event-card-body">
+          <span class="event-number">01 · TUESDAY, 2 FEBRUARY</span>
+          <h3>Haldi <em>ceremony</em></h3>
+          <span class="event-date">2:00 PM ONWARDS</span>
+          <p>A sunlit afternoon in marigold, saffron and warm ivory, celebrating the bride and groom.</p>
+          <div class="event-card-link"><span>EXPLORE HALDI</span><b>↗</b></div>
         </div>
-        <div class="chapter-copy">
-          <p class="chapter-date">TUESDAY <b>·</b> 02 FEBRUARY 2027</p>
-          <h3>The beginning<br>of the festivities.</h3>
-          <p class="chapter-intro">A day painted in sunshine, colour, music and all the warmth of the people we love.</p>
-          <div class="event-row"><div><b>Haldi Ceremony</b><small>For the bride &amp; groom</small></div><time>2:00 PM onwards</time></div>
-          <div class="event-row"><div><b>Mehendi Ceremony</b><small>An evening of colour and celebration</small></div><time>6:30 PM onwards</time></div>
-          <div class="event-row"><div><b>Mehendi &amp; Live Music</b><small>An intimate acoustic night</small></div><time>8:00–11:00 PM</time></div>
-          <div class="chapter-endnote">A LITTLE COLOUR. A LOT OF MUSIC. ENDLESS JOY.</div>
+      </a>
+      <a class="event-card reveal" href="mehendi.html">
+        <div class="event-card-art"><img src="assets/mehendi-scene.svg" alt="Illustrated Mehendi Sufi night with lanterns and dusty rose seating"></div>
+        <div class="event-card-body">
+          <span class="event-number">02 · TUESDAY, 2 FEBRUARY</span>
+          <h3>Mehendi <em>&amp; music</em></h3>
+          <span class="event-date">6:30 PM ONWARDS · LIVE MUSIC 8–11 PM</span>
+          <p>A garden evening of mehendi, lantern light and a little acoustic Sufi magic.</p>
+          <div class="event-card-link"><span>EXPLORE MEHENDI</span><b>↗</b></div>
         </div>
-      </article>
-
-      <div class="interlude reveal"><span>AND THEN, THE DAY WE SAY I DO</span><i>✳</i></div>
-
-      <article class="event-chapter chapter-two reveal">
-        <div class="chapter-copy">
-          <p class="chapter-date">WEDNESDAY <b>·</b> 03 FEBRUARY 2027</p>
-          <h3>And so, our<br><em>forever begins.</em></h3>
-          <p class="chapter-intro">A joyful welcome, a little mischief, the exchange of varmala, and sacred vows surrounded by family.</p>
-          <div class="event-row"><div><b>Baraat — Groom’s Entry</b><small>Music, dancing and celebrations</small></div><time>2:00 PM onwards</time></div>
-          <div class="event-row"><div><b>Baraat Welcome</b><small>Dwaar Puja &amp; Naakh Khichna</small></div><time>2:30 PM onwards</time></div>
-          <div class="event-row"><div><b>Varmala Ceremony</b><small>Grand entry and varmala exchange</small></div><time>3:00 PM onwards</time></div>
-          <div class="event-row"><div><b>Wedding Ceremony</b><small>Saat Phere &amp; traditional rituals</small></div><time>3:30 PM onwards</time></div>
-          <div class="muhurat-note"><span>THE WEDDING MUHURAT</span><b>12:03 PM <i>—</i> 4:23 PM</b></div>
+      </a>
+      <a class="event-card reveal" href="wedding.html">
+        <div class="event-card-art"><img src="assets/wedding-scene.svg" alt="Illustrated ivory floral mandap with lotus flowers floating in a pool"></div>
+        <div class="event-card-body">
+          <span class="event-number">03 · WEDNESDAY, 3 FEBRUARY</span>
+          <h3>The wedding <em>day</em></h3>
+          <span class="event-date">2:00 PM ONWARDS</span>
+          <p>An intimate mandap, a joyful baraat and the promises that begin our forever.</p>
+          <div class="event-card-link"><span>EXPLORE THE WEDDING</span><b>↗</b></div>
         </div>
-        <div class="chapter-visual wedding-visual" aria-hidden="true">
-          <span class="visual-number">02</span>
-          <svg viewBox="0 0 440 480" role="img" aria-label="Abstract floral wedding arch illustration">
-            <g fill="none" stroke="#9ba083" stroke-width="2"><path d="M78 430V206a142 142 0 0 1 284 0v224"/><path d="M101 430V206a119 119 0 0 1 238 0v224" stroke="#c6a37e"/><path d="M48 430h344" stroke="#c6a37e"/></g>
-            <g fill="#e4c9bd" stroke="#c99e8d" stroke-width="1"><path d="M110 163q-28-34 0-60 28 26 0 60M330 163q-28-34 0-60 28 26 0 60M220 57q-28-34 0-60 28 26 0 60"/><circle cx="110" cy="103" r="10"/><circle cx="330" cy="103" r="10"/><circle cx="220" cy="-2" r="10"/></g>
-            <g stroke="#7b8769" stroke-width="2" fill="#adb292"><path d="M52 430q25-80 79-126M388 430q-25-80-79-126M81 345q-40-30-39-70 51 14 57 58M356 345q40-30 39-70-51 14-57 58"/><path d="M92 314q-5-45 27-62 12 43-17 68M348 314q5-45-27-62-12 43 17 68"/></g>
-            <g fill="#f2e8d8" stroke="#d9bdb0" stroke-width="1"><circle cx="91" cy="290" r="15"/><circle cx="119" cy="270" r="11"/><circle cx="348" cy="290" r="15"/><circle cx="321" cy="270" r="11"/><circle cx="220" cy="61" r="14"/><circle cx="199" cy="79" r="9"/><circle cx="241" cy="79" r="9"/></g>
-            <g fill="#d49f9a"><circle cx="91" cy="290" r="5"/><circle cx="348" cy="290" r="5"/><circle cx="220" cy="61" r="5"/></g>
-            <path d="M220 116v70m-17-52 17 19 17-19" stroke="#b98f66" fill="none" stroke-width="1.5"/>
-          </svg>
-        </div>
-      </article>
-    </section>
+      </a>
+    </div>
+  </div>
+</section>
 
-    <section class="families-section paper-section" id="families">
-      <div class="section-kicker reveal">WITH THE BLESSINGS OF OUR FAMILIES</div>
-      <h2 class="families-title reveal">Two families.<br><em>One beautiful beginning.</em></h2>
-      <div class="family-signatures reveal">
-        <div class="family-side"><span>THE BRIDE</span><h3>Ananya Shrivastava</h3><p>Daughter of</p><b>Arun &amp; Mamta Shrivastava</b></div>
-        <div class="family-and">&amp;</div>
-        <div class="family-side"><span>THE GROOM</span><h3>Nemish Doshi</h3><p>Son of</p><b>Tushar &amp; Heena Doshi</b></div>
-      </div>
-      <div class="family-flourish" aria-hidden="true">❧</div>
-    </section>
+<section class="families-section" id="families">
+  <p class="section-kicker reveal">WITH THE BLESSINGS OF OUR FAMILIES</p>
+  <h2 class="families-heading reveal">Two families.<br><em>One beautiful beginning.</em></h2>
+  <div class="family-signatures reveal">
+    <div class="family-side">
+      <span class="family-label">THE BRIDE</span>
+      <h3>Ananya Shrivastava</h3>
+      <p>Arun Shrivastava &amp; Mamta Shrivastava</p>
+    </div>
+    <div class="family-divider" aria-hidden="true">and</div>
+    <div class="family-side">
+      <span class="family-label">THE GROOM</span>
+      <h3>Nemish Doshi</h3>
+      <p>Tushar Doshi &amp; Heena Doshi</p>
+    </div>
+  </div>
+  <div class="family-flourish" aria-hidden="true">❧</div>
+</section>
 
-    <section class="venue-section" id="venue">
-      <div class="venue-art" aria-hidden="true"><div class="venue-sun"></div><div class="venue-hill hill-a"></div><div class="venue-hill hill-b"></div><div class="venue-water"></div><div class="venue-reflection"></div></div>
-      <div class="venue-content reveal">
-        <p class="section-kicker">A PLACE TO GATHER</p>
-        <p class="venue-script">meet us where the celebration blooms</p>
-        <h2>Happy Retreats <em>— KAI</em></h2>
-        <p class="venue-address">Agalagurki, Chikkaballapur<br>Karnataka 562103, India</p>
-        <div class="venue-actions">
-          <a class="map-primary" href="https://www.google.com/maps/place/Happy+Retreats+-+KAI/@13.4023201,77.7413702,17z/data=!3m1!4b1!4m9!3m8!1s0x3bb1e5ae74ca9563:0xf264302c69f61a44!5m2!4m1!1i2!8m2!3d13.4023201!4d77.7439451!16s%2Fg%2F11y5snzdbr?entry=ttu&amp;g_ep=EgoyMDI2MTExMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">VIEW VENUE ON GOOGLE MAPS <span>↗</span></a>
-          <a class="map-secondary" href="https://www.google.com/maps/dir/?api=1&amp;destination=Happy%20Retreats%20%E2%80%93%20KAI%2C%20Agalagurki%2C%20Chikkaballapur%2C%20Karnataka%20562103" target="_blank" rel="noopener noreferrer">GET DIRECTIONS <span>↗</span></a>
-        </div>
-        <div class="stay-details"><div><span>ARRIVAL</span><b>2 February 2027</b><small>Check-in from 12:00 PM</small></div><i></i><div><span>DEPARTURE</span><b>4 February 2027</b><small>Check-out by 11:00 AM</small></div></div>
-        <a class="venue-website" href="https://www.happyretreats.in/kai" target="_blank" rel="noopener noreferrer">EXPLORE THE VENUE <span>↗</span></a>
-      </div>
-      <div class="venue-coordinate" aria-hidden="true">13° 25′ N &nbsp; 77° 43′ E</div>
-    </section>
+<section class="venue-section" id="venue">
+  <div class="venue-landscape" aria-hidden="true"></div>
+  <div class="venue-panel reveal">
+    <p class="section-kicker">A PLACE TO GATHER</p>
+    <p class="venue-script">meet us where the celebration blooms</p>
+    <h2 class="venue-title">Happy Retreats KAI</h2>
+    <p class="venue-address">Agalagurki, Chikkaballapur<br>Karnataka 562103, India<br><strong>Near Bengaluru</strong></p>
+    <div class="venue-actions">
+      <a class="map-link primary" href="https://www.google.com/maps/place/Happy+Retreats+-+KAI/@13.4023201,77.7413702,17z/data=!3m1!4b1!4m9!3m8!1s0x3bb1e5ae74ca9563:0xf264302c69f61a44!5m2!4m1!1i2!8m2!3d13.4023201!4d77.7439451!16s%2Fg%2F11y5snzdbr?entry=ttu&amp;g_ep=EgoyMDI2MTExMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">OPEN IN GOOGLE MAPS <span>↗</span></a>
+      <a class="map-link secondary" href="https://www.google.com/maps/dir/?api=1&amp;destination=Happy%20Retreats%20KAI%2C%20Agalagurki%2C%20Chikkaballapur%2C%20Karnataka%20562103" target="_blank" rel="noopener noreferrer">GET DIRECTIONS <span>↗</span></a>
+    </div>
+    <div class="stay-details">
+      <div><span>CHECK-IN</span><b>2 February 2027</b><small>12:00 PM</small></div><i></i>
+      <div><span>CHECK-OUT</span><b>4 February 2027</b><small>11:00 AM</small></div>
+    </div>
+  </div>
+</section>
 
-    <section class="dress-section paper-section" id="dress-code">
-      <div class="section-kicker reveal">A NOTE ON COLOURS</div>
-      <h2 class="dress-heading reveal">Dress for the <em>celebration.</em></h2>
-      <p class="dress-intro reveal">A little colour story for each occasion. These are gentle suggestions to help each celebration find its own mood.</p>
-      <div class="dress-timeline">
-        <article class="dress-row reveal"><div class="dress-day"><span>02 FEB</span><b>HALDI</b></div><div class="dress-palette"><div class="colour-strip haldi-strip"><i></i><i></i><i></i><i></i></div><p>Ivory <span>·</span> Butter Yellow <span>·</span> Sunshine Yellow <span>·</span> Mustard</p></div><small>Warm &amp; sunlit</small></article>
-        <article class="dress-row reveal"><div class="dress-day"><span>02 FEB</span><b>MEHENDI</b></div><div class="dress-palette"><div class="colour-strip mehendi-strip"><i></i><i></i><i></i><i></i></div><p>Deep Mauve <span>·</span> Wine Burgundy <span>·</span> Deep Plum <span>·</span> Dark Green</p></div><small>Rich &amp; festive</small></article>
-        <article class="dress-row reveal"><div class="dress-day"><span>03 FEB</span><b>WEDDING</b></div><div class="dress-palette"><div class="colour-strip wedding-strip"><i></i><i></i><i></i><i></i></div><p>Dusty Rose <span>·</span> Peach <span>·</span> Dusty Mauve <span>·</span> Muted Olive</p></div><small>Soft &amp; timeless</small></article>
-      </div>
-      <p class="dress-footnote reveal">A SMALL REQUEST: PLEASE LEAVE IVORY, CREAM &amp; WHITE FOR THE BRIDE AND GROOM ON THE WEDDING DAY.</p>
-    </section>
+<section class="moments-section">
+  <div class="moments-grid">
+    <div class="moments-copy reveal">
+      <p class="section-kicker">A FEW LITTLE MOMENTS</p>
+      <h2>From a mountain<br>promise to <em>this day.</em></h2>
+      <p>Some memories become the quietest, happiest part of a story. We’re carrying a few of those with us as we begin this new chapter.</p>
+    </div>
+    <img class="moment-art reveal" src="assets/moments-illustration.svg" alt="An original illustration inspired by a mountain proposal and an ornate Jaipur arch">
+  </div>
+</section>
 
-    <section class="rsvp-section" id="rsvp">
-      <div class="rsvp-flower" aria-hidden="true">✳</div>
-      <div class="rsvp-content reveal">
-        <p class="section-kicker">WE WOULD LOVE TO HAVE YOU WITH US</p>
-        <h2>Save a little<br><em>space for us.</em></h2>
-        <p>We can’t wait to celebrate, laugh, dance and make memories with you.</p>
-        <div class="rsvp-line"></div>
-        <p class="rsvp-note">YOUR INVITATION IS A LITTLE PIECE OF OUR HAPPINESS.</p>
-        <div class="rsvp-button rsvp-disabled" aria-label="Online RSVP will be available soon">RSVP DETAILS TO FOLLOW <span>✳</span></div>
-        <small class="rsvp-small">Your private RSVP link and guestbook will be added when the guest-management connection is ready.</small>
-      </div>
-    </section>
+<section class="rsvp-section" id="rsvp">
+  <div class="rsvp-content reveal">
+    <p class="section-kicker">WE WOULD LOVE TO HAVE YOU WITH US</p>
+    <h2>Save a little<br><em>space for us.</em></h2>
+    <p>We can’t wait to celebrate, laugh, dance and make memories with you.</p>
+    <div class="rsvp-line"></div>
+    <p class="rsvp-note">A LITTLE PIECE OF OUR HAPPINESS, SHARED WITH YOU.</p>
+    <div class="rsvp-disabled">RSVP DETAILS TO FOLLOW <span>✿</span></div>
+    <small class="rsvp-small">Your personal RSVP link will be added once guest confirmations are ready.</small>
+  </div>
+</section>
 
-    <footer class="site-footer">
-      <div class="footer-mark">A <i>&amp;</i> N</div>
-      <p>WITH LOVE, ANANYA &amp; NEMISH</p>
-      <span>2 — 3 FEBRUARY 2027 · KARNATAKA</span>
-      <a href="#home">BACK TO THE BEGINNING ↑</a>
-    </footer>
-  </main>
-
-  <noscript><p class="noscript-note">This invitation uses a little motion and interaction. Please enable JavaScript for the full experience.</p></noscript>
+<footer class="site-footer">
+  <img class="footer-mark" src="assets/monogram.svg" alt="">
+  <p>WITH LOVE, ANANYA &amp; NEMISH</p>
+  <small>2–3 FEBRUARY 2027 · KARNATAKA</small>
+  <a class="back-top" href="#home">BACK TO THE BEGINNING ↑</a>
+</footer>
+</main>
 </body>
 </html>
