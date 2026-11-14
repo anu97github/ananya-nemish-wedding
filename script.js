@@ -137,6 +137,8 @@
     const submissionIdField = document.getElementById('rsvpSubmissionId');
     const attendanceInputs = [...form.querySelectorAll('input[name="attendance"]')];
     let pendingSubmissionId = null;
+    let submissionTimeout = null;
+    const submissionTimeoutMs = 20000;
     function syncGuests() {
       const decline = form.querySelector('input[name="attendance"]:checked')?.value === 'decline';
       guestField.hidden = decline;
@@ -171,26 +173,35 @@
         showFeedback('Please complete the required RSVP details.', true);
         return;
       }
-      pendingSubmissionId = makeSubmissionId();
+      // Keep the same ID when retrying after a timeout so a late Apps Script
+      // response cannot create a second row for the same form submission.
+      if (!pendingSubmissionId) pendingSubmissionId = makeSubmissionId();
       submissionIdField.value = pendingSubmissionId;
       form.action = endpoint;
       submitButton.disabled = true;
       submitButton.textContent = 'SUBMITTING RSVP…';
       feedback.hidden = true;
+      window.clearTimeout(submissionTimeout);
+      submissionTimeout = window.setTimeout(() => {
+        if (!pendingSubmissionId) return;
+        submitButton.disabled = false;
+        submitButton.innerHTML = 'SUBMIT RSVP <span>↗</span>';
+        showFeedback('We could not confirm the response from Google Sheets. Please try again; your submission will keep the same reference to prevent duplicate entries.', true);
+      }, submissionTimeoutMs);
       HTMLFormElement.prototype.submit.call(form);
     });
     window.addEventListener('message', event => {
-      // Apps Script HTMLService wraps responses in a sandboxed iframe, so the
-      // message may originate from a nested frame rather than the target iframe.
-      const originHost = (() => {
-        try { return new URL(event.origin).hostname; } catch (_) { return ''; }
-      })();
-      const trustedOrigin = originHost === 'script.google.com' ||
-        originHost === 'googleusercontent.com' || originHost.endsWith('.googleusercontent.com');
-      if (!trustedOrigin) return;
-      const result = event.data;
+      // Apps Script may deliver its HTMLService response from a sandboxed
+      // googleusercontent frame whose origin is opaque ("null"). Authenticate
+      // the response with the unpredictable per-submission ID instead.
+      let result = event.data;
+      if (typeof result === 'string') {
+        try { result = JSON.parse(result); } catch (_) { return; }
+      }
       if (!result || result.type !== 'wedding-rsvp-result' ||
-          result.submissionId !== pendingSubmissionId) return;
+          !pendingSubmissionId || result.submissionId !== pendingSubmissionId) return;
+
+      window.clearTimeout(submissionTimeout);
       submitButton.disabled = false;
       submitButton.innerHTML = 'SUBMIT RSVP <span>↗</span>';
       if (result.ok) {
@@ -202,6 +213,8 @@
         pendingSubmissionId = null;
         submissionIdField.value = '';
       } else {
+        // Keep the submission ID so a retry is idempotent if the write succeeded
+        // but the response was interrupted.
         showFeedback(result.message || 'We could not save your RSVP. Please try again.', true);
       }
     });
