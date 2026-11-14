@@ -146,17 +146,31 @@
       guestCount.disabled = decline;
       if (decline) guestCount.value = '1';
     }
-    function showFeedback(message, isError = false) {
+    let feedbackTimeout = null;
+    function showFeedback(message, isError = false, autoDismissMs = 0) {
+      window.clearTimeout(feedbackTimeout);
       feedback.hidden = false;
       feedback.textContent = message;
       feedback.classList.toggle('is-error', isError);
       feedback.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'nearest' });
+      if (autoDismissMs > 0) {
+        feedbackTimeout = window.setTimeout(() => {
+          feedback.hidden = true;
+          feedback.textContent = '';
+          feedback.classList.remove('is-error');
+        }, autoDismissMs);
+      }
     }
     function makeSubmissionId() {
       return window.crypto?.randomUUID
         ? window.crypto.randomUUID()
         : 'rsvp-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2);
     }
+    const nameInput = form.querySelector('[name="name"]');
+    // Strip digits and other non-letter characters as the guest types or pastes.
+    nameInput?.addEventListener('input', () => {
+      nameInput.value = nameInput.value.replace(/[^\p{L}\s'-]/gu, '');
+    });
     attendanceInputs.forEach(input => input.addEventListener('change', syncGuests));
     syncGuests();
     form.addEventListener('submit', event => {
@@ -182,6 +196,7 @@
       submitButton.disabled = true;
       submitButton.textContent = 'SUBMITTING RSVP…';
       feedback.hidden = true;
+      window.clearTimeout(feedbackTimeout);
       window.clearTimeout(submissionTimeout);
       submissionTimeout = window.setTimeout(() => {
         if (!pendingSubmissionId) return;
@@ -208,7 +223,7 @@
       if (result.ok) {
         const name = form.querySelector('[name="title"]').value + ' ' +
           form.querySelector('[name="name"]').value.trim();
-        showFeedback('Thank you, ' + name + '. Your RSVP has been received successfully.');
+        showFeedback('Thank you, ' + name + '. Your RSVP has been received successfully.', false, 10000);
         form.reset();
         syncGuests();
         pendingSubmissionId = null;
