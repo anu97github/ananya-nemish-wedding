@@ -1268,3 +1268,10 @@ img{max-width:100%}
     letter-spacing:.14em!important;
   }
 }
+
+
+/* RSVP anti-spam field and submission state. */
+.rsvp-honeypot{position:absolute!important;left:-10000px!important;top:auto!important;width:1px!important;height:1px!important;overflow:hidden!important}
+.rsvp-submit-frame{position:absolute;width:1px;height:1px;border:0;opacity:0;pointer-events:none}
+.submit-rsvp:disabled{opacity:.65;cursor:wait}
+.form-feedback.is-error{border-color:#c58b82;background:#fbefed;color:#8c453c}
