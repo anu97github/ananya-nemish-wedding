@@ -40,9 +40,9 @@ img{max-width:100%}
 .ornament-divider span{width:74px;height:1px;background:var(--gold-light)}
 .ornament-divider b{font-size:16px;font-weight:400;line-height:1}
 .hero{
-  min-height:710px;position:relative;isolation:isolate;overflow:hidden;
+  min-height:610px;position:relative;isolation:isolate;overflow:hidden;
   display:flex;align-items:center;justify-content:center;text-align:center;
-  padding:76px 24px 64px;
+  padding:68px 24px 54px;
   background:
     radial-gradient(ellipse at 50% 22%,rgba(255,255,255,.9),transparent 53%),
     linear-gradient(135deg,#fffaf4 0%,#f8eeea 48%,#f3f3e9 100%);
@@ -426,4 +426,53 @@ img{max-width:100%}
 }
 @media(max-width:520px){
  .event-photo{height:235px}
+}
+\n\n
+.countdown-section{
+  position:relative;isolation:isolate;overflow:hidden;
+  padding:38px 20px 30px;text-align:center;
+  background:linear-gradient(105deg,#f4ece7 0%,#fbf6ef 48%,#f1eee4 100%);
+  border-top:1px solid rgba(181,145,89,.3);
+  border-bottom:1px solid rgba(181,145,89,.3);
+}
+.countdown-section:before,.countdown-section:after{
+  content:"";position:absolute;top:18px;bottom:18px;width:1px;
+  background:linear-gradient(transparent,rgba(174,137,83,.32),transparent);
+}
+.countdown-section:before{left:clamp(20px,7vw,100px)}
+.countdown-section:after{right:clamp(20px,7vw,100px)}
+.countdown-inner{max-width:960px;margin:0 auto;position:relative;z-index:1}
+.countdown-inner>.eyebrow{
+  margin:0;color:#806d56;font-size:12px;font-weight:600;letter-spacing:.3em
+}
+.countdown-inner h2{
+  margin:7px 0 0;color:#596544;font:italic 400 clamp(30px,4vw,43px)/1.05 var(--serif)
+}
+.countdown-section .hero-countdown{
+  gap:clamp(22px,5vw,64px);margin:24px auto 14px
+}
+.countdown-section .hero-countdown>div{min-width:90px}
+.countdown-section .hero-countdown strong{
+  font-size:clamp(36px,5vw,54px);font-weight:500;line-height:1;color:#69714e
+}
+.countdown-section .hero-countdown span{
+  margin-top:7px;font-size:11px;letter-spacing:.25em;color:#8a7968
+}
+.countdown-section .hero-countdown i{height:48px;background:rgba(171,135,79,.38)}
+.countdown-section .scroll-link{margin-top:5px}
+
+@media(max-width:760px){
+  .hero{min-height:590px;padding:65px 18px 44px}
+  .countdown-section{padding:31px 14px 26px}
+  .countdown-section .hero-countdown{gap:clamp(12px,4vw,26px);margin:20px auto 12px}
+  .countdown-section .hero-countdown>div{min-width:54px}
+  .countdown-section .hero-countdown strong{font-size:34px}
+  .countdown-section .hero-countdown span{font-size:9px;letter-spacing:.16em}
+  .countdown-section .hero-countdown i{height:36px}
+}
+@media(max-width:420px){
+  .countdown-section .hero-countdown{gap:9px}
+  .countdown-section .hero-countdown>div{min-width:48px}
+  .countdown-section .hero-countdown strong{font-size:29px}
+  .countdown-section .hero-countdown span{font-size:8px}
 }
