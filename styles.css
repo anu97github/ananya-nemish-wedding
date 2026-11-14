@@ -1130,3 +1130,24 @@ img{max-width:100%}
     height:clamp(56px,14vw,68px)!important;
   }
 }
+
+
+/* Slightly reduce the arch swatches while keeping one consistent scale across events. */
+.paint-mark{
+  width:clamp(48px,4.6vw,66px)!important;
+  height:clamp(60px,5.3vw,76px)!important;
+  margin:0 auto 6px!important;
+}
+@media(max-width:760px){
+  .paint-mark{
+    width:clamp(44px,10.5vw,58px)!important;
+    height:clamp(54px,13vw,68px)!important;
+    margin-bottom:5px!important;
+  }
+}
+@media(max-width:520px){
+  .paint-mark{
+    width:clamp(40px,10vw,52px)!important;
+    height:clamp(50px,12.5vw,62px)!important;
+  }
+}
