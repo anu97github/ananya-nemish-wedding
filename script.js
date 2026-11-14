@@ -223,7 +223,7 @@
       if (result.ok) {
         const name = form.querySelector('[name="title"]').value + ' ' +
           form.querySelector('[name="name"]').value.trim();
-        showFeedback('Thank you, ' + name + '. Your RSVP has been received successfully.', false, 10000);
+        showFeedback('Thank you, ' + name + '. Your RSVP has been received successfully.', false, 6000);
         form.reset();
         syncGuests();
         pendingSubmissionId = null;
