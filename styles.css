@@ -1151,3 +1151,24 @@ img{max-width:100%}
     height:clamp(50px,12.5vw,62px)!important;
   }
 }
+
+
+/* One more step smaller: keep the same arch silhouette and event-wide consistency. */
+.paint-mark{
+  width:clamp(43px,4.1vw,58px)!important;
+  height:clamp(54px,4.7vw,67px)!important;
+  margin:0 auto 5px!important;
+}
+@media(max-width:760px){
+  .paint-mark{
+    width:clamp(39px,9.5vw,52px)!important;
+    height:clamp(48px,11.5vw,60px)!important;
+    margin-bottom:4px!important;
+  }
+}
+@media(max-width:520px){
+  .paint-mark{
+    width:clamp(36px,9vw,47px)!important;
+    height:clamp(44px,11vw,54px)!important;
+  }
+}
