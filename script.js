@@ -134,6 +134,7 @@
     const feedback = document.getElementById('rsvpFeedback');
     const submitButton = form.querySelector('.submit-rsvp');
     const submitFrame = document.getElementById('rsvpSubmitFrame');
+    // Keep a reference to the target iframe; its load event is useful for diagnostics.
     const submissionIdField = document.getElementById('rsvpSubmissionId');
     const attendanceInputs = [...form.querySelectorAll('input[name="attendance"]')];
     let pendingSubmissionId = null;

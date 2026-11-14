@@ -140,9 +140,10 @@ function responsePage(submissionId, ok, message) {
     message: message
   }).replace(/</g, '\\u003c');
   const html = '<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"></head>' +
-    // HtmlService adds a sandbox frame around this page. Send to the top-level
-    // wedding page instead of the immediate parent (the Google wrapper frame).
-    '<body><script>(function(){var message=' + payload + ';try{window.top.postMessage(message,"*");}catch(e){}try{window.parent.postMessage(message,"*");}catch(e){}})();</script></body></html>';
+    // Apps Script may add one or more sandbox frames around this response.
+    // postMessage does not bubble between frames, so explicitly notify every
+    // ancestor window until the top-level wedding page is reached.
+    '<body><script>(function(){var message=' + payload + ';var target=window;for(var i=0;i<10;i++){try{if(target.parent===target)break;target.parent.postMessage(message,"*");target=target.parent;}catch(e){break;}}try{window.top.postMessage(message,"*");}catch(e){}})();</script></body></html>';
   return HtmlService.createHtmlOutput(html)
     .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
