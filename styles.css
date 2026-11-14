@@ -855,3 +855,42 @@ img{max-width:100%}
   .palette-swatch b{font-size:8px}
   .palette-swatch code{font-size:10px}
 }
+
+
+/* Let's Celebrate artwork should sit directly on the invitation background, not in a framed card. */
+.celebrate-section{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  overflow:visible;
+}
+.celebrate-image{
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(to right,#000 0%,#000 78%,transparent 100%);
+  mask-image:linear-gradient(to right,#000 0%,#000 78%,transparent 100%);
+}
+.celebrate-image:before,.celebrate-image:after{display:none!important}
+.celebrate-image img{
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  filter:none!important;
+  object-fit:cover;
+}
+.celebrate-copy{
+  background:transparent!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+}
+@media(max-width:760px){
+  .celebrate-image{
+    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 86%,transparent 100%);
+    mask-image:linear-gradient(to bottom,#000 0%,#000 86%,transparent 100%);
+  }
+}
