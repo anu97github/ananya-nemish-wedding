@@ -126,36 +126,77 @@
     revealItems.forEach(item => item.classList.add('is-visible'));
   }
 
-  // RSVP front-end preview. It validates and confirms the form, but does not transmit data.
+  // Submit RSVP to the Google Apps Script endpoint through a hidden iframe.
   const form = document.getElementById('rsvpForm');
   if (form) {
     const guestField = document.getElementById('guestField');
     const guestCount = document.getElementById('guestCount');
     const feedback = document.getElementById('rsvpFeedback');
+    const submitButton = form.querySelector('.submit-rsvp');
+    const submitFrame = document.getElementById('rsvpSubmitFrame');
+    const submissionIdField = document.getElementById('rsvpSubmissionId');
     const attendanceInputs = [...form.querySelectorAll('input[name="attendance"]')];
+    let pendingSubmissionId = null;
     function syncGuests() {
-      const selected = form.querySelector('input[name="attendance"]:checked')?.value;
-      const decline = selected === 'decline';
+      const decline = form.querySelector('input[name="attendance"]:checked')?.value === 'decline';
       guestField.hidden = decline;
       guestCount.disabled = decline;
       if (decline) guestCount.value = '1';
+    }
+    function showFeedback(message, isError = false) {
+      feedback.hidden = false;
+      feedback.textContent = message;
+      feedback.classList.toggle('is-error', isError);
+      feedback.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'nearest' });
+    }
+    function makeSubmissionId() {
+      return window.crypto?.randomUUID
+        ? window.crypto.randomUUID()
+        : 'rsvp-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2);
     }
     attendanceInputs.forEach(input => input.addEventListener('change', syncGuests));
     syncGuests();
     form.addEventListener('submit', event => {
       event.preventDefault();
       if (!form.reportValidity()) return;
-      const details = new FormData(form);
-      const honorific = String(details.get('title') || '');
-      const fullName = String(details.get('name') || '').trim();
-      const accepts = details.get('attendance') === 'accept';
-      const guests = Number(details.get('guestCount') || 1);
-      feedback.hidden = false;
-      feedback.textContent = accepts
-        ? `Thank you, ${honorific} ${fullName}. Your RSVP preview shows ${guests} ${guests === 1 ? 'guest' : 'guests'} attending. This has not been saved yet.`
-        : `Thank you, ${honorific} ${fullName}. Your RSVP preview is marked as declined. This has not been saved yet.`;
-      form.querySelector('.submit-rsvp').textContent = 'RSVP PREVIEW COMPLETE';
-      feedback.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'nearest' });
+      const endpoint = String(window.RSVP_CONFIG?.endpoint || '').trim();
+      if (!/^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(endpoint)) {
+        showFeedback('RSVP submissions are not connected yet. Please check back soon.', true);
+        return;
+      }
+      const attendance = form.querySelector('input[name="attendance"]:checked')?.value;
+      if (!form.querySelector('[name="name"]').value.trim() ||
+          !form.querySelector('[name="title"]').value ||
+          !['accept', 'decline'].includes(attendance)) {
+        showFeedback('Please complete the required RSVP details.', true);
+        return;
+      }
+      pendingSubmissionId = makeSubmissionId();
+      submissionIdField.value = pendingSubmissionId;
+      form.action = endpoint;
+      submitButton.disabled = true;
+      submitButton.textContent = 'SUBMITTING RSVP…';
+      feedback.hidden = true;
+      HTMLFormElement.prototype.submit.call(form);
+    });
+    window.addEventListener('message', event => {
+      if (event.source !== submitFrame?.contentWindow) return;
+      const result = event.data;
+      if (!result || result.type !== 'wedding-rsvp-result' ||
+          result.submissionId !== pendingSubmissionId) return;
+      submitButton.disabled = false;
+      submitButton.innerHTML = 'SUBMIT RSVP <span>↗</span>';
+      if (result.ok) {
+        const name = form.querySelector('[name="title"]').value + ' ' +
+          form.querySelector('[name="name"]').value.trim();
+        showFeedback('Thank you, ' + name + '. Your RSVP has been received successfully.');
+        form.reset();
+        syncGuests();
+        pendingSubmissionId = null;
+        submissionIdField.value = '';
+      } else {
+        showFeedback(result.message || 'We could not save your RSVP. Please try again.', true);
+      }
     });
   }
 })();
