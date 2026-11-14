@@ -180,7 +180,14 @@
       HTMLFormElement.prototype.submit.call(form);
     });
     window.addEventListener('message', event => {
-      if (event.source !== submitFrame?.contentWindow) return;
+      // Apps Script HTMLService wraps responses in a sandboxed iframe, so the
+      // message may originate from a nested frame rather than the target iframe.
+      const originHost = (() => {
+        try { return new URL(event.origin).hostname; } catch (_) { return ''; }
+      })();
+      const trustedOrigin = originHost === 'script.google.com' ||
+        originHost === 'googleusercontent.com' || originHost.endsWith('.googleusercontent.com');
+      if (!trustedOrigin) return;
       const result = event.data;
       if (!result || result.type !== 'wedding-rsvp-result' ||
           result.submissionId !== pendingSubmissionId) return;
