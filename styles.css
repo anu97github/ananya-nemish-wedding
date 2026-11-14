@@ -1179,3 +1179,55 @@ img{max-width:100%}
   border:0!important;
   box-shadow:none!important;
 }
+
+
+/* Refine the invitation's typography and let adjoining sections flow together. */
+.palette-swatch code{
+  font-variant-numeric:lining-nums tabular-nums;
+  font-feature-settings:"lnum" 1,"tnum" 1;
+  font-synthesis:none;
+  vertical-align:baseline;
+  line-height:1.15;
+}
+
+/* Make the venue arrival/departure times as prominent as the date line. */
+.stay-details small{
+  color:#66584c;
+  font-family:var(--serif);
+  font-size:16px;
+  font-weight:600;
+  line-height:1.25;
+  font-variant-numeric:lining-nums tabular-nums;
+  font-feature-settings:"lnum" 1,"tnum" 1;
+}
+
+/* Remove thin section rules; use related warm backgrounds for a seamless scroll. */
+.countdown-section,
+.families-section,
+.celebrate-section,
+.event-band,
+.venue-section{
+  border-top:0!important;
+  border-bottom:0!important;
+}
+.countdown-section{
+  background:linear-gradient(180deg,#f7f0eb 0%,#fbf7f0 100%);
+}
+.families-section{
+  background:linear-gradient(180deg,#fbf7f0 0%,#fffaf5 100%);
+}
+.celebrate-section{
+  background:linear-gradient(110deg,#f5eae6 0%,#fffaf4 56%,#f1f2eb 100%);
+}
+.venue-section{
+  background:linear-gradient(140deg,#eff2e9 0%,#fbf8f1 51%,#f5ece9 100%);
+}
+.rsvp-section{
+  background:linear-gradient(110deg,#f6eeeb 0%,#fffaf4 50%,#eff2eb 100%);
+}
+
+/* The RSVP form keeps its own framed card; remove only the large frame around the section. */
+.rsvp-frame,
+.rsvp-frame:before{
+  display:none!important;
+}
