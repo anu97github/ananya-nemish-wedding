@@ -583,3 +583,9 @@ img{max-width:100%}
   .celebrate-image{aspect-ratio:16 / 9;min-height:0}
   .celebrate-image img{min-height:0}
 }
+
+/* Keep the correct artwork panel selected during hover as well. */
+.haldi-band:hover .event-photo img,.haldi-page .event-photo:hover img{transform:translateX(-25%)}
+.mehendi-band:hover .event-photo img,.mehendi-page .event-photo:hover img{transform:translateX(-50%)}
+.wedding-band:hover .event-photo img,.wedding-page .event-photo:hover img{transform:translateX(-75%)}
+.celebrate-section:hover .celebrate-image img,.celebrate-page .celebrate-image:hover img{transform:translateX(0)}
