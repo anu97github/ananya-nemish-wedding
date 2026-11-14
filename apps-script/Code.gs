@@ -65,13 +65,16 @@ function doPost(event) {
     const name = cleanText(params.name, CONFIG.maxNameLength);
     const attendance = String(params.attendance || '').trim().toLowerCase();
     const note = cleanText(params.note, CONFIG.maxNoteLength);
-    const requestedGuests = Number(params.guestCount || 1);
-    const guestCount = attendance === 'decline' ? 1 : requestedGuests;
+    const requestedGuests = params.guestCount === undefined || params.guestCount === ''
+      ? ''
+      : Number(params.guestCount);
+    const guestCount = attendance === 'decline' ? '' : requestedGuests;
 
     if (!CONFIG.allowedTitles.includes(title)) throw new Error('Please select a valid title.');
     if (!name) throw new Error('Please enter your name.');
     if (!CONFIG.allowedAttendance.includes(attendance)) throw new Error('Please select Accept or Decline.');
-    if (!Number.isInteger(guestCount) || guestCount < 1 || guestCount > CONFIG.maxGuestCount) {
+    if (attendance === 'accept' &&
+        (!Number.isInteger(guestCount) || guestCount < 1 || guestCount > CONFIG.maxGuestCount)) {
       throw new Error('Please select a valid number of guests (1–10).');
     }
 
@@ -139,7 +142,7 @@ function responsePage(submissionId, ok, message) {
   const html = '<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"></head>' +
     // HtmlService adds a sandbox frame around this page. Send to the top-level
     // wedding page instead of the immediate parent (the Google wrapper frame).
-    '<body><script>window.top.postMessage(' + payload + ', "*");</script></body></html>';
+    '<body><script>(function(){var message=' + payload + ';try{window.top.postMessage(message,"*");}catch(e){}try{window.parent.postMessage(message,"*");}catch(e){}})();</script></body></html>';
   return HtmlService.createHtmlOutput(html)
     .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
