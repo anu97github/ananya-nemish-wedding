@@ -206,7 +206,9 @@
         <p class="eyebrow">WE WOULD LOVE TO CELEBRATE WITH YOU</p>
         <h2>Kindly <em>RSVP</em></h2>
         <p class="rsvp-intro">Please let us know if you’ll be joining us.</p>
-        <form id="rsvpForm" class="rsvp-form">
+        <form id="rsvpForm" class="rsvp-form" method="post" target="rsvpSubmitFrame" novalidate>
+          <input type="hidden" name="submissionId" id="rsvpSubmissionId" value="">
+          <label class="rsvp-honeypot" aria-hidden="true" tabindex="-1">Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
           <div class="form-grid">
             <label class="field title-field"><span>TITLE</span><select name="title" required><option value="" disabled selected>Select</option><option>Mr.</option><option>Mrs.</option><option>Ms.</option><option>Dr.</option><option>Other</option></select></label>
             <label class="field name-field"><span>YOUR NAME</span><input type="text" name="name" autocomplete="name" placeholder="Full name" maxlength="100" required></label>
@@ -219,9 +221,10 @@
             <label class="field note-field"><span>A NOTE FOR US <small>(OPTIONAL)</small></span><textarea name="note" rows="2" maxlength="500" placeholder="Write a little message…"></textarea></label>
           </div>
           <button class="submit-rsvp" type="submit">SUBMIT RSVP <span>↗</span></button>
-          <p class="form-note">RSVP preview only. Guest responses will not be saved until connected to the guest list.</p>
+          <p class="form-note">Your response will be added to our wedding RSVP guest list.</p>
           <div class="form-feedback" id="rsvpFeedback" role="status" aria-live="polite" hidden></div>
         </form>
+        <iframe name="rsvpSubmitFrame" id="rsvpSubmitFrame" title="RSVP submission" class="rsvp-submit-frame"></iframe>
       </div>
     </section>
   </main>
