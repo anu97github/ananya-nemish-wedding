@@ -212,7 +212,7 @@
           <label class="rsvp-honeypot" aria-hidden="true" tabindex="-1">Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
           <div class="form-grid">
             <label class="field title-field"><span>TITLE</span><select name="title" required><option value="" disabled selected>Select</option><option>Mr.</option><option>Mrs.</option><option>Ms.</option><option>Dr.</option><option>Other</option></select></label>
-            <label class="field name-field"><span>YOUR NAME</span><input type="text" name="name" autocomplete="name" placeholder="Full name" maxlength="100" required></label>
+            <label class="field name-field"><span>YOUR NAME</span><input type="text" name="name" autocomplete="name" placeholder="Full name" maxlength="100" pattern="[A-Za-zÀ-ÿ '-]+" title="Please enter your name using letters only." required></label>
             <fieldset class="attendance">
               <legend>WILL YOU BE JOINING US?</legend>
               <label><input type="radio" name="attendance" value="accept" required><span><b>Accept</b></span></label>
