@@ -574,11 +574,10 @@ img{max-width:100%}
   object-fit:fill;
   transition:none;
 }
-.haldi-band .event-photo img,.haldi-page .event-photo img{transform:translateX(0)}
-.mehendi-band .event-photo img,.mehendi-page .event-photo img{transform:translateX(-25%)}
-.wedding-band .event-photo img,.wedding-page .event-photo img{transform:translateX(-50%)}
-.celebrate-image img{transform:translateX(0)}
-.event-band:hover .event-photo img,.celebrate-section:hover .celebrate-image img{transform:none}
+.celebrate-image img,.celebrate-page .celebrate-image img{transform:translateX(0)}
+.haldi-band .event-photo img,.haldi-page .event-photo img{transform:translateX(-25%)}
+.mehendi-band .event-photo img,.mehendi-page .event-photo img{transform:translateX(-50%)}
+.wedding-band .event-photo img,.wedding-page .event-photo img{transform:translateX(-75%)}
 @media(max-width:760px){
   .event-photo{aspect-ratio:16 / 9;height:auto}
   .celebrate-image{aspect-ratio:16 / 9;min-height:0}
