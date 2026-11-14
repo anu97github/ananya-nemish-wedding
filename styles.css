@@ -528,3 +528,26 @@ img{max-width:100%}
  .celebrate-page .event-page-main .celebrate-section{min-height:0;grid-template-columns:1fr;padding:20px 14px}
  .celebrate-page .celebrate-image,.celebrate-page .celebrate-image img{min-height:270px;height:270px}
 }
+
+/* Countdown alignment and date typography refinements */
+.countdown-inner{
+  width:min(100%,1120px);
+  margin-inline:auto;
+  text-align:center;
+}
+.countdown-inner>.eyebrow,
+.countdown-inner h2{
+  display:block;
+  width:100%;
+  text-align:center;
+}
+.countdown-section .hero-countdown{
+  width:100%;
+  justify-content:center;
+  margin-inline:auto;
+}
+.event-facts .fact-label{
+  font-variant-numeric:lining-nums tabular-nums;
+  font-feature-settings:"lnum" 1,"tnum" 1;
+  white-space:nowrap;
+}
