@@ -396,3 +396,34 @@ img{max-width:100%}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .reveal-section{opacity:1;transform:none}
 }
+
+
+/* Illustration-led event artwork: editorial, botanical, and intentionally soft-edged. */
+.event-photo{
+  position:relative;height:294px;overflow:hidden;
+  border:1px solid rgba(158,125,79,.32);
+  box-shadow:0 10px 26px rgba(66,47,38,.10);
+  background:#f5eee3;
+}
+.event-photo:before{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,250,240,.05),rgba(255,250,240,.12));
+}
+.event-photo:after{
+  content:"";position:absolute;inset:8px;z-index:2;
+  border:1px solid rgba(255,250,241,.75);pointer-events:none;
+}
+.event-photo img{
+  display:block;width:100%;height:100%;object-fit:cover;object-position:center 50%;
+  transition:transform 1s ease;
+}
+.event-band:hover .event-photo img{transform:scale(1.025)}
+.haldi-band .event-photo{background:#f7e7c4}
+.mehendi-band .event-photo{background:#26382f}
+.wedding-band .event-photo{background:#e6eee5}
+@media(max-width:760px){
+ .event-photo{height:245px}
+}
+@media(max-width:520px){
+ .event-photo{height:235px}
+}
