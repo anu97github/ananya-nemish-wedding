@@ -1051,3 +1051,42 @@ img{max-width:100%}
     padding:10px 4px 0!important;
   }
 }
+
+
+/* Dress-code swatches: compact, organic paint daubs with a consistent footprint. */
+.palette-grid{
+  align-items:start;
+  column-gap:clamp(8px,1.5vw,18px);
+  row-gap:12px;
+}
+.paint-mark{
+  width:clamp(66px,5.4vw,78px)!important;
+  height:40px!important;
+  margin:0 auto 5px!important;
+  border:0;
+  border-radius:43% 57% 48% 52% / 57% 43% 57% 43%;
+  transform:rotate(-7deg);
+  -webkit-mask:none!important;
+  mask:none!important;
+  clip-path:polygon(4% 42%,10% 23%,25% 12%,43% 8%,58% 13%,75% 7%,91% 20%,98% 39%,93% 61%,82% 79%,64% 88%,45% 84%,27% 94%,12% 78%,3% 61%);
+  filter:drop-shadow(0 1px 1px rgba(87,67,47,.12));
+}
+.haldi-band .palette-swatch:first-child .paint-mark{
+  border:1.5px solid rgba(104,79,54,.88);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.32);
+  clip-path:none;
+  border-radius:43% 57% 48% 52% / 57% 43% 57% 43%;
+}
+@media(max-width:760px){
+  .paint-mark{
+    width:clamp(56px,14vw,70px)!important;
+    height:36px!important;
+    margin-bottom:4px!important;
+  }
+}
+@media(max-width:520px){
+  .paint-mark{
+    width:clamp(48px,13vw,62px)!important;
+    height:32px!important;
+  }
+}
