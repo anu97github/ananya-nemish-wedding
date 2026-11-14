@@ -1231,3 +1231,40 @@ img{max-width:100%}
 .rsvp-frame:before{
   display:none!important;
 }
+
+
+/* Mobile cover: keep both names fully visible inside the phone viewport. */
+@media(max-width:520px){
+  .couple-names{
+    width:100%;
+    max-width:100%;
+    justify-content:center;
+    align-items:baseline;
+    gap:clamp(3px,1vw,7px);
+    font-size:clamp(40px,12vw,58px);
+    white-space:nowrap;
+  }
+  .couple-names span{
+    flex:0 1 auto;
+    min-width:0;
+  }
+  .couple-names i{
+    flex:0 0 auto;
+    font-size:.42em;
+  }
+}
+
+/* Make the save-the-date line read as a clear invitation highlight. */
+.save-date-line{
+  color:#85574d!important;
+  font-size:13px!important;
+  font-weight:700!important;
+  letter-spacing:.18em!important;
+  line-height:1.5!important;
+}
+@media(max-width:520px){
+  .save-date-line{
+    font-size:12px!important;
+    letter-spacing:.14em!important;
+  }
+}

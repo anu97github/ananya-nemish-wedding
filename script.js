@@ -153,7 +153,7 @@
       feedback.hidden = false;
       feedback.textContent = accepts
         ? `Thank you, ${honorific} ${fullName}. Your RSVP preview shows ${guests} ${guests === 1 ? 'guest' : 'guests'} attending. This has not been saved yet.`
-        : `Thank you, ${honorific} ${fullName}. Your RSVP preview is marked as regretfully declining. This has not been saved yet.`;
+        : `Thank you, ${honorific} ${fullName}. Your RSVP preview is marked as declined. This has not been saved yet.`;
       form.querySelector('.submit-rsvp').textContent = 'RSVP PREVIEW COMPLETE';
       feedback.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'nearest' });
     });
