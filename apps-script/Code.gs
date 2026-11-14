@@ -128,7 +128,7 @@ function safeCell(value) {
   return /^[=+@-]/.test(text) ? "'" + text : text;
 }
 
-/** Sends the result to the parent website from the hidden response iframe. */
+/** Sends the result to the wedding website from the hidden response iframe. */
 function responsePage(submissionId, ok, message) {
   const payload = JSON.stringify({
     type: 'wedding-rsvp-result',
@@ -137,7 +137,9 @@ function responsePage(submissionId, ok, message) {
     message: message
   }).replace(/</g, '\\u003c');
   const html = '<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"></head>' +
-    '<body><script>window.parent.postMessage(' + payload + ', "*");</script></body></html>';
+    // HtmlService adds a sandbox frame around this page. Send to the top-level
+    // wedding page instead of the immediate parent (the Google wrapper frame).
+    '<body><script>window.top.postMessage(' + payload + ', "*");</script></body></html>';
   return HtmlService.createHtmlOutput(html)
     .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
