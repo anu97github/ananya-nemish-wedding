@@ -553,3 +553,34 @@ img{max-width:100%}
   font-feature-settings:"lnum" 1,"tnum" 1;
   white-space:nowrap;
 }
+
+
+/* Four custom watercolor scenes from the couple's selected reference collage.
+   Each image viewport reveals one panel of the shared horizontal artwork strip. */
+.event-photo,.celebrate-image{
+  aspect-ratio:16 / 9;
+  height:auto;
+  min-height:0;
+  position:relative;
+}
+.event-photo img,.celebrate-image img{
+  position:absolute;
+  inset:0;
+  display:block;
+  width:400%;
+  max-width:none;
+  height:100%;
+  min-height:0;
+  object-fit:fill;
+  transition:none;
+}
+.haldi-band .event-photo img,.haldi-page .event-photo img{transform:translateX(0)}
+.mehendi-band .event-photo img,.mehendi-page .event-photo img{transform:translateX(-25%)}
+.wedding-band .event-photo img,.wedding-page .event-photo img{transform:translateX(-50%)}
+.celebrate-image img{transform:translateX(0)}
+.event-band:hover .event-photo img,.celebrate-section:hover .celebrate-image img{transform:none}
+@media(max-width:760px){
+  .event-photo{aspect-ratio:16 / 9;height:auto}
+  .celebrate-image{aspect-ratio:16 / 9;min-height:0}
+  .celebrate-image img{min-height:0}
+}
