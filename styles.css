@@ -1172,3 +1172,10 @@ img{max-width:100%}
     height:clamp(44px,11vw,54px)!important;
   }
 }
+
+
+/* Haldi ivory is a warmer, slightly deeper shade for contrast; no outline. */
+.haldi-band .palette-swatch:first-child .paint-mark{
+  border:0!important;
+  box-shadow:none!important;
+}
