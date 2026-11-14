@@ -427,7 +427,9 @@ img{max-width:100%}
 @media(max-width:520px){
  .event-photo{height:235px}
 }
-\n\n
+
+
+
 .countdown-section{
   position:relative;isolation:isolate;overflow:hidden;
   padding:38px 20px 30px;text-align:center;
