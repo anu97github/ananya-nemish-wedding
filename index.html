@@ -6,9 +6,11 @@
   <meta name="theme-color" content="#fbf7f0">
   <meta name="description" content="Ananya Shrivastava and Nemish Doshi invite you to celebrate their wedding on 2–3 February 2027 at Happy Retreats KAI, Chikkaballapur, Karnataka.">
   <title>Ananya &amp; Nemish | Wedding Invitation · 2–3 February 2027</title>
+  <link rel="icon" type="image/png" href="assets/an-reverse.png">
+  <link rel="apple-touch-icon" href="assets/an-reverse.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="rsvp-config.js"></script>
   <script defer src="script.js"></script>
@@ -20,19 +22,34 @@
   </button>
 
   <main id="home">
-    <section class="hero" aria-labelledby="heroTitle">
-      <div class="hero-border" aria-hidden="true"></div>
-      <div class="hero-floral hero-floral-left" aria-hidden="true"></div>
-      <div class="hero-floral hero-floral-right" aria-hidden="true"></div>
-      <div class="hero-arch" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="site-brand" href="#home" aria-label="Ananya and Nemish — home">
+        <img src="assets/an-primary.png" alt="Ananya and Nemish intertwined monogram">
+      </a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open navigation">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+        <a href="#families">OUR STORY</a>
+        <a href="#haldi">EVENTS</a>
+        <a href="#venue">TRAVEL &amp; STAY</a>
+        <a href="#celebrate">GALLERY</a>
+        <a class="nav-rsvp" href="#rsvp">RSVP</a>
+      </nav>
+    </header>
+
+    <section class="hero hero-editorial" aria-labelledby="heroTitle">
+      <div class="hero-image" aria-hidden="true">
+        <img src="assets/hero-hands.jpg" alt="">
+      </div>
+      <div class="hero-image-fade" aria-hidden="true"></div>
       <div class="hero-content">
-        <img class="hero-monogram" src="assets/na-monogram.svg" alt="Interlocked N and A monogram">
-        <p class="eyebrow">WE INVITE YOU TO THE WEDDING OF</p>
-        <h1 id="heroTitle" class="couple-names"><span>Ananya</span><i>&amp;</i><span>Nemish</span></h1>
-        <div class="ornament-divider"><span></span><b>✥</b><span></span></div>
+        <p class="hero-overline">ANANYA &amp; NEMISH</p>
+        <h1 id="heroTitle" class="hero-title">We’re Getting Married</h1>
+        <div class="hero-date-rule" aria-hidden="true"><span></span><b>✦</b><span></span></div>
         <p class="hero-date">2–3 FEBRUARY 2027</p>
         <p class="hero-venue">HAPPY RETREATS KAI <span>·</span> CHIKKABALLAPUR</p>
-        <a class="scroll-link" href="#countdown">SCROLL TO EXPLORE <span>↓</span></a>
+        <a class="hero-rsvp" href="#rsvp">RSVP <span aria-hidden="true">↗</span></a>
       </div>
     </section>
 
