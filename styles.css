@@ -1565,3 +1565,24 @@ img{max-width:100%}
   .hero-editorial .hero-content{top:clamp(300px,34vw,430px)}
   .hero-editorial .hero-date{margin-top:16px}
 }
+
+
+/* Calligraphic wedding names */
+.hero-editorial .hero-title{
+  font-family:"Pinyon Script","Cormorant Garamond",cursive;
+  font-style:normal;
+  font-weight:400;
+  font-size:clamp(66px,8vw,112px);
+  line-height:1.08;
+  letter-spacing:0;
+}
+@media(max-width:760px){
+  .hero-editorial .hero-title{
+    font-size:clamp(54px,12vw,76px);
+    line-height:1.12;
+    letter-spacing:0;
+  }
+}
+@media(max-width:390px){
+  .hero-editorial .hero-title{font-size:clamp(48px,11.5vw,62px)}
+}
