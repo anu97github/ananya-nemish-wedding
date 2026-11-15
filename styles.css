@@ -1,23 +1,25 @@
 :root{
-  --paper:#fbf7f0;
-  --paper-light:#fffdf9;
-  --blush:#f2e3e2;
-  --blush-deep:#ead0d1;
-  --sage:#9ba78f;
-  --sage-soft:#e8eee4;
-  --olive:#566541;
-  --gold:#ad8546;
-  --gold-light:#cfb484;
-  --ink:#44342d;
-  --muted:#76665e;
-  --line:rgba(162,128,75,.34);
+  --paper:#FAF8F2;
+  --paper-light:#E8E1D3;
+  --blush:#E8E1D3;
+  --blush-deep:#D9E4D4;
+  --sage:#AEBEA3;
+  --sage-soft:#D9E4D4;
+  --olive:#5F7757;
+  --dark-olive:#46563F;
+  --gold:#C6AD7B;
+  --gold-light:#C6AD7B;
+  --ink:#49372B;
+  --muted:#49372B;
+  --line:rgba(198,173,123,.38);
   --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Lato',Arial,sans-serif;
   --script:'Allura',cursive;
   --max:1320px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:20px}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.55;letter-spacing:.01em}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;letter-spacing:.005em}
 a{color:inherit;text-decoration:none}
 button,input,select,textarea{font:inherit}
 ::selection{background:#e7d2d1;color:#46342e}
@@ -1275,3 +1277,96 @@ img{max-width:100%}
 .rsvp-submit-frame{position:absolute;width:1px;height:1px;border:0;opacity:0;pointer-events:none}
 .submit-rsvp:disabled{opacity:.65;cursor:wait}
 .form-feedback.is-error{border-color:#c58b82;background:#fbefed;color:#8c453c}
+
+
+/* Editorial landing page — November 2026 direction */
+.site-header{
+  position:relative;z-index:30;min-height:86px;padding:10px clamp(22px,5vw,76px);
+  display:flex;align-items:center;justify-content:space-between;gap:30px;
+  background:var(--paper);border-bottom:1px solid rgba(198,173,123,.28);
+}
+.site-brand{display:flex;align-items:center;flex:0 0 auto;width:76px;height:64px;overflow:hidden}
+.site-brand img{display:block;width:100%;height:100%;object-fit:contain}
+.site-nav{display:flex;align-items:center;justify-content:flex-end;gap:clamp(18px,3vw,42px)}
+.site-nav a{
+  color:var(--dark-olive);font:600 11px/1 var(--sans);letter-spacing:.13em;
+  white-space:nowrap;transition:color .2s ease;
+}
+.site-nav a:hover{color:var(--gold)}
+.site-nav .nav-rsvp{
+  padding:13px 24px;background:var(--olive);color:var(--paper);
+  border:1px solid var(--olive);letter-spacing:.16em;
+}
+.site-nav .nav-rsvp:hover{background:var(--dark-olive);color:var(--paper)}
+.menu-toggle{display:none}
+.hero-editorial{
+  min-height:0;height:min(790px,calc(100svh - 86px));max-height:790px;
+  position:relative;isolation:isolate;display:flex;align-items:flex-end;justify-content:center;
+  overflow:hidden;padding:0 24px clamp(42px,6vw,78px);text-align:center;
+  background:var(--paper);
+}
+.hero-image{position:absolute;inset:0;z-index:-2;overflow:hidden}
+.hero-image img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 49%}
+.hero-image-fade{
+  position:absolute;z-index:-1;inset:0;
+  background:linear-gradient(180deg,rgba(250,248,242,0) 38%,rgba(250,248,242,.12) 54%,rgba(250,248,242,.88) 83%,var(--paper) 100%);
+  pointer-events:none;
+}
+.hero-editorial .hero-content{width:min(920px,100%);padding:0 16px}
+.hero-overline{
+  margin:0 0 5px;color:var(--dark-olive);font:600 12px/1.5 var(--sans);
+  letter-spacing:.32em;text-transform:uppercase;
+}
+.hero-title{
+  margin:0;color:var(--dark-olive);font:500 clamp(42px,7vw,82px)/1.03 var(--serif);
+  letter-spacing:.015em;
+}
+.hero-date-rule{display:flex;align-items:center;justify-content:center;gap:15px;margin:18px auto 9px;color:var(--gold)}
+.hero-date-rule span{display:block;width:52px;height:1px;background:var(--gold)}
+.hero-date-rule b{font-size:13px;font-weight:400}
+.hero-editorial .hero-date{
+  margin:0;color:var(--dark-olive);font:700 clamp(15px,1.8vw,19px)/1.5 var(--sans);
+  letter-spacing:.19em;font-variant-numeric:lining-nums tabular-nums;
+}
+.hero-editorial .hero-venue{
+  margin:6px 0 19px;color:var(--ink);font:600 11px/1.5 var(--sans);letter-spacing:.17em;
+}
+.hero-editorial .hero-venue span{padding:0 5px;color:var(--gold)}
+.hero-rsvp{
+  display:inline-flex;align-items:center;justify-content:center;gap:28px;min-width:154px;
+  padding:14px 22px;background:var(--olive);border:1px solid var(--olive);color:var(--paper);
+  font:700 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;
+  transition:background .2s ease,transform .2s ease;
+}
+.hero-rsvp:hover{background:var(--dark-olive);transform:translateY(-2px)}
+.hero-rsvp span{font-size:16px;line-height:.7}
+@media(max-width:760px){
+  .site-header{min-height:70px;padding:8px 20px}
+  .site-brand{width:62px;height:52px}
+  .menu-toggle{
+    display:flex;flex-direction:column;justify-content:center;gap:6px;
+    width:42px;height:42px;padding:8px;border:1px solid var(--gold);
+    background:transparent;color:var(--dark-olive);cursor:pointer;
+  }
+  .menu-toggle span{display:block;width:100%;height:1px;background:var(--dark-olive)}
+  .site-nav{
+    display:none;position:absolute;top:100%;left:0;right:0;padding:18px 22px 24px;
+    flex-direction:column;align-items:stretch;gap:0;background:var(--paper);
+    border-bottom:1px solid rgba(198,173,123,.38);box-shadow:0 14px 24px rgba(40,40,30,.06);
+  }
+  .site-nav.open{display:flex}
+  .site-nav a{padding:14px 4px;border-bottom:1px solid rgba(198,173,123,.2);text-align:center}
+  .site-nav .nav-rsvp{margin-top:12px;padding:15px 22px;border:0}
+  .hero-editorial{height:min(760px,calc(100svh - 70px));min-height:570px;padding:0 16px 38px}
+  .hero-image img{object-position:center center}
+  .hero-image-fade{background:linear-gradient(180deg,rgba(250,248,242,0) 27%,rgba(250,248,242,.18) 45%,rgba(250,248,242,.91) 78%,var(--paper) 100%)}
+  .hero-title{font-size:clamp(39px,9vw,62px)}
+  .hero-overline{font-size:10px;letter-spacing:.25em}
+  .hero-editorial .hero-date{font-size:15px;letter-spacing:.12em}
+  .hero-editorial .hero-venue{font-size:10px;letter-spacing:.1em}
+}
+@media(max-width:390px){
+  .hero-editorial{min-height:540px}
+  .hero-title{font-size:38px}
+  .hero-date-rule{margin:14px auto 7px}
+}
