@@ -12,8 +12,8 @@
   --ink:#49372B;
   --muted:#49372B;
   --line:rgba(198,173,123,.38);
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --sans:'Lato',Arial,sans-serif;
+  --serif:'Montserrat',Arial,sans-serif;
+  --sans:'Montserrat',Arial,sans-serif;
   --script:'Allura',cursive;
   --max:1320px;
 }
@@ -1569,7 +1569,7 @@ img{max-width:100%}
 
 /* Calligraphic wedding names */
 .hero-editorial .hero-title{
-  font-family:"Pinyon Script","Cormorant Garamond",cursive;
+  font-family:"Adelio Darmanto","Cormorant Garamond",cursive;
   font-style:normal;
   font-weight:400;
   font-size:clamp(66px,8vw,112px);
@@ -1585,4 +1585,14 @@ img{max-width:100%}
 }
 @media(max-width:390px){
   .hero-editorial .hero-title{font-size:clamp(48px,11.5vw,62px)}
+}
+
+/* Typography pairing: Adelio Darmanto for the couple's names, Montserrat elsewhere. */
+body,button,input,select,textarea{
+  font-family:"Montserrat",Arial,sans-serif;
+}
+.hero-editorial .hero-title{
+  font-family:"Adelio Darmanto",cursive!important;
+  font-style:normal;
+  font-weight:400;
 }
