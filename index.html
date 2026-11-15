@@ -89,6 +89,64 @@
       </div>
     </section>
 
+
+    <section class="couple-section reveal-section" id="meet-the-couple" aria-labelledby="coupleTitle">
+      <div class="couple-photo-placeholder" role="img" aria-label="Bride and groom photograph placeholder">
+        <div class="photo-placeholder-mark">AN</div>
+        <p>YOUR FAVOURITE PHOTO OF US</p>
+      </div>
+      <div class="couple-copy">
+        <p class="eyebrow">TWO STORIES, ONE JOURNEY</p>
+        <h2 id="coupleTitle">Meet the <em>Couple</em></h2>
+        <p class="couple-intro">A little about the bride, a little about the groom, and the story that brought us together.</p>
+        <div class="couple-mini-grid">
+          <article><span>THE BRIDE</span><h3>Ananya</h3><p>More about Ananya coming soon.</p></article>
+          <article><span>THE GROOM</span><h3>Nemish</h3><p>More about Nemish coming soon.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="itinerary-section reveal-section" id="itinerary" aria-labelledby="itineraryTitle">
+      <div class="itinerary-heading">
+        <p class="eyebrow">THREE DAYS OF TOGETHERNESS</p>
+        <h2 id="itineraryTitle">The Wedding <em>Celebrations</em></h2>
+        <p>Here’s how our celebrations will unfold. Scroll through each day to explore the timeline.</p>
+      </div>
+      <div class="day-tabs" role="tablist" aria-label="Wedding celebration days">
+        <button class="day-tab is-active" id="day-tab-1" role="tab" aria-selected="true" aria-controls="day-panel-1" tabindex="0" data-day="0"><span>DAY ONE</span><strong>2 February</strong><small>Tuesday</small></button>
+        <button class="day-tab" id="day-tab-2" role="tab" aria-selected="false" aria-controls="day-panel-2" tabindex="-1" data-day="1"><span>DAY TWO</span><strong>3 February</strong><small>Wednesday</small></button>
+        <button class="day-tab" id="day-tab-3" role="tab" aria-selected="false" aria-controls="day-panel-3" tabindex="-1" data-day="2"><span>DAY THREE</span><strong>4 February</strong><small>Thursday</small></button>
+      </div>
+      <div class="day-panels">
+        <div class="day-panel is-active" id="day-panel-1" role="tabpanel" aria-labelledby="day-tab-1" tabindex="0">
+          <div class="timeline-scroll" aria-label="Tuesday 2 February timeline">
+            <article class="timeline-item"><span class="timeline-time">12:00 PM</span><i></i><h3>Check-in</h3><p>Arrive, settle in and make yourselves at home.</p></article>
+            <article class="timeline-item"><span class="timeline-time">1:00 PM</span><i></i><h3>Yele Oota</h3><p>An authentic South Indian lunch served on a banana leaf.</p></article>
+            <article class="timeline-item"><span class="timeline-time">3:00 PM onwards</span><i></i><h3>Haldi</h3><p>A joyful afternoon of haldi, laughter and blessings.</p><div class="timeline-palette"><span style="--swatch:#F8E7A5"></span><span style="--swatch:#F4D36F"></span><span style="--swatch:#F1E0C5"></span><b>GUEST COLOURS: PALE YELLOW · BUTTER YELLOW · IVORY</b></div></article>
+            <article class="timeline-item"><span class="timeline-time">7:00 PM onwards</span><i></i><h3>Mehendi</h3><p>Mehendi, music and an evening together.</p></article>
+            <article class="timeline-item"><span class="timeline-time">7:00 PM onwards</span><i></i><h3>Dinner</h3><p>Join us for dinner.</p></article>
+            <article class="timeline-item"><span class="timeline-time">8:00 PM onwards</span><i></i><h3>Acoustic Night</h3><p>An intimate evening of live acoustic music.</p></article>
+          </div>
+        </div>
+        <div class="day-panel" id="day-panel-2" role="tabpanel" aria-labelledby="day-tab-2" tabindex="0" hidden>
+          <div class="timeline-scroll" aria-label="Wednesday 3 February timeline">
+            <article class="timeline-item"><span class="timeline-time">8:00 AM onwards</span><i></i><h3>Breakfast</h3><p>A relaxed start to the wedding day.</p></article>
+            <article class="timeline-item"><span class="timeline-time">12:30 PM onwards</span><i></i><h3>Lunch</h3><p>Lunch before the wedding celebrations.</p></article>
+            <article class="timeline-item"><span class="timeline-time">3:30 PM</span><i></i><h3>Baraat</h3><p>Let the wedding procession begin!</p></article>
+            <article class="timeline-item"><span class="timeline-time">4:00 PM</span><i></i><h3>Varmala</h3><p>The exchange of garlands.</p></article>
+            <article class="timeline-item"><span class="timeline-time">5:30 PM</span><i></i><h3>Phere</h3><p>The sacred wedding rituals and seven vows.</p></article>
+            <article class="timeline-item"><span class="timeline-time">7:00 PM onwards</span><i></i><h3>Dinner</h3><p>Celebrate the newlyweds over dinner.</p></article>
+          </div>
+        </div>
+        <div class="day-panel" id="day-panel-3" role="tabpanel" aria-labelledby="day-tab-3" tabindex="0" hidden>
+          <div class="timeline-scroll" aria-label="Thursday 4 February timeline">
+            <article class="timeline-item"><span class="timeline-time">8:00 AM onwards</span><i></i><h3>Breakfast</h3><p>One last breakfast together.</p></article>
+            <article class="timeline-item"><span class="timeline-time">11:00 AM</span><i></i><h3>Check-out</h3><p>Time to say goodbye, with memories to take home.</p></article>
+          </div>
+        </div>
+      </div>
+      <p class="timeline-hint">← SWIPE TO EXPLORE THE TIMELINE →</p>
+    </section>
     <section class="celebrate-section reveal-section" id="celebrate">
       <div class="celebrate-image">
         <img src="assets/celebrate-together.webp" alt="A romantic garden landscape with a palace arch, hills and a couple walking together">
@@ -193,17 +251,25 @@
       <div class="venue-floral venue-floral-left" aria-hidden="true"></div>
       <div class="venue-floral venue-floral-right" aria-hidden="true"></div>
       <div class="venue-content">
-        <p class="eyebrow">THE VENUE</p>
+        <p class="eyebrow">A PLACE TO CELEBRATE & STAY</p>
         <h2>Happy Retreats KAI</h2>
         <p class="venue-location">CHIKKABALLAPUR · KARNATAKA</p>
+        <p class="venue-description">A private villa retreat for our wedding celebrations, with <strong>4–5 bedroom private pool villas</strong> and rooms arranged for <strong>2 to 6 guests sharing</strong>.</p>
         <p class="venue-address">Agalagurki, Chikkaballapur, Karnataka 562103<br>Near Bengaluru</p>
-        <a class="map-link" href="https://www.google.com/maps/place/Happy+Retreats+-+KAI/@13.4023201,77.7413702,17z/data=!3m1!4b1!4m9!3m8!1s0x3bb1e5ae74ca9563:0xf264302c69f61a44!5m2!4m1!1i2!8m2!3d13.4023201!4d77.7439451!16s%2Fg%2F11y5snzdbr?entry=ttu&amp;g_ep=EgoyMDI2MTExMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">VIEW ON MAP <span>↗</span></a>
+        <a class="map-link" href="https://www.google.com/maps/place/Happy+Retreats+-+KAI/@13.4023201,77.7413702,17z/data=!3m1!4b1!4m9!3m8!1s0x3bb1e5ae74ca9563:0xf264302c69f61a44!5m2!4m1!1i2!8m2!3d13.4023201!4d77.7439451!16s%2Fg%2F11y5snzdbr?entry=ttu&amp;g_ep=EgoyMDI2MTExMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">VIEW GOOGLE MAPS <span>↗</span></a>
         <div class="stay-details">
           <div><span>CHECK-IN</span><strong>2 FEB 2027</strong><small>12:00 PM</small></div>
           <i></i>
           <div><span>CHECK-OUT</span><strong>4 FEB 2027</strong><small>11:00 AM</small></div>
         </div>
       </div>
+    </section>
+
+    <section class="couple-note-section reveal-section" id="couple-note">
+      <p class="eyebrow">A LITTLE LOVE GOES A LONG WAY</p>
+      <h2>Leave a Note for <em>the Couple</em></h2>
+      <p>We feel lucky to have you as part of our story. Leave us a little message, a blessing or a wish for the journey ahead — we’ll treasure it.</p>
+      <a class="note-cta" href="#rsvp">WRITE US A NOTE <span>↗</span></a>
     </section>
 
     <section class="rsvp-section reveal-section" id="rsvp">
