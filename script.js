@@ -22,6 +22,15 @@
     menuToggle?.setAttribute('aria-expanded', 'false');
   }));
 
+  // Keep the white monogram over the cover, then crossfade to the primary logo on scroll.
+  const siteHeader = document.getElementById('siteHeader');
+  const syncHeaderLogo = () => {
+    if (!siteHeader) return;
+    siteHeader.classList.toggle('is-scrolled', window.scrollY > 72);
+  };
+  syncHeaderLogo();
+  window.addEventListener('scroll', syncHeaderLogo, { passive: true });
+
   // Countdown to the first celebration.
   const countdown = document.getElementById('countdownClock');
   const startAt = new Date('2027-02-02T14:00:00+05:30').getTime();
