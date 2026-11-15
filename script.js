@@ -31,6 +31,36 @@
   syncHeaderLogo();
   window.addEventListener('scroll', syncHeaderLogo, { passive: true });
 
+
+  // Accessible day tabs for the horizontal celebration timelines.
+  const dayTabs = [...document.querySelectorAll('.day-tab')];
+  const dayPanels = [...document.querySelectorAll('.day-panel')];
+  function activateDayTab(index, moveFocus = false) {
+    dayTabs.forEach((tab, i) => {
+      const active = i === index;
+      tab.classList.toggle('is-active', active);
+      tab.setAttribute('aria-selected', String(active));
+      tab.tabIndex = active ? 0 : -1;
+    });
+    dayPanels.forEach((panel, i) => {
+      const active = i === index;
+      panel.classList.toggle('is-active', active);
+      panel.hidden = !active;
+    });
+    if (moveFocus) dayTabs[index]?.focus();
+  }
+  dayTabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => activateDayTab(index));
+    tab.addEventListener('keydown', event => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      const next = event.key === 'ArrowRight' ? (index + 1) % dayTabs.length :
+        event.key === 'ArrowLeft' ? (index - 1 + dayTabs.length) % dayTabs.length :
+        event.key === 'Home' ? 0 : dayTabs.length - 1;
+      activateDayTab(next, true);
+    });
+  });
+
   // Countdown to the first celebration.
   const countdown = document.getElementById('countdownClock');
   const startAt = new Date('2027-02-02T14:00:00+05:30').getTime();
