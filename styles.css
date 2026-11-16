@@ -3122,44 +3122,50 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
 }
 
 
-/* Mobile invitation artwork: display the supplied full-page image edge-to-edge. */
+/* Mobile opening screen: the mobile_AN artwork fills the first viewport edge-to-edge. */
 @media (max-width: 767px) {
-  .hero-editorial {
-    width:100%;
-    height:100svh!important;
-    min-height:100svh!important;
-    max-height:100svh!important;
-    padding:0!important;
-    overflow:hidden!important;
-    background:transparent!important;
+  html, body {
+    min-height: 100%;
   }
-  .hero-editorial .hero-image {
-    position:absolute!important;
-    inset:0!important;
-    width:100%!important;
-    height:100%!important;
-    overflow:hidden!important;
-    z-index:0!important;
+  .hero.hero-editorial {
+    position: relative !important;
+    width: 100% !important;
+    height: 100vh !important;
+    height: 100svh !important;
+    min-height: 100vh !important;
+    min-height: 100svh !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #f7eee5 !important;
   }
+  .hero-editorial .hero-image,
   .hero-editorial .hero-image picture {
-    display:block!important;
-    width:100%!important;
-    height:100%!important;
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
   }
   .hero-editorial .hero-image img {
-    display:block!important;
-    width:100%!important;
-    height:100%!important;
-    max-width:none!important;
-    max-height:none!important;
-    object-fit:cover!important;
-    object-position:center center!important;
-    transform:none!important;
-    filter:none!important;
-    -webkit-mask-image:none!important;
-    mask-image:none!important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    transform: none !important;
+    filter: none !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
   }
-  .hero-editorial .hero-image-fade {
-    display:none!important;
+  .hero-editorial .hero-image::after,
+  .hero-editorial .hero-image-fade,
+  .hero-editorial .hero-content {
+    display: none !important;
+    content: none !important;
   }
 }
