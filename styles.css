@@ -3510,3 +3510,92 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     )!important;
   }
 }
+
+
+/* Final hero tone match: use the attached cool grey swatch as the continuous
+   canvas behind the invitation copy. Avoid a bright ivory jump after the photo. */
+.hero-editorial{
+  background:linear-gradient(
+    180deg,
+    #a9a8a5 0%,
+    #b0afac 28%,
+    #b8b7b3 56%,
+    #bebdb9 78%,
+    #c2c1bd 100%
+  )!important;
+}
+.hero-editorial .hero-content,
+.hero-editorial .hero-invitation,
+.hero-editorial .hero-title,
+.hero-editorial .hero-ornament,
+.hero-editorial .hero-date,
+.hero-editorial .hero-venue{
+  background:transparent!important;
+}
+.hero-editorial .hero-image img{
+  filter:grayscale(.06) brightness(1.04) contrast(.98)!important;
+  -webkit-mask-image:linear-gradient(
+    180deg,
+    #000 0%,
+    #000 34%,
+    rgba(0,0,0,.98) 43%,
+    rgba(0,0,0,.92) 52%,
+    rgba(0,0,0,.82) 61%,
+    rgba(0,0,0,.68) 70%,
+    rgba(0,0,0,.50) 79%,
+    rgba(0,0,0,.30) 88%,
+    rgba(0,0,0,.12) 96%,
+    transparent 100%
+  )!important;
+  mask-image:linear-gradient(
+    180deg,
+    #000 0%,
+    #000 34%,
+    rgba(0,0,0,.98) 43%,
+    rgba(0,0,0,.92) 52%,
+    rgba(0,0,0,.82) 61%,
+    rgba(0,0,0,.68) 70%,
+    rgba(0,0,0,.50) 79%,
+    rgba(0,0,0,.30) 88%,
+    rgba(0,0,0,.12) 96%,
+    transparent 100%
+  )!important;
+}
+@media(max-width:760px){
+  .hero-editorial{
+    background:linear-gradient(
+      180deg,
+      #a9a8a5 0%,
+      #b1b0ad 30%,
+      #b9b8b4 58%,
+      #c2c1bd 100%
+    )!important;
+  }
+  .hero-editorial .hero-image img{
+    filter:grayscale(.06) brightness(1.04) contrast(.98)!important;
+    -webkit-mask-image:linear-gradient(
+      180deg,
+      #000 0%,
+      #000 31%,
+      rgba(0,0,0,.97) 41%,
+      rgba(0,0,0,.89) 53%,
+      rgba(0,0,0,.75) 65%,
+      rgba(0,0,0,.56) 77%,
+      rgba(0,0,0,.34) 89%,
+      rgba(0,0,0,.12) 97%,
+      transparent 100%
+    )!important;
+    mask-image:linear-gradient(
+      180deg,
+      #000 0%,
+      #000 31%,
+      rgba(0,0,0,.97) 41%,
+      rgba(0,0,0,.89) 53%,
+      rgba(0,0,0,.75) 65%,
+      rgba(0,0,0,.56) 77%,
+      rgba(0,0,0,.34) 89%,
+      rgba(0,0,0,.12) 97%,
+      transparent 100%
+    )!important;
+  }
+}
