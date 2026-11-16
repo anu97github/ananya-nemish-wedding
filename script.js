@@ -81,131 +81,85 @@
   updateCountdown();
   if (countdown) window.setInterval(updateCountdown, 1000);
 
-  // Official soundtrack. Browsers generally block audible autoplay.
-// Start the player muted on load where permitted, then enable sound on the
-// visitor's first interaction or when they tap the persistent music control.
+  // The YouTube iframe is placed in the initial HTML so its muted stream can
+  // begin loading immediately, without waiting for the IFrame API JavaScript.
+  // Audible autoplay is still subject to each browser's user-gesture policy.
   const soundButton = document.getElementById('soundToggle');
   const soundLabel = document.getElementById('soundLabel');
-  let player = null;
-  let playerReady = false;
-  let apiLoading = false;
+  const playerFrame = document.getElementById('youtubePlayer');
   let soundOn = false;
-  let mutedAutoplayStarted = false;
   let userHasInteracted = false;
-  const trackId = '-2w18bd-ZQ4';
 
-  function updateSound(on, label = on ? 'SOUND ON' : 'SOUND OFF') {
+  function updateSound(on, label = on ? 'SOUND ON' : 'TAP FOR MUSIC') {
     soundOn = on;
     soundButton?.setAttribute('aria-pressed', String(on));
     soundButton?.setAttribute('aria-label', on ? 'Turn wedding music off' : 'Turn wedding music on');
     if (soundLabel) soundLabel.textContent = label;
   }
 
-  function enableSoundFromGesture() {
-    userHasInteracted = true;
-    if (!playerReady || !player) {
-      updateSound(false, 'LOADING MUSIC');
-      loadPlayer();
-      return;
-    }
-    try {
-      player.unMute();
-      player.setVolume(58);
-      player.playVideo();
-      updateSound(true, 'SOUND ON');
-    } catch (_) {
-      updateSound(false, 'TAP TO PLAY');
-    }
+  function sendPlayerCommand(func, args = []) {
+    if (!playerFrame?.contentWindow) return;
+    const message = JSON.stringify({ event: 'command', func, args });
+    try { playerFrame.contentWindow.postMessage(message, 'https://www.youtube.com'); } catch (_) {}
   }
 
-  function createPlayer() {
-    if (player || !window.YT?.Player) return;
-    player = new window.YT.Player('youtubePlayer', {
-      width: '200', height: '200', videoId: trackId,
-      playerVars: { autoplay: 1, controls: 0, playsinline: 1, rel: 0, modestbranding: 1, loop: 1, playlist: trackId },
-      events: {
-        onReady: event => {
-          playerReady = true;
-          event.target.setVolume(58);
-          // Start buffering immediately while muted; browsers allow this more often.
-          // If the visitor already tapped while the player was loading, honour that
-          // gesture now instead of making them tap a second time.
-          try {
-            event.target.setVolume(58);
-            if (userHasInteracted) {
-              event.target.unMute();
-              event.target.playVideo();
-              updateSound(true, 'SOUND ON');
-            } else {
-              event.target.mute();
-              event.target.playVideo();
-              mutedAutoplayStarted = true;
-              updateSound(false, 'TAP FOR MUSIC');
-            }
-          } catch (_) {
-            updateSound(false, 'TAP TO PLAY');
-          }
-        },
-        onStateChange: event => {
-          if (event.data === window.YT.PlayerState.PLAYING && !soundOn) {
-            updateSound(false, 'TAP FOR MUSIC');
-          }
-          if (event.data === window.YT.PlayerState.PAUSED || event.data === window.YT.PlayerState.ENDED) {
-            updateSound(false);
-          }
-        },
-        onError: () => updateSound(false, 'AUDIO UNAVAILABLE'),
-        onAutoplayBlocked: () => updateSound(false, 'TAP TO PLAY')
-      }
+  function sendPlayerCommands(commands) {
+    // Retry briefly because the iframe's document load can precede the player
+    // API becoming ready to receive commands.
+    [0, 250, 700, 1400].forEach(delay => {
+      window.setTimeout(() => {
+        commands.forEach(([func, args = []]) => sendPlayerCommand(func, args));
+      }, delay);
     });
   }
 
-  function loadPlayer() {
-    if (window.YT?.Player) {
-      createPlayer();
-      return;
-    }
-    if (apiLoading) return;
-    apiLoading = true;
-    window.onYouTubeIframeAPIReady = createPlayer;
-    const script = document.createElement('script');
-    script.src = 'https://www.youtube.com/iframe_api';
-    script.async = true;
-    script.onerror = () => {
-      apiLoading = false;
-      updateSound(false, 'AUDIO UNAVAILABLE');
-    };
-    document.head.appendChild(script);
+  function startMusicFromGesture() {
+    userHasInteracted = true;
+    sendPlayerCommands([
+      ['setVolume', [58]],
+      ['unMute'],
+      ['playVideo']
+    ]);
+    updateSound(true, 'SOUND ON');
+  }
+
+  function stopMusic() {
+    sendPlayerCommands([['mute']]);
+    updateSound(false, 'MUSIC OFF');
   }
 
   function toggleMusic() {
-    if (soundOn) {
-      try { player?.mute(); } catch (_) {}
-      updateSound(false, 'MUSIC OFF');
-    } else {
-      enableSoundFromGesture();
-    }
+    if (soundOn) stopMusic();
+    else startMusicFromGesture();
   }
 
   soundButton?.addEventListener('click', toggleMusic);
 
-  // The first genuine interaction with the page enables sound when the player
-  // is already ready. The dedicated music button remains the reliable fallback.
-  function enableOnFirstInteraction() {
-    if (soundOn) return;
-    // Record the gesture even if YouTube is still downloading. onReady will
-    // immediately unmute and start playback once the player becomes available.
+  // The iframe URL itself requests muted autoplay as soon as HTML is parsed.
+  // On load, reinforce playback; if the guest already interacted, start audibly.
+  playerFrame?.addEventListener('load', () => {
+    if (userHasInteracted) {
+      startMusicFromGesture();
+    } else {
+      sendPlayerCommands([['mute'], ['playVideo']]);
+      updateSound(false, 'TAP FOR MUSIC');
+    }
+  });
+
+  // Remember the first tap anywhere on the invitation, even if the YouTube
+  // iframe is still warming up. The first tap on the music button is handled
+  // by its own click handler, so it won't immediately toggle back off.
+  function enableOnFirstInteraction(event) {
+    if (soundOn || soundButton?.contains(event.target)) return;
     userHasInteracted = true;
-    if (playerReady) enableSoundFromGesture();
-    else updateSound(false, 'STARTING MUSIC');
+    startMusicFromGesture();
     document.removeEventListener('pointerdown', enableOnFirstInteraction, true);
     document.removeEventListener('keydown', enableOnFirstInteraction, true);
   }
   document.addEventListener('pointerdown', enableOnFirstInteraction, true);
   document.addEventListener('keydown', enableOnFirstInteraction, true);
 
-  updateSound(false, 'LOADING MUSIC');
-  loadPlayer();
+  updateSound(false, 'TAP FOR MUSIC');
 
 
   // Reveal event and venue bands gently as guests scroll through the invitation.
