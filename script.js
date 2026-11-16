@@ -81,7 +81,7 @@
   updateCountdown();
   if (countdown) window.setInterval(updateCountdown, 1000);
 
-  // Official soundtrack. Audio begins only after the visitor taps the sound control.
+  // Official soundtrack. Attempt playback on page load; browser autoplay policies may require a tap.
   // The YouTube player is kept out of the visual layout; no pop-up or player panel appears.
   const soundButton = document.getElementById('soundToggle');
   const soundLabel = document.getElementById('soundLabel');
@@ -101,21 +101,22 @@
     if (player || !window.YT?.Player) return;
     player = new window.YT.Player('youtubePlayer', {
       width: '200', height: '200', videoId: trackId,
-      playerVars: { autoplay: 0, controls: 0, playsinline: 1, rel: 0, modestbranding: 1, loop: 1, playlist: trackId },
+      playerVars: { autoplay: 1, controls: 0, playsinline: 1, rel: 0, modestbranding: 1, loop: 1, playlist: trackId },
       events: {
         onReady: event => {
           playerReady = true;
           event.target.setVolume(58);
           if (wantsAudio) {
             try { event.target.unMute(); event.target.playVideo(); }
-            catch (_) { updateSound(false, 'SOUND OFF'); }
+            catch (_) { updateSound(false, 'TAP TO PLAY'); }
           }
         },
         onStateChange: event => {
           if (event.data === window.YT.PlayerState.PLAYING) updateSound(true);
           if (event.data === window.YT.PlayerState.PAUSED || event.data === window.YT.PlayerState.ENDED) updateSound(false);
         },
-        onError: () => { wantsAudio = false; updateSound(false, 'AUDIO UNAVAILABLE'); }
+        onError: () => { wantsAudio = false; updateSound(false, 'AUDIO UNAVAILABLE'); },
+        onAutoplayBlocked: () => { updateSound(false, 'TAP TO PLAY'); }
       }
     });
   }
@@ -145,7 +146,11 @@
       catch (_) { updateSound(false, 'SOUND OFF'); }
     }
   });
-  // Prepare the silent player early so a tap can start playback in the same gesture.
+  // Attempt to start the soundtrack immediately when the invitation opens.
+  // Some browsers block audible autoplay until the visitor interacts; the fixed
+  // music button remains available to start it with one tap in that case.
+  wantsAudio = true;
+  updateSound(false, 'STARTING MUSIC');
   loadPlayer();
 
 
