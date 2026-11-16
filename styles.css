@@ -3226,3 +3226,101 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   }
 }
 
+
+
+/* Gradual finger-to-ivory transition: keep the photo crisp and let it dissolve
+   over a long vertical distance into the same neutral canvas as the invitation. */
+.hero-editorial{
+  background:linear-gradient(
+    to bottom,
+    #e1e0db 0%,
+    #e5e3dd 28%,
+    #e9e7e1 56%,
+    #eeece6 82%,
+    #eeece6 100%
+  )!important;
+}
+.hero-editorial .hero-image{
+  background:transparent!important;
+  overflow:visible!important;
+}
+.hero-editorial .hero-image img{
+  filter:grayscale(.16) brightness(1.055) contrast(.96)!important;
+  -webkit-mask-image:linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 27%,
+    rgba(0,0,0,.97) 34%,
+    rgba(0,0,0,.90) 42%,
+    rgba(0,0,0,.79) 51%,
+    rgba(0,0,0,.64) 61%,
+    rgba(0,0,0,.47) 71%,
+    rgba(0,0,0,.30) 81%,
+    rgba(0,0,0,.15) 91%,
+    rgba(0,0,0,.06) 97%,
+    transparent 100%
+  )!important;
+  mask-image:linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 27%,
+    rgba(0,0,0,.97) 34%,
+    rgba(0,0,0,.90) 42%,
+    rgba(0,0,0,.79) 51%,
+    rgba(0,0,0,.64) 61%,
+    rgba(0,0,0,.47) 71%,
+    rgba(0,0,0,.30) 81%,
+    rgba(0,0,0,.15) 91%,
+    rgba(0,0,0,.06) 97%,
+    transparent 100%
+  )!important;
+}
+.hero-editorial .hero-image::after,
+.hero-editorial .hero-image-fade{
+  content:none!important;
+  display:none!important;
+  background:transparent!important;
+}
+.hero-editorial .hero-content{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+@media(max-width:760px){
+  .hero-editorial{
+    background:linear-gradient(
+      to bottom,
+      #e1e0db 0%,
+      #e6e4de 30%,
+      #ebe9e3 62%,
+      #eeece6 100%
+    )!important;
+  }
+  .hero-editorial .hero-image img{
+    filter:grayscale(.16) brightness(1.055) contrast(.96)!important;
+    -webkit-mask-image:linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 24%,
+      rgba(0,0,0,.96) 33%,
+      rgba(0,0,0,.86) 43%,
+      rgba(0,0,0,.71) 55%,
+      rgba(0,0,0,.53) 67%,
+      rgba(0,0,0,.33) 79%,
+      rgba(0,0,0,.15) 91%,
+      transparent 100%
+    )!important;
+    mask-image:linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 24%,
+      rgba(0,0,0,.96) 33%,
+      rgba(0,0,0,.86) 43%,
+      rgba(0,0,0,.71) 55%,
+      rgba(0,0,0,.53) 67%,
+      rgba(0,0,0,.33) 79%,
+      rgba(0,0,0,.15) 91%,
+      transparent 100%
+    )!important;
+  }
+}
