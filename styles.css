@@ -3127,3 +3127,101 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     )!important;
   }
 }
+
+
+/* Correct the photo-to-type transition at the actual image edge.
+   The source is a very wide photograph, so object-fit:contain leaves the lower
+   half of the hero empty. Fade the image inside its own natural-height box. */
+.hero-editorial{
+  background:#eeece6!important;
+}
+.hero-editorial .hero-image{
+  position:absolute!important;
+  inset:0!important;
+  z-index:-2!important;
+  overflow:visible!important;
+  background:transparent!important;
+}
+.hero-editorial .hero-image img{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  max-height:none!important;
+  object-fit:unset!important;
+  object-position:top center!important;
+  transform:none!important;
+  filter:grayscale(.18) brightness(1.055) contrast(.96)!important;
+  -webkit-mask-image:linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 42%,
+    rgba(0,0,0,.96) 50%,
+    rgba(0,0,0,.88) 59%,
+    rgba(0,0,0,.74) 68%,
+    rgba(0,0,0,.56) 77%,
+    rgba(0,0,0,.34) 86%,
+    rgba(0,0,0,.15) 94%,
+    transparent 100%
+  )!important;
+  mask-image:linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 42%,
+    rgba(0,0,0,.96) 50%,
+    rgba(0,0,0,.88) 59%,
+    rgba(0,0,0,.74) 68%,
+    rgba(0,0,0,.56) 77%,
+    rgba(0,0,0,.34) 86%,
+    rgba(0,0,0,.15) 94%,
+    transparent 100%
+  )!important;
+}
+/* No second overlay: it was spanning the full viewport and creating a hard midpoint seam. */
+.hero-editorial .hero-image::after{
+  content:none!important;
+  display:none!important;
+}
+.hero-editorial .hero-image-fade{
+  background:transparent!important;
+  display:none!important;
+}
+.hero-editorial .hero-content{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  text-shadow:0 1px 10px rgba(238,236,230,.24)!important;
+}
+@media(max-width:760px){
+  .hero-editorial{background:#eeece6!important}
+  .hero-editorial .hero-image img{
+    width:100%!important;
+    height:auto!important;
+    max-height:none!important;
+    object-fit:unset!important;
+    filter:grayscale(.18) brightness(1.055) contrast(.96)!important;
+    -webkit-mask-image:linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 38%,
+      rgba(0,0,0,.95) 48%,
+      rgba(0,0,0,.86) 58%,
+      rgba(0,0,0,.70) 68%,
+      rgba(0,0,0,.50) 78%,
+      rgba(0,0,0,.28) 88%,
+      rgba(0,0,0,.10) 96%,
+      transparent 100%
+    )!important;
+    mask-image:linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 38%,
+      rgba(0,0,0,.95) 48%,
+      rgba(0,0,0,.86) 58%,
+      rgba(0,0,0,.70) 68%,
+      rgba(0,0,0,.50) 78%,
+      rgba(0,0,0,.28) 88%,
+      rgba(0,0,0,.10) 96%,
+      transparent 100%
+    )!important;
+  }
+}
