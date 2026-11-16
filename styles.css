@@ -3669,3 +3669,19 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     z-index: 1000 !important;
   }
 }
+
+
+/* Reduce the countdown heading scale to a more balanced size. */
+.countdown-inner h2,
+#countdownTitle {
+  font-size: clamp(25px, 2.7vw, 36px) !important;
+  line-height: 1.12 !important;
+}
+
+@media (max-width: 760px) {
+  .countdown-inner h2,
+  #countdownTitle {
+    font-size: clamp(21px, 6vw, 27px) !important;
+    line-height: 1.15 !important;
+  }
+}
