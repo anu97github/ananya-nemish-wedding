@@ -4336,3 +4336,33 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
 @media(prefers-reduced-motion:reduce){
   .guestbook-card.is-open,.guestbook-thankyou{animation:none}
 }
+
+
+/* Minimal wedding footer: compact, quiet, and free of decorative florals. */
+.site-footer.site-footer-minimal{
+  min-height:0;
+  padding:22px 18px 20px;
+  background:#f8f4ec;
+  border-top:1px solid rgba(198,173,123,.28);
+}
+.site-footer-minimal .footer-garden{display:none}
+.site-footer-minimal .footer-content{max-width:620px}
+.site-footer-minimal .footer-monogram{
+  width:58px;height:42px;object-fit:contain;margin:0 auto 7px;
+}
+.site-footer-minimal .footer-date{
+  margin:0;color:#84745d;font-size:10px;letter-spacing:.16em;
+}
+.site-footer-minimal .footer-thanks{
+  margin:8px auto 4px;color:#786d5d;font-size:10px;letter-spacing:.13em;
+}
+.site-footer-minimal .back-to-top{
+  margin-top:2px;padding-bottom:2px;font-size:9px;letter-spacing:.15em;
+}
+@media(max-width:760px){
+  .site-footer.site-footer-minimal{padding:18px 14px 16px}
+  .site-footer-minimal .footer-monogram{width:52px;height:38px;margin-bottom:6px}
+  .site-footer-minimal .footer-date{font-size:9px;letter-spacing:.12em}
+  .site-footer-minimal .footer-thanks{font-size:9px;letter-spacing:.09em;margin:7px auto 3px}
+  .site-footer-minimal .back-to-top{font-size:8px}
+}
