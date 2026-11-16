@@ -11,7 +11,6 @@
   <link rel="preconnect" href="https://www.youtube.com">
   <link rel="preconnect" href="https://www.googlevideo.com" crossorigin>
   <link rel="preconnect" href="https://i.ytimg.com">
-  <link rel="preload" as="script" href="https://www.youtube.com/iframe_api">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -20,7 +19,7 @@
   <script defer src="script.js"></script>
 </head>
 <body>
-  <div class="audio-engine" aria-hidden="true"><div id="youtubePlayer"></div></div>
+  <div class="audio-engine" aria-hidden="true"><iframe id="youtubePlayer" title="Wedding music" src="https://www.youtube.com/embed/-2w18bd-ZQ4?autoplay=1&amp;mute=1&amp;playsinline=1&amp;controls=0&amp;loop=1&amp;playlist=-2w18bd-ZQ4&amp;enablejsapi=1" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" loading="eager"></iframe></div>
   <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false" aria-label="Turn wedding music on">
     <span class="sound-symbol" aria-hidden="true">♫</span><span id="soundLabel">SOUND OFF</span>
   </button>
