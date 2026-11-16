@@ -81,71 +81,130 @@
   updateCountdown();
   if (countdown) window.setInterval(updateCountdown, 1000);
 
-  // Official soundtrack. Audio begins only after the visitor taps the sound control.
-  // The YouTube player is kept out of the visual layout; no pop-up or player panel appears.
+  // Official soundtrack. Browsers generally block audible autoplay.
+// Start the player muted on load where permitted, then enable sound on the
+// visitor's first interaction or when they tap the persistent music control.
   const soundButton = document.getElementById('soundToggle');
   const soundLabel = document.getElementById('soundLabel');
   let player = null;
   let playerReady = false;
   let apiLoading = false;
-  let wantsAudio = false;
   let soundOn = false;
+  let mutedAutoplayStarted = false;
+  let userHasInteracted = false;
   const trackId = '-2w18bd-ZQ4';
+
   function updateSound(on, label = on ? 'SOUND ON' : 'SOUND OFF') {
     soundOn = on;
     soundButton?.setAttribute('aria-pressed', String(on));
     soundButton?.setAttribute('aria-label', on ? 'Turn wedding music off' : 'Turn wedding music on');
     if (soundLabel) soundLabel.textContent = label;
   }
+
+  function enableSoundFromGesture() {
+    userHasInteracted = true;
+    if (!playerReady || !player) {
+      updateSound(false, 'LOADING MUSIC');
+      loadPlayer();
+      return;
+    }
+    try {
+      player.unMute();
+      player.setVolume(58);
+      player.playVideo();
+      updateSound(true, 'SOUND ON');
+    } catch (_) {
+      updateSound(false, 'TAP TO PLAY');
+    }
+  }
+
   function createPlayer() {
     if (player || !window.YT?.Player) return;
     player = new window.YT.Player('youtubePlayer', {
       width: '200', height: '200', videoId: trackId,
-      playerVars: { autoplay: 0, controls: 0, playsinline: 1, rel: 0, modestbranding: 1, loop: 1, playlist: trackId },
+      playerVars: { autoplay: 1, controls: 0, playsinline: 1, rel: 0, modestbranding: 1, loop: 1, playlist: trackId },
       events: {
         onReady: event => {
           playerReady = true;
           event.target.setVolume(58);
-          if (wantsAudio) {
-            try { event.target.unMute(); event.target.playVideo(); }
-            catch (_) { updateSound(false, 'SOUND OFF'); }
+          // Start buffering immediately while muted; browsers allow this more often.
+          // If the visitor already tapped while the player was loading, honour that
+          // gesture now instead of making them tap a second time.
+          try {
+            event.target.setVolume(58);
+            if (userHasInteracted) {
+              event.target.unMute();
+              event.target.playVideo();
+              updateSound(true, 'SOUND ON');
+            } else {
+              event.target.mute();
+              event.target.playVideo();
+              mutedAutoplayStarted = true;
+              updateSound(false, 'TAP FOR MUSIC');
+            }
+          } catch (_) {
+            updateSound(false, 'TAP TO PLAY');
           }
         },
         onStateChange: event => {
-          if (event.data === window.YT.PlayerState.PLAYING) updateSound(true);
-          if (event.data === window.YT.PlayerState.PAUSED || event.data === window.YT.PlayerState.ENDED) updateSound(false);
+          if (event.data === window.YT.PlayerState.PLAYING && !soundOn) {
+            updateSound(false, 'TAP FOR MUSIC');
+          }
+          if (event.data === window.YT.PlayerState.PAUSED || event.data === window.YT.PlayerState.ENDED) {
+            updateSound(false);
+          }
         },
-        onError: () => { wantsAudio = false; updateSound(false, 'AUDIO UNAVAILABLE'); }
+        onError: () => updateSound(false, 'AUDIO UNAVAILABLE'),
+        onAutoplayBlocked: () => updateSound(false, 'TAP TO PLAY')
       }
     });
   }
+
   function loadPlayer() {
-    if (window.YT?.Player) { createPlayer(); return; }
+    if (window.YT?.Player) {
+      createPlayer();
+      return;
+    }
     if (apiLoading) return;
     apiLoading = true;
     window.onYouTubeIframeAPIReady = createPlayer;
     const script = document.createElement('script');
     script.src = 'https://www.youtube.com/iframe_api';
     script.async = true;
-    script.onerror = () => { apiLoading = false; updateSound(false, 'AUDIO UNAVAILABLE'); };
+    script.onerror = () => {
+      apiLoading = false;
+      updateSound(false, 'AUDIO UNAVAILABLE');
+    };
     document.head.appendChild(script);
   }
-  soundButton?.addEventListener('click', () => {
-    if (wantsAudio || soundOn) {
-      wantsAudio = false;
-      try { player?.pauseVideo(); } catch (_) {}
-      updateSound(false);
-      return;
+
+  function toggleMusic() {
+    if (soundOn) {
+      try { player?.mute(); } catch (_) {}
+      updateSound(false, 'MUSIC OFF');
+    } else {
+      enableSoundFromGesture();
     }
-    wantsAudio = true;
-    updateSound(false, 'LOADING');
-    loadPlayer();
-    if (playerReady && player) {
-      try { player.unMute(); player.playVideo(); }
-      catch (_) { updateSound(false, 'SOUND OFF'); }
-    }
-  });
-  // Prepare the silent player early so a tap can start playback in the same gesture.
+  }
+
+  soundButton?.addEventListener('click', toggleMusic);
+
+  // The first genuine interaction with the page enables sound when the player
+  // is already ready. The dedicated music button remains the reliable fallback.
+  function enableOnFirstInteraction() {
+    if (soundOn) return;
+    // Record the gesture even if YouTube is still downloading. onReady will
+    // immediately unmute and start playback once the player becomes available.
+    userHasInteracted = true;
+    if (playerReady) enableSoundFromGesture();
+    else updateSound(false, 'STARTING MUSIC');
+    document.removeEventListener('pointerdown', enableOnFirstInteraction, true);
+    document.removeEventListener('keydown', enableOnFirstInteraction, true);
+  }
+  document.addEventListener('pointerdown', enableOnFirstInteraction, true);
+  document.addEventListener('keydown', enableOnFirstInteraction, true);
+
+  updateSound(false, 'LOADING MUSIC');
   loadPlayer();
 
 

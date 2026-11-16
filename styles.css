@@ -27,7 +27,7 @@ img{max-width:100%}
 .audio-engine{position:fixed;left:-10000px;top:0;width:180px;height:180px;overflow:hidden;pointer-events:none}
 .audio-engine iframe{width:180px;height:180px}
 .sound-toggle{
-  position:fixed;z-index:90;top:18px;right:20px;width:46px;height:46px;border-radius:50%;
+  position:fixed;z-index:1000;right:20px;bottom:calc(22px + env(safe-area-inset-bottom, 0px));top:auto;width:46px;height:46px;border-radius:50%;
   display:grid;place-items:center;border:1px solid rgba(164,129,72,.55);
   background:rgba(255,251,244,.92);color:var(--olive);box-shadow:0 5px 20px rgba(57,43,32,.11);
   cursor:pointer;transition:background .25s,border-color .25s,transform .25s;
@@ -3492,4 +3492,233 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     grid-template-columns: minmax(0, 1fr) !important;
     gap: 5px !important;
   }
+}
+
+
+/* Mobile-first invitation layout:
+   The portrait cover artwork has a large intentionally empty lower area.
+   Crop that excess from the rendered hero so the family section follows the
+   invitation shortly after the date/location, rather than after a long blank
+   scroll. Keep the artwork anchored to the top so all invitation text remains. */
+@media (max-width: 767px) {
+  html,
+  body {
+    background: #ece3da !important;
+  }
+
+  main#home {
+    background: #ece3da !important;
+  }
+
+  .hero.hero-editorial {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    height: calc(100vw * 1.67) !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #f7eee5 !important;
+  }
+
+  .hero-editorial .hero-image,
+  .hero-editorial .hero-image picture {
+    position: absolute !important;
+    inset: 0 auto auto 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .hero-editorial .hero-image img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    object-fit: unset !important;
+    object-position: top center !important;
+    transform: none !important;
+  }
+
+  .families-countdown-section {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ece3da !important;
+  }
+
+  .families-countdown-section .families-section {
+    padding: 22px 16px 16px !important;
+    margin: 0 !important;
+    background: transparent !important;
+  }
+
+  .families-countdown-section .countdown-section {
+    padding: 16px 14px 22px !important;
+    margin: 0 !important;
+    background: transparent !important;
+  }
+}
+
+
+/* Final mobile behaviour: the invitation is exactly the opening screen.
+   Keep the hero one viewport tall; the family section begins immediately
+   after it and is revealed only when the visitor scrolls. */
+@media (max-width: 767px) {
+  html,
+  body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+    background: #ece3da !important;
+  }
+
+  main#home {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ece3da !important;
+  }
+
+  main#home > .hero.hero-editorial {
+    display: block !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 100vh !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    max-height: 100svh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #f7eee5 !important;
+  }
+
+  main#home > .hero.hero-editorial .hero-image,
+  main#home > .hero.hero-editorial .hero-image picture {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  main#home > .hero.hero-editorial .hero-image img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  main#home > .families-countdown-section {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ece3da !important;
+  }
+
+  .families-countdown-section .families-section {
+    padding: 22px 16px 16px !important;
+    margin: 0 !important;
+  }
+
+  .families-countdown-section .countdown-section {
+    padding: 16px 14px 22px !important;
+    margin: 0 !important;
+  }
+}
+
+
+/* Keep "begins in" as a clear continuation of the countdown headline. */
+.countdown-inner h2 .countdown-begins {
+  display: inline-block;
+  font-size: .52em;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  vertical-align: .12em;
+}
+
+
+/* Keep the music control anchored to the bottom-right on every screen size. */
+@media (max-width: 760px) {
+  .sound-toggle {
+    position: fixed !important;
+    top: auto !important;
+    right: 16px !important;
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px)) !important;
+    z-index: 1000 !important;
+  }
+}
+
+
+/* Reduce the countdown heading scale to a more balanced size. */
+.countdown-inner h2,
+#countdownTitle {
+  font-size: clamp(25px, 2.7vw, 36px) !important;
+  line-height: 1.12 !important;
+}
+
+@media (max-width: 760px) {
+  .countdown-inner h2,
+  #countdownTitle {
+    font-size: clamp(21px, 6vw, 27px) !important;
+    line-height: 1.15 !important;
+  }
+}
+
+
+/* Keep the original elegant italic serif heading, at a smaller scale. */
+#countdownTitle {
+  font-family: var(--serif) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  font-size: clamp(25px, 2.7vw, 36px) !important;
+  line-height: 1.12 !important;
+  letter-spacing: .02em !important;
+  text-transform: uppercase !important;
+}
+
+@media (max-width: 760px) {
+  #countdownTitle {
+    font-size: clamp(21px, 5.6vw, 27px) !important;
+    line-height: 1.15 !important;
+  }
+}
+
+/* Keep the YouTube player alive in the page's rendering tree without
+   placing it thousands of pixels off-screen, which can delay startup. */
+.audio-engine {
+  position: fixed !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  top: auto !important;
+  width: 200px !important;
+  height: 200px !important;
+  opacity: .01 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+.audio-engine iframe {
+  width: 200px !important;
+  height: 200px !important;
 }
