@@ -4103,3 +4103,30 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     line-height:10px;
   }
 }
+
+
+/* Keep the opening timeline cards comfortably inset from the viewport edge.
+   Apply to the first event on Days One and Two; later events and Day Three
+   (which is intentionally centered) keep their existing alignment. */
+#day-panel-1 .timeline-scroll,
+#day-panel-2 .timeline-scroll{
+  padding-inline-start:32px;
+  scroll-padding-inline-start:32px;
+}
+#day-panel-1 .timeline-scroll > .timeline-item:first-child,
+#day-panel-2 .timeline-scroll > .timeline-item:first-child{
+  margin-inline-start:8px;
+  scroll-margin-inline-start:32px;
+}
+@media(max-width:760px){
+  #day-panel-1 .timeline-scroll,
+  #day-panel-2 .timeline-scroll{
+    padding-inline-start:26px;
+    scroll-padding-inline-start:26px;
+  }
+  #day-panel-1 .timeline-scroll > .timeline-item:first-child,
+  #day-panel-2 .timeline-scroll > .timeline-item:first-child{
+    margin-inline-start:6px;
+    scroll-margin-inline-start:26px;
+  }
+}
