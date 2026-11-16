@@ -2499,3 +2499,138 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     )!important;
   }
 }
+
+
+/* Match the soft continuous fade used on dev: no image panel edge, no blur, and clear invitation copy. */
+.hero-editorial{
+  position:relative!important;
+  isolation:isolate!important;
+  overflow:hidden!important;
+  background:linear-gradient(
+    180deg,
+    #d2d1cc 0%,
+    #d8d6d0 28%,
+    #e2ded6 48%,
+    #eee8df 70%,
+    #f6f1e9 86%,
+    #fbf7f0 100%
+  )!important;
+}
+.hero-editorial .hero-image{
+  position:absolute!important;
+  z-index:0!important;
+  top:0!important;
+  left:0!important;
+  right:0!important;
+  bottom:auto!important;
+  width:100%!important;
+  height:auto!important;
+  overflow:visible!important;
+  background:transparent!important;
+  -webkit-mask-image:none!important;
+  mask-image:none!important;
+}
+.hero-editorial .hero-image img{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  max-width:none!important;
+  max-height:none!important;
+  object-fit:unset!important;
+  object-position:center top!important;
+  transform:none!important;
+  filter:grayscale(.62) sepia(.10) saturate(.88) brightness(1.035)!important;
+  -webkit-mask-image:linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 52%,
+    rgba(0,0,0,.98) 58%,
+    rgba(0,0,0,.90) 65%,
+    rgba(0,0,0,.72) 73%,
+    rgba(0,0,0,.46) 82%,
+    rgba(0,0,0,.20) 92%,
+    transparent 100%
+  )!important;
+  mask-image:linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 52%,
+    rgba(0,0,0,.98) 58%,
+    rgba(0,0,0,.90) 65%,
+    rgba(0,0,0,.72) 73%,
+    rgba(0,0,0,.46) 82%,
+    rgba(0,0,0,.20) 92%,
+    transparent 100%
+  )!important;
+}
+.hero-editorial .hero-image-fade{
+  position:absolute!important;
+  z-index:1!important;
+  inset:0!important;
+  pointer-events:none!important;
+  background:linear-gradient(
+    180deg,
+    rgba(210,209,204,0) 0%,
+    rgba(216,214,208,0) 32%,
+    rgba(226,222,214,.05) 43%,
+    rgba(238,232,223,.18) 56%,
+    rgba(246,241,233,.48) 70%,
+    rgba(251,247,240,.82) 84%,
+    #fbf7f0 100%
+  )!important;
+}
+.hero-editorial .hero-content{
+  position:absolute!important;
+  z-index:3!important;
+  text-shadow:0 1px 12px rgba(251,247,240,.88)!important;
+}
+.hero-editorial .hero-invitation{
+  color:#766b3d!important;
+  text-shadow:0 1px 10px rgba(251,247,240,.98)!important;
+}
+@media(max-width:760px){
+  .hero-editorial{
+    background:linear-gradient(
+      180deg,
+      #d2d1cc 0%,
+      #ddd9d2 30%,
+      #e9e3da 55%,
+      #f3ede5 78%,
+      #fbf7f0 100%
+    )!important;
+  }
+  .hero-editorial .hero-image img{
+    filter:grayscale(.62) sepia(.10) saturate(.88) brightness(1.035)!important;
+    -webkit-mask-image:linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 48%,
+      rgba(0,0,0,.96) 56%,
+      rgba(0,0,0,.82) 65%,
+      rgba(0,0,0,.56) 77%,
+      rgba(0,0,0,.22) 91%,
+      transparent 100%
+    )!important;
+    mask-image:linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 48%,
+      rgba(0,0,0,.96) 56%,
+      rgba(0,0,0,.82) 65%,
+      rgba(0,0,0,.56) 77%,
+      rgba(0,0,0,.22) 91%,
+      transparent 100%
+    )!important;
+  }
+  .hero-editorial .hero-image-fade{
+    background:linear-gradient(
+      180deg,
+      rgba(210,209,204,0) 0%,
+      rgba(221,217,210,0) 28%,
+      rgba(233,227,218,.08) 42%,
+      rgba(243,237,229,.36) 60%,
+      rgba(251,247,240,.82) 82%,
+      #fbf7f0 100%
+    )!important;
+  }
+}
