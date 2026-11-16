@@ -81,16 +81,16 @@
   updateCountdown();
   if (countdown) window.setInterval(updateCountdown, 1000);
 
-  // Official soundtrack. Try audible autoplay on page load, then start on the first
-  // visitor interaction if the browser blocks autoplay (common on mobile Safari/Chrome).
+  // Official soundtrack. Browsers generally block audible autoplay.
+// Start the player muted on load where permitted, then enable sound on the
+// visitor's first interaction or when they tap the persistent music control.
   const soundButton = document.getElementById('soundToggle');
   const soundLabel = document.getElementById('soundLabel');
   let player = null;
   let playerReady = false;
   let apiLoading = false;
-  let wantsAudio = true;
   let soundOn = false;
-  let interactionBound = false;
+  let mutedAutoplayStarted = false;
   const trackId = '-2w18bd-ZQ4';
 
   function updateSound(on, label = on ? 'SOUND ON' : 'SOUND OFF') {
@@ -100,10 +100,9 @@
     if (soundLabel) soundLabel.textContent = label;
   }
 
-  function startMusicFromGesture() {
-    wantsAudio = true;
+  function enableSoundFromGesture() {
     if (!playerReady || !player) {
-      updateSound(false, 'STARTING MUSIC');
+      updateSound(false, 'LOADING MUSIC');
       loadPlayer();
       return;
     }
@@ -111,7 +110,7 @@
       player.unMute();
       player.setVolume(58);
       player.playVideo();
-      updateSound(false, 'STARTING MUSIC');
+      updateSound(true, 'SOUND ON');
     } catch (_) {
       updateSound(false, 'TAP TO PLAY');
     }
@@ -126,34 +125,26 @@
         onReady: event => {
           playerReady = true;
           event.target.setVolume(58);
-          if (wantsAudio) {
-            try {
-              event.target.unMute();
-              event.target.playVideo();
-            } catch (_) {
-              wantsAudio = false;
-              updateSound(false, 'TAP TO PLAY');
-            }
+          // Muted autoplay is permitted by more browsers than audible autoplay.
+          try {
+            event.target.mute();
+            event.target.playVideo();
+            mutedAutoplayStarted = true;
+            updateSound(false, 'TAP FOR MUSIC');
+          } catch (_) {
+            updateSound(false, 'TAP TO PLAY');
           }
         },
         onStateChange: event => {
-          if (event.data === window.YT.PlayerState.PLAYING) {
-            wantsAudio = true;
-            updateSound(true);
+          if (event.data === window.YT.PlayerState.PLAYING && !soundOn) {
+            updateSound(false, 'TAP FOR MUSIC');
           }
           if (event.data === window.YT.PlayerState.PAUSED || event.data === window.YT.PlayerState.ENDED) {
-            wantsAudio = false;
             updateSound(false);
           }
         },
-        onError: () => {
-          wantsAudio = false;
-          updateSound(false, 'AUDIO UNAVAILABLE');
-        },
-        onAutoplayBlocked: () => {
-          wantsAudio = false;
-          updateSound(false, 'TAP TO PLAY');
-        }
+        onError: () => updateSound(false, 'AUDIO UNAVAILABLE'),
+        onAutoplayBlocked: () => updateSound(false, 'TAP TO PLAY')
       }
     });
   }
@@ -171,7 +162,6 @@
     script.async = true;
     script.onerror = () => {
       apiLoading = false;
-      wantsAudio = false;
       updateSound(false, 'AUDIO UNAVAILABLE');
     };
     document.head.appendChild(script);
@@ -179,29 +169,28 @@
 
   function toggleMusic() {
     if (soundOn) {
-      wantsAudio = false;
-      try { player?.pauseVideo(); } catch (_) {}
-      updateSound(false);
+      try { player?.mute(); } catch (_) {}
+      updateSound(false, 'MUSIC OFF');
     } else {
-      startMusicFromGesture();
+      enableSoundFromGesture();
     }
   }
 
   soundButton?.addEventListener('click', toggleMusic);
 
-  // Any first tap/click/key on the invitation can grant the browser's required
-  // user activation; guests do not have to find the music button specifically.
-  function startOnFirstInteraction() {
-    if (soundOn) return;
-    startMusicFromGesture();
-    document.removeEventListener('pointerdown', startOnFirstInteraction, true);
-    document.removeEventListener('keydown', startOnFirstInteraction, true);
+  // The first genuine interaction with the page enables sound when the player
+  // is already ready. The dedicated music button remains the reliable fallback.
+  function enableOnFirstInteraction() {
+    if (!soundOn && playerReady) enableSoundFromGesture();
+    if (soundOn) {
+      document.removeEventListener('pointerdown', enableOnFirstInteraction, true);
+      document.removeEventListener('keydown', enableOnFirstInteraction, true);
+    }
   }
-  document.addEventListener('pointerdown', startOnFirstInteraction, true);
-  document.addEventListener('keydown', startOnFirstInteraction, true);
+  document.addEventListener('pointerdown', enableOnFirstInteraction, true);
+  document.addEventListener('keydown', enableOnFirstInteraction, true);
 
-  // Attempt audible autoplay immediately. Browsers may block it until interaction.
-  updateSound(false, 'STARTING MUSIC');
+  updateSound(false, 'LOADING MUSIC');
   loadPlayer();
 
 
