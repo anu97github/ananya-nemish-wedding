@@ -4130,3 +4130,299 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     scroll-margin-inline-start:26px;
   }
 }
+
+
+/* Make event times easier to scan without changing event-title sizing. */
+.timeline-time{
+  font-size:13px;
+}
+@media(max-width:760px){
+  .timeline-time{
+    font-size:12px;
+  }
+}
+
+
+/* Venue section refinements: clearer location and no decorative corner florals. */
+.venue-location{
+  font-size:16px;
+  line-height:1.4;
+  letter-spacing:.18em;
+  margin:9px 0 14px;
+}
+.venue-description{
+  max-width:680px;
+  margin:0 auto 17px;
+  font-size:18px;
+  line-height:1.5;
+}
+@media(max-width:760px){
+  .venue-location{
+    font-size:14px;
+    letter-spacing:.12em;
+  }
+  .venue-description{
+    max-width:560px;
+    font-size:16px;
+    line-height:1.45;
+  }
+}
+
+
+/* Replace the text-only Maps button with a clear, clickable map preview. */
+.venue-map-preview{
+  position:relative;
+  display:block;
+  width:min(100%,520px);
+  height:210px;
+  margin:20px auto 25px;
+  overflow:hidden;
+  border:1px solid rgba(162,128,75,.35);
+  border-radius:5px;
+  box-shadow:0 8px 22px rgba(74,62,47,.12);
+  background:#e9e6dd;
+  text-decoration:none;
+}
+.venue-map-preview iframe{
+  display:block;
+  width:100%;
+  height:100%;
+  border:0;
+  pointer-events:none;
+}
+.venue-map-open{
+  position:absolute;
+  right:10px;
+  bottom:10px;
+  padding:7px 11px;
+  color:#fff;
+  background:rgba(83,99,67,.92);
+  border:1px solid rgba(255,255,255,.7);
+  border-radius:2px;
+  font-family:var(--serif),Georgia,serif;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.13em;
+  line-height:1;
+  box-shadow:0 2px 8px rgba(0,0,0,.16);
+}
+.venue-map-preview:focus-visible{
+  outline:3px solid #a27a45;
+  outline-offset:4px;
+}
+@media(max-width:760px){
+  .venue-map-preview{
+    width:100%;
+    height:180px;
+    margin:17px auto 22px;
+  }
+  .venue-map-open{
+    right:8px;
+    bottom:8px;
+    font-size:9px;
+    padding:7px 9px;
+  }
+}
+
+
+/* Interactive keepsake guestbook letter. */
+.couple-note-section{
+  padding:clamp(58px,7vw,88px) 22px;
+  background:linear-gradient(110deg,#f6eeeb 0%,#fffaf4 50%,#eff2eb 100%);
+}
+.note-section-inner{max-width:900px;margin:0 auto}
+.couple-note-section h2{margin:8px 0 12px}
+.note-invitation{
+  max-width:760px!important;
+  margin:0 auto 25px!important;
+  font-size:clamp(16px,1.7vw,19px)!important;
+  line-height:1.45!important;
+}
+.note-cta{
+  appearance:none;
+  cursor:pointer;
+  background:rgba(255,253,249,.62);
+  font-family:var(--serif),Georgia,serif;
+}
+.note-cta span{font-size:17px}
+.guestbook-card{
+  max-width:740px;
+  margin:32px auto 0;
+  padding:clamp(12px,2vw,20px);
+  background:rgba(255,253,249,.82);
+  border:1px solid rgba(168,132,81,.35);
+  box-shadow:0 18px 48px rgba(72,51,43,.09);
+  text-align:left;
+  transform-origin:top center;
+}
+.guestbook-card[hidden]{display:none}
+.guestbook-card.is-open{animation:letterUnfold .7s cubic-bezier(.2,.75,.25,1) both}
+@keyframes letterUnfold{
+  0%{opacity:0;transform:translateY(22px) rotateX(-5deg);clip-path:inset(0 0 100% 0)}
+  100%{opacity:1;transform:translateY(0) rotateX(0);clip-path:inset(0 0 0 0)}
+}
+.guestbook-card-inner{
+  position:relative;
+  padding:clamp(22px,4vw,38px);
+  border:1px solid rgba(168,132,81,.2);
+  background:
+    repeating-linear-gradient(to bottom,transparent 0,transparent 41px,rgba(133,157,166,.22) 42px,transparent 43px),
+    #fffdf8;
+}
+.guestbook-topline{
+  display:flex;justify-content:space-between;align-items:center;
+  color:#9b8057;font-size:10px;font-weight:700;letter-spacing:.2em;
+}
+.guestbook-topline span:last-child{font-size:18px;color:#a98450}
+.guestbook-dear{
+  margin:27px 0 20px;
+  text-align:center;
+  color:var(--dark-olive);
+  font:italic 500 clamp(27px,4vw,38px)/1.1 var(--serif);
+}
+.guestbook-form{display:flex;flex-direction:column;gap:10px}
+.guestbook-message-label,.guestbook-name-label{
+  color:#8c775f;font-size:10px;font-weight:700;letter-spacing:.17em;
+}
+.guestbook-form textarea{
+  width:100%;min-height:160px;resize:vertical;
+  padding:15px 13px;border:1px solid rgba(168,132,81,.24);
+  border-radius:2px;background:rgba(255,255,255,.55);
+  color:#5b5148;font:500 19px/1.75 var(--serif);
+  outline:none;transition:border-color .2s,box-shadow .2s;
+}
+.guestbook-form textarea:focus,.guestbook-form input:focus{
+  border-color:#9e875f;box-shadow:0 0 0 3px rgba(173,133,70,.11);
+}
+.guestbook-form textarea::placeholder,.guestbook-form input::placeholder{
+  color:#b5a99b;font-style:italic;
+}
+.guestbook-name-label{align-self:flex-end;margin-top:8px}
+.guestbook-form input[name="name"]{
+  align-self:flex-end;width:min(100%,300px);
+  padding:10px 2px;border:0;border-bottom:1px solid #c9b99f;
+  border-radius:0;background:transparent;color:#5b5148;
+  font:italic 500 19px/1.3 var(--serif);text-align:right;outline:none;
+}
+.guestbook-submit{
+  display:flex;justify-content:space-between;align-items:center;
+  width:min(100%,320px);margin:22px auto 0;padding:14px 22px;
+  border:1px solid #78845f;border-radius:40px;background:#78845f;color:#fffdf6;
+  font:700 11px/1 var(--serif);letter-spacing:.17em;cursor:pointer;
+  transition:transform .2s,background .2s,box-shadow .2s;
+}
+.guestbook-submit:hover{background:#586846;transform:translateY(-2px);box-shadow:0 8px 18px rgba(72,81,55,.16)}
+.guestbook-submit:disabled{opacity:.65;cursor:wait;transform:none}
+.guestbook-submit-frame{position:absolute;width:0;height:0;border:0;visibility:hidden}
+.guestbook-feedback{margin:6px 0 0;text-align:center;color:#596744;font-size:14px}
+.guestbook-feedback.is-error{color:#9b4e4e}
+.guestbook-thankyou{
+  margin:20px auto 4px;text-align:center;color:#596744;
+  font:italic 500 24px/1.4 var(--serif);
+  animation:noteThankyou .6s ease both;
+}
+@keyframes noteThankyou{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.guestbook-footnote{margin:18px 0 0;text-align:center;color:#9a8876;font-size:12px;font-style:italic}
+.guestbook-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+@media(max-width:760px){
+  .couple-note-section{padding:56px 18px}
+  .note-invitation{max-width:480px!important;font-size:16px!important}
+  .guestbook-card{margin-top:25px;padding:9px}
+  .guestbook-card-inner{padding:22px 17px}
+  .guestbook-dear{margin:23px 0 17px}
+  .guestbook-form textarea{min-height:180px;font-size:17px}
+  .guestbook-submit{width:100%;max-width:300px}
+}
+@media(prefers-reduced-motion:reduce){
+  .guestbook-card.is-open,.guestbook-thankyou{animation:none}
+}
+
+
+/* Minimal wedding footer: compact, quiet, and free of decorative florals. */
+.site-footer.site-footer-minimal{
+  min-height:0;
+  padding:22px 18px 20px;
+  background:#f8f4ec;
+  border-top:1px solid rgba(198,173,123,.28);
+}
+.site-footer-minimal .footer-garden{display:none}
+.site-footer-minimal .footer-content{max-width:620px}
+.site-footer-minimal .footer-monogram{
+  width:58px;height:42px;object-fit:contain;margin:0 auto 7px;
+}
+.site-footer-minimal .footer-date{
+  margin:0;color:#84745d;font-size:10px;letter-spacing:.16em;
+}
+.site-footer-minimal .footer-thanks{
+  margin:8px auto 4px;color:#786d5d;font-size:10px;letter-spacing:.13em;
+}
+.site-footer-minimal .back-to-top{
+  margin-top:2px;padding-bottom:2px;font-size:9px;letter-spacing:.15em;
+}
+@media(max-width:760px){
+  .site-footer.site-footer-minimal{padding:18px 14px 16px}
+  .site-footer-minimal .footer-monogram{width:52px;height:38px;margin-bottom:6px}
+  .site-footer-minimal .footer-date{font-size:9px;letter-spacing:.12em}
+  .site-footer-minimal .footer-thanks{font-size:9px;letter-spacing:.09em;margin:7px auto 3px}
+  .site-footer-minimal .back-to-top{font-size:8px}
+}
+
+
+/* Footer composition follows the supplied invitation reference, without florals or landscape artwork. */
+.site-footer.site-footer-minimal{
+  position:relative;
+  isolation:isolate;
+  min-height:0;
+  overflow:hidden;
+  padding:48px 20px 38px;
+  text-align:center;
+  background:#f8f4ed;
+  border-top:0;
+}
+.site-footer-minimal .footer-garden{display:none!important}
+.site-footer-minimal .footer-content{max-width:900px;margin:0 auto}
+.site-footer-minimal .footer-monogram{
+  display:block;width:150px;height:150px;object-fit:contain;
+  margin:0 auto 28px;
+}
+.site-footer-minimal .footer-rule{
+  display:flex;align-items:center;justify-content:center;gap:25px;
+  margin:0 auto 40px;color:#b48a45;
+}
+.site-footer-minimal .footer-rule span{width:clamp(75px,16vw,136px);height:1px;background:#c6ad7b}
+.site-footer-minimal .footer-rule b{font-size:21px;font-weight:400}
+.site-footer-minimal .footer-names{
+  margin:0;color:#4e4838;font-family:var(--serif),Georgia,serif;
+  font-size:clamp(24px,3.2vw,36px);font-weight:600;letter-spacing:.24em;
+}
+.site-footer-minimal .footer-names i{color:#b48a45;font-style:normal;padding:0 13px}
+.site-footer-minimal .footer-date{
+  margin:24px 0 0;color:#84745d;font-size:clamp(12px,1.5vw,17px);
+  letter-spacing:.19em;font-weight:600;
+}
+.site-footer-minimal .footer-date span{color:#b48a45;padding:0 10px}
+.site-footer-minimal .footer-thanks{
+  margin:58px auto 42px;color:#786d5d;font-size:clamp(14px,2vw,22px);
+  letter-spacing:.17em;line-height:1.5;
+}
+.site-footer-minimal .back-to-top{
+  display:inline-block;margin:0;padding-bottom:9px;border-bottom:1px solid #c6ad7b;
+  color:#826b48;font-size:clamp(11px,1.4vw,15px);letter-spacing:.2em;font-weight:700;
+}
+@media(max-width:760px){
+  .site-footer.site-footer-minimal{padding:38px 18px 32px}
+  .site-footer-minimal .footer-monogram{width:112px;height:112px;margin-bottom:22px}
+  .site-footer-minimal .footer-rule{gap:17px;margin-bottom:30px}
+  .site-footer-minimal .footer-rule span{width:68px}
+  .site-footer-minimal .footer-names{font-size:clamp(19px,5vw,26px);letter-spacing:.16em}
+  .site-footer-minimal .footer-names i{padding:0 6px}
+  .site-footer-minimal .footer-date{margin-top:17px;font-size:11px;letter-spacing:.12em}
+  .site-footer-minimal .footer-date span{padding:0 5px}
+  .site-footer-minimal .footer-thanks{margin:42px auto 30px;font-size:13px;letter-spacing:.12em}
+  .site-footer-minimal .back-to-top{font-size:10px;letter-spacing:.15em;padding-bottom:7px}
+}
+@media(max-width:380px){
+  .site-footer-minimal .footer-names{font-size:18px}
+  .site-footer-minimal .footer-date{font-size:10px;letter-spacing:.09em}
+  .site-footer-minimal .footer-thanks{font-size:11px}
+}

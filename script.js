@@ -106,19 +106,6 @@
     weddingAudio.addEventListener('error', () => updateSound(false, 'MUSIC UNAVAILABLE'));
   }
 
-  function requestMusicOnPageClick(event) {
-    if (!event.isTrusted || !weddingAudio || intentionallyPaused) return;
-    // The floating music button has its own pause/resume handler.
-    if (soundButton?.contains(event.target)) return;
-    if (!weddingAudio.paused && !weddingAudio.muted) return;
-
-    // Invoke play() directly during the user's click/tap; no touch-specific
-    // listeners, timers, scroll handlers, or deferred gesture callbacks.
-    weddingAudio.muted = false;
-    const playRequest = weddingAudio.play();
-    playRequest?.then(() => updateSound(true, 'MUSIC ON'))
-      .catch(() => updateSound(false, 'TAP FOR MUSIC'));
-  }
 
   function toggleMusic() {
     if (!weddingAudio) return;
@@ -127,7 +114,7 @@
       weddingAudio.muted = false;
       const playRequest = weddingAudio.play();
       playRequest?.then(() => updateSound(true, 'MUSIC ON'))
-        .catch(() => updateSound(false, 'TAP FOR MUSIC'));
+        .catch(() => updateSound(false, 'MUSIC OFF'));
     } else {
       intentionallyPaused = true;
       weddingAudio.pause();
@@ -136,7 +123,6 @@
   }
 
   soundButton?.addEventListener('click', toggleMusic);
-  document.addEventListener('click', requestMusicOnPageClick, true);
 
   // Make the initial autoplay attempt immediately. If audible autoplay is
   // blocked, fall back to muted playback; a normal page tap will unmute it.
@@ -149,7 +135,7 @@
         await weddingAudio.play();
         updateSound(true, 'MUSIC PLAYING · MUTED');
       } catch (_) {
-        updateSound(false, 'TAP FOR MUSIC');
+        updateSound(false, 'MUSIC OFF');
       }
     });
   updateSound(false, 'LOADING MUSIC');
@@ -171,112 +157,91 @@
     revealItems.forEach(item => item.classList.add('is-visible'));
   }
 
-  // Submit RSVP to the Google Apps Script endpoint through a hidden iframe.
-  const form = document.getElementById('rsvpForm');
-  if (form) {
-    const guestField = document.getElementById('guestField');
-    const guestCount = document.getElementById('guestCount');
-    const feedback = document.getElementById('rsvpFeedback');
-    const submitButton = form.querySelector('.submit-rsvp');
-    const submitFrame = document.getElementById('rsvpSubmitFrame');
-    // Keep a reference to the target iframe; its load event is useful for diagnostics.
-    const submissionIdField = document.getElementById('rsvpSubmissionId');
-    const attendanceInputs = [...form.querySelectorAll('input[name="attendance"]')];
+  // Guestbook: open the keepsake letter and send notes to the shared Google Sheet.
+  const openNoteButton = document.getElementById('openNote');
+  const guestbookCard = document.getElementById('guestbookCard');
+  const guestbookForm = document.getElementById('guestbookForm');
+  if (openNoteButton && guestbookCard) {
+    openNoteButton.addEventListener('click', () => {
+      const opening = guestbookCard.hidden;
+      guestbookCard.hidden = !opening;
+      openNoteButton.setAttribute('aria-expanded', String(opening));
+      openNoteButton.innerHTML = opening
+        ? 'CLOSE YOUR NOTE <span aria-hidden="true">−</span>'
+        : 'WRITE US A NOTE <span aria-hidden="true">↗</span>';
+      if (opening) {
+        guestbookCard.classList.remove('is-open');
+        requestAnimationFrame(() => {
+          guestbookCard.classList.add('is-open');
+          if (!reducedMotion) guestbookCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          document.getElementById('guestbookMessage')?.focus({ preventScroll: true });
+        });
+      }
+    });
+  }
+  if (guestbookForm) {
+    const feedback = document.getElementById('guestbookFeedback');
+    const submitButton = guestbookForm.querySelector('.guestbook-submit');
+    const submissionIdField = document.getElementById('guestbookSubmissionId');
     let pendingSubmissionId = null;
     let submissionTimeout = null;
-    const submissionTimeoutMs = 20000;
-    function syncGuests() {
-      const decline = form.querySelector('input[name="attendance"]:checked')?.value === 'decline';
-      guestField.hidden = decline;
-      guestCount.disabled = decline;
-      if (decline) guestCount.value = '1';
-    }
-    let feedbackTimeout = null;
-    function showFeedback(message, isError = false, autoDismissMs = 0) {
-      window.clearTimeout(feedbackTimeout);
+    const showNoteFeedback = (message, isError = false) => {
       feedback.hidden = false;
       feedback.textContent = message;
       feedback.classList.toggle('is-error', isError);
-      feedback.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'nearest' });
-      if (autoDismissMs > 0) {
-        feedbackTimeout = window.setTimeout(() => {
-          feedback.hidden = true;
-          feedback.textContent = '';
-          feedback.classList.remove('is-error');
-        }, autoDismissMs);
-      }
-    }
-    function makeSubmissionId() {
-      return window.crypto?.randomUUID
-        ? window.crypto.randomUUID()
-        : 'rsvp-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2);
-    }
-    const nameInput = form.querySelector('[name="name"]');
-    // Strip digits and other non-letter characters as the guest types or pastes.
-    nameInput?.addEventListener('input', () => {
-      nameInput.value = nameInput.value.replace(/[^\p{L}\s'-]/gu, '');
-    });
-    attendanceInputs.forEach(input => input.addEventListener('change', syncGuests));
-    syncGuests();
-    form.addEventListener('submit', event => {
+    };
+    const makeNoteId = () => window.crypto?.randomUUID
+      ? window.crypto.randomUUID()
+      : 'note-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2);
+    guestbookForm.addEventListener('submit', event => {
       event.preventDefault();
-      if (!form.reportValidity()) return;
-      const endpoint = String(window.RSVP_CONFIG?.endpoint || '').trim();
+      if (!guestbookForm.reportValidity()) return;
+      const endpoint = String(window.GUESTBOOK_CONFIG?.endpoint || '').trim();
       if (!/^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(endpoint)) {
-        showFeedback('RSVP submissions are not connected yet. Please check back soon.', true);
+        showNoteFeedback('Our guestbook is not connected just yet. Please try again soon.', true);
         return;
       }
-      const attendance = form.querySelector('input[name="attendance"]:checked')?.value;
-      if (!form.querySelector('[name="name"]').value.trim() ||
-          !form.querySelector('[name="title"]').value ||
-          !['accept', 'decline'].includes(attendance)) {
-        showFeedback('Please complete the required RSVP details.', true);
+      const name = guestbookForm.elements.name.value.trim();
+      const message = guestbookForm.elements.message.value.trim();
+      if (!name || !message) {
+        showNoteFeedback('Please add your name and a little message for us.', true);
         return;
       }
-      // Keep the same ID when retrying after a timeout so a late Apps Script
-      // response cannot create a second row for the same form submission.
-      if (!pendingSubmissionId) pendingSubmissionId = makeSubmissionId();
+      if (!pendingSubmissionId) pendingSubmissionId = makeNoteId();
       submissionIdField.value = pendingSubmissionId;
-      form.action = endpoint;
+      guestbookForm.action = endpoint;
       submitButton.disabled = true;
-      submitButton.textContent = 'SUBMITTING RSVP…';
+      submitButton.innerHTML = '<span>SENDING YOUR NOTE…</span><span aria-hidden="true">✥</span>';
       feedback.hidden = true;
-      window.clearTimeout(feedbackTimeout);
       window.clearTimeout(submissionTimeout);
       submissionTimeout = window.setTimeout(() => {
         if (!pendingSubmissionId) return;
         submitButton.disabled = false;
-        submitButton.innerHTML = 'SUBMIT RSVP <span>↗</span>';
-        showFeedback('We could not confirm the response from Google Sheets. Please try again; your submission will keep the same reference to prevent duplicate entries.', true);
-      }, submissionTimeoutMs);
-      HTMLFormElement.prototype.submit.call(form);
+        submitButton.innerHTML = '<span>SEND YOUR NOTE</span><span aria-hidden="true">↗</span>';
+        showNoteFeedback('We could not confirm your note was saved. Please try again; your note will keep the same reference.', true);
+      }, 20000);
+      HTMLFormElement.prototype.submit.call(guestbookForm);
     });
     window.addEventListener('message', event => {
-      // Apps Script may deliver its HTMLService response from a sandboxed
-      // googleusercontent frame whose origin is opaque ("null"). Authenticate
-      // the response with the unpredictable per-submission ID instead.
       let result = event.data;
       if (typeof result === 'string') {
         try { result = JSON.parse(result); } catch (_) { return; }
       }
-      if (!result || result.type !== 'wedding-rsvp-result' ||
+      if (!result || result.type !== 'wedding-note-result' ||
           !pendingSubmissionId || result.submissionId !== pendingSubmissionId) return;
-
       window.clearTimeout(submissionTimeout);
       submitButton.disabled = false;
-      submitButton.innerHTML = 'SUBMIT RSVP <span>↗</span>';
+      submitButton.innerHTML = '<span>SEND YOUR NOTE</span><span aria-hidden="true">↗</span>';
       if (result.ok) {
-        const name = form.querySelector('[name="title"]').value + ' ' +
-          form.querySelector('[name="name"]').value.trim();
-        showFeedback('Thank you, ' + name + '. Your RSVP has been received successfully.', false, 6000);
-        form.reset();
-        syncGuests();
+        guestbookForm.reset();
         pendingSubmissionId = null;
         submissionIdField.value = '';
+        guestbookForm.hidden = true;
+        document.querySelector('.guestbook-dear')?.insertAdjacentHTML('afterend',
+          '<p class="guestbook-thankyou">Your note is tucked safely into our hearts. Thank you. ♡</p>');
+        submitButton.hidden = true;
       } else {
-        // Keep the submission ID so a retry is idempotent if the write succeeded
-        // but the response was interrupted.
-        showFeedback(result.message || 'We could not save your RSVP. Please try again.', true);
+        showNoteFeedback(result.message || 'We could not save your note. Please try again.', true);
       }
     });
   }
