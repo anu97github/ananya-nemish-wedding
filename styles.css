@@ -3043,3 +3043,50 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     object-position:top center;
   }
 }
+
+
+/* The supplied responsive artwork is the complete invitation cover.
+   Render it once, at its natural aspect ratio, with no HTML duplicate text,
+   logo, colour treatment, masking, fade layer, or crop. */
+.hero.hero-editorial{
+  display:block!important;
+  position:relative!important;
+  width:100%!important;
+  min-height:0!important;
+  height:auto!important;
+  margin:0!important;
+  padding:0!important;
+  overflow:hidden!important;
+  background:transparent!important;
+}
+.hero-editorial .hero-image{
+  display:block!important;
+  position:relative!important;
+  inset:auto!important;
+  width:100%!important;
+  height:auto!important;
+  overflow:hidden!important;
+  background:transparent!important;
+}
+.hero-editorial .hero-image picture{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+}
+.hero-editorial .hero-image picture img{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  max-width:none!important;
+  object-fit:unset!important;
+  object-position:initial!important;
+  filter:none!important;
+  -webkit-mask-image:none!important;
+  mask-image:none!important;
+}
+.hero-editorial .hero-image::after,
+.hero-editorial .hero-image-fade,
+.hero-editorial .hero-content{
+  display:none!important;
+  content:none!important;
+}
