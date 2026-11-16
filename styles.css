@@ -27,7 +27,7 @@ img{max-width:100%}
 .audio-engine{position:fixed;left:-10000px;top:0;width:180px;height:180px;overflow:hidden;pointer-events:none}
 .audio-engine iframe{width:180px;height:180px}
 .sound-toggle{
-  position:fixed;z-index:90;top:18px;right:20px;width:46px;height:46px;border-radius:50%;
+  position:fixed;z-index:1000;right:20px;bottom:calc(22px + env(safe-area-inset-bottom, 0px));top:auto;width:46px;height:46px;border-radius:50%;
   display:grid;place-items:center;border:1px solid rgba(164,129,72,.55);
   background:rgba(255,251,244,.92);color:var(--olive);box-shadow:0 5px 20px rgba(57,43,32,.11);
   cursor:pointer;transition:background .25s,border-color .25s,transform .25s;
@@ -3656,4 +3656,16 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   text-transform: uppercase;
   white-space: nowrap;
   vertical-align: .12em;
+}
+
+
+/* Keep the music control anchored to the bottom-right on every screen size. */
+@media (max-width: 760px) {
+  .sound-toggle {
+    position: fixed !important;
+    top: auto !important;
+    right: 16px !important;
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px)) !important;
+    z-index: 1000 !important;
+  }
 }
