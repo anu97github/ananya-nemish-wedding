@@ -3686,21 +3686,21 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
 }
 
 
-/* Keep the original elegant italic serif heading, at a smaller scale. */
+/* Match the invitation's elegant italic serif countdown reference. */
 #countdownTitle {
-  font-family: var(--serif) !important;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
   font-style: italic !important;
   font-weight: 400 !important;
-  font-size: clamp(25px, 2.7vw, 36px) !important;
-  line-height: 1.12 !important;
-  letter-spacing: .02em !important;
-  text-transform: uppercase !important;
+  font-size: clamp(42px, 5.6vw, 68px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
 }
 
 @media (max-width: 760px) {
   #countdownTitle {
-    font-size: clamp(21px, 5.6vw, 27px) !important;
-    line-height: 1.15 !important;
+    font-size: clamp(37px, 8vw, 48px) !important;
+    line-height: 1.08 !important;
   }
 }
 
