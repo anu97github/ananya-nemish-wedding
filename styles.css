@@ -3380,3 +3380,27 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
 @media (prefers-reduced-motion: reduce) {
   .site-header { transition: none !important; }
 }
+
+/* Use the exact white monogram artwork as an alpha mask, recoloured to the
+   website's olive text colour. This preserves the original lettering without
+   introducing the PNG's white/green background or a surrounding tile. */
+.site-brand .brand-monogram-primary {
+  opacity: 0 !important;
+}
+
+.site-header.is-scrolled .site-brand::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: block;
+  background-color: var(--olive, #5F7757);
+  -webkit-mask-image: url("assets/an-monogram-white.png");
+  mask-image: url("assets/an-monogram-white.png");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  pointer-events: none;
+}
