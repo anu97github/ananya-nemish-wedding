@@ -3812,3 +3812,105 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .palette-chip strong{font-size:8px}
   .palette-chip code{font-size:11px}
 }
+
+
+/* Final celebration timeline refinement:
+   keep every event the same horizontal width and use the supplied arch swatches
+   (the generic timeline span rule must not turn these into circles). */
+.timeline-item,
+.timeline-item:has(.palette-expanded){
+  flex:0 0 250px;
+  box-sizing:border-box;
+  padding-right:18px;
+}
+.timeline-palette.palette-expanded{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px 5px;
+  width:100%;
+  max-width:100%;
+  margin-top:18px;
+  align-items:start;
+}
+.timeline-palette.palette-expanded .palette-chip{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  gap:5px;
+  text-align:center;
+}
+.timeline-palette.palette-expanded .palette-chip .palette-arch{
+  display:block;
+  flex:0 0 auto;
+  width:44px;
+  height:58px;
+  min-width:0;
+  min-height:0;
+  border:0;
+  border-radius:999px 999px 0 0;
+  background:var(--swatch);
+  box-shadow:0 3px 8px rgba(67,52,39,.13);
+}
+.timeline-palette.palette-expanded .palette-chip strong{
+  display:block;
+  width:100%;
+  color:#5d5045;
+  font-family:var(--serif),Georgia,serif;
+  font-size:9px;
+  font-weight:700;
+  line-height:1.2;
+  letter-spacing:0;
+  overflow-wrap:anywhere;
+}
+.timeline-palette.palette-expanded .palette-chip code{
+  display:block;
+  padding:0;
+  color:#887665;
+  background:none;
+  font-family:var(--serif),Georgia,serif;
+  font-size:11px;
+  font-weight:500;
+  line-height:1.2;
+  letter-spacing:0;
+  font-variant-numeric:lining-nums tabular-nums;
+  white-space:nowrap;
+}
+#day-panel-3 .day-three-timeline{
+  justify-content:center;
+}
+@media(max-width:760px){
+  .timeline-item,
+  .timeline-item:has(.palette-expanded){
+    flex:0 0 225px;
+    padding-right:14px;
+  }
+  .timeline-palette.palette-expanded{
+    gap:11px 3px;
+    margin-top:16px;
+  }
+  .timeline-palette.palette-expanded .palette-chip .palette-arch{
+    width:clamp(38px,11vw,44px);
+    height:clamp(50px,15vw,58px);
+  }
+  .timeline-palette.palette-expanded .palette-chip strong{
+    font-size:8px;
+    line-height:1.15;
+  }
+  .timeline-palette.palette-expanded .palette-chip code{
+    font-size:10px;
+  }
+}
+@media(max-width:390px){
+  .timeline-item,
+  .timeline-item:has(.palette-expanded){
+    flex-basis:205px;
+  }
+  .timeline-palette.palette-expanded .palette-chip .palette-arch{
+    width:36px;
+    height:48px;
+  }
+  .timeline-palette.palette-expanded .palette-chip strong{font-size:7px}
+  .timeline-palette.palette-expanded .palette-chip code{font-size:9px}
+}
