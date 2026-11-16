@@ -2403,3 +2403,99 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     )!important;
   }
 }
+
+
+/* Warm the monochrome photo without softening detail, then begin the fade below the hands. */
+.hero-editorial{
+  background:linear-gradient(
+    180deg,
+    #b9b8b4 0%,
+    #c5c3bd 28%,
+    #d5d1c9 53%,
+    #e7e0d7 75%,
+    #f3ede5 90%,
+    #fbf7f0 100%
+  )!important;
+}
+.hero-editorial .hero-image img{
+  filter:grayscale(.58) sepia(.12) saturate(.82) brightness(1.04)!important;
+  -webkit-mask-image:linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 66%,
+    rgba(0,0,0,.97) 72%,
+    rgba(0,0,0,.86) 80%,
+    rgba(0,0,0,.62) 88%,
+    rgba(0,0,0,.30) 95%,
+    transparent 100%
+  )!important;
+  mask-image:linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 66%,
+    rgba(0,0,0,.97) 72%,
+    rgba(0,0,0,.86) 80%,
+    rgba(0,0,0,.62) 88%,
+    rgba(0,0,0,.30) 95%,
+    transparent 100%
+  )!important;
+}
+.hero-editorial .hero-image-fade{
+  background:linear-gradient(
+    180deg,
+    rgba(185,184,180,0) 0%,
+    rgba(197,195,189,0) 54%,
+    rgba(213,209,201,.025) 64%,
+    rgba(231,224,215,.14) 74%,
+    rgba(243,237,229,.42) 86%,
+    rgba(251,247,240,.82) 96%,
+    #fbf7f0 100%
+  )!important;
+}
+.hero-editorial .hero-content{
+  text-shadow:0 1px 12px rgba(251,247,240,.78)!important;
+}
+@media(max-width:760px){
+  .hero-editorial{
+    background:linear-gradient(
+      180deg,
+      #b9b8b4 0%,
+      #cbc8c1 30%,
+      #dfd9d0 58%,
+      #f0e9e1 82%,
+      #fbf7f0 100%
+    )!important;
+  }
+  .hero-editorial .hero-image img{
+    filter:grayscale(.58) sepia(.12) saturate(.82) brightness(1.04)!important;
+    -webkit-mask-image:linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 64%,
+      rgba(0,0,0,.96) 72%,
+      rgba(0,0,0,.78) 83%,
+      rgba(0,0,0,.4) 94%,
+      transparent 100%
+    )!important;
+    mask-image:linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 64%,
+      rgba(0,0,0,.96) 72%,
+      rgba(0,0,0,.78) 83%,
+      rgba(0,0,0,.4) 94%,
+      transparent 100%
+    )!important;
+  }
+  .hero-editorial .hero-image-fade{
+    background:linear-gradient(
+      180deg,
+      rgba(185,184,180,0) 0%,
+      rgba(203,200,193,0) 52%,
+      rgba(223,217,208,.06) 64%,
+      rgba(240,233,225,.34) 80%,
+      rgba(251,247,240,.86) 96%,
+      #fbf7f0 100%
+    )!important;
+  }
+}
