@@ -81,8 +81,8 @@
   updateCountdown();
   if (countdown) window.setInterval(updateCountdown, 1000);
 
-  // Self-hosted wedding soundtrack. Try autoplay, then respond immediately to
-  // the first finger contact and to the start of a swipe.
+  // Self-hosted wedding soundtrack. Try autoplay on load; if the browser blocks
+  // it, start/unmute on an ordinary click/tap anywhere on the invitation.
   const soundButton = document.getElementById('soundToggle');
   const soundLabel = document.getElementById('soundLabel');
   const weddingAudio = document.getElementById('weddingAudio');
@@ -106,29 +106,18 @@
     weddingAudio.addEventListener('error', () => updateSound(false, 'MUSIC UNAVAILABLE'));
   }
 
-  function requestMusicFromGesture(event) {
-    if (!event.isTrusted || !weddingAudio) return;
+  function requestMusicOnPageClick(event) {
+    if (!event.isTrusted || !weddingAudio || intentionallyPaused) return;
+    // The floating music button has its own pause/resume handler.
     if (soundButton?.contains(event.target)) return;
     if (!weddingAudio.paused && !weddingAudio.muted) return;
 
-    // Do not wait for a promise, timer, animation frame, or another event:
-    // invoke play() synchronously in the trusted touch/scroll gesture.
-    intentionallyPaused = false;
+    // Invoke play() directly during the user's click/tap; no touch-specific
+    // listeners, timers, scroll handlers, or deferred gesture callbacks.
     weddingAudio.muted = false;
     const playRequest = weddingAudio.play();
-    if (playRequest && typeof playRequest.then === 'function') {
-      playRequest.then(() => {
-        updateSound(true, weddingAudio.muted ? 'MUSIC PLAYING · MUTED' : 'MUSIC ON');
-      }).catch(() => {
-        updateSound(false, 'TOUCH OR TAP FOR MUSIC');
-      });
-    }
-  }
-
-  function removeMusicGestureListeners() {
-    ['pointerdown', 'touchstart', 'touchmove', 'touchend', 'click', 'wheel', 'keydown'].forEach(type => {
-      window.removeEventListener(type, requestMusicFromGesture, true);
-    });
+    playRequest?.then(() => updateSound(true, 'MUSIC ON'))
+      .catch(() => updateSound(false, 'TAP FOR MUSIC'));
   }
 
   function toggleMusic() {
@@ -137,7 +126,8 @@
       intentionallyPaused = false;
       weddingAudio.muted = false;
       const playRequest = weddingAudio.play();
-      playRequest?.then(() => updateSound(true, 'MUSIC ON')).catch(() => updateSound(false, 'TAP FOR MUSIC'));
+      playRequest?.then(() => updateSound(true, 'MUSIC ON'))
+        .catch(() => updateSound(false, 'TAP FOR MUSIC'));
     } else {
       intentionallyPaused = true;
       weddingAudio.pause();
@@ -146,26 +136,22 @@
   }
 
   soundButton?.addEventListener('click', toggleMusic);
+  document.addEventListener('click', requestMusicOnPageClick, true);
 
-  // Attempt playback on page load. Browsers that block autoplay are retried
-  // directly on touchstart, touchmove, touchend, click, wheel, or key input.
-  const musicGestureEvents = ['pointerdown', 'touchstart', 'touchmove', 'touchend', 'click', 'wheel', 'keydown'];
-  musicGestureEvents.forEach(type => {
-    window.addEventListener(type, requestMusicFromGesture, { capture: true, passive: true });
-  });
+  // Make the initial autoplay attempt immediately. If audible autoplay is
+  // blocked, fall back to muted playback; a normal page tap will unmute it.
   const initialPlay = weddingAudio?.play();
-  initialPlay?.then(() => updateSound(true, weddingAudio.muted ? 'MUSIC PLAYING · MUTED' : 'MUSIC ON')).catch(async () => {
-    if (!weddingAudio) return;
-    // Muted autoplay is the fallback so the soundtrack can begin without sound
-    // where the browser allows it; the first trusted touch unmutes it.
-    weddingAudio.muted = true;
-    try {
-      await weddingAudio.play();
-      updateSound(true, 'MUSIC PLAYING · MUTED');
-    } catch (_) {
-      updateSound(false, 'TOUCH OR TAP FOR MUSIC');
-    }
-  });
+  initialPlay?.then(() => updateSound(true, weddingAudio.muted ? 'MUSIC PLAYING · MUTED' : 'MUSIC ON'))
+    .catch(async () => {
+      if (!weddingAudio) return;
+      weddingAudio.muted = true;
+      try {
+        await weddingAudio.play();
+        updateSound(true, 'MUSIC PLAYING · MUTED');
+      } catch (_) {
+        updateSound(false, 'TAP FOR MUSIC');
+      }
+    });
   updateSound(false, 'LOADING MUSIC');
 
 
