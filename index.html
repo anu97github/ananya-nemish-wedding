@@ -31,7 +31,11 @@
 
     <section class="hero hero-editorial" aria-labelledby="heroTitle">
       <div class="hero-image" aria-hidden="true">
-        <img src="assets/hero-hands-crop.jpg" alt="">
+        <picture>
+          <source media="(max-width: 767px)" srcset="assets/hero-mobile.png">
+          <source media="(min-width: 768px) and (max-width: 1199px)" srcset="assets/hero-ipad.png">
+          <img src="assets/hero-laptop.png" alt="" fetchpriority="high" decoding="async">
+        </picture>
       </div>
       <div class="hero-image-fade" aria-hidden="true"></div>
       <div class="hero-content">
