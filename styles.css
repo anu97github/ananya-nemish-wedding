@@ -3015,3 +3015,115 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     )!important;
   }
 }
+
+
+/* Final hero treatment: one shared soft grey-ivory canvas, no pale panel behind the type. */
+.hero-editorial{
+  background:#eeece6!important;
+}
+.hero-editorial .hero-content{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  text-shadow:0 1px 10px rgba(238,236,230,.28)!important;
+}
+.hero-editorial .hero-image{
+  position:absolute!important;
+  inset:0!important;
+  z-index:-2!important;
+  overflow:hidden!important;
+  background:#eeece6!important;
+}
+.hero-editorial .hero-image img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center top!important;
+  transform:none!important;
+  filter:grayscale(.16) brightness(1.055) contrast(.96)!important;
+  -webkit-mask-image:none!important;
+  mask-image:none!important;
+}
+/* The photo dissolves slowly into the exact canvas colour, rather than ending at a horizontal edge. */
+.hero-editorial .hero-image::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:2!important;
+  pointer-events:none!important;
+  background:linear-gradient(
+    to bottom,
+    rgba(238,236,230,0) 0%,
+    rgba(238,236,230,0) 25%,
+    rgba(238,236,230,.035) 34%,
+    rgba(238,236,230,.09) 43%,
+    rgba(238,236,230,.18) 52%,
+    rgba(238,236,230,.31) 61%,
+    rgba(238,236,230,.47) 70%,
+    rgba(238,236,230,.65) 79%,
+    rgba(238,236,230,.82) 88%,
+    rgba(238,236,230,.95) 96%,
+    #eeece6 100%
+  )!important;
+}
+.hero-editorial .hero-image-fade{
+  position:absolute!important;
+  inset:0!important;
+  z-index:-1!important;
+  pointer-events:none!important;
+  background:linear-gradient(
+    to bottom,
+    rgba(238,236,230,0) 0%,
+    rgba(238,236,230,0) 32%,
+    rgba(238,236,230,.025) 43%,
+    rgba(238,236,230,.06) 54%,
+    rgba(238,236,230,.12) 65%,
+    rgba(238,236,230,.22) 76%,
+    rgba(238,236,230,.42) 87%,
+    rgba(238,236,230,.72) 96%,
+    #eeece6 100%
+  )!important;
+}
+.hero-editorial .hero-invitation,
+.hero-editorial .hero-title,
+.hero-editorial .hero-ornament,
+.hero-editorial .hero-date,
+.hero-editorial .hero-venue{
+  background:transparent!important;
+}
+@media(max-width:760px){
+  .hero-editorial{background:#eeece6!important}
+  .hero-editorial .hero-image{background:#eeece6!important}
+  .hero-editorial .hero-image img{
+    filter:grayscale(.16) brightness(1.055) contrast(.96)!important;
+  }
+  .hero-editorial .hero-image::after{
+    background:linear-gradient(
+      to bottom,
+      rgba(238,236,230,0) 0%,
+      rgba(238,236,230,0) 22%,
+      rgba(238,236,230,.04) 32%,
+      rgba(238,236,230,.12) 43%,
+      rgba(238,236,230,.24) 54%,
+      rgba(238,236,230,.40) 65%,
+      rgba(238,236,230,.60) 76%,
+      rgba(238,236,230,.82) 88%,
+      rgba(238,236,230,.96) 97%,
+      #eeece6 100%
+    )!important;
+  }
+  .hero-editorial .hero-image-fade{
+    background:linear-gradient(
+      to bottom,
+      rgba(238,236,230,0) 0%,
+      rgba(238,236,230,0) 28%,
+      rgba(238,236,230,.04) 42%,
+      rgba(238,236,230,.12) 56%,
+      rgba(238,236,230,.28) 70%,
+      rgba(238,236,230,.55) 84%,
+      rgba(238,236,230,.84) 95%,
+      #eeece6 100%
+    )!important;
+  }
+}
