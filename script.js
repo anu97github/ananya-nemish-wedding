@@ -106,19 +106,6 @@
     weddingAudio.addEventListener('error', () => updateSound(false, 'MUSIC UNAVAILABLE'));
   }
 
-  function requestMusicOnPageClick(event) {
-    if (!event.isTrusted || !weddingAudio || intentionallyPaused) return;
-    // The floating music button has its own pause/resume handler.
-    if (soundButton?.contains(event.target)) return;
-    if (!weddingAudio.paused && !weddingAudio.muted) return;
-
-    // Invoke play() directly during the user's click/tap; no touch-specific
-    // listeners, timers, scroll handlers, or deferred gesture callbacks.
-    weddingAudio.muted = false;
-    const playRequest = weddingAudio.play();
-    playRequest?.then(() => updateSound(true, 'MUSIC ON'))
-      .catch(() => updateSound(false, 'TAP FOR MUSIC'));
-  }
 
   function toggleMusic() {
     if (!weddingAudio) return;
@@ -127,7 +114,7 @@
       weddingAudio.muted = false;
       const playRequest = weddingAudio.play();
       playRequest?.then(() => updateSound(true, 'MUSIC ON'))
-        .catch(() => updateSound(false, 'TAP FOR MUSIC'));
+        .catch(() => updateSound(false, 'MUSIC OFF'));
     } else {
       intentionallyPaused = true;
       weddingAudio.pause();
@@ -136,7 +123,6 @@
   }
 
   soundButton?.addEventListener('click', toggleMusic);
-  document.addEventListener('click', requestMusicOnPageClick, true);
 
   // Make the initial autoplay attempt immediately. If audible autoplay is
   // blocked, fall back to muted playback; a normal page tap will unmute it.
@@ -149,7 +135,7 @@
         await weddingAudio.play();
         updateSound(true, 'MUSIC PLAYING · MUTED');
       } catch (_) {
-        updateSound(false, 'TAP FOR MUSIC');
+        updateSound(false, 'MUSIC OFF');
       }
     });
   updateSound(false, 'LOADING MUSIC');
