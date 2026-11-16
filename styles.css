@@ -1676,3 +1676,129 @@ body,button,input,select,textarea{
   .timeline-item:has(.palette-expanded){flex-basis:315px}
   .timeline-scroll{gap:14px}
 }
+
+
+/* Section 1 refinement: reveal the full hands first, then let the invitation sit beneath them. */
+:root{
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Cormorant Garamond',Georgia,serif;
+  --script:'Allura',cursive;
+}
+body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif}
+.hero-image{
+  top:-4.5vh!important;
+  left:0;
+  width:100%;
+  height:auto;
+  overflow:visible;
+}
+.hero-image img{
+  width:100%!important;
+  height:auto!important;
+  object-fit:unset!important;
+  object-position:center top!important;
+  transform:translateY(-4.5vh)!important;
+  filter:none!important;
+}
+.hero-image-fade{
+  background:linear-gradient(
+    180deg,
+    rgba(250,248,242,0) 43%,
+    rgba(250,248,242,.04) 52%,
+    rgba(250,248,242,.20) 62%,
+    rgba(250,248,242,.58) 73%,
+    rgba(250,248,242,.88) 84%,
+    rgba(250,248,242,.98) 94%,
+    var(--paper) 100%
+  )!important;
+}
+.hero-editorial .hero-content{
+  top:clamp(520px,36.5vw,610px)!important;
+  width:min(1040px,94%);
+  padding:0 20px;
+  text-shadow:0 1px 12px rgba(250,248,242,.45);
+}
+.hero-invitation{
+  margin:0 0 8px;
+  color:var(--dark-olive);
+  font:600 clamp(13px,1.25vw,17px)/1.45 'Cormorant Garamond',Georgia,serif;
+  letter-spacing:.23em;
+}
+.hero-editorial .hero-title{
+  margin:0;
+  color:var(--dark-olive);
+  font-family:'Allura',cursive!important;
+  font-style:normal;
+  font-weight:400;
+  font-size:clamp(76px,8.1vw,116px);
+  line-height:.94;
+  letter-spacing:0;
+}
+.hero-editorial .hero-date{
+  margin:12px 0 0;
+  color:var(--dark-olive);
+  font:600 clamp(22px,2vw,28px)/1.35 'Cormorant Garamond',Georgia,serif;
+  letter-spacing:.13em;
+}
+.hero-editorial .hero-venue{
+  margin:3px 0 0;
+  color:var(--ink);
+  font:600 clamp(19px,1.65vw,23px)/1.4 'Cormorant Garamond',Georgia,serif;
+  letter-spacing:.09em;
+}
+@media(max-width:760px){
+  .hero-editorial{
+    height:100svh;
+    min-height:760px;
+  }
+  .hero-image{
+    top:-2.5vh!important;
+    width:100%;
+  }
+  .hero-image img{
+    transform:translateY(-2.5vh)!important;
+  }
+  .hero-image-fade{
+    background:linear-gradient(
+      180deg,
+      rgba(250,248,242,0) 34%,
+      rgba(250,248,242,.04) 45%,
+      rgba(250,248,242,.22) 57%,
+      rgba(250,248,242,.62) 70%,
+      rgba(250,248,242,.91) 84%,
+      var(--paper) 100%
+    )!important;
+  }
+  .hero-editorial .hero-content{
+    top:clamp(320px,84vw,440px)!important;
+    width:96%;
+    padding:0 10px;
+  }
+  .hero-invitation{
+    max-width:100%;
+    margin:0 auto 8px;
+    font-size:clamp(12px,3.2vw,15px);
+    letter-spacing:.15em;
+    line-height:1.5;
+  }
+  .hero-editorial .hero-title{
+    font-size:clamp(64px,15vw,88px);
+    line-height:1;
+  }
+  .hero-editorial .hero-date{
+    margin-top:13px;
+    font-size:clamp(20px,5.2vw,25px);
+    letter-spacing:.1em;
+  }
+  .hero-editorial .hero-venue{
+    max-width:340px;
+    margin:4px auto 0;
+    font-size:clamp(17px,4.4vw,21px);
+    letter-spacing:.06em;
+  }
+}
+@media(max-width:390px){
+  .hero-editorial{min-height:740px}
+  .hero-editorial .hero-content{top:clamp(300px,82vw,360px)!important}
+  .hero-editorial .hero-title{font-size:clamp(60px,15vw,72px)}
+}
