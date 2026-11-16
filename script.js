@@ -81,131 +81,101 @@
   updateCountdown();
   if (countdown) window.setInterval(updateCountdown, 1000);
 
-  // Official soundtrack. Browsers generally block audible autoplay.
-// Start the player muted on load where permitted, then enable sound on the
-// visitor's first interaction or when they tap the persistent music control.
+  // Self-hosted wedding soundtrack. Try audible autoplay first; if the browser
+  // blocks it, immediately fall back to muted autoplay so playback still starts.
+  // The first visitor interaction then unmutes the already-playing audio.
   const soundButton = document.getElementById('soundToggle');
   const soundLabel = document.getElementById('soundLabel');
-  let player = null;
-  let playerReady = false;
-  let apiLoading = false;
+  const weddingAudio = document.getElementById('weddingAudio');
   let soundOn = false;
-  let mutedAutoplayStarted = false;
-  let userHasInteracted = false;
-  const trackId = '-2w18bd-ZQ4';
+  let intentionallyPaused = false;
+  let mutedAutoplay = false;
 
-  function updateSound(on, label = on ? 'SOUND ON' : 'SOUND OFF') {
+  function updateSound(on, label) {
     soundOn = on;
     soundButton?.setAttribute('aria-pressed', String(on));
-    soundButton?.setAttribute('aria-label', on ? 'Turn wedding music off' : 'Turn wedding music on');
-    if (soundLabel) soundLabel.textContent = label;
+    soundButton?.setAttribute('aria-label', on ? 'Pause wedding music' : 'Play wedding music');
+    if (soundLabel) soundLabel.textContent = label || (on ? (weddingAudio?.muted ? 'MUSIC PLAYING · MUTED' : 'MUSIC ON') : 'MUSIC OFF');
   }
 
-  function enableSoundFromGesture() {
-    userHasInteracted = true;
-    if (!playerReady || !player) {
-      updateSound(false, 'LOADING MUSIC');
-      loadPlayer();
-      return;
+  if (weddingAudio) {
+    weddingAudio.volume = 0.58;
+    weddingAudio.addEventListener('play', () => {
+      updateSound(true, weddingAudio.muted ? 'MUSIC PLAYING · MUTED' : 'MUSIC ON');
+    });
+    weddingAudio.addEventListener('volumechange', () => {
+      if (!weddingAudio.paused) updateSound(true, weddingAudio.muted ? 'MUSIC PLAYING · MUTED' : 'MUSIC ON');
+    });
+    weddingAudio.addEventListener('pause', () => {
+      if (intentionallyPaused) updateSound(false, 'MUSIC OFF');
+    });
+    weddingAudio.addEventListener('error', () => updateSound(false, 'MUSIC UNAVAILABLE'));
+  }
+
+  async function playWeddingMusic({ userGesture = false } = {}) {
+    if (!weddingAudio) return;
+    intentionallyPaused = false;
+    if (userGesture) {
+      weddingAudio.muted = false;
+      mutedAutoplay = false;
     }
     try {
-      player.unMute();
-      player.setVolume(58);
-      player.playVideo();
-      updateSound(true, 'SOUND ON');
-    } catch (_) {
-      updateSound(false, 'TAP TO PLAY');
-    }
-  }
-
-  function createPlayer() {
-    if (player || !window.YT?.Player) return;
-    player = new window.YT.Player('youtubePlayer', {
-      width: '200', height: '200', videoId: trackId,
-      playerVars: { autoplay: 1, controls: 0, playsinline: 1, rel: 0, modestbranding: 1, loop: 1, playlist: trackId },
-      events: {
-        onReady: event => {
-          playerReady = true;
-          event.target.setVolume(58);
-          // Start buffering immediately while muted; browsers allow this more often.
-          // If the visitor already tapped while the player was loading, honour that
-          // gesture now instead of making them tap a second time.
-          try {
-            event.target.setVolume(58);
-            if (userHasInteracted) {
-              event.target.unMute();
-              event.target.playVideo();
-              updateSound(true, 'SOUND ON');
-            } else {
-              event.target.mute();
-              event.target.playVideo();
-              mutedAutoplayStarted = true;
-              updateSound(false, 'TAP FOR MUSIC');
-            }
-          } catch (_) {
-            updateSound(false, 'TAP TO PLAY');
-          }
-        },
-        onStateChange: event => {
-          if (event.data === window.YT.PlayerState.PLAYING && !soundOn) {
-            updateSound(false, 'TAP FOR MUSIC');
-          }
-          if (event.data === window.YT.PlayerState.PAUSED || event.data === window.YT.PlayerState.ENDED) {
-            updateSound(false);
-          }
-        },
-        onError: () => updateSound(false, 'AUDIO UNAVAILABLE'),
-        onAutoplayBlocked: () => updateSound(false, 'TAP TO PLAY')
+      await weddingAudio.play();
+      updateSound(true, weddingAudio.muted ? 'MUSIC PLAYING · MUTED' : 'MUSIC ON');
+    } catch (error) {
+      // Audible autoplay was denied. Start the same local MP3 muted instead
+      // of leaving the player stopped; this is permitted by more browsers.
+      if (!userGesture && error?.name === 'NotAllowedError') {
+        mutedAutoplay = true;
+        weddingAudio.muted = true;
+        try {
+          await weddingAudio.play();
+          updateSound(true, 'MUSIC PLAYING · MUTED');
+          return;
+        } catch (_) {
+          updateSound(false, 'TAP FOR MUSIC');
+          return;
+        }
       }
-    });
-  }
-
-  function loadPlayer() {
-    if (window.YT?.Player) {
-      createPlayer();
-      return;
+      updateSound(false, error?.name === 'NotAllowedError' ? 'TAP FOR MUSIC' : 'MUSIC LOADING');
     }
-    if (apiLoading) return;
-    apiLoading = true;
-    window.onYouTubeIframeAPIReady = createPlayer;
-    const script = document.createElement('script');
-    script.src = 'https://www.youtube.com/iframe_api';
-    script.async = true;
-    script.onerror = () => {
-      apiLoading = false;
-      updateSound(false, 'AUDIO UNAVAILABLE');
-    };
-    document.head.appendChild(script);
   }
 
   function toggleMusic() {
-    if (soundOn) {
-      try { player?.mute(); } catch (_) {}
-      updateSound(false, 'MUSIC OFF');
+    if (!weddingAudio) return;
+    if (weddingAudio.paused) {
+      playWeddingMusic({ userGesture: true });
+    } else if (weddingAudio.muted) {
+      // If autoplay started muted, the music button's first tap enables sound.
+      playWeddingMusic({ userGesture: true });
     } else {
-      enableSoundFromGesture();
+      intentionallyPaused = true;
+      weddingAudio.pause();
+      updateSound(false, 'MUSIC OFF');
     }
   }
 
   soundButton?.addEventListener('click', toggleMusic);
 
-  // The first genuine interaction with the page enables sound when the player
-  // is already ready. The dedicated music button remains the reliable fallback.
-  function enableOnFirstInteraction() {
-    if (soundOn) return;
-    // Record the gesture even if YouTube is still downloading. onReady will
-    // immediately unmute and start playback once the player becomes available.
-    userHasInteracted = true;
-    if (playerReady) enableSoundFromGesture();
-    else updateSound(false, 'STARTING MUSIC');
-    document.removeEventListener('pointerdown', enableOnFirstInteraction, true);
-    document.removeEventListener('keydown', enableOnFirstInteraction, true);
+  // Begin as soon as this deferred script runs; the HTML also requests autoplay
+  // and preloads the local MP3 before JavaScript executes.
+  playWeddingMusic();
+
+  // Any first interaction on the invitation unmutes the already-playing track
+  // or starts it if the browser had blocked even muted autoplay.
+  function enableMusicOnFirstInteraction(event) {
+    document.removeEventListener('pointerdown', enableMusicOnFirstInteraction, true);
+    document.removeEventListener('keydown', enableMusicOnFirstInteraction, true);
+    if (soundButton?.contains(event.target)) return;
+    if (!weddingAudio) return;
+    if (weddingAudio.paused || weddingAudio.muted) {
+      playWeddingMusic({ userGesture: true });
+    }
   }
-  document.addEventListener('pointerdown', enableOnFirstInteraction, true);
-  document.addEventListener('keydown', enableOnFirstInteraction, true);
+  document.addEventListener('pointerdown', enableMusicOnFirstInteraction, true);
+  document.addEventListener('keydown', enableMusicOnFirstInteraction, true);
 
   updateSound(false, 'LOADING MUSIC');
-  loadPlayer();
 
 
   // Reveal event and venue bands gently as guests scroll through the invitation.
