@@ -140,11 +140,11 @@
   // If autoplay was blocked, use the visitor's first interaction anywhere on
   // the invitation to start audio within the browser's user-activation window.
   function enableMusicOnFirstInteraction(event) {
-    if (event.target === soundButton || soundButton?.contains(event.target)) return;
-    if (!weddingAudio || !weddingAudio.paused) return;
-    playWeddingMusic();
     document.removeEventListener('pointerdown', enableMusicOnFirstInteraction, true);
     document.removeEventListener('keydown', enableMusicOnFirstInteraction, true);
+    // The music button has its own click handler; don't start and then pause it.
+    if (soundButton?.contains(event.target)) return;
+    if (weddingAudio?.paused) playWeddingMusic();
   }
   document.addEventListener('pointerdown', enableMusicOnFirstInteraction, true);
   document.addEventListener('keydown', enableMusicOnFirstInteraction, true);
