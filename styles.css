@@ -4366,3 +4366,63 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .site-footer-minimal .footer-thanks{font-size:9px;letter-spacing:.09em;margin:7px auto 3px}
   .site-footer-minimal .back-to-top{font-size:8px}
 }
+
+
+/* Footer composition follows the supplied invitation reference, without florals or landscape artwork. */
+.site-footer.site-footer-minimal{
+  position:relative;
+  isolation:isolate;
+  min-height:0;
+  overflow:hidden;
+  padding:48px 20px 38px;
+  text-align:center;
+  background:#f8f4ed;
+  border-top:0;
+}
+.site-footer-minimal .footer-garden{display:none!important}
+.site-footer-minimal .footer-content{max-width:900px;margin:0 auto}
+.site-footer-minimal .footer-monogram{
+  display:block;width:150px;height:150px;object-fit:contain;
+  margin:0 auto 28px;
+}
+.site-footer-minimal .footer-rule{
+  display:flex;align-items:center;justify-content:center;gap:25px;
+  margin:0 auto 40px;color:#b48a45;
+}
+.site-footer-minimal .footer-rule span{width:clamp(75px,16vw,136px);height:1px;background:#c6ad7b}
+.site-footer-minimal .footer-rule b{font-size:21px;font-weight:400}
+.site-footer-minimal .footer-names{
+  margin:0;color:#4e4838;font-family:var(--serif),Georgia,serif;
+  font-size:clamp(24px,3.2vw,36px);font-weight:600;letter-spacing:.24em;
+}
+.site-footer-minimal .footer-names i{color:#b48a45;font-style:normal;padding:0 13px}
+.site-footer-minimal .footer-date{
+  margin:24px 0 0;color:#84745d;font-size:clamp(12px,1.5vw,17px);
+  letter-spacing:.19em;font-weight:600;
+}
+.site-footer-minimal .footer-date span{color:#b48a45;padding:0 10px}
+.site-footer-minimal .footer-thanks{
+  margin:58px auto 42px;color:#786d5d;font-size:clamp(14px,2vw,22px);
+  letter-spacing:.17em;line-height:1.5;
+}
+.site-footer-minimal .back-to-top{
+  display:inline-block;margin:0;padding-bottom:9px;border-bottom:1px solid #c6ad7b;
+  color:#826b48;font-size:clamp(11px,1.4vw,15px);letter-spacing:.2em;font-weight:700;
+}
+@media(max-width:760px){
+  .site-footer.site-footer-minimal{padding:38px 18px 32px}
+  .site-footer-minimal .footer-monogram{width:112px;height:112px;margin-bottom:22px}
+  .site-footer-minimal .footer-rule{gap:17px;margin-bottom:30px}
+  .site-footer-minimal .footer-rule span{width:68px}
+  .site-footer-minimal .footer-names{font-size:clamp(19px,5vw,26px);letter-spacing:.16em}
+  .site-footer-minimal .footer-names i{padding:0 6px}
+  .site-footer-minimal .footer-date{margin-top:17px;font-size:11px;letter-spacing:.12em}
+  .site-footer-minimal .footer-date span{padding:0 5px}
+  .site-footer-minimal .footer-thanks{margin:42px auto 30px;font-size:13px;letter-spacing:.12em}
+  .site-footer-minimal .back-to-top{font-size:10px;letter-spacing:.15em;padding-bottom:7px}
+}
+@media(max-width:380px){
+  .site-footer-minimal .footer-names{font-size:18px}
+  .site-footer-minimal .footer-date{font-size:10px;letter-spacing:.09em}
+  .site-footer-minimal .footer-thanks{font-size:11px}
+}
