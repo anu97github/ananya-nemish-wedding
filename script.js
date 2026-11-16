@@ -81,10 +81,8 @@
   updateCountdown();
   if (countdown) window.setInterval(updateCountdown, 1000);
 
-  // Self-hosted wedding soundtrack. Attempt autoplay, then use the first
-  // trusted touch/pointer/click/key interaction to unmute or start playback.
-  // Keep the gesture listeners until playback succeeds: on mobile, a pointerdown
-  // attempt can be rejected before the later touchend/click event is dispatched.
+  // Self-hosted wedding soundtrack. Attempt autoplay, then start/unmute on the
+  // very first real scroll or contact with the page (not only a deliberate tap).
   const soundButton = document.getElementById('soundToggle');
   const soundLabel = document.getElementById('soundLabel');
   const weddingAudio = document.getElementById('weddingAudio');
@@ -119,40 +117,42 @@
     if (userGesture) weddingAudio.muted = false;
 
     try {
-      // Call play() synchronously inside the trusted input event's call stack.
+      // Called synchronously from the trusted touch/scroll/pointer event.
       const playRequest = weddingAudio.play();
       await playRequest;
       updateSound(true, weddingAudio.muted ? 'MUSIC PLAYING · MUTED' : 'MUSIC ON');
       return true;
     } catch (error) {
       if (!userGesture && error?.name === 'NotAllowedError') {
-        // If audible autoplay is denied, still start the track muted where
-        // supported. A later trusted mobile gesture will unmute it.
         weddingAudio.muted = true;
         try {
           await weddingAudio.play();
           updateSound(true, 'MUSIC PLAYING · MUTED');
           return true;
         } catch (_) {
-          updateSound(false, 'TAP FOR MUSIC');
+          updateSound(false, 'TAP OR SCROLL FOR MUSIC');
           return false;
         }
       }
-      updateSound(false, error?.name === 'NotAllowedError' ? 'TAP FOR MUSIC' : 'MUSIC LOADING');
+      updateSound(false, error?.name === 'NotAllowedError' ? 'TAP OR SCROLL FOR MUSIC' : 'MUSIC LOADING');
       return false;
     }
   }
 
   function removeMusicGestureListeners() {
-    ['pointerdown', 'touchstart', 'touchend', 'click', 'keydown'].forEach(type => {
+    ['pointerdown', 'touchstart', 'touchend', 'click', 'wheel', 'keydown'].forEach(type => {
       document.removeEventListener(type, enableMusicOnFirstInteraction, true);
     });
   }
 
   function enableMusicOnFirstInteraction(event) {
     if (!event.isTrusted || !weddingAudio) return;
-    // The music control owns its own click handler, so do not toggle it twice.
+    // On touch devices, let touchstart handle the gesture rather than an earlier
+    // pointerdown; this avoids consuming the gesture before the touch event.
+    if (event.type === 'pointerdown' && event.pointerType === 'touch') return;
+    // Do not let the music button's own click handler toggle twice.
     if (soundButton?.contains(event.target)) return;
+
     if (!weddingAudio.paused && !weddingAudio.muted) {
       removeMusicGestureListeners();
       return;
@@ -160,8 +160,8 @@
     if (gestureAttemptInFlight) return;
 
     gestureAttemptInFlight = true;
-    // This is deliberately called directly from touchstart/touchend/pointerdown/
-    // click, without timers, so mobile browsers can recognise the user gesture.
+    // Do not defer this call with a timer or animation frame: mobile browsers
+    // require play() to be invoked in the trusted touch/scroll event itself.
     playWeddingMusic({ userGesture: true }).then(success => {
       gestureAttemptInFlight = false;
       if (success && !weddingAudio.muted && !weddingAudio.paused) {
@@ -183,12 +183,11 @@
 
   soundButton?.addEventListener('click', toggleMusic);
 
-  // Start loading/playing immediately; the MP3 is also preloaded in the HTML.
+  // Try immediately on page load. If autoplay is restricted, the first touch,
+  // scroll-wheel/trackpad scroll, pointer press, or key scroll starts/unmutes it.
   playWeddingMusic();
 
-  // Mobile browsers dispatch touch events in addition to pointer/click events.
-  // Keep all fallbacks active until one gesture successfully starts audible audio.
-  ['pointerdown', 'touchstart', 'touchend', 'click', 'keydown'].forEach(type => {
+  ['pointerdown', 'touchstart', 'touchend', 'click', 'wheel', 'keydown'].forEach(type => {
     document.addEventListener(type, enableMusicOnFirstInteraction, true);
   });
 
