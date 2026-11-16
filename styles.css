@@ -4141,3 +4141,29 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     font-size:12px;
   }
 }
+
+
+/* Venue section refinements: clearer location and no decorative corner florals. */
+.venue-location{
+  font-size:16px;
+  line-height:1.4;
+  letter-spacing:.18em;
+  margin:9px 0 14px;
+}
+.venue-description{
+  max-width:680px;
+  margin:0 auto 17px;
+  font-size:18px;
+  line-height:1.5;
+}
+@media(max-width:760px){
+  .venue-location{
+    font-size:14px;
+    letter-spacing:.12em;
+  }
+  .venue-description{
+    max-width:560px;
+    font-size:16px;
+    line-height:1.45;
+  }
+}
