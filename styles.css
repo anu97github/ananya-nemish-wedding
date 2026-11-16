@@ -3324,3 +3324,90 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     )!important;
   }
 }
+
+
+/* Match the invitation canvas to the supplied cool grey-ivory swatch.
+   The photo fades into this slightly deeper neutral instead of a bright ivory panel. */
+.hero-editorial{
+  background:linear-gradient(
+    to bottom,
+    #d9d8d3 0%,
+    #dddbd6 24%,
+    #e1dfd9 55%,
+    #e4e2dc 100%
+  )!important;
+}
+.hero-editorial .hero-image img{
+  filter:grayscale(.12) brightness(1.075) contrast(.97)!important;
+  -webkit-mask-image:linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 25%,
+    rgba(0,0,0,.985) 33%,
+    rgba(0,0,0,.95) 41%,
+    rgba(0,0,0,.88) 50%,
+    rgba(0,0,0,.77) 60%,
+    rgba(0,0,0,.62) 70%,
+    rgba(0,0,0,.44) 80%,
+    rgba(0,0,0,.25) 90%,
+    rgba(0,0,0,.10) 97%,
+    transparent 100%
+  )!important;
+  mask-image:linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 25%,
+    rgba(0,0,0,.985) 33%,
+    rgba(0,0,0,.95) 41%,
+    rgba(0,0,0,.88) 50%,
+    rgba(0,0,0,.77) 60%,
+    rgba(0,0,0,.62) 70%,
+    rgba(0,0,0,.44) 80%,
+    rgba(0,0,0,.25) 90%,
+    rgba(0,0,0,.10) 97%,
+    transparent 100%
+  )!important;
+}
+.hero-editorial .hero-content{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+@media(max-width:760px){
+  .hero-editorial{
+    background:linear-gradient(
+      to bottom,
+      #d9d8d3 0%,
+      #dedcd7 30%,
+      #e2e0da 65%,
+      #e4e2dc 100%
+    )!important;
+  }
+  .hero-editorial .hero-image img{
+    filter:grayscale(.12) brightness(1.075) contrast(.97)!important;
+    -webkit-mask-image:linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 23%,
+      rgba(0,0,0,.98) 32%,
+      rgba(0,0,0,.92) 42%,
+      rgba(0,0,0,.82) 53%,
+      rgba(0,0,0,.67) 65%,
+      rgba(0,0,0,.48) 77%,
+      rgba(0,0,0,.25) 90%,
+      transparent 100%
+    )!important;
+    mask-image:linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 23%,
+      rgba(0,0,0,.98) 32%,
+      rgba(0,0,0,.92) 42%,
+      rgba(0,0,0,.82) 53%,
+      rgba(0,0,0,.67) 65%,
+      rgba(0,0,0,.48) 77%,
+      rgba(0,0,0,.25) 90%,
+      transparent 100%
+    )!important;
+  }
+}
