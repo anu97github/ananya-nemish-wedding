@@ -1678,45 +1678,51 @@ body,button,input,select,textarea{
 }
 
 
-/* Section 1 refinement: reveal the full hands first, then let the invitation sit beneath them. */
+/* Section 1 refinement: continuous monochrome-to-ivory fade, with the hands kept clear. */
 :root{
   --serif:'Cormorant Garamond',Georgia,serif;
   --sans:'Cormorant Garamond',Georgia,serif;
   --script:'Allura',cursive;
 }
 body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif}
+.hero-editorial{
+  background:linear-gradient(180deg,#d8d8d5 0%,#e9e6df 43%,#f5f1e9 70%,var(--paper) 100%)!important;
+}
 .hero-image{
-  top:-4.5vh!important;
+  top:0!important;
   left:0;
   width:100%;
   height:auto;
   overflow:visible;
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 55%,rgba(0,0,0,.82) 68%,rgba(0,0,0,.36) 83%,transparent 100%);
+  mask-image:linear-gradient(to bottom,#000 0%,#000 55%,rgba(0,0,0,.82) 68%,rgba(0,0,0,.36) 83%,transparent 100%);
 }
 .hero-image img{
+  display:block;
   width:100%!important;
   height:auto!important;
   object-fit:unset!important;
   object-position:center top!important;
-  transform:translateY(-4.5vh)!important;
-  filter:none!important;
+  transform:none!important;
+  filter:grayscale(1)!important;
 }
 .hero-image-fade{
   background:linear-gradient(
     180deg,
-    rgba(250,248,242,0) 43%,
-    rgba(250,248,242,.04) 52%,
-    rgba(250,248,242,.20) 62%,
-    rgba(250,248,242,.58) 73%,
-    rgba(250,248,242,.88) 84%,
-    rgba(250,248,242,.98) 94%,
+    rgba(250,248,242,0) 38%,
+    rgba(250,248,242,.02) 48%,
+    rgba(250,248,242,.10) 58%,
+    rgba(250,248,242,.28) 68%,
+    rgba(250,248,242,.58) 79%,
+    rgba(250,248,242,.86) 90%,
     var(--paper) 100%
   )!important;
 }
 .hero-editorial .hero-content{
-  top:clamp(520px,36.5vw,610px)!important;
+  top:clamp(410px,30vw,530px)!important;
   width:min(1040px,94%);
   padding:0 20px;
-  text-shadow:0 1px 12px rgba(250,248,242,.45);
+  text-shadow:0 1px 12px rgba(250,248,242,.5);
 }
 .hero-invitation{
   margin:0 0 8px;
@@ -1747,30 +1753,27 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   letter-spacing:.09em;
 }
 @media(max-width:760px){
-  .hero-editorial{
-    height:100svh;
-    min-height:760px;
-  }
+  .hero-editorial{height:100svh;min-height:760px}
   .hero-image{
-    top:-2.5vh!important;
+    top:0!important;
     width:100%;
+    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 48%,rgba(0,0,0,.78) 64%,rgba(0,0,0,.3) 80%,transparent 100%);
+    mask-image:linear-gradient(to bottom,#000 0%,#000 48%,rgba(0,0,0,.78) 64%,rgba(0,0,0,.3) 80%,transparent 100%);
   }
-  .hero-image img{
-    transform:translateY(-2.5vh)!important;
-  }
+  .hero-image img{transform:none!important}
   .hero-image-fade{
     background:linear-gradient(
       180deg,
-      rgba(250,248,242,0) 34%,
-      rgba(250,248,242,.04) 45%,
-      rgba(250,248,242,.22) 57%,
-      rgba(250,248,242,.62) 70%,
-      rgba(250,248,242,.91) 84%,
+      rgba(250,248,242,0) 30%,
+      rgba(250,248,242,.03) 42%,
+      rgba(250,248,242,.16) 55%,
+      rgba(250,248,242,.48) 70%,
+      rgba(250,248,242,.82) 85%,
       var(--paper) 100%
     )!important;
   }
   .hero-editorial .hero-content{
-    top:clamp(320px,84vw,440px)!important;
+    top:clamp(300px,78vw,410px)!important;
     width:96%;
     padding:0 10px;
   }
@@ -1781,24 +1784,12 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     letter-spacing:.15em;
     line-height:1.5;
   }
-  .hero-editorial .hero-title{
-    font-size:clamp(64px,15vw,88px);
-    line-height:1;
-  }
-  .hero-editorial .hero-date{
-    margin-top:13px;
-    font-size:clamp(20px,5.2vw,25px);
-    letter-spacing:.1em;
-  }
-  .hero-editorial .hero-venue{
-    max-width:340px;
-    margin:4px auto 0;
-    font-size:clamp(17px,4.4vw,21px);
-    letter-spacing:.06em;
-  }
+  .hero-editorial .hero-title{font-size:clamp(64px,15vw,88px);line-height:1}
+  .hero-editorial .hero-date{margin-top:13px;font-size:clamp(20px,5.2vw,25px);letter-spacing:.1em}
+  .hero-editorial .hero-venue{max-width:340px;margin:4px auto 0;font-size:clamp(17px,4.4vw,21px);letter-spacing:.06em}
 }
 @media(max-width:390px){
   .hero-editorial{min-height:740px}
-  .hero-editorial .hero-content{top:clamp(300px,82vw,360px)!important}
+  .hero-editorial .hero-content{top:clamp(285px,76vw,350px)!important}
   .hero-editorial .hero-title{font-size:clamp(60px,15vw,72px)}
 }
