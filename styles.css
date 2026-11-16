@@ -2337,3 +2337,69 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .hero-editorial .hero-date{font-size:16px!important}
   .hero-editorial .hero-venue{font-size:10px!important}
 }
+
+
+/* Keep both hands and rings fully clear; begin the ivory fade only below the groom's little finger. */
+.hero-editorial .hero-image img{
+  -webkit-mask-image:linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 78%,
+    rgba(0,0,0,.96) 83%,
+    rgba(0,0,0,.82) 89%,
+    rgba(0,0,0,.52) 95%,
+    transparent 100%
+  )!important;
+  mask-image:linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 78%,
+    rgba(0,0,0,.96) 83%,
+    rgba(0,0,0,.82) 89%,
+    rgba(0,0,0,.52) 95%,
+    transparent 100%
+  )!important;
+}
+.hero-editorial .hero-image-fade{
+  background:linear-gradient(
+    180deg,
+    rgba(191,192,189,0) 0%,
+    rgba(201,200,195,0) 57%,
+    rgba(216,213,206,.015) 67%,
+    rgba(232,226,217,.12) 77%,
+    rgba(243,237,229,.38) 87%,
+    rgba(251,247,240,.78) 96%,
+    #fbf7f0 100%
+  )!important;
+}
+@media(max-width:760px){
+  .hero-editorial .hero-image img{
+    -webkit-mask-image:linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 75%,
+      rgba(0,0,0,.94) 82%,
+      rgba(0,0,0,.74) 90%,
+      transparent 100%
+    )!important;
+    mask-image:linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 75%,
+      rgba(0,0,0,.94) 82%,
+      rgba(0,0,0,.74) 90%,
+      transparent 100%
+    )!important;
+  }
+  .hero-editorial .hero-image-fade{
+    background:linear-gradient(
+      180deg,
+      rgba(191,192,189,0) 0%,
+      rgba(208,206,200,0) 55%,
+      rgba(228,222,213,.04) 68%,
+      rgba(241,235,227,.28) 82%,
+      rgba(251,247,240,.82) 96%,
+      #fbf7f0 100%
+    )!important;
+  }
+}
