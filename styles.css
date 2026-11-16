@@ -88,9 +88,6 @@ img{max-width:100%}
   background:linear-gradient(105deg,#fffaf5 0%,#fffdf9 48%,#fbf5f0 100%);
   border-top:1px solid rgba(181,145,89,.23);border-bottom:1px solid rgba(181,145,89,.23);
 }
-.section-floral{position:absolute;top:12px;width:180px;height:230px;z-index:-1;background:url('assets/floral-corners.svg') left top/contain no-repeat;opacity:.65}
-.section-floral-left{left:-18px}
-.section-floral-right{right:-18px;transform:scaleX(-1)}
 .families-heading{text-align:center;position:relative;z-index:1}
 .families-heading .eyebrow{font-size:13px;letter-spacing:.26em;color:var(--olive)}
 .families-heading h2{margin:2px 0 0;color:#886f59;font:italic 400 35px/1.05 var(--serif)}
@@ -435,7 +432,7 @@ img{max-width:100%}
 .countdown-section{
   position:relative;isolation:isolate;overflow:hidden;
   padding:38px 20px 30px;text-align:center;
-  background:linear-gradient(105deg,#f4ece7 0%,#fbf6ef 48%,#f1eee4 100%);
+  background:linear-gradient(105deg,#fffaf5 0%,#fffdf9 48%,#fbf5f0 100%);
   border-top:1px solid rgba(181,145,89,.3);
   border-bottom:1px solid rgba(181,145,89,.3);
 }
