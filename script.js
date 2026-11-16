@@ -91,6 +91,7 @@
   let apiLoading = false;
   let soundOn = false;
   let mutedAutoplayStarted = false;
+  let userHasInteracted = false;
   const trackId = '-2w18bd-ZQ4';
 
   function updateSound(on, label = on ? 'SOUND ON' : 'SOUND OFF') {
@@ -101,6 +102,7 @@
   }
 
   function enableSoundFromGesture() {
+    userHasInteracted = true;
     if (!playerReady || !player) {
       updateSound(false, 'LOADING MUSIC');
       loadPlayer();
@@ -125,12 +127,21 @@
         onReady: event => {
           playerReady = true;
           event.target.setVolume(58);
-          // Muted autoplay is permitted by more browsers than audible autoplay.
+          // Start buffering immediately while muted; browsers allow this more often.
+          // If the visitor already tapped while the player was loading, honour that
+          // gesture now instead of making them tap a second time.
           try {
-            event.target.mute();
-            event.target.playVideo();
-            mutedAutoplayStarted = true;
-            updateSound(false, 'TAP FOR MUSIC');
+            event.target.setVolume(58);
+            if (userHasInteracted) {
+              event.target.unMute();
+              event.target.playVideo();
+              updateSound(true, 'SOUND ON');
+            } else {
+              event.target.mute();
+              event.target.playVideo();
+              mutedAutoplayStarted = true;
+              updateSound(false, 'TAP FOR MUSIC');
+            }
           } catch (_) {
             updateSound(false, 'TAP TO PLAY');
           }
@@ -181,11 +192,14 @@
   // The first genuine interaction with the page enables sound when the player
   // is already ready. The dedicated music button remains the reliable fallback.
   function enableOnFirstInteraction() {
-    if (!soundOn && playerReady) enableSoundFromGesture();
-    if (soundOn) {
-      document.removeEventListener('pointerdown', enableOnFirstInteraction, true);
-      document.removeEventListener('keydown', enableOnFirstInteraction, true);
-    }
+    if (soundOn) return;
+    // Record the gesture even if YouTube is still downloading. onReady will
+    // immediately unmute and start playback once the player becomes available.
+    userHasInteracted = true;
+    if (playerReady) enableSoundFromGesture();
+    else updateSound(false, 'STARTING MUSIC');
+    document.removeEventListener('pointerdown', enableOnFirstInteraction, true);
+    document.removeEventListener('keydown', enableOnFirstInteraction, true);
   }
   document.addEventListener('pointerdown', enableOnFirstInteraction, true);
   document.addEventListener('keydown', enableOnFirstInteraction, true);
