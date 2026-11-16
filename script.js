@@ -104,9 +104,10 @@
   }
 
   function sendPlayerCommands(commands) {
-    // Retry briefly because the iframe's document load can precede the player
-    // API becoming ready to receive commands.
-    [0, 250, 700, 1400].forEach(delay => {
+    // Send once synchronously so a visitor's tap remains inside the browser's
+    // user-activation window; then retry while the embedded player initialises.
+    commands.forEach(([func, args = []]) => sendPlayerCommand(func, args));
+    [250, 700, 1400].forEach(delay => {
       window.setTimeout(() => {
         commands.forEach(([func, args = []]) => sendPlayerCommand(func, args));
       }, delay);
