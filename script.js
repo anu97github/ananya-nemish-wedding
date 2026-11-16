@@ -81,86 +81,75 @@
   updateCountdown();
   if (countdown) window.setInterval(updateCountdown, 1000);
 
-  // The YouTube iframe is placed in the initial HTML so its muted stream can
-  // begin loading immediately, without waiting for the IFrame API JavaScript.
-  // Audible autoplay is still subject to each browser's user-gesture policy.
+  // Self-hosted wedding soundtrack: preload from the first HTML response and
+  // attempt audible autoplay immediately. Browsers may still require a gesture.
   const soundButton = document.getElementById('soundToggle');
   const soundLabel = document.getElementById('soundLabel');
-  const playerFrame = document.getElementById('youtubePlayer');
+  const weddingAudio = document.getElementById('weddingAudio');
   let soundOn = false;
-  let userHasInteracted = false;
+  let autoplayBlocked = false;
 
-  function updateSound(on, label = on ? 'SOUND ON' : 'TAP FOR MUSIC') {
+  function updateSound(on, label = on ? 'MUSIC ON' : 'MUSIC OFF') {
     soundOn = on;
     soundButton?.setAttribute('aria-pressed', String(on));
-    soundButton?.setAttribute('aria-label', on ? 'Turn wedding music off' : 'Turn wedding music on');
+    soundButton?.setAttribute('aria-label', on ? 'Pause wedding music' : 'Play wedding music');
     if (soundLabel) soundLabel.textContent = label;
   }
 
-  function sendPlayerCommand(func, args = []) {
-    if (!playerFrame?.contentWindow) return;
-    const message = JSON.stringify({ event: 'command', func, args });
-    try { playerFrame.contentWindow.postMessage(message, 'https://www.youtube.com'); } catch (_) {}
-  }
-
-  function sendPlayerCommands(commands) {
-    // Send once synchronously so a visitor's tap remains inside the browser's
-    // user-activation window; then retry while the embedded player initialises.
-    commands.forEach(([func, args = []]) => sendPlayerCommand(func, args));
-    [250, 700, 1400].forEach(delay => {
-      window.setTimeout(() => {
-        commands.forEach(([func, args = []]) => sendPlayerCommand(func, args));
-      }, delay);
+  if (weddingAudio) {
+    weddingAudio.volume = 0.58;
+    weddingAudio.addEventListener('play', () => updateSound(true, 'MUSIC ON'));
+    weddingAudio.addEventListener('pause', () => updateSound(false, 'MUSIC OFF'));
+    weddingAudio.addEventListener('ended', () => {
+      // The loop attribute normally handles this; this is a safety fallback.
+      weddingAudio.currentTime = 0;
+      weddingAudio.play().catch(() => updateSound(false, 'TAP FOR MUSIC'));
     });
+    weddingAudio.addEventListener('error', () => updateSound(false, 'MUSIC UNAVAILABLE'));
   }
 
-  function startMusicFromGesture() {
-    userHasInteracted = true;
-    sendPlayerCommands([
-      ['setVolume', [58]],
-      ['unMute'],
-      ['playVideo']
-    ]);
-    updateSound(true, 'SOUND ON');
-  }
-
-  function stopMusic() {
-    sendPlayerCommands([['mute']]);
-    updateSound(false, 'MUSIC OFF');
+  function playWeddingMusic() {
+    if (!weddingAudio) return;
+    const attempt = weddingAudio.play();
+    if (attempt && typeof attempt.then === 'function') {
+      attempt.then(() => {
+        autoplayBlocked = false;
+        updateSound(true, 'MUSIC ON');
+      }).catch(error => {
+        autoplayBlocked = error?.name === 'NotAllowedError';
+        updateSound(false, autoplayBlocked ? 'TAP FOR MUSIC' : 'MUSIC LOADING');
+      });
+    }
   }
 
   function toggleMusic() {
-    if (soundOn) stopMusic();
-    else startMusicFromGesture();
+    if (!weddingAudio) return;
+    if (!weddingAudio.paused) {
+      weddingAudio.pause();
+      return;
+    }
+    playWeddingMusic();
   }
 
   soundButton?.addEventListener('click', toggleMusic);
 
-  // The iframe URL itself requests muted autoplay as soon as HTML is parsed.
-  // On load, reinforce playback; if the guest already interacted, start audibly.
-  playerFrame?.addEventListener('load', () => {
-    if (userHasInteracted) {
-      startMusicFromGesture();
-    } else {
-      sendPlayerCommands([['mute'], ['playVideo']]);
-      updateSound(false, 'TAP FOR MUSIC');
-    }
-  });
+  // Try audible autoplay as soon as this deferred script executes.
+  // The audio element also has autoplay/preload attributes in the initial HTML.
+  playWeddingMusic();
 
-  // Remember the first tap anywhere on the invitation, even if the YouTube
-  // iframe is still warming up. The first tap on the music button is handled
-  // by its own click handler, so it won't immediately toggle back off.
-  function enableOnFirstInteraction(event) {
-    if (soundOn || soundButton?.contains(event.target)) return;
-    userHasInteracted = true;
-    startMusicFromGesture();
-    document.removeEventListener('pointerdown', enableOnFirstInteraction, true);
-    document.removeEventListener('keydown', enableOnFirstInteraction, true);
+  // If autoplay was blocked, use the visitor's first interaction anywhere on
+  // the invitation to start audio within the browser's user-activation window.
+  function enableMusicOnFirstInteraction(event) {
+    if (event.target === soundButton || soundButton?.contains(event.target)) return;
+    if (!weddingAudio || !weddingAudio.paused) return;
+    playWeddingMusic();
+    document.removeEventListener('pointerdown', enableMusicOnFirstInteraction, true);
+    document.removeEventListener('keydown', enableMusicOnFirstInteraction, true);
   }
-  document.addEventListener('pointerdown', enableOnFirstInteraction, true);
-  document.addEventListener('keydown', enableOnFirstInteraction, true);
+  document.addEventListener('pointerdown', enableMusicOnFirstInteraction, true);
+  document.addEventListener('keydown', enableMusicOnFirstInteraction, true);
 
-  updateSound(false, 'TAP FOR MUSIC');
+  updateSound(false, 'LOADING MUSIC');
 
 
   // Reveal event and venue bands gently as guests scroll through the invitation.
