@@ -15,11 +15,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="preload" href="/assets/wedding-song.mp3" as="audio" type="audio/mpeg" fetchpriority="high">
   <script src="rsvp-config.js"></script>
   <script defer src="script.js"></script>
 </head>
 <body>
-  <div class="audio-engine" aria-hidden="true"><iframe id="youtubePlayer" title="Wedding music" src="https://www.youtube.com/embed/-2w18bd-ZQ4?autoplay=1&amp;mute=1&amp;playsinline=1&amp;controls=0&amp;loop=1&amp;playlist=-2w18bd-ZQ4&amp;enablejsapi=1" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" loading="eager"></iframe></div>
+  <audio id="weddingAudio" preload="auto" autoplay loop playsinline aria-label="Wedding soundtrack"><source src="/assets/wedding-song.mp3" type="audio/mpeg"></audio>
   <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false" aria-label="Turn wedding music on">
     <span class="sound-symbol" aria-hidden="true">♫</span><span id="soundLabel">SOUND OFF</span>
   </button>
