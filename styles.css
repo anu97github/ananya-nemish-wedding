@@ -3279,3 +3279,66 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     padding-bottom: 28px;
   }
 }
+
+/* A simple pipe separates the two family details; no centre monogram here. */
+.family-separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  min-height: 90px;
+  color: rgba(171,135,79,.72);
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+/* Keep the same AN monogram anchored at the upper-left while every section scrolls. */
+.site-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 1000 !important;
+  width: auto !important;
+  padding: 14px 0 0 22px !important;
+  background: transparent !important;
+  pointer-events: none !important;
+}
+
+.site-brand {
+  position: relative !important;
+  display: block !important;
+  width: 72px !important;
+  height: 64px !important;
+  overflow: visible !important;
+  pointer-events: auto !important;
+}
+
+.site-brand .brand-monogram {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
+.brand-monogram-white { opacity: 1; }
+.brand-monogram-primary { opacity: 0; }
+.site-header.is-scrolled .brand-monogram-white { opacity: 0; }
+.site-header.is-scrolled .brand-monogram-primary { opacity: 1; }
+
+@media (max-width: 760px) {
+  .family-separator {
+    min-height: 28px;
+    font-size: 30px;
+  }
+  .site-header {
+    padding: 10px 0 0 13px !important;
+  }
+  .site-brand {
+    width: 58px !important;
+    height: 52px !important;
+  }
+}
