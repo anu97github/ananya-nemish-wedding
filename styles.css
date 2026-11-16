@@ -3687,21 +3687,21 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
 }
 
 
-/* Use the same flowing calligraphy style as the names on the invitation cover. */
+/* Keep the original elegant italic serif heading, at a smaller scale. */
 #countdownTitle {
-  font-family: 'Allura', var(--script), cursive !important;
-  font-style: normal !important;
+  font-family: var(--serif) !important;
+  font-style: italic !important;
   font-weight: 400 !important;
-  font-size: clamp(48px, 5.2vw, 68px) !important;
-  line-height: 1.05 !important;
-  letter-spacing: 0 !important;
-  text-transform: none !important;
+  font-size: clamp(25px, 2.7vw, 36px) !important;
+  line-height: 1.12 !important;
+  letter-spacing: .02em !important;
+  text-transform: uppercase !important;
 }
 
 @media (max-width: 760px) {
   #countdownTitle {
-    font-size: clamp(38px, 10vw, 48px) !important;
-    line-height: 1.08 !important;
+    font-size: clamp(21px, 5.6vw, 27px) !important;
+    line-height: 1.15 !important;
   }
 }
 
