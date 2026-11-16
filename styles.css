@@ -3090,3 +3090,33 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   display:none!important;
   content:none!important;
 }
+
+
+/* Mobile: reserve the full first viewport for the complete invitation artwork.
+   Keep the supplied image at its natural proportions; the next section starts
+   only after the visitor scrolls past the cover. */
+@media (max-width: 767px) {
+  .hero.hero-editorial {
+    min-height: 100vh !important;
+    min-height: 100svh !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #f7eee5 !important;
+    overflow: hidden !important;
+  }
+  .hero-editorial .hero-image,
+  .hero-editorial .hero-image picture {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+  .hero-editorial .hero-image picture img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: unset !important;
+    object-position: top center !important;
+  }
+}
