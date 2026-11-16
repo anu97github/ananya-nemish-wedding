@@ -3342,3 +3342,41 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     height: 52px !important;
   }
 }
+
+/* Do not duplicate the monogram already printed on the invitation cover.
+   Reveal the transparent mark only after the visitor scrolls past the cover. */
+.site-header {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity .25s ease, visibility .25s ease !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.site-header.is-scrolled {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.site-brand {
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.site-brand .brand-monogram {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border: 0 !important;
+  filter: none !important;
+}
+
+.brand-monogram-white { opacity: 0 !important; }
+.brand-monogram-primary { opacity: 0 !important; }
+.site-header.is-scrolled .brand-monogram-primary { opacity: 1 !important; }
+.site-header.is-scrolled .brand-monogram-white { opacity: 0 !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header { transition: none !important; }
+}
