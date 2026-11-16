@@ -3562,3 +3562,85 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     background: transparent !important;
   }
 }
+
+
+/* Final mobile behaviour: the invitation is exactly the opening screen.
+   Keep the hero one viewport tall; the family section begins immediately
+   after it and is revealed only when the visitor scrolls. */
+@media (max-width: 767px) {
+  html,
+  body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+    background: #ece3da !important;
+  }
+
+  main#home {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ece3da !important;
+  }
+
+  main#home > .hero.hero-editorial {
+    display: block !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 100vh !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    max-height: 100svh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #f7eee5 !important;
+  }
+
+  main#home > .hero.hero-editorial .hero-image,
+  main#home > .hero.hero-editorial .hero-image picture {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  main#home > .hero.hero-editorial .hero-image img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  main#home > .families-countdown-section {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ece3da !important;
+  }
+
+  .families-countdown-section .families-section {
+    padding: 22px 16px 16px !important;
+    margin: 0 !important;
+  }
+
+  .families-countdown-section .countdown-section {
+    padding: 16px 14px 22px !important;
+    margin: 0 !important;
+  }
+}
