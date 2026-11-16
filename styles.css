@@ -3015,3 +3015,157 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     )!important;
   }
 }
+
+
+/* Responsive hero assets: use each supplied image at its native aspect ratio. */
+.hero-editorial .hero-image,
+.hero-editorial .hero-image picture{
+  display:block;
+  width:100%;
+  height:100%;
+}
+.hero-editorial .hero-image picture img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:top center;
+}
+@media(max-width:767px){
+  .hero-editorial .hero-image,
+  .hero-editorial .hero-image picture{
+    height:100%;
+  }
+  .hero-editorial .hero-image picture img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:top center;
+  }
+}
+
+
+/* The supplied responsive artwork is the complete invitation cover.
+   Render it once, at its natural aspect ratio, with no HTML duplicate text,
+   logo, colour treatment, masking, fade layer, or crop. */
+.hero.hero-editorial{
+  display:block!important;
+  position:relative!important;
+  width:100%!important;
+  min-height:0!important;
+  height:auto!important;
+  margin:0!important;
+  padding:0!important;
+  overflow:hidden!important;
+  background:transparent!important;
+}
+.hero-editorial .hero-image{
+  display:block!important;
+  position:relative!important;
+  inset:auto!important;
+  width:100%!important;
+  height:auto!important;
+  overflow:hidden!important;
+  background:transparent!important;
+}
+.hero-editorial .hero-image picture{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+}
+.hero-editorial .hero-image picture img{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  max-width:none!important;
+  object-fit:unset!important;
+  object-position:initial!important;
+  filter:none!important;
+  -webkit-mask-image:none!important;
+  mask-image:none!important;
+}
+.hero-editorial .hero-image::after,
+.hero-editorial .hero-image-fade,
+.hero-editorial .hero-content{
+  display:none!important;
+  content:none!important;
+}
+
+
+/* Mobile: reserve the full first viewport for the complete invitation artwork.
+   Keep the supplied image at its natural proportions; the next section starts
+   only after the visitor scrolls past the cover. */
+@media (max-width: 767px) {
+  .hero.hero-editorial {
+    min-height: 100vh !important;
+    min-height: 100svh !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #f7eee5 !important;
+    overflow: hidden !important;
+  }
+  .hero-editorial .hero-image,
+  .hero-editorial .hero-image picture {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+  .hero-editorial .hero-image picture img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: unset !important;
+    object-position: top center !important;
+  }
+}
+
+
+/* Mobile opening screen: the mobile_AN artwork fills the first viewport edge-to-edge. */
+@media (max-width: 767px) {
+  html, body {
+    min-height: 100%;
+  }
+  .hero.hero-editorial {
+    position: relative !important;
+    width: 100% !important;
+    height: 100vh !important;
+    height: 100svh !important;
+    min-height: 100vh !important;
+    min-height: 100svh !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #f7eee5 !important;
+  }
+  .hero-editorial .hero-image,
+  .hero-editorial .hero-image picture {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+  }
+  .hero-editorial .hero-image img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    transform: none !important;
+    filter: none !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+  .hero-editorial .hero-image::after,
+  .hero-editorial .hero-image-fade,
+  .hero-editorial .hero-content {
+    display: none !important;
+    content: none !important;
+  }
+}
