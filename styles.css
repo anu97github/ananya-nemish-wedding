@@ -3404,3 +3404,62 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   mask-size: contain;
   pointer-events: none;
 }
+
+/* Explicitly carry the fixed scrolling monogram treatment onto narrow screens.
+   Keep the same scroll state, olive mask, transparent background and top-left anchor. */
+@media (max-width: 760px) {
+  .site-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 1000 !important;
+    display: block !important;
+    width: auto !important;
+    padding: 10px 0 0 13px !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    pointer-events: none !important;
+  }
+
+  .site-header.is-scrolled {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .site-header .site-brand {
+    position: relative !important;
+    display: block !important;
+    width: 58px !important;
+    height: 52px !important;
+    overflow: visible !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    filter: none !important;
+    pointer-events: auto !important;
+  }
+
+  .site-header .site-brand .brand-monogram {
+    display: none !important;
+  }
+
+  .site-header .site-brand::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    background: var(--olive, #5F7757) !important;
+    -webkit-mask: url("assets/an-monogram-white.png") center / contain no-repeat !important;
+    mask: url("assets/an-monogram-white.png") center / contain no-repeat !important;
+    pointer-events: none !important;
+  }
+
+  .site-header:not(.is-scrolled) .site-brand::after {
+    opacity: 0 !important;
+  }
+
+  .site-header.is-scrolled .site-brand::after {
+    opacity: 1 !important;
+  }
+}
