@@ -3722,3 +3722,25 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   width: 200px !important;
   height: 200px !important;
 }
+
+
+/* Keep the early-loading music iframe in the active viewport but invisible. */
+.audio-engine {
+  position: fixed !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: auto !important;
+  top: auto !important;
+  width: 200px !important;
+  height: 200px !important;
+  opacity: .01 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
+}
+.audio-engine iframe {
+  display: block !important;
+  width: 200px !important;
+  height: 200px !important;
+  border: 0 !important;
+}
