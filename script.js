@@ -81,22 +81,42 @@
   updateCountdown();
   if (countdown) window.setInterval(updateCountdown, 1000);
 
-  // Official soundtrack. Attempt playback on page load; browser autoplay policies may require a tap.
-  // The YouTube player is kept out of the visual layout; no pop-up or player panel appears.
+  // Official soundtrack. Try audible autoplay on page load, then start on the first
+  // visitor interaction if the browser blocks autoplay (common on mobile Safari/Chrome).
   const soundButton = document.getElementById('soundToggle');
   const soundLabel = document.getElementById('soundLabel');
   let player = null;
   let playerReady = false;
   let apiLoading = false;
-  let wantsAudio = false;
+  let wantsAudio = true;
   let soundOn = false;
+  let interactionBound = false;
   const trackId = '-2w18bd-ZQ4';
+
   function updateSound(on, label = on ? 'SOUND ON' : 'SOUND OFF') {
     soundOn = on;
     soundButton?.setAttribute('aria-pressed', String(on));
     soundButton?.setAttribute('aria-label', on ? 'Turn wedding music off' : 'Turn wedding music on');
     if (soundLabel) soundLabel.textContent = label;
   }
+
+  function startMusicFromGesture() {
+    wantsAudio = true;
+    if (!playerReady || !player) {
+      updateSound(false, 'STARTING MUSIC');
+      loadPlayer();
+      return;
+    }
+    try {
+      player.unMute();
+      player.setVolume(58);
+      player.playVideo();
+      updateSound(false, 'STARTING MUSIC');
+    } catch (_) {
+      updateSound(false, 'TAP TO PLAY');
+    }
+  }
+
   function createPlayer() {
     if (player || !window.YT?.Player) return;
     player = new window.YT.Player('youtubePlayer', {
@@ -107,49 +127,80 @@
           playerReady = true;
           event.target.setVolume(58);
           if (wantsAudio) {
-            try { event.target.unMute(); event.target.playVideo(); }
-            catch (_) { updateSound(false, 'TAP TO PLAY'); }
+            try {
+              event.target.unMute();
+              event.target.playVideo();
+            } catch (_) {
+              wantsAudio = false;
+              updateSound(false, 'TAP TO PLAY');
+            }
           }
         },
         onStateChange: event => {
-          if (event.data === window.YT.PlayerState.PLAYING) updateSound(true);
-          if (event.data === window.YT.PlayerState.PAUSED || event.data === window.YT.PlayerState.ENDED) updateSound(false);
+          if (event.data === window.YT.PlayerState.PLAYING) {
+            wantsAudio = true;
+            updateSound(true);
+          }
+          if (event.data === window.YT.PlayerState.PAUSED || event.data === window.YT.PlayerState.ENDED) {
+            wantsAudio = false;
+            updateSound(false);
+          }
         },
-        onError: () => { wantsAudio = false; updateSound(false, 'AUDIO UNAVAILABLE'); },
-        onAutoplayBlocked: () => { updateSound(false, 'TAP TO PLAY'); }
+        onError: () => {
+          wantsAudio = false;
+          updateSound(false, 'AUDIO UNAVAILABLE');
+        },
+        onAutoplayBlocked: () => {
+          wantsAudio = false;
+          updateSound(false, 'TAP TO PLAY');
+        }
       }
     });
   }
+
   function loadPlayer() {
-    if (window.YT?.Player) { createPlayer(); return; }
+    if (window.YT?.Player) {
+      createPlayer();
+      return;
+    }
     if (apiLoading) return;
     apiLoading = true;
     window.onYouTubeIframeAPIReady = createPlayer;
     const script = document.createElement('script');
     script.src = 'https://www.youtube.com/iframe_api';
     script.async = true;
-    script.onerror = () => { apiLoading = false; updateSound(false, 'AUDIO UNAVAILABLE'); };
+    script.onerror = () => {
+      apiLoading = false;
+      wantsAudio = false;
+      updateSound(false, 'AUDIO UNAVAILABLE');
+    };
     document.head.appendChild(script);
   }
-  soundButton?.addEventListener('click', () => {
-    if (wantsAudio || soundOn) {
+
+  function toggleMusic() {
+    if (soundOn) {
       wantsAudio = false;
       try { player?.pauseVideo(); } catch (_) {}
       updateSound(false);
-      return;
+    } else {
+      startMusicFromGesture();
     }
-    wantsAudio = true;
-    updateSound(false, 'LOADING');
-    loadPlayer();
-    if (playerReady && player) {
-      try { player.unMute(); player.playVideo(); }
-      catch (_) { updateSound(false, 'SOUND OFF'); }
-    }
-  });
-  // Attempt to start the soundtrack immediately when the invitation opens.
-  // Some browsers block audible autoplay until the visitor interacts; the fixed
-  // music button remains available to start it with one tap in that case.
-  wantsAudio = true;
+  }
+
+  soundButton?.addEventListener('click', toggleMusic);
+
+  // Any first tap/click/key on the invitation can grant the browser's required
+  // user activation; guests do not have to find the music button specifically.
+  function startOnFirstInteraction() {
+    if (soundOn) return;
+    startMusicFromGesture();
+    document.removeEventListener('pointerdown', startOnFirstInteraction, true);
+    document.removeEventListener('keydown', startOnFirstInteraction, true);
+  }
+  document.addEventListener('pointerdown', startOnFirstInteraction, true);
+  document.addEventListener('keydown', startOnFirstInteraction, true);
+
+  // Attempt audible autoplay immediately. Browsers may block it until interaction.
   updateSound(false, 'STARTING MUSIC');
   loadPlayer();
 
