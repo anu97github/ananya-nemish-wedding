@@ -3914,3 +3914,86 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .timeline-palette.palette-expanded .palette-chip strong{font-size:7px}
   .timeline-palette.palette-expanded .palette-chip code{font-size:9px}
 }
+
+
+/* Compact, row-aligned dress-code palettes (Haldi, Mehendi and Wedding). */
+.timeline-palette.palette-expanded{
+  gap:8px 4px;
+  margin-top:12px;
+  padding:0 2px 2px;
+}
+.timeline-palette.palette-expanded .palette-chip{
+  display:grid;
+  grid-template-rows:48px 2.45em 1.2em;
+  justify-items:center;
+  align-items:start;
+  gap:3px;
+  padding:0;
+  margin:0;
+  min-width:0;
+}
+.timeline-palette.palette-expanded .palette-chip .palette-arch{
+  width:36px;
+  height:48px;
+  margin:0 auto;
+}
+.timeline-palette.palette-expanded .palette-chip strong{
+  align-self:start;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  width:100%;
+  min-height:2.45em;
+  max-height:2.45em;
+  margin:0;
+  font-size:8px;
+  line-height:1.2;
+  overflow-wrap:normal;
+  word-break:normal;
+  text-wrap:balance;
+}
+.timeline-palette.palette-expanded .palette-chip code{
+  align-self:start;
+  display:block;
+  width:100%;
+  margin:0;
+  padding:0;
+  font-size:10px;
+  line-height:1.2;
+  text-align:center;
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums lining-nums;
+}
+@media(max-width:760px){
+  .timeline-palette.palette-expanded{
+    gap:7px 3px;
+    margin-top:10px;
+    padding:0 1px 1px;
+  }
+  .timeline-palette.palette-expanded .palette-chip{
+    grid-template-rows:42px 2.45em 1.2em;
+    gap:2px;
+  }
+  .timeline-palette.palette-expanded .palette-chip .palette-arch{
+    width:32px;
+    height:42px;
+  }
+  .timeline-palette.palette-expanded .palette-chip strong{
+    font-size:7px;
+    line-height:1.2;
+  }
+  .timeline-palette.palette-expanded .palette-chip code{
+    font-size:9px;
+  }
+}
+@media(max-width:390px){
+  .timeline-palette.palette-expanded .palette-chip{
+    grid-template-rows:38px 2.45em 1.2em;
+  }
+  .timeline-palette.palette-expanded .palette-chip .palette-arch{
+    width:29px;
+    height:38px;
+  }
+  .timeline-palette.palette-expanded .palette-chip strong{font-size:6.5px}
+  .timeline-palette.palette-expanded .palette-chip code{font-size:8px}
+}
