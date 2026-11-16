@@ -3211,3 +3211,30 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     mask-image: none !important;
   }
 }
+
+/* Match the mobile page canvas to the warm ivory at the foot of the invitation.
+   If the portrait artwork is shorter than a particular phone viewport, the
+   remaining area blends into the artwork instead of showing a white strip. */
+@media (max-width: 767px) {
+  html,
+  body,
+  main#home,
+  .hero.hero-editorial,
+  .hero-editorial .hero-image,
+  .hero-editorial .hero-image picture {
+    background-color: #f7eee5 !important;
+  }
+
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    min-width: 0;
+  }
+
+  .hero.hero-editorial,
+  .hero-editorial .hero-image,
+  .hero-editorial .hero-image picture {
+    border: 0 !important;
+  }
+}
