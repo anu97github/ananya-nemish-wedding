@@ -2634,3 +2634,24 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     )!important;
   }
 }
+
+
+/* Move the complete invitation lockup down slightly to use the open space below the hands. */
+.hero-editorial .hero-content{
+  top:calc(clamp(260px,27vw,430px) + 56px)!important;
+}
+@media(max-width:760px){
+  .hero-editorial .hero-content{
+    top:calc(clamp(250px,68vw,390px) + 42px)!important;
+  }
+}
+@media(max-width:390px){
+  .hero-editorial .hero-content{
+    top:calc(clamp(235px,65vw,300px) + 36px)!important;
+  }
+}
+@media(max-height:700px) and (min-width:761px){
+  .hero-editorial .hero-content{
+    top:calc(clamp(300px,34vw,430px) + 42px)!important;
+  }
+}
