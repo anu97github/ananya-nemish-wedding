@@ -4130,3 +4130,14 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     scroll-margin-inline-start:26px;
   }
 }
+
+
+/* Make event times easier to scan without changing event-title sizing. */
+.timeline-time{
+  font-size:13px;
+}
+@media(max-width:760px){
+  .timeline-time{
+    font-size:12px;
+  }
+}
