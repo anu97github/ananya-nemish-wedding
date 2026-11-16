@@ -127,7 +127,6 @@
 
   function removeMusicGestureListeners() {
     ['pointerdown', 'touchstart', 'touchmove', 'touchend', 'click', 'wheel', 'keydown'].forEach(type => {
-      document.removeEventListener(type, requestMusicFromGesture, true);
       window.removeEventListener(type, requestMusicFromGesture, true);
     });
   }
@@ -152,11 +151,21 @@
   // directly on touchstart, touchmove, touchend, click, wheel, or key input.
   const musicGestureEvents = ['pointerdown', 'touchstart', 'touchmove', 'touchend', 'click', 'wheel', 'keydown'];
   musicGestureEvents.forEach(type => {
-    document.addEventListener(type, requestMusicFromGesture, { capture: true, passive: true });
     window.addEventListener(type, requestMusicFromGesture, { capture: true, passive: true });
   });
   const initialPlay = weddingAudio?.play();
-  initialPlay?.then(() => updateSound(true, weddingAudio.muted ? 'MUSIC PLAYING · MUTED' : 'MUSIC ON')).catch(() => updateSound(false, 'TOUCH OR TAP FOR MUSIC'));
+  initialPlay?.then(() => updateSound(true, weddingAudio.muted ? 'MUSIC PLAYING · MUTED' : 'MUSIC ON')).catch(async () => {
+    if (!weddingAudio) return;
+    // Muted autoplay is the fallback so the soundtrack can begin without sound
+    // where the browser allows it; the first trusted touch unmutes it.
+    weddingAudio.muted = true;
+    try {
+      await weddingAudio.play();
+      updateSound(true, 'MUSIC PLAYING · MUTED');
+    } catch (_) {
+      updateSound(false, 'TOUCH OR TAP FOR MUSIC');
+    }
+  });
   updateSound(false, 'LOADING MUSIC');
 
 
