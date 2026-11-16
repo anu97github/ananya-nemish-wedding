@@ -3309,8 +3309,8 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
 .site-brand {
   position: relative !important;
   display: block !important;
-  width: 72px !important;
-  height: 64px !important;
+  width: 88px !important;
+  height: 78px !important;
   overflow: visible !important;
   pointer-events: auto !important;
 }
@@ -3338,8 +3338,8 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     padding: 10px 0 0 13px !important;
   }
   .site-brand {
-    width: 58px !important;
-    height: 52px !important;
+    width: 88px !important;
+    height: 78px !important;
   }
 }
 
@@ -3431,8 +3431,8 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .site-header .site-brand {
     position: relative !important;
     display: block !important;
-    width: 58px !important;
-    height: 52px !important;
+    width: 88px !important;
+    height: 78px !important;
     overflow: visible !important;
     background: transparent !important;
     box-shadow: none !important;
@@ -3461,5 +3461,35 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
 
   .site-header.is-scrolled .site-brand::after {
     opacity: 1 !important;
+  }
+}
+
+
+/* Match the scrolling monogram's visual size to the mark on the cover. */
+.site-header .site-brand {
+  width: 88px !important;
+  height: 78px !important;
+}
+
+/* Bring the two family columns closer while keeping a clear central divider. */
+.families-countdown-section .family-grid {
+  grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr) !important;
+  gap: clamp(8px, 1.5vw, 18px) !important;
+  max-width: 1120px !important;
+}
+
+.families-countdown-section .family-card {
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
+
+@media (max-width: 760px) {
+  .site-header .site-brand {
+    width: 88px !important;
+    height: 78px !important;
+  }
+  .families-countdown-section .family-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 5px !important;
   }
 }
