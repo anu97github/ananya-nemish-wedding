@@ -3644,3 +3644,16 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     margin: 0 !important;
   }
 }
+
+
+/* Keep "begins in" as a clear continuation of the countdown headline. */
+.countdown-inner h2 .countdown-begins {
+  display: inline-block;
+  font-size: .52em;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  vertical-align: .12em;
+}
