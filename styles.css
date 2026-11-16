@@ -3493,3 +3493,72 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     gap: 5px !important;
   }
 }
+
+
+/* Mobile-first invitation layout:
+   The portrait cover artwork has a large intentionally empty lower area.
+   Crop that excess from the rendered hero so the family section follows the
+   invitation shortly after the date/location, rather than after a long blank
+   scroll. Keep the artwork anchored to the top so all invitation text remains. */
+@media (max-width: 767px) {
+  html,
+  body {
+    background: #ece3da !important;
+  }
+
+  main#home {
+    background: #ece3da !important;
+  }
+
+  .hero.hero-editorial {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    height: calc(100vw * 1.67) !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #f7eee5 !important;
+  }
+
+  .hero-editorial .hero-image,
+  .hero-editorial .hero-image picture {
+    position: absolute !important;
+    inset: 0 auto auto 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .hero-editorial .hero-image img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    object-fit: unset !important;
+    object-position: top center !important;
+    transform: none !important;
+  }
+
+  .families-countdown-section {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ece3da !important;
+  }
+
+  .families-countdown-section .families-section {
+    padding: 22px 16px 16px !important;
+    margin: 0 !important;
+    background: transparent !important;
+  }
+
+  .families-countdown-section .countdown-section {
+    padding: 16px 14px 22px !important;
+    margin: 0 !important;
+    background: transparent !important;
+  }
+}
