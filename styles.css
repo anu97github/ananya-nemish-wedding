@@ -3707,3 +3707,426 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
 /* Keep the YouTube player alive in the page's rendering tree without
    placing it thousands of pixels off-screen, which can delay startup. */
 
+
+
+/* Wedding celebration palettes: give each palette its own full event card,
+   with the same tall arch swatches as the supplied dress-code references. */
+.timeline-item:has(.palette-expanded){
+  flex:0 0 490px;
+  padding-right:24px;
+  padding-bottom:22px;
+}
+.timeline-palette.palette-expanded{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:18px 12px;
+  width:100%;
+  max-width:100%;
+  margin-top:22px;
+  align-items:start;
+}
+.palette-chip{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  text-align:center;
+  gap:7px;
+}
+.palette-arch{
+  display:block;
+  width:76px;
+  height:94px;
+  flex:0 0 auto;
+  background:var(--swatch);
+  border-radius:999px 999px 0 0;
+  box-shadow:0 3px 8px rgba(67,52,39,.13);
+}
+.palette-chip strong{
+  display:block;
+  width:100%;
+  color:#5d5045;
+  font-family:var(--serif),Georgia,serif;
+  font-size:12px;
+  font-weight:700;
+  line-height:1.25;
+  letter-spacing:.01em;
+  overflow-wrap:anywhere;
+}
+.palette-chip code{
+  display:block;
+  color:#887665;
+  background:none;
+  padding:0;
+  font-family:var(--serif),Georgia,serif;
+  font-size:14px;
+  font-weight:500;
+  line-height:1.2;
+  letter-spacing:0;
+  font-variant-numeric:lining-nums tabular-nums;
+  white-space:nowrap;
+}
+@media(max-width:760px){
+  .timeline-scroll{
+    gap:18px;
+    padding-left:20px;
+    padding-right:20px;
+  }
+  .timeline-item:has(.palette-expanded){
+    flex:0 0 calc(100vw - 44px);
+    padding-right:16px;
+    padding-bottom:20px;
+  }
+  .timeline-palette.palette-expanded{
+    gap:14px 7px;
+    margin-top:18px;
+  }
+  .palette-arch{
+    width:clamp(44px,14vw,58px);
+    height:clamp(58px,18vw,74px);
+  }
+  .palette-chip{
+    gap:5px;
+  }
+  .palette-chip strong{
+    font-size:clamp(8px,2.5vw,10px);
+    line-height:1.22;
+  }
+  .palette-chip code{
+    font-size:clamp(11px,3vw,13px);
+    line-height:1.2;
+  }
+}
+@media(max-width:360px){
+  .timeline-item:has(.palette-expanded){
+    flex-basis:calc(100vw - 36px);
+  }
+  .timeline-palette.palette-expanded{
+    gap:12px 4px;
+  }
+  .palette-arch{
+    width:44px;
+    height:58px;
+  }
+  .palette-chip strong{font-size:8px}
+  .palette-chip code{font-size:11px}
+}
+
+
+/* Final celebration timeline refinement:
+   keep every event the same horizontal width and use the supplied arch swatches
+   (the generic timeline span rule must not turn these into circles). */
+.timeline-item,
+.timeline-item:has(.palette-expanded){
+  flex:0 0 250px;
+  box-sizing:border-box;
+  padding-right:18px;
+}
+.timeline-palette.palette-expanded{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px 5px;
+  width:100%;
+  max-width:100%;
+  margin-top:18px;
+  align-items:start;
+}
+.timeline-palette.palette-expanded .palette-chip{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  gap:5px;
+  text-align:center;
+}
+.timeline-palette.palette-expanded .palette-chip .palette-arch{
+  display:block;
+  flex:0 0 auto;
+  width:44px;
+  height:58px;
+  min-width:0;
+  min-height:0;
+  border:0;
+  border-radius:999px 999px 0 0;
+  background:var(--swatch);
+  box-shadow:0 3px 8px rgba(67,52,39,.13);
+}
+.timeline-palette.palette-expanded .palette-chip strong{
+  display:block;
+  width:100%;
+  color:#5d5045;
+  font-family:var(--serif),Georgia,serif;
+  font-size:9px;
+  font-weight:700;
+  line-height:1.2;
+  letter-spacing:0;
+  overflow-wrap:anywhere;
+}
+.timeline-palette.palette-expanded .palette-chip code{
+  display:block;
+  padding:0;
+  color:#887665;
+  background:none;
+  font-family:var(--serif),Georgia,serif;
+  font-size:11px;
+  font-weight:500;
+  line-height:1.2;
+  letter-spacing:0;
+  font-variant-numeric:lining-nums tabular-nums;
+  white-space:nowrap;
+}
+#day-panel-3 .day-three-timeline{
+  justify-content:center;
+}
+@media(max-width:760px){
+  .timeline-item,
+  .timeline-item:has(.palette-expanded){
+    flex:0 0 225px;
+    padding-right:14px;
+  }
+  .timeline-palette.palette-expanded{
+    gap:11px 3px;
+    margin-top:16px;
+  }
+  .timeline-palette.palette-expanded .palette-chip .palette-arch{
+    width:clamp(38px,11vw,44px);
+    height:clamp(50px,15vw,58px);
+  }
+  .timeline-palette.palette-expanded .palette-chip strong{
+    font-size:8px;
+    line-height:1.15;
+  }
+  .timeline-palette.palette-expanded .palette-chip code{
+    font-size:10px;
+  }
+}
+@media(max-width:390px){
+  .timeline-item,
+  .timeline-item:has(.palette-expanded){
+    flex-basis:205px;
+  }
+  .timeline-palette.palette-expanded .palette-chip .palette-arch{
+    width:36px;
+    height:48px;
+  }
+  .timeline-palette.palette-expanded .palette-chip strong{font-size:7px}
+  .timeline-palette.palette-expanded .palette-chip code{font-size:9px}
+}
+
+
+/* Compact, row-aligned dress-code palettes (Haldi, Mehendi and Wedding). */
+.timeline-palette.palette-expanded{
+  gap:8px 4px;
+  margin-top:12px;
+  padding:0 2px 2px;
+}
+.timeline-palette.palette-expanded .palette-chip{
+  display:grid;
+  grid-template-rows:48px 2.45em 1.2em;
+  justify-items:center;
+  align-items:start;
+  gap:3px;
+  padding:0;
+  margin:0;
+  min-width:0;
+}
+.timeline-palette.palette-expanded .palette-chip .palette-arch{
+  width:36px;
+  height:48px;
+  margin:0 auto;
+}
+.timeline-palette.palette-expanded .palette-chip strong{
+  align-self:start;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  width:100%;
+  min-height:2.45em;
+  max-height:2.45em;
+  margin:0;
+  font-size:8px;
+  line-height:1.2;
+  overflow-wrap:normal;
+  word-break:normal;
+  text-wrap:balance;
+}
+.timeline-palette.palette-expanded .palette-chip code{
+  align-self:start;
+  display:block;
+  width:100%;
+  margin:0;
+  padding:0;
+  font-size:10px;
+  line-height:1.2;
+  text-align:center;
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums lining-nums;
+}
+@media(max-width:760px){
+  .timeline-palette.palette-expanded{
+    gap:7px 3px;
+    margin-top:10px;
+    padding:0 1px 1px;
+  }
+  .timeline-palette.palette-expanded .palette-chip{
+    grid-template-rows:42px 2.45em 1.2em;
+    gap:2px;
+  }
+  .timeline-palette.palette-expanded .palette-chip .palette-arch{
+    width:32px;
+    height:42px;
+  }
+  .timeline-palette.palette-expanded .palette-chip strong{
+    font-size:7px;
+    line-height:1.2;
+  }
+  .timeline-palette.palette-expanded .palette-chip code{
+    font-size:9px;
+  }
+}
+@media(max-width:390px){
+  .timeline-palette.palette-expanded .palette-chip{
+    grid-template-rows:38px 2.45em 1.2em;
+  }
+  .timeline-palette.palette-expanded .palette-chip .palette-arch{
+    width:29px;
+    height:38px;
+  }
+  .timeline-palette.palette-expanded .palette-chip strong{font-size:6.5px}
+  .timeline-palette.palette-expanded .palette-chip code{font-size:8px}
+}
+
+
+/* Final palette spacing: shorter arches, tight name-to-hex spacing,
+   and identical four-column spacing for every event palette. */
+.timeline-palette.palette-expanded{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  column-gap:0;
+  row-gap:0;
+  padding:0;
+  margin-top:10px;
+  width:100%;
+  box-sizing:border-box;
+}
+.timeline-palette.palette-expanded .palette-chip{
+  display:grid;
+  grid-template-rows:40px 20px 12px;
+  justify-items:center;
+  align-items:start;
+  gap:1px;
+  min-width:0;
+  width:100%;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+.timeline-palette.palette-expanded .palette-chip .palette-arch{
+  width:36px;
+  height:40px;
+  margin:0 auto;
+}
+.timeline-palette.palette-expanded .palette-chip strong{
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  width:100%;
+  height:20px;
+  min-height:20px;
+  max-height:20px;
+  margin:0;
+  padding:0;
+  font-size:8px;
+  line-height:10px;
+  text-align:center;
+  overflow-wrap:normal;
+  word-break:normal;
+  text-wrap:balance;
+}
+.timeline-palette.palette-expanded .palette-chip code{
+  display:block;
+  width:100%;
+  margin:0;
+  padding:0;
+  font-size:10px;
+  line-height:12px;
+  text-align:center;
+  white-space:nowrap;
+  letter-spacing:0;
+  font-variant-numeric:tabular-nums lining-nums;
+}
+@media(max-width:760px){
+  .timeline-palette.palette-expanded{
+    column-gap:0;
+    row-gap:0;
+    margin-top:9px;
+  }
+  .timeline-palette.palette-expanded .palette-chip{
+    grid-template-rows:34px 18px 11px;
+    gap:1px;
+  }
+  .timeline-palette.palette-expanded .palette-chip .palette-arch{
+    width:32px;
+    height:34px;
+  }
+  .timeline-palette.palette-expanded .palette-chip strong{
+    height:18px;
+    min-height:18px;
+    max-height:18px;
+    font-size:7px;
+    line-height:9px;
+  }
+  .timeline-palette.palette-expanded .palette-chip code{
+    font-size:9px;
+    line-height:11px;
+  }
+}
+@media(max-width:390px){
+  .timeline-palette.palette-expanded .palette-chip{
+    grid-template-rows:32px 16px 10px;
+  }
+  .timeline-palette.palette-expanded .palette-chip .palette-arch{
+    width:29px;
+    height:32px;
+  }
+  .timeline-palette.palette-expanded .palette-chip strong{
+    height:16px;
+    min-height:16px;
+    max-height:16px;
+    font-size:6.5px;
+    line-height:8px;
+  }
+  .timeline-palette.palette-expanded .palette-chip code{
+    font-size:8px;
+    line-height:10px;
+  }
+}
+
+
+/* Keep the opening timeline cards comfortably inset from the viewport edge.
+   Apply to the first event on Days One and Two; later events and Day Three
+   (which is intentionally centered) keep their existing alignment. */
+#day-panel-1 .timeline-scroll,
+#day-panel-2 .timeline-scroll{
+  padding-inline-start:32px;
+  scroll-padding-inline-start:32px;
+}
+#day-panel-1 .timeline-scroll > .timeline-item:first-child,
+#day-panel-2 .timeline-scroll > .timeline-item:first-child{
+  margin-inline-start:8px;
+  scroll-margin-inline-start:32px;
+}
+@media(max-width:760px){
+  #day-panel-1 .timeline-scroll,
+  #day-panel-2 .timeline-scroll{
+    padding-inline-start:26px;
+    scroll-padding-inline-start:26px;
+  }
+  #day-panel-1 .timeline-scroll > .timeline-item:first-child,
+  #day-panel-2 .timeline-scroll > .timeline-item:first-child{
+    margin-inline-start:6px;
+    scroll-margin-inline-start:26px;
+  }
+}
