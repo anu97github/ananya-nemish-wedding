@@ -3169,3 +3169,72 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     content: none !important;
   }
 }
+
+
+/* Mobile hero: let the final portrait artwork define the hero height.
+   This prevents a forced viewport-height container from leaving a trailing
+   blank strip, and preserves the complete artwork without cover-cropping. */
+@media (max-width: 767px) {
+  .hero.hero-editorial {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: transparent !important;
+  }
+
+  .hero-editorial .hero-image,
+  .hero-editorial .hero-image picture {
+    position: relative !important;
+    inset: auto !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .hero-editorial .hero-image img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    object-fit: unset !important;
+    object-position: top center !important;
+    transform: none !important;
+    filter: none !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+}
+
+/* Match the mobile page canvas to the warm ivory at the foot of the invitation.
+   If the portrait artwork is shorter than a particular phone viewport, the
+   remaining area blends into the artwork instead of showing a white strip. */
+@media (max-width: 767px) {
+  html,
+  body,
+  main#home,
+  .hero.hero-editorial,
+  .hero-editorial .hero-image,
+  .hero-editorial .hero-image picture {
+    background-color: #f7eee5 !important;
+  }
+
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    min-width: 0;
+  }
+
+  .hero.hero-editorial,
+  .hero-editorial .hero-image,
+  .hero-editorial .hero-image picture {
+    border: 0 !important;
+  }
+}
