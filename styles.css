@@ -3707,3 +3707,108 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
 /* Keep the YouTube player alive in the page's rendering tree without
    placing it thousands of pixels off-screen, which can delay startup. */
 
+
+
+/* Wedding celebration palettes: give each palette its own full event card,
+   with the same tall arch swatches as the supplied dress-code references. */
+.timeline-item:has(.palette-expanded){
+  flex:0 0 490px;
+  padding-right:24px;
+  padding-bottom:22px;
+}
+.timeline-palette.palette-expanded{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:18px 12px;
+  width:100%;
+  max-width:100%;
+  margin-top:22px;
+  align-items:start;
+}
+.palette-chip{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  text-align:center;
+  gap:7px;
+}
+.palette-arch{
+  display:block;
+  width:76px;
+  height:94px;
+  flex:0 0 auto;
+  background:var(--swatch);
+  border-radius:999px 999px 0 0;
+  box-shadow:0 3px 8px rgba(67,52,39,.13);
+}
+.palette-chip strong{
+  display:block;
+  width:100%;
+  color:#5d5045;
+  font-family:var(--serif),Georgia,serif;
+  font-size:12px;
+  font-weight:700;
+  line-height:1.25;
+  letter-spacing:.01em;
+  overflow-wrap:anywhere;
+}
+.palette-chip code{
+  display:block;
+  color:#887665;
+  background:none;
+  padding:0;
+  font-family:var(--serif),Georgia,serif;
+  font-size:14px;
+  font-weight:500;
+  line-height:1.2;
+  letter-spacing:0;
+  font-variant-numeric:lining-nums tabular-nums;
+  white-space:nowrap;
+}
+@media(max-width:760px){
+  .timeline-scroll{
+    gap:18px;
+    padding-left:20px;
+    padding-right:20px;
+  }
+  .timeline-item:has(.palette-expanded){
+    flex:0 0 calc(100vw - 44px);
+    padding-right:16px;
+    padding-bottom:20px;
+  }
+  .timeline-palette.palette-expanded{
+    gap:14px 7px;
+    margin-top:18px;
+  }
+  .palette-arch{
+    width:clamp(44px,14vw,58px);
+    height:clamp(58px,18vw,74px);
+  }
+  .palette-chip{
+    gap:5px;
+  }
+  .palette-chip strong{
+    font-size:clamp(8px,2.5vw,10px);
+    line-height:1.22;
+  }
+  .palette-chip code{
+    font-size:clamp(11px,3vw,13px);
+    line-height:1.2;
+  }
+}
+@media(max-width:360px){
+  .timeline-item:has(.palette-expanded){
+    flex-basis:calc(100vw - 36px);
+  }
+  .timeline-palette.palette-expanded{
+    gap:12px 4px;
+  }
+  .palette-arch{
+    width:44px;
+    height:58px;
+  }
+  .palette-chip strong{font-size:8px}
+  .palette-chip code{font-size:11px}
+}
