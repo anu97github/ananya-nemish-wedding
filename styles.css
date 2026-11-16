@@ -88,9 +88,6 @@ img{max-width:100%}
   background:linear-gradient(105deg,#fffaf5 0%,#fffdf9 48%,#fbf5f0 100%);
   border-top:1px solid rgba(181,145,89,.23);border-bottom:1px solid rgba(181,145,89,.23);
 }
-.section-floral{position:absolute;top:12px;width:180px;height:230px;z-index:-1;background:url('assets/floral-corners.svg') left top/contain no-repeat;opacity:.65}
-.section-floral-left{left:-18px}
-.section-floral-right{right:-18px;transform:scaleX(-1)}
 .families-heading{text-align:center;position:relative;z-index:1}
 .families-heading .eyebrow{font-size:13px;letter-spacing:.26em;color:var(--olive)}
 .families-heading h2{margin:2px 0 0;color:#886f59;font:italic 400 35px/1.05 var(--serif)}
@@ -435,7 +432,7 @@ img{max-width:100%}
 .countdown-section{
   position:relative;isolation:isolate;overflow:hidden;
   padding:38px 20px 30px;text-align:center;
-  background:linear-gradient(105deg,#f4ece7 0%,#fbf6ef 48%,#f1eee4 100%);
+  background:linear-gradient(105deg,#fffaf5 0%,#fffdf9 48%,#fbf5f0 100%);
   border-top:1px solid rgba(181,145,89,.3);
   border-bottom:1px solid rgba(181,145,89,.3);
 }
@@ -3236,5 +3233,263 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .hero-editorial .hero-image,
   .hero-editorial .hero-image picture {
     border: 0 !important;
+  }
+}
+
+/* The family details and countdown are one continuous second page section.
+   Use the sampled warm taupe from the marked strip in the supplied reference
+   consistently across desktop, tablet and mobile. */
+.families-countdown-section {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #ece3da !important;
+}
+
+.families-countdown-section .families-section {
+  background: transparent !important;
+  border: 0 !important;
+  margin: 0;
+}
+
+.families-countdown-section .countdown-section {
+  background: transparent !important;
+  border: 0 !important;
+  margin: 0;
+}
+
+.families-countdown-section .countdown-section::before,
+.families-countdown-section .countdown-section::after {
+  /* Keep the subtle side rules, but never introduce a separate background band. */
+  background: linear-gradient(transparent, rgba(174,137,83,.32), transparent);
+}
+
+@media (max-width: 760px) {
+  .families-countdown-section {
+    background: #ece3da !important;
+  }
+  .families-countdown-section .families-section {
+    padding-top: 35px;
+    padding-bottom: 30px;
+  }
+  .families-countdown-section .countdown-section {
+    padding-top: 25px;
+    padding-bottom: 28px;
+  }
+}
+
+/* A simple pipe separates the two family details; no centre monogram here. */
+.family-separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  min-height: 90px;
+  color: rgba(171,135,79,.72);
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+/* Keep the same AN monogram anchored at the upper-left while every section scrolls. */
+.site-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 1000 !important;
+  width: auto !important;
+  padding: 14px 0 0 22px !important;
+  background: transparent !important;
+  pointer-events: none !important;
+}
+
+.site-brand {
+  position: relative !important;
+  display: block !important;
+  width: 88px !important;
+  height: 78px !important;
+  overflow: visible !important;
+  pointer-events: auto !important;
+}
+
+.site-brand .brand-monogram {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
+.brand-monogram-white { opacity: 1; }
+.brand-monogram-primary { opacity: 0; }
+.site-header.is-scrolled .brand-monogram-white { opacity: 0; }
+.site-header.is-scrolled .brand-monogram-primary { opacity: 1; }
+
+@media (max-width: 760px) {
+  .family-separator {
+    min-height: 28px;
+    font-size: 30px;
+  }
+  .site-header {
+    padding: 10px 0 0 13px !important;
+  }
+  .site-brand {
+    width: 88px !important;
+    height: 78px !important;
+  }
+}
+
+/* Do not duplicate the monogram already printed on the invitation cover.
+   Reveal the transparent mark only after the visitor scrolls past the cover. */
+.site-header {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity .25s ease, visibility .25s ease !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.site-header.is-scrolled {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.site-brand {
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.site-brand .brand-monogram {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border: 0 !important;
+  filter: none !important;
+}
+
+.brand-monogram-white { opacity: 0 !important; }
+.brand-monogram-primary { opacity: 0 !important; }
+.site-header.is-scrolled .brand-monogram-primary { opacity: 1 !important; }
+.site-header.is-scrolled .brand-monogram-white { opacity: 0 !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header { transition: none !important; }
+}
+
+/* Use the exact white monogram artwork as an alpha mask, recoloured to the
+   website's olive text colour. This preserves the original lettering without
+   introducing the PNG's white/green background or a surrounding tile. */
+.site-brand .brand-monogram-primary {
+  opacity: 0 !important;
+}
+
+.site-header.is-scrolled .site-brand::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: block;
+  background-color: var(--olive, #5F7757);
+  -webkit-mask-image: url("assets/an-monogram-white.png");
+  mask-image: url("assets/an-monogram-white.png");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  pointer-events: none;
+}
+
+/* Explicitly carry the fixed scrolling monogram treatment onto narrow screens.
+   Keep the same scroll state, olive mask, transparent background and top-left anchor. */
+@media (max-width: 760px) {
+  .site-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 1000 !important;
+    display: block !important;
+    width: auto !important;
+    padding: 10px 0 0 13px !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    pointer-events: none !important;
+  }
+
+  .site-header.is-scrolled {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .site-header .site-brand {
+    position: relative !important;
+    display: block !important;
+    width: 88px !important;
+    height: 78px !important;
+    overflow: visible !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    filter: none !important;
+    pointer-events: auto !important;
+  }
+
+  .site-header .site-brand .brand-monogram {
+    display: none !important;
+  }
+
+  .site-header .site-brand::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    background: var(--olive, #5F7757) !important;
+    -webkit-mask: url("assets/an-monogram-white.png") center / contain no-repeat !important;
+    mask: url("assets/an-monogram-white.png") center / contain no-repeat !important;
+    pointer-events: none !important;
+  }
+
+  .site-header:not(.is-scrolled) .site-brand::after {
+    opacity: 0 !important;
+  }
+
+  .site-header.is-scrolled .site-brand::after {
+    opacity: 1 !important;
+  }
+}
+
+
+/* Match the scrolling monogram's visual size to the mark on the cover. */
+.site-header .site-brand {
+  width: 88px !important;
+  height: 78px !important;
+}
+
+/* Bring the two family columns closer while keeping a clear central divider. */
+.families-countdown-section .family-grid {
+  grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr) !important;
+  gap: clamp(8px, 1.5vw, 18px) !important;
+  max-width: 1120px !important;
+}
+
+.families-countdown-section .family-card {
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
+
+@media (max-width: 760px) {
+  .site-header .site-brand {
+    width: 88px !important;
+    height: 78px !important;
+  }
+  .families-countdown-section .family-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 5px !important;
   }
 }
