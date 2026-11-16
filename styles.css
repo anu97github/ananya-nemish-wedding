@@ -2194,3 +2194,104 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .hero-editorial .hero-title.couple-names{font-size:clamp(49px,11.5vw,60px)!important}
   .hero-editorial .hero-invitation{font-size:11px!important;letter-spacing:.14em!important}
 }
+
+
+/* Seamless photo-to-paper transition: fade the photograph itself, not a separate panel. */
+.hero-editorial{
+  background:linear-gradient(
+    180deg,
+    #bfc0bd 0%,
+    #c9c8c3 16%,
+    #d8d5ce 34%,
+    #e8e2d9 54%,
+    #f3ede5 73%,
+    #fbf7f0 100%
+  )!important;
+}
+.hero-editorial .hero-image{
+  background:transparent!important;
+  height:auto!important;
+  overflow:visible!important;
+}
+.hero-editorial .hero-image img{
+  -webkit-mask-image:linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 26%,
+    rgba(0,0,0,.94) 38%,
+    rgba(0,0,0,.78) 52%,
+    rgba(0,0,0,.48) 68%,
+    rgba(0,0,0,.20) 84%,
+    transparent 100%
+  )!important;
+  mask-image:linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 26%,
+    rgba(0,0,0,.94) 38%,
+    rgba(0,0,0,.78) 52%,
+    rgba(0,0,0,.48) 68%,
+    rgba(0,0,0,.20) 84%,
+    transparent 100%
+  )!important;
+}
+.hero-editorial .hero-image-fade{
+  background:linear-gradient(
+    180deg,
+    rgba(191,192,189,0) 0%,
+    rgba(201,200,195,.02) 15%,
+    rgba(216,213,206,.12) 30%,
+    rgba(232,226,217,.32) 47%,
+    rgba(243,237,229,.64) 64%,
+    rgba(251,247,240,.9) 81%,
+    #fbf7f0 100%
+  )!important;
+}
+.hero-editorial .hero-date{
+  letter-spacing:.14em!important;
+  font-variant-numeric:lining-nums!important;
+}
+@media(max-width:760px){
+  .hero-editorial{
+    background:linear-gradient(
+      180deg,
+      #bfc0bd 0%,
+      #d0cec8 22%,
+      #e4ded5 45%,
+      #f1ebe3 68%,
+      #fbf7f0 100%
+    )!important;
+  }
+  .hero-editorial .hero-image img{
+    -webkit-mask-image:linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 23%,
+      rgba(0,0,0,.88) 38%,
+      rgba(0,0,0,.62) 54%,
+      rgba(0,0,0,.28) 72%,
+      transparent 92%
+    )!important;
+    mask-image:linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 23%,
+      rgba(0,0,0,.88) 38%,
+      rgba(0,0,0,.62) 54%,
+      rgba(0,0,0,.28) 72%,
+      transparent 92%
+    )!important;
+  }
+  .hero-editorial .hero-image-fade{
+    background:linear-gradient(
+      180deg,
+      rgba(191,192,189,0) 0%,
+      rgba(208,206,200,.08) 23%,
+      rgba(228,222,213,.32) 43%,
+      rgba(241,235,227,.7) 64%,
+      #fbf7f0 88%,
+      #fbf7f0 100%
+    )!important;
+  }
+  .hero-editorial .hero-date{letter-spacing:.09em!important}
+}
