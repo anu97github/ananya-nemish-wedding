@@ -4167,3 +4167,59 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     line-height:1.45;
   }
 }
+
+
+/* Replace the text-only Maps button with a clear, clickable map preview. */
+.venue-map-preview{
+  position:relative;
+  display:block;
+  width:min(100%,520px);
+  height:210px;
+  margin:20px auto 25px;
+  overflow:hidden;
+  border:1px solid rgba(162,128,75,.35);
+  border-radius:5px;
+  box-shadow:0 8px 22px rgba(74,62,47,.12);
+  background:#e9e6dd;
+  text-decoration:none;
+}
+.venue-map-preview iframe{
+  display:block;
+  width:100%;
+  height:100%;
+  border:0;
+  pointer-events:none;
+}
+.venue-map-open{
+  position:absolute;
+  right:10px;
+  bottom:10px;
+  padding:7px 11px;
+  color:#fff;
+  background:rgba(83,99,67,.92);
+  border:1px solid rgba(255,255,255,.7);
+  border-radius:2px;
+  font-family:var(--serif),Georgia,serif;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.13em;
+  line-height:1;
+  box-shadow:0 2px 8px rgba(0,0,0,.16);
+}
+.venue-map-preview:focus-visible{
+  outline:3px solid #a27a45;
+  outline-offset:4px;
+}
+@media(max-width:760px){
+  .venue-map-preview{
+    width:100%;
+    height:180px;
+    margin:17px auto 22px;
+  }
+  .venue-map-open{
+    right:8px;
+    bottom:8px;
+    font-size:9px;
+    padding:7px 9px;
+  }
+}
