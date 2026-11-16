@@ -2295,3 +2295,45 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   }
   .hero-editorial .hero-date{letter-spacing:.09em!important}
 }
+
+
+/* Slightly reduce the date-and-venue lockup; leave the animated couple names untouched. */
+.hero-editorial .hero-date{
+  font-size:clamp(22px,1.8vw,32px)!important;
+  letter-spacing:.18em!important;
+}
+.hero-editorial .hero-venue{
+  font-size:clamp(15px,1.25vw,21px)!important;
+  letter-spacing:.14em!important;
+  margin-top:8px!important;
+}
+.hero-editorial .hero-ornament{
+  gap:26px!important;
+  margin-top:24px!important;
+  margin-bottom:17px!important;
+}
+.hero-editorial .hero-ornament span{
+  width:clamp(64px,7vw,132px)!important;
+}
+.hero-editorial .hero-ornament b{font-size:17px!important}
+@media(max-width:760px){
+  .hero-editorial .hero-date{
+    font-size:clamp(17px,4.2vw,23px)!important;
+    letter-spacing:.11em!important;
+  }
+  .hero-editorial .hero-venue{
+    font-size:clamp(11px,2.9vw,15px)!important;
+    letter-spacing:.075em!important;
+  }
+  .hero-editorial .hero-ornament{
+    gap:16px!important;
+    margin-top:17px!important;
+    margin-bottom:13px!important;
+  }
+  .hero-editorial .hero-ornament span{width:50px!important}
+  .hero-editorial .hero-ornament b{font-size:14px!important}
+}
+@media(max-width:390px){
+  .hero-editorial .hero-date{font-size:16px!important}
+  .hero-editorial .hero-venue{font-size:10px!important}
+}
