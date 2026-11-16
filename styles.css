@@ -2655,3 +2655,102 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     top:calc(clamp(300px,34vw,430px) + 42px)!important;
   }
 }
+
+
+/* Warm the photograph toward ivory before the fade begins, while retaining all hand detail. */
+.hero-editorial{
+  background:linear-gradient(
+    180deg,
+    #d8d4cc 0%,
+    #dfd9d0 28%,
+    #e8e1d8 48%,
+    #f0e9e0 70%,
+    #f7f2ea 88%,
+    #fbf7f0 100%
+  )!important;
+}
+.hero-editorial .hero-image img{
+  /* Do not blur or soften detail: add a restrained warm ivory tone to the monochrome photo. */
+  filter:grayscale(.18) sepia(.28) saturate(.86) brightness(1.035) contrast(.97)!important;
+  -webkit-mask-image:linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 55%,
+    rgba(0,0,0,.99) 62%,
+    rgba(0,0,0,.94) 69%,
+    rgba(0,0,0,.82) 77%,
+    rgba(0,0,0,.60) 85%,
+    rgba(0,0,0,.32) 94%,
+    transparent 100%
+  )!important;
+  mask-image:linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 55%,
+    rgba(0,0,0,.99) 62%,
+    rgba(0,0,0,.94) 69%,
+    rgba(0,0,0,.82) 77%,
+    rgba(0,0,0,.60) 85%,
+    rgba(0,0,0,.32) 94%,
+    transparent 100%
+  )!important;
+}
+.hero-editorial .hero-image-fade{
+  background:linear-gradient(
+    180deg,
+    rgba(216,212,204,0) 0%,
+    rgba(223,217,208,.015) 24%,
+    rgba(232,225,216,.08) 40%,
+    rgba(240,233,224,.20) 55%,
+    rgba(247,242,234,.42) 70%,
+    rgba(251,247,240,.72) 86%,
+    rgba(251,247,240,.94) 96%,
+    #fbf7f0 100%
+  )!important;
+}
+@media(max-width:760px){
+  .hero-editorial{
+    background:linear-gradient(
+      180deg,
+      #d8d4cc 0%,
+      #e0dad1 28%,
+      #eae3da 50%,
+      #f2ebe2 72%,
+      #fbf7f0 100%
+    )!important;
+  }
+  .hero-editorial .hero-image img{
+    filter:grayscale(.18) sepia(.28) saturate(.86) brightness(1.035) contrast(.97)!important;
+    -webkit-mask-image:linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 52%,
+      rgba(0,0,0,.97) 61%,
+      rgba(0,0,0,.88) 71%,
+      rgba(0,0,0,.68) 82%,
+      rgba(0,0,0,.34) 94%,
+      transparent 100%
+    )!important;
+    mask-image:linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 52%,
+      rgba(0,0,0,.97) 61%,
+      rgba(0,0,0,.88) 71%,
+      rgba(0,0,0,.68) 82%,
+      rgba(0,0,0,.34) 94%,
+      transparent 100%
+    )!important;
+  }
+  .hero-editorial .hero-image-fade{
+    background:linear-gradient(
+      180deg,
+      rgba(216,212,204,0) 0%,
+      rgba(224,218,209,.025) 24%,
+      rgba(234,227,218,.12) 43%,
+      rgba(242,235,226,.34) 62%,
+      rgba(251,247,240,.78) 86%,
+      #fbf7f0 100%
+    )!important;
+  }
+}
