@@ -5157,59 +5157,59 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
 }
 
 
-/* Continuous centre rail for all three vertical day timelines.
-   Each event draws an overlapping segment so the rail remains present through
-   tall palette cards and every event in the scrollable content. */
-.itinerary-section .timeline-scroll::before{
-  display:none!important;
-  content:none!important;
-}
-.itinerary-section .timeline-item,
-.itinerary-section .timeline-item:has(.palette-expanded){
+/* A single rail belongs to the full content track, not to individual
+   event cards or the scroll viewport. Its height therefore spans every event,
+   including the final event description, in each day's timeline. */
+.itinerary-section .timeline-track{
   position:relative!important;
-  box-sizing:border-box!important;
+  display:flow-root!important;
+  width:100%!important;
+  min-width:0!important;
 }
-.itinerary-section .timeline-item::before{
+.itinerary-section .timeline-track::before{
   content:""!important;
   position:absolute!important;
-  top:-14px!important;
-  bottom:-14px!important;
+  top:0!important;
+  bottom:0!important;
+  left:50%!important;
   width:1px!important;
-  display:block!important;
+  transform:translateX(-.5px)!important;
   background:rgba(198,173,123,.9)!important;
   z-index:0!important;
   pointer-events:none!important;
 }
-.itinerary-section .timeline-item:nth-child(odd)::before{
-  left:0!important;
-  right:auto!important;
+.itinerary-section .timeline-item,
+.itinerary-section .timeline-item:has(.palette-expanded){
+  position:relative!important;
+  z-index:1!important;
 }
-.itinerary-section .timeline-item:nth-child(even)::before{
-  left:auto!important;
-  right:0!important;
+.itinerary-section .timeline-item::before{
+  content:none!important;
+  display:none!important;
 }
 .itinerary-section .timeline-item>i{
   position:absolute!important;
-  top:20px!important;
-  width:9px!important;
-  height:9px!important;
+  top:25px!important;
   z-index:2!important;
+  width:10px!important;
+  height:10px!important;
+  box-sizing:border-box!important;
 }
 .itinerary-section .timeline-item:nth-child(odd)>i{
-  left:-4.5px!important;
+  left:-5px!important;
   right:auto!important;
 }
 .itinerary-section .timeline-item:nth-child(even)>i{
   left:auto!important;
-  right:-4.5px!important;
+  right:-5px!important;
 }
-.itinerary-section .timeline-item:first-child::before{
-  top:-28px!important;
-}
-.itinerary-section .timeline-item:last-child::before{
-  bottom:-28px!important;
-}
-@media(max-width:760px){
-  .itinerary-section .timeline-item:nth-child(odd)>i{left:-4.5px!important;right:auto!important}
-  .itinerary-section .timeline-item:nth-child(even)>i{left:auto!important;right:-4.5px!important}
+
+
+/* Remove the older viewport-level rail that creates a second line on days
+   one and two. Keep the shared timeline-track rail and all event dots intact.
+   Day three is intentionally left unchanged. */
+.itinerary-section #day-panel-1 .timeline-scroll::before,
+.itinerary-section #day-panel-2 .timeline-scroll::before{
+  content:none!important;
+  display:none!important;
 }
