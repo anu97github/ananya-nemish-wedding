@@ -7982,3 +7982,27 @@ main#home .about-us-image{
     width:100%!important;
   }
 }
+
+
+/* Match Meet the Couple heading exactly to the Countdown to Forever heading. */
+#meetCoupleTitle {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  font-size: clamp(42px, 5.6vw, 68px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  color: inherit !important;
+  text-shadow: none !important;
+  padding: 0 !important;
+  background: none !important;
+}
+#meetCoupleTitle::before,
+#meetCoupleTitle::after { content: none !important; display: none !important; }
+@media (max-width: 760px) {
+  #meetCoupleTitle {
+    font-size: clamp(37px, 8vw, 48px) !important;
+    line-height: 1.08 !important;
+  }
+}
