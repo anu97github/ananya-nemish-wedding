@@ -167,8 +167,8 @@
       guestbookCard.hidden = !opening;
       openNoteButton.setAttribute('aria-expanded', String(opening));
       openNoteButton.innerHTML = opening
-        ? 'CLOSE YOUR NOTE <span aria-hidden="true">−</span>'
-        : 'WRITE US A NOTE <span aria-hidden="true">↗</span>';
+        ? 'CLOSE YOUR NOTE <span aria-hidden="true">↗</span>'
+        : 'WRITE A NOTE <span aria-hidden="true">↗</span>';
       if (opening) {
         guestbookCard.classList.remove('is-open');
         requestAnimationFrame(() => {
