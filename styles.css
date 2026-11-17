@@ -6180,3 +6180,151 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .guestbook-form input[name="name"]{width:min(100%,190px)!important;font-size:16px!important}
   .guestbook-submit{margin-top:15px!important;padding:10px 19px!important}
 }
+
+
+/* Option 1 — match the original Keepsake Card reference closely. */
+.guestbook-card{
+  position:relative!important;
+  width:min(100%,700px)!important;
+  max-width:700px!important;
+  margin:38px auto 0!important;
+  padding:0!important;
+  overflow:visible!important;
+  border:1px solid #c6ad7b!important;
+  border-radius:0!important;
+  background:#f8f1e5!important;
+  box-shadow:0 16px 34px rgba(75,62,43,.13)!important;
+}
+.guestbook-card::before{
+  content:"";
+  position:absolute;
+  z-index:4;
+  top:-19px;
+  left:50%;
+  width:48px;
+  height:48px;
+  transform:translateX(-50%);
+  border:2px solid #c6ad7b;
+  border-radius:50%;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 35C17 28 14 21 18 14c4 1 7 5 7 10 2-7 6-11 11-12 1 8-3 15-11 19' fill='none' stroke='%23f8edda' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M24 36V17' stroke='%23f8edda' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") center/26px 26px no-repeat,
+    radial-gradient(circle at 35% 28%,#d9bd88,#a47a3f 75%);
+  box-shadow:0 3px 8px rgba(74,54,29,.2),inset 0 0 0 3px rgba(255,248,231,.34);
+}
+.guestbook-card-inner{
+  position:relative!important;
+  min-height:0!important;
+  margin:7px!important;
+  padding:38px clamp(22px,4vw,40px) 20px!important;
+  overflow:hidden!important;
+  border:1px solid rgba(198,173,123,.82)!important;
+  background-color:#fbf7ee!important;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='220' viewBox='0 0 360 220'%3E%3Cg fill='none' stroke='%23818b63' stroke-width='1.5' stroke-linecap='round' opacity='.86'%3E%3Cpath d='M-8 6C28 22 37 55 55 81s35 42 46 72M7 20c18-1 28-10 32-23M25 43c20-1 31-12 35-28M39 64c18-1 29-10 34-25M54 87c17 0 28-9 34-22M70 110c16 1 27-7 34-19'/%3E%3Cpath d='M23 39c-15-1-22-10-20-20 13-1 22 7 20 20ZM44 61c-14-1-21-9-19-19 13 0 21 7 19 19ZM65 86c-13-1-19-9-17-18 12 0 19 7 17 18ZM83 111c-12-1-18-8-16-17 11 0 18 6 16 17Z' fill='%23aeb99a' stroke='none'/%3E%3C/g%3E%3Cg fill='%23fffdf7' stroke='%23b8a77d' stroke-width='1' opacity='.98'%3E%3Ccircle cx='53' cy='83' r='7'/%3E%3Ccircle cx='44' cy='83' r='7'/%3E%3Ccircle cx='49' cy='74' r='7'/%3E%3Ccircle cx='58' cy='76' r='7'/%3E%3Ccircle cx='59' cy='87' r='7'/%3E%3Ccircle cx='52' cy='82' r='3' fill='%23c6ad7b'/%3E%3Ccircle cx='87' cy='126' r='6'/%3E%3Ccircle cx='79' cy='126' r='6'/%3E%3Ccircle cx='83' cy='118' r='6'/%3E%3Ccircle cx='91' cy='119' r='6'/%3E%3Ccircle cx='92' cy='128' r='6'/%3E%3Ccircle cx='86' cy='124' r='2.5' fill='%23c6ad7b'/%3E%3C/g%3E%3C/svg%3E") left top/185px 118px no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='220' viewBox='0 0 360 220'%3E%3Cg transform='translate(360 220) rotate(180)' fill='none' stroke='%23818b63' stroke-width='1.5' stroke-linecap='round' opacity='.86'%3E%3Cpath d='M-8 6C28 22 37 55 55 81s35 42 46 72M7 20c18-1 28-10 32-23M25 43c20-1 31-12 35-28M39 64c18-1 29-10 34-25M54 87c17 0 28-9 34-22M70 110c16 1 27-7 34-19'/%3E%3Cpath d='M23 39c-15-1-22-10-20-20 13-1 22 7 20 20ZM44 61c-14-1-21-9-19-19 13 0 21 7 19 19ZM65 86c-13-1-19-9-17-18 12 0 19 7 17 18ZM83 111c-12-1-18-8-16-17 11 0 18 6 16 17Z' fill='%23aeb99a' stroke='none'/%3E%3C/g%3E%3Cg fill='%23fffdf7' stroke='%23b8a77d' stroke-width='1'%3E%3Ccircle cx='53' cy='83' r='7'/%3E%3Ccircle cx='44' cy='83' r='7'/%3E%3Ccircle cx='49' cy='74' r='7'/%3E%3Ccircle cx='58' cy='76' r='7'/%3E%3Ccircle cx='59' cy='87' r='7'/%3E%3Ccircle cx='52' cy='82' r='3' fill='%23c6ad7b'/%3E%3Ccircle cx='87' cy='126' r='6'/%3E%3Ccircle cx='79' cy='126' r='6'/%3E%3Ccircle cx='83' cy='118' r='6'/%3E%3Ccircle cx='91' cy='119' r='6'/%3E%3Ccircle cx='92' cy='128' r='6'/%3E%3Ccircle cx='86' cy='124' r='2.5' fill='%23c6ad7b'/%3E%3C/g%3E%3C/svg%3E") right bottom/185px 118px no-repeat,
+    radial-gradient(ellipse at center,#fffaf1 0%,#f8f1e5 100%)!important;
+  box-shadow:inset 0 0 0 3px rgba(255,255,255,.5)!important;
+}
+.guestbook-card-title{
+  display:block!important;
+  margin:0 auto 10px!important;
+  text-align:center!important;
+  color:#46563f!important;
+  font:500 clamp(22px,2.8vw,29px)/1.2 var(--serif)!important;
+}
+.guestbook-card-title em{
+  color:#ad8248!important;
+  font-style:italic!important;
+}
+.guestbook-card-title::after{
+  content:"";
+  display:block;
+  width:112px;
+  height:12px;
+  margin:8px auto 8px;
+  background:
+    radial-gradient(circle at 50% 50%,#a88a58 0 2px,transparent 2.5px),
+    linear-gradient(#c6ad7b,#c6ad7b) left 50%/42% 1px no-repeat,
+    linear-gradient(#c6ad7b,#c6ad7b) right 50%/42% 1px no-repeat;
+}
+.guestbook-dear{
+  margin:0 0 13px!important;
+  text-align:center!important;
+  color:#46563f!important;
+  font:italic 500 clamp(18px,2.2vw,22px)/1.25 var(--serif)!important;
+}
+.guestbook-dear::after{content:none!important}
+.guestbook-form{
+  position:relative!important;
+  z-index:1;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:4px!important;
+}
+.guestbook-form textarea{
+  width:100%!important;
+  min-height:104px!important;
+  height:104px!important;
+  margin:0!important;
+  padding:11px 14px!important;
+  border:1px solid rgba(177,151,108,.68)!important;
+  border-radius:5px!important;
+  background:rgba(255,253,248,.56)!important;
+  color:#49372b!important;
+  font:italic 15px/1.55 var(--serif)!important;
+  resize:vertical!important;
+  box-shadow:none!important;
+}
+.guestbook-form textarea:focus{
+  border-color:#a88a58!important;
+  box-shadow:0 0 0 2px rgba(198,173,123,.12)!important;
+}
+.guestbook-form textarea::placeholder{color:#8d8375!important}
+.guestbook-name-label{
+  align-self:flex-end!important;
+  margin:5px 0 0!important;
+  color:#49372b!important;
+  font-size:9px!important;
+  letter-spacing:.18em!important;
+}
+.guestbook-form input[name="name"]{
+  align-self:flex-end!important;
+  width:min(100%,205px)!important;
+  padding:4px 2px 6px!important;
+  border:0!important;
+  border-bottom:1px dashed #b99c68!important;
+  border-radius:0!important;
+  background:transparent!important;
+  color:#49372b!important;
+  text-align:right!important;
+  font:italic 16px/1.3 var(--serif)!important;
+}
+.guestbook-form input[name="name"]::placeholder{color:#9d907e!important}
+.guestbook-submit{
+  align-self:center!important;
+  margin:13px auto 0!important;
+  padding:10px 21px!important;
+  min-height:0!important;
+  border:1px solid #5f7757!important;
+  border-radius:999px!important;
+  background:#5f7757!important;
+  color:#faf8f2!important;
+  font:700 9px/1 var(--serif)!important;
+  letter-spacing:.14em!important;
+}
+.guestbook-submit:hover{background:#46563f!important;border-color:#46563f!important}
+.guestbook-footnote{margin-top:14px!important}
+@media(max-width:760px){
+  .guestbook-card{width:100%!important;margin:31px auto 0!important}
+  .guestbook-card-inner{
+    margin:5px!important;
+    padding:34px 16px 17px!important;
+    background-size:125px 80px,125px 80px,auto!important;
+  }
+  .guestbook-card-title{font-size:22px!important;margin-bottom:7px!important}
+  .guestbook-card-title::after{margin:7px auto}
+  .guestbook-dear{font-size:18px!important;margin-bottom:10px!important}
+  .guestbook-form textarea{min-height:112px!important;height:112px!important;font-size:14px!important}
+  .guestbook-form input[name="name"]{width:min(100%,175px)!important;font-size:15px!important}
+  .guestbook-submit{margin-top:12px!important;padding:10px 18px!important}
+}
