@@ -7361,6 +7361,7 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   text-align:center;
   white-space:normal;
 }
+.itinerary-heading .itinerary-dresscode-note .dresscode-line{display:block;margin:0;line-height:1.25}
 .itinerary-dresscode-note .dresscode-green{
   color:var(--dark-olive);
   text-transform:uppercase;
