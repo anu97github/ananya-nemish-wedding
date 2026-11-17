@@ -7606,3 +7606,53 @@ main#home > section.hero,
 main#home > section.hero .hero-image{
   background-image:initial!important;
 }
+
+
+/* APPROVED IVORY WATERCOLOR — shared post-hero background for every section.
+   The SVG uses the approved #F1E9E2 base with subtle watercolor blooms/grain. */
+:root{--approved-ivory-watercolor:url("/assets/ivory-watercolor-paper-final.svg")}
+main#home section:not(.hero),
+.site-footer,
+.site-footer-minimal{
+  background-color:#F1E9E2!important;
+  background-image:var(--approved-ivory-watercolor)!important;
+  background-repeat:no-repeat!important;
+  background-position:center center!important;
+  background-size:cover!important;
+  background-attachment:scroll!important;
+}
+
+/* Prevent nested section wrappers and event/venue bands from painting
+   their previous independent cream, green, pink or beige fills. */
+main#home div[class*="section"],
+main#home div[class*="band"],
+main#home .families-section,
+main#home .countdown-section,
+main#home .itinerary-heading,
+main#home .day-tabs,
+main#home .day-panels,
+main#home .day-panel,
+main#home .timeline-scroll,
+main#home .timeline-track,
+main#home .venue-layout,
+main#home .venue-content,
+main#home .venue-map-column,
+main#home .note-section-inner{
+  background-color:transparent!important;
+  background-image:none!important;
+}
+
+/* Re-apply the shared image to actual semantic sections after wrapper reset. */
+main#home section:not(.hero){
+  background-color:#F1E9E2!important;
+  background-image:var(--approved-ivory-watercolor)!important;
+  background-repeat:no-repeat!important;
+  background-position:center center!important;
+  background-size:cover!important;
+}
+
+/* Opening hands hero remains unchanged. */
+main#home > section.hero,
+main#home > section.hero .hero-image{
+  background-image:initial!important;
+}
