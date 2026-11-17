@@ -5008,3 +5008,73 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .itinerary-section .timeline-item:nth-child(odd)::before{left:0;right:auto}
   .itinerary-section .timeline-item:nth-child(even)::before{left:auto;right:0}
 }
+
+
+/* Final side alignment correction: anchor the timeline rail at the center and
+   explicitly place event 1/3/5 on the right, event 2/4/6 on the left.
+   This also applies to all wedding-day and checkout events. */
+.itinerary-section .timeline-scroll{
+  display:block!important;
+  position:relative;
+}
+.itinerary-section .timeline-item,
+.itinerary-section .timeline-item:has(.palette-expanded){
+  position:relative!important;
+  display:grid!important;
+  width:50%!important;
+  min-width:0!important;
+  box-sizing:border-box!important;
+  flex:none!important;
+}
+.itinerary-section .timeline-item:nth-child(odd),
+.itinerary-section .timeline-item:has(.palette-expanded):nth-child(odd){
+  margin-left:50%!important;
+  padding-left:34px!important;
+  padding-right:12px!important;
+  text-align:left!important;
+}
+.itinerary-section .timeline-item:nth-child(even),
+.itinerary-section .timeline-item:has(.palette-expanded):nth-child(even){
+  margin-left:0!important;
+  padding-left:12px!important;
+  padding-right:34px!important;
+  text-align:right!important;
+}
+.itinerary-section .timeline-item:nth-child(odd)>i{
+  left:-5px!important;
+  right:auto!important;
+}
+.itinerary-section .timeline-item:nth-child(even)>i{
+  left:auto!important;
+  right:-5px!important;
+}
+.itinerary-section .timeline-item:nth-child(odd)::before{
+  left:0!important;
+  right:auto!important;
+}
+.itinerary-section .timeline-item:nth-child(even)::before{
+  left:auto!important;
+  right:0!important;
+}
+.itinerary-section .timeline-item::before{
+  top:25px!important;
+  bottom:-26px!important;
+  display:block!important;
+}
+.itinerary-section .timeline-item:last-child::before{display:none!important}
+@media(max-width:760px){
+  .itinerary-section .timeline-item:nth-child(odd),
+  .itinerary-section .timeline-item:has(.palette-expanded):nth-child(odd){
+    margin-left:50%!important;
+    padding-left:21px!important;
+    padding-right:5px!important;
+    text-align:left!important;
+  }
+  .itinerary-section .timeline-item:nth-child(even),
+  .itinerary-section .timeline-item:has(.palette-expanded):nth-child(even){
+    margin-left:0!important;
+    padding-left:5px!important;
+    padding-right:21px!important;
+    text-align:right!important;
+  }
+}
