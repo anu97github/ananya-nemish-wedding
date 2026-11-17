@@ -5157,36 +5157,35 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
 }
 
 
-/* One uninterrupted centre rail: each event contributes a segment for its
-   full height, so the rail follows the scrollable content rather than the
-   fixed-height scroll viewport. Adjacent segments meet at every event boundary. */
-.itinerary-section .timeline-scroll::before{
-  content:none!important;
-  display:none!important;
-}
-.itinerary-section .timeline-item,
-.itinerary-section .timeline-item:has(.palette-expanded){
+/* A single rail belongs to the full content track, not to individual
+   event cards or the scroll viewport. Its height therefore spans every event,
+   including the final event description, in each day's timeline. */
+.itinerary-section .timeline-track{
   position:relative!important;
-  box-sizing:border-box!important;
+  display:flow-root!important;
+  width:100%!important;
+  min-width:0!important;
 }
-.itinerary-section .timeline-item::before{
+.itinerary-section .timeline-track::before{
   content:""!important;
   position:absolute!important;
   top:0!important;
   bottom:0!important;
+  left:50%!important;
   width:1px!important;
-  display:block!important;
+  transform:translateX(-.5px)!important;
   background:rgba(198,173,123,.9)!important;
   z-index:0!important;
   pointer-events:none!important;
 }
-.itinerary-section .timeline-item:nth-child(odd)::before{
-  left:0!important;
-  right:auto!important;
+.itinerary-section .timeline-item,
+.itinerary-section .timeline-item:has(.palette-expanded){
+  position:relative!important;
+  z-index:1!important;
 }
-.itinerary-section .timeline-item:nth-child(even)::before{
-  left:auto!important;
-  right:0!important;
+.itinerary-section .timeline-item::before{
+  content:none!important;
+  display:none!important;
 }
 .itinerary-section .timeline-item>i{
   position:absolute!important;
