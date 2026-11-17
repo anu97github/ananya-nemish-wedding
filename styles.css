@@ -1594,6 +1594,10 @@ body,button,input,select,textarea{
 }
 
 /* Couple introduction, three-day tabs, and guest-friendly venue details. */
+/* About Us image section */
+.couple-section{display:block;padding:clamp(28px,4vw,56px) clamp(18px,5vw,72px);background:transparent}
+.couple-about-image{display:block;width:min(100%,1120px);height:auto;max-height:720px;object-fit:contain;margin:0 auto;border:0;border-radius:0;box-shadow:none}
+
 .couple-section{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(34px,6vw,88px);align-items:center;padding:clamp(64px,8vw,112px) clamp(22px,7vw,100px);background:linear-gradient(120deg,#f5eee8 0%,#fbf8f1 58%,#eef1e9 100%)}
 .couple-photo-placeholder{min-height:clamp(340px,42vw,560px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:linear-gradient(145deg,#e8e1d3,#f3e8e1 55%,#dce4d6);border:1px solid rgba(198,173,123,.45);color:var(--dark-olive)}
 .photo-placeholder-mark{font:400 clamp(72px,10vw,130px)/1 "Adelio Darmanto",cursive}
