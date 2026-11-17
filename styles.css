@@ -7040,3 +7040,40 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     box-shadow:none!important;
   }
 }
+
+
+/* Keep the map's full artwork visible, but size its displayed height to the
+   venue information block rather than letting the image set the section height. */
+@media(min-width:761px){
+  .venue-section{
+    padding:38px 24px!important;
+  }
+  .venue-layout{
+    align-items:center!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+    gap:clamp(18px,2.2vw,32px)!important;
+  }
+  .venue-details-column{
+    align-self:center!important;
+  }
+  .venue-map-column{
+    align-self:center!important;
+    height:auto!important;
+    min-height:0!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    overflow:visible!important;
+  }
+  .venue-map-column .venue-directions-artwork{
+    width:auto!important;
+    height:auto!important;
+    max-width:100%!important;
+    max-height:430px!important;
+    min-height:0!important;
+    margin:0 auto!important;
+    clip-path:none!important;
+    object-fit:contain!important;
+    object-position:center!important;
+  }
+}
