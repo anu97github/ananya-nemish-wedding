@@ -4843,3 +4843,100 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .itinerary-section .timeline-item:nth-child(odd){padding-left:17px}
   .itinerary-section .timeline-item:nth-child(even){padding-right:17px}
 }
+
+
+/* Timeline finishing pass: first three events on the right, then alternate sides.
+   Draw the connecting rail per event so it continues through the full scroll height. */
+.itinerary-section .timeline-scroll::before{display:none}
+.itinerary-section .timeline-item::before{
+  content:"";
+  position:absolute;
+  top:25px;
+  bottom:-26px;
+  width:1px;
+  background:rgba(198,173,123,.72);
+  pointer-events:none;
+}
+.itinerary-section .timeline-item:nth-child(1),
+.itinerary-section .timeline-item:nth-child(2),
+.itinerary-section .timeline-item:nth-child(3),
+.itinerary-section .timeline-item:nth-child(5){
+  margin-left:50%;
+  padding-left:34px;
+  padding-right:12px;
+  text-align:left;
+}
+.itinerary-section .timeline-item:nth-child(1)::before,
+.itinerary-section .timeline-item:nth-child(2)::before,
+.itinerary-section .timeline-item:nth-child(3)::before,
+.itinerary-section .timeline-item:nth-child(5)::before{
+  left:0;
+  right:auto;
+}
+.itinerary-section .timeline-item:nth-child(1)>i,
+.itinerary-section .timeline-item:nth-child(2)>i,
+.itinerary-section .timeline-item:nth-child(3)>i,
+.itinerary-section .timeline-item:nth-child(5)>i{
+  left:-5px;
+  right:auto;
+}
+.itinerary-section .timeline-item:nth-child(4),
+.itinerary-section .timeline-item:nth-child(6){
+  margin-left:0;
+  padding-left:12px;
+  padding-right:34px;
+  text-align:right;
+}
+.itinerary-section .timeline-item:nth-child(4)::before,
+.itinerary-section .timeline-item:nth-child(6)::before{
+  left:auto;
+  right:0;
+}
+.itinerary-section .timeline-item:nth-child(4)>i,
+.itinerary-section .timeline-item:nth-child(6)>i{
+  left:auto;
+  right:-5px;
+}
+.itinerary-section .timeline-item:last-child::before{display:none}
+@media(max-width:760px){
+  .itinerary-section .timeline-item:nth-child(1),
+  .itinerary-section .timeline-item:nth-child(2),
+  .itinerary-section .timeline-item:nth-child(3),
+  .itinerary-section .timeline-item:nth-child(5){
+    margin-left:50%;
+    padding-left:21px;
+    padding-right:5px;
+    text-align:left;
+  }
+  .itinerary-section .timeline-item:nth-child(1)>i,
+  .itinerary-section .timeline-item:nth-child(2)>i,
+  .itinerary-section .timeline-item:nth-child(3)>i,
+  .itinerary-section .timeline-item:nth-child(5)>i{
+    left:-5px;
+    right:auto;
+  }
+  .itinerary-section .timeline-item:nth-child(1)::before,
+  .itinerary-section .timeline-item:nth-child(2)::before,
+  .itinerary-section .timeline-item:nth-child(3)::before,
+  .itinerary-section .timeline-item:nth-child(5)::before{
+    left:0;
+    right:auto;
+  }
+  .itinerary-section .timeline-item:nth-child(4),
+  .itinerary-section .timeline-item:nth-child(6){
+    margin-left:0;
+    padding-left:5px;
+    padding-right:21px;
+    text-align:right;
+  }
+  .itinerary-section .timeline-item:nth-child(4)>i,
+  .itinerary-section .timeline-item:nth-child(6)>i{
+    left:auto;
+    right:-5px;
+  }
+  .itinerary-section .timeline-item:nth-child(4)::before,
+  .itinerary-section .timeline-item:nth-child(6)::before{
+    left:auto;
+    right:0;
+  }
+}
