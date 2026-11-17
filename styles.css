@@ -7904,3 +7904,44 @@ main#home .itinerary-dresscode-note .dresscode-green{
   font-weight:600!important;
   color:var(--dark-olive)!important;
 }
+
+
+/* About Us photo: full, borderless artwork integrated with the watercolor page. */
+main#home .couple-section{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:clamp(18px,2.5vw,30px)!important;
+  min-height:0!important;
+  height:auto!important;
+  padding:18px 22px 34px!important;
+  text-align:center!important;
+}
+main#home .about-us-title{
+  margin:0!important;
+}
+main#home .about-us-image{
+  display:block!important;
+  width:min(100%,1120px)!important;
+  height:auto!important;
+  max-height:none!important;
+  margin:0 auto!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  object-fit:contain!important;
+  mix-blend-mode:multiply;
+}
+@media(max-width:760px){
+  main#home .couple-section{
+    padding:14px 14px 26px!important;
+    gap:16px!important;
+  }
+  main#home .about-us-image{
+    width:100%!important;
+  }
+}
