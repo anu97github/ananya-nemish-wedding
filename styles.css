@@ -5765,3 +5765,133 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .guestbook-submit{width:min(100%,220px)!important;margin-top:13px!important}
   .guestbook-footnote{font-size:11px!important}
 }
+
+
+/* Handwritten keepsake paper inspired by the supplied invitation reference. */
+.guestbook-card{
+  width:min(100%,780px)!important;
+  max-width:780px!important;
+  margin:24px auto 0!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:9px!important;
+  background:transparent!important;
+  box-shadow:0 18px 34px rgba(67,54,39,.13)!important;
+  overflow:hidden;
+}
+.guestbook-card-inner{
+  position:relative!important;
+  min-height:390px;
+  padding:25px clamp(24px,5vw,52px) 24px clamp(62px,7vw,92px)!important;
+  border:0!important;
+  background-color:#fffdf7!important;
+  background-image:
+    linear-gradient(to right, transparent 0, transparent 60px, rgba(208,112,133,.48) 60px, rgba(208,112,133,.48) 62px, transparent 62px),
+    repeating-linear-gradient(to bottom, transparent 0, transparent 58px, rgba(119,157,173,.25) 59px, transparent 60px)!important;
+}
+.guestbook-card-inner::before{
+  content:"";
+  position:absolute;
+  top:0;bottom:0;left:60px;
+  width:2px;
+  background:rgba(208,112,133,.42);
+  pointer-events:none;
+}
+.guestbook-dear{
+  position:relative!important;
+  z-index:1;
+  margin:0 0 12px!important;
+  text-align:center!important;
+  color:#536a91!important;
+  font-size:clamp(23px,3vw,31px)!important;
+  font-style:italic!important;
+}
+.guestbook-form{
+  position:relative!important;
+  z-index:1;
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:0!important;
+}
+.guestbook-form textarea{
+  width:100%!important;
+  min-height:190px!important;
+  height:190px!important;
+  margin:0!important;
+  padding:4px 0 0!important;
+  border:0!important;
+  border-radius:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  resize:vertical!important;
+  background:transparent!important;
+  color:#536a91!important;
+  font:italic 20px/60px var(--serif)!important;
+}
+.guestbook-form textarea:focus{
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+}
+.guestbook-form textarea::placeholder{
+  color:rgba(83,106,145,.45)!important;
+  font-style:italic!important;
+}
+.guestbook-name-label{
+  justify-self:end!important;
+  align-self:end!important;
+  margin:4px 0 0!important;
+  color:#8a7b72!important;
+  font-size:10px!important;
+  letter-spacing:.16em!important;
+}
+.guestbook-form input[name="name"]{
+  justify-self:end!important;
+  width:min(100%,220px)!important;
+  margin:0!important;
+  padding:5px 0 8px!important;
+  border:0!important;
+  border-bottom:1px dashed rgba(208,112,133,.7)!important;
+  border-radius:0!important;
+  background:transparent!important;
+  color:#536a91!important;
+  text-align:right!important;
+  font:italic 18px var(--serif)!important;
+}
+.guestbook-form input[name="name"]::placeholder{color:rgba(83,106,145,.48)!important}
+.guestbook-submit{
+  justify-self:center!important;
+  width:auto!important;
+  min-width:0!important;
+  min-height:0!important;
+  margin:22px auto 0!important;
+  padding:10px 22px!important;
+  border-radius:999px!important;
+  font-size:9px!important;
+  letter-spacing:.13em!important;
+  gap:12px!important;
+}
+.guestbook-submit span:last-child{font-size:12px!important}
+.guestbook-footnote{
+  margin:13px auto 0!important;
+  text-align:center!important;
+}
+@media(max-width:760px){
+  .guestbook-card-inner{
+    min-height:340px;
+    padding:21px 18px 20px 48px!important;
+    background-image:
+      linear-gradient(to right, transparent 0, transparent 43px, rgba(208,112,133,.48) 43px, rgba(208,112,133,.48) 45px, transparent 45px),
+      repeating-linear-gradient(to bottom, transparent 0, transparent 51px, rgba(119,157,173,.25) 52px, transparent 53px)!important;
+  }
+  .guestbook-card-inner::before{left:43px}
+  .guestbook-dear{font-size:22px!important;margin-bottom:8px!important}
+  .guestbook-form textarea{
+    min-height:155px!important;
+    height:155px!important;
+    font-size:17px!important;
+    line-height:53px!important;
+  }
+  .guestbook-form input[name="name"]{width:min(100%,180px)!important;font-size:16px!important}
+  .guestbook-submit{margin-top:17px!important;padding:9px 18px!important}
+}
