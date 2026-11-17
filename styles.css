@@ -5399,3 +5399,195 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .venue-details-column .stay-details strong{font-size:16px}
   .venue-details-column .stay-details small{font-size:18px}
 }
+
+
+/* Compact, single-band wedding footer. */
+.site-footer.site-footer-minimal{
+  min-height:0!important;
+  padding:22px clamp(18px,4vw,56px)!important;
+  background:linear-gradient(90deg,#f7f4ec 0%,#fbf7f0 50%,#f7f1ed 100%)!important;
+}
+.site-footer-minimal .footer-content{
+  max-width:1440px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:clamp(18px,2.8vw,42px)!important;
+  margin:0 auto!important;
+}
+.site-footer-minimal .footer-monogram{
+  flex:0 0 auto!important;
+  width:62px!important;
+  height:62px!important;
+  object-fit:contain!important;
+  margin:0!important;
+  mix-blend-mode:multiply;
+  background:transparent!important;
+}
+.site-footer-minimal .footer-identity{
+  flex:0 0 auto;
+  text-align:left;
+}
+.site-footer-minimal .footer-names{
+  margin:0!important;
+  font-size:clamp(17px,1.5vw,21px)!important;
+  letter-spacing:.18em!important;
+  white-space:nowrap;
+}
+.site-footer-minimal .footer-names i{padding:0 6px!important}
+.site-footer-minimal .footer-date{
+  margin:5px 0 0!important;
+  font-size:10px!important;
+  letter-spacing:.12em!important;
+  white-space:nowrap;
+}
+.site-footer-minimal .footer-date span{padding:0 5px!important}
+.site-footer-minimal .footer-thanks{
+  flex:0 1 auto;
+  margin:0!important;
+  font-size:clamp(10px,.95vw,13px)!important;
+  letter-spacing:.12em!important;
+  line-height:1.45!important;
+  white-space:nowrap;
+}
+.site-footer-minimal .back-to-top{
+  flex:0 0 auto;
+  margin:0!important;
+  padding:0 0 4px!important;
+  font-size:10px!important;
+  letter-spacing:.14em!important;
+  white-space:nowrap;
+}
+@media(max-width:900px){
+  .site-footer-minimal .footer-content{
+    flex-wrap:wrap!important;
+    row-gap:14px!important;
+    column-gap:22px!important;
+  }
+  .site-footer-minimal .footer-monogram{width:50px!important;height:50px!important}
+  .site-footer-minimal .footer-thanks{white-space:normal;text-align:center}
+}
+@media(max-width:600px){
+  .site-footer.site-footer-minimal{padding:18px 16px!important}
+  .site-footer-minimal .footer-content{
+    display:grid!important;
+    grid-template-columns:48px minmax(0,1fr)!important;
+    justify-content:stretch!important;
+    gap:10px 14px!important;
+  }
+  .site-footer-minimal .footer-monogram{grid-row:1;grid-column:1;width:48px!important;height:48px!important}
+  .site-footer-minimal .footer-identity{grid-row:1;grid-column:2;min-width:0}
+  .site-footer-minimal .footer-names{font-size:16px!important;letter-spacing:.12em!important}
+  .site-footer-minimal .footer-date{font-size:9px!important;letter-spacing:.08em!important;white-space:normal}
+  .site-footer-minimal .footer-thanks{grid-row:2;grid-column:1 / -1;text-align:center;font-size:10px!important}
+  .site-footer-minimal .back-to-top{grid-row:3;grid-column:1 / -1;justify-self:center;font-size:9px!important}
+}
+
+
+/* Vertical, compact footer: keep each requested element on its own line. */
+.site-footer.site-footer-minimal{
+  min-height:0!important;
+  padding:24px 18px 22px!important;
+  background:linear-gradient(180deg,#f8f5ed 0%,#faf6ef 100%)!important;
+  text-align:center;
+}
+.site-footer-minimal .footer-content{
+  width:min(100%,760px)!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:0!important;
+  margin:0 auto!important;
+}
+.site-footer-minimal .footer-monogram{
+  display:block!important;
+  width:62px!important;
+  height:48px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  margin:0 auto 7px!important;
+  padding:0!important;
+  background:transparent!important;
+  mix-blend-mode:normal!important;
+}
+.site-footer-minimal .footer-identity{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  text-align:center!important;
+  margin:0!important;
+}
+.site-footer-minimal .footer-names{
+  margin:0!important;
+  color:#4e4838!important;
+  font-size:clamp(18px,2vw,23px)!important;
+  line-height:1.25!important;
+  letter-spacing:.2em!important;
+  white-space:nowrap;
+}
+.site-footer-minimal .footer-names i{padding:0 7px!important}
+.site-footer-minimal .footer-date{
+  margin:5px 0 0!important;
+  color:#84745d!important;
+  font-size:10px!important;
+  line-height:1.4!important;
+  letter-spacing:.14em!important;
+  white-space:normal!important;
+}
+.site-footer-minimal .footer-date span{padding:0 5px!important}
+.site-footer-minimal .footer-thanks{
+  margin:11px auto 7px!important;
+  color:#786d5d!important;
+  font-size:11px!important;
+  line-height:1.4!important;
+  letter-spacing:.13em!important;
+  white-space:normal!important;
+}
+.site-footer-minimal .back-to-top{
+  display:inline-block!important;
+  margin:0!important;
+  padding:0 0 3px!important;
+  color:#826b48!important;
+  font-size:10px!important;
+  line-height:1.4!important;
+  letter-spacing:.15em!important;
+}
+@media(max-width:600px){
+  .site-footer.site-footer-minimal{padding:19px 14px 18px!important}
+  .site-footer-minimal .footer-monogram{width:54px!important;height:42px!important;margin-bottom:6px!important}
+  .site-footer-minimal .footer-names{font-size:17px!important;letter-spacing:.15em!important}
+  .site-footer-minimal .footer-date{font-size:9px!important;letter-spacing:.09em!important}
+  .site-footer-minimal .footer-thanks{font-size:10px!important;letter-spacing:.1em!important;margin:9px auto 6px!important}
+  .site-footer-minimal .back-to-top{font-size:9px!important;letter-spacing:.12em!important}
+}
+
+
+/* Match the footer monogram to the original AN mark used by the site header.
+   Use the white artwork as an alpha mask and tint it olive; no image canvas. */
+.site-footer-minimal .footer-monogram{
+  display:block!important;
+  width:70px!important;
+  height:58px!important;
+  margin:0 auto 7px!important;
+  padding:0!important;
+  background-color:#5f7048!important;
+  background-image:none!important;
+  -webkit-mask-image:url("assets/an-monogram-white.png")!important;
+  mask-image:url("assets/an-monogram-white.png")!important;
+  -webkit-mask-repeat:no-repeat!important;
+  mask-repeat:no-repeat!important;
+  -webkit-mask-position:center!important;
+  mask-position:center!important;
+  -webkit-mask-size:contain!important;
+  mask-size:contain!important;
+  mix-blend-mode:normal!important;
+  object-fit:unset!important;
+}
+@media(max-width:600px){
+  .site-footer-minimal .footer-monogram{
+    width:62px!important;
+    height:50px!important;
+    margin-bottom:6px!important;
+  }
+}
