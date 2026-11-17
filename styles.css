@@ -7890,3 +7890,17 @@ main#home .venue-map-column .venue-map-preview{
     margin:0 auto!important;
   }
 }
+
+
+/* Match the dress-code copy to the site's Cormorant Garamond typography. */
+main#home .itinerary-heading .itinerary-dresscode-note{
+  font-family:var(--serif)!important;
+  font-weight:500!important;
+  letter-spacing:0!important;
+  color:#78665d!important;
+}
+main#home .itinerary-dresscode-note .dresscode-green{
+  font-family:var(--serif)!important;
+  font-weight:600!important;
+  color:var(--dark-olive)!important;
+}
