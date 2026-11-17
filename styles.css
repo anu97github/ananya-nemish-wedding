@@ -4426,3 +4426,732 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .site-footer-minimal .footer-date{font-size:10px;letter-spacing:.09em}
   .site-footer-minimal .footer-thanks{font-size:11px}
 }
+
+
+/* Vertical celebration timeline: compact day selectors and a readable time-led layout. */
+.itinerary-section .day-tabs{
+  display:flex;
+  justify-content:center;
+  align-items:stretch;
+  gap:12px;
+  width:min(100% - 40px,760px);
+  max-width:760px;
+  margin:0 auto 34px;
+  padding:0;
+  overflow:visible;
+}
+.itinerary-section .day-tab{
+  flex:0 1 236px;
+  min-width:0;
+  padding:11px 16px 10px;
+  gap:3px;
+  min-height:0;
+  border:1px solid rgba(198,173,123,.48);
+  background:rgba(255,255,255,.48);
+  text-align:center;
+}
+.itinerary-section .day-tab span{
+  font-size:8px;
+  letter-spacing:.19em;
+}
+.itinerary-section .day-tab strong{
+  font-size:clamp(16px,1.8vw,20px);
+  line-height:1.12;
+}
+.itinerary-section .day-tab small{font-size:10px}
+.itinerary-section .day-panel{
+  max-width:980px;
+  margin:0 auto;
+  padding:0 0 12px;
+}
+.itinerary-section .timeline-scroll{
+  --time-column:132px;
+  --timeline-gap:34px;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  position:relative;
+  max-width:980px;
+  margin:0 auto;
+  padding:8px 26px 24px;
+  overflow:visible;
+  overscroll-behavior:auto;
+  scroll-snap-type:none;
+  scrollbar-width:none;
+}
+.itinerary-section .timeline-scroll::-webkit-scrollbar{display:none}
+.itinerary-section .timeline-scroll::before{
+  content:"";
+  position:absolute;
+  top:25px;
+  bottom:42px;
+  left:calc(26px + var(--time-column) + var(--timeline-gap) / 2);
+  width:1px;
+  background:rgba(198,173,123,.62);
+}
+.itinerary-section .timeline-item,
+.itinerary-section .timeline-item:has(.palette-expanded){
+  display:grid;
+  grid-template-columns:var(--time-column) minmax(0,1fr);
+  column-gap:var(--timeline-gap);
+  row-gap:0;
+  flex:0 0 auto;
+  position:relative;
+  min-width:0;
+  width:100%;
+  padding:20px 0 23px;
+  border:0;
+  border-bottom:1px solid rgba(198,173,123,.25);
+  scroll-snap-align:none;
+}
+.itinerary-section .timeline-item:last-child{border-bottom:0}
+.itinerary-section .timeline-item>i{
+  position:absolute;
+  top:27px;
+  left:calc(var(--time-column) + var(--timeline-gap) / 2 - 5px);
+  z-index:1;
+  width:10px;
+  height:10px;
+  border:2px solid #f8f4ec;
+  border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 0 3px rgba(198,173,123,.16);
+}
+.itinerary-section .timeline-time{
+  grid-column:1;
+  grid-row:1 / span 3;
+  display:block;
+  padding:2px 0 0;
+  color:var(--olive);
+  font-size:13px;
+  line-height:1.5;
+  font-weight:700;
+  letter-spacing:.045em;
+  text-align:right;
+}
+.itinerary-section .timeline-item h3{
+  grid-column:2;
+  margin:0 0 5px;
+  color:var(--dark-olive);
+  font:500 25px/1.15 var(--serif);
+}
+.itinerary-section .timeline-item>p{
+  grid-column:2;
+  max-width:620px;
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.65;
+}
+.itinerary-section .timeline-palette.palette-expanded{
+  grid-column:2;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,76px));
+  justify-content:start;
+  gap:12px 15px;
+  width:100%;
+  max-width:none;
+  margin:16px 0 0;
+  padding:0;
+}
+.itinerary-section .timeline-palette.palette-expanded .palette-chip{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  min-width:0;
+  gap:5px;
+  text-align:center;
+}
+.itinerary-section .timeline-palette.palette-expanded .palette-chip .palette-arch{
+  width:44px;
+  height:54px;
+  border-radius:24px 24px 3px 3px;
+  box-shadow:0 2px 7px rgba(67,52,39,.1);
+}
+.itinerary-section .timeline-palette.palette-expanded .palette-chip strong{
+  display:block;
+  min-height:22px;
+  height:auto;
+  max-height:none;
+  color:#5d5045;
+  font-family:var(--serif),Georgia,serif;
+  font-size:10px;
+  line-height:1.2;
+  letter-spacing:.01em;
+}
+.itinerary-section .timeline-palette.palette-expanded .palette-chip code{
+  padding:0;
+  background:none;
+  color:#887665;
+  font-family:var(--serif),Georgia,serif;
+  font-size:10px;
+  line-height:1.2;
+  letter-spacing:.02em;
+}
+.itinerary-section .timeline-hint{display:none}
+
+@media(max-width:760px){
+  .itinerary-section .day-tabs{
+    width:calc(100% - 32px);
+    gap:7px;
+    margin-bottom:25px;
+  }
+  .itinerary-section .day-tab{
+    flex:1 1 0;
+    padding:10px 5px 9px;
+  }
+  .itinerary-section .day-tab span{font-size:7px;letter-spacing:.13em}
+  .itinerary-section .day-tab strong{font-size:clamp(13px,3.6vw,17px)}
+  .itinerary-section .day-tab small{font-size:9px}
+  .itinerary-section .timeline-scroll{
+    --time-column:88px;
+    --timeline-gap:25px;
+    padding:5px 17px 20px;
+  }
+  .itinerary-section .timeline-scroll::before{
+    top:22px;
+    bottom:34px;
+    left:calc(17px + var(--time-column) + var(--timeline-gap) / 2);
+  }
+  .itinerary-section .timeline-item,
+  .itinerary-section .timeline-item:has(.palette-expanded){
+    column-gap:var(--timeline-gap);
+    padding:17px 0 20px;
+  }
+  .itinerary-section .timeline-item>i{
+    top:23px;
+    left:calc(var(--time-column) + var(--timeline-gap) / 2 - 5px);
+  }
+  .itinerary-section .timeline-time{
+    padding-top:1px;
+    font-size:11px;
+    letter-spacing:0;
+  }
+  .itinerary-section .timeline-item h3{font-size:21px;margin-bottom:4px}
+  .itinerary-section .timeline-item>p{font-size:13px;line-height:1.55}
+  .itinerary-section .timeline-palette.palette-expanded{
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:10px 7px;
+    margin-top:13px;
+  }
+  .itinerary-section .timeline-palette.palette-expanded .palette-chip .palette-arch{
+    width:clamp(30px,9vw,42px);
+    height:clamp(40px,12vw,52px);
+  }
+  .itinerary-section .timeline-palette.palette-expanded .palette-chip strong{
+    min-height:24px;
+    font-size:8px;
+  }
+  .itinerary-section .timeline-palette.palette-expanded .palette-chip code{font-size:9px}
+}
+@media(max-width:380px){
+  .itinerary-section .day-tabs{width:calc(100% - 24px);gap:5px}
+  .itinerary-section .day-tab{padding-inline:3px}
+  .itinerary-section .day-tab span{font-size:6.5px}
+  .itinerary-section .day-tab strong{font-size:13px}
+  .itinerary-section .timeline-scroll{
+    --time-column:78px;
+    --timeline-gap:21px;
+    padding-inline:12px;
+  }
+  .itinerary-section .timeline-scroll::before{left:calc(12px + var(--time-column) + var(--timeline-gap) / 2)}
+  .itinerary-section .timeline-item>i{left:calc(var(--time-column) + var(--timeline-gap) / 2 - 5px)}
+  .itinerary-section .timeline-time{font-size:10px}
+  .itinerary-section .timeline-item h3{font-size:19px}
+  .itinerary-section .timeline-item>p{font-size:12px}
+}
+
+
+/* Timeline refinement: keep the day selector visible while the event list scrolls,
+   alternate event cards across the center rail, and restore the active olive tab. */
+.itinerary-section .day-tab.is-active,
+.itinerary-section .day-tab.is-active:hover,
+.itinerary-section .day-tab.is-active:focus,
+.itinerary-section .day-tab.is-active:focus-visible{
+  background:var(--dark-olive)!important;
+  border-color:var(--dark-olive)!important;
+  color:#fff!important;
+}
+.itinerary-section .day-tab.is-active span,
+.itinerary-section .day-tab.is-active small{
+  color:#e9dfc9!important;
+}
+.itinerary-section .day-panels{
+  max-width:980px;
+  margin:0 auto;
+}
+.itinerary-section .day-panel{
+  max-height:min(58vh,620px);
+  min-height:320px;
+  overflow:hidden;
+}
+.itinerary-section .timeline-scroll{
+  --rail-center:50%;
+  height:100%;
+  max-height:min(58vh,620px);
+  overflow-y:auto;
+  overflow-x:hidden;
+  padding:8px 22px 24px;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(180,138,69,.72) rgba(198,173,123,.12);
+  overscroll-behavior:contain;
+  scroll-behavior:smooth;
+}
+.itinerary-section .timeline-scroll::-webkit-scrollbar{
+  display:block;
+  width:7px;
+}
+.itinerary-section .timeline-scroll::-webkit-scrollbar-track{
+  background:rgba(198,173,123,.12);
+  border-radius:8px;
+}
+.itinerary-section .timeline-scroll::-webkit-scrollbar-thumb{
+  background:rgba(180,138,69,.72);
+  border-radius:8px;
+}
+.itinerary-section .timeline-scroll::before{
+  top:24px;
+  bottom:28px;
+  left:var(--rail-center);
+}
+.itinerary-section .timeline-item,
+.itinerary-section .timeline-item:has(.palette-expanded){
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  width:50%;
+  min-height:0;
+  padding:18px 34px 22px;
+  border-bottom:1px solid rgba(198,173,123,.25);
+  text-align:left;
+}
+.itinerary-section .timeline-item:nth-child(odd){
+  margin-left:50%;
+  padding-right:12px;
+  padding-left:34px;
+  text-align:left;
+}
+.itinerary-section .timeline-item:nth-child(even){
+  margin-left:0;
+  padding-left:12px;
+  padding-right:34px;
+  text-align:right;
+}
+.itinerary-section .timeline-item>i{
+  top:25px;
+  left:-5px;
+}
+.itinerary-section .timeline-item:nth-child(even)>i{
+  left:auto;
+  right:-5px;
+}
+.itinerary-section .timeline-time,
+.itinerary-section .timeline-item h3,
+.itinerary-section .timeline-item>p,
+.itinerary-section .timeline-palette.palette-expanded{
+  grid-column:1;
+  grid-row:auto;
+}
+.itinerary-section .timeline-time{
+  padding:0 0 5px;
+  text-align:inherit;
+  font-family:var(--serif),Georgia,serif;
+  font-size:16px;
+  line-height:1.35;
+  font-weight:600;
+  letter-spacing:.025em;
+  font-variant-numeric:lining-nums tabular-nums;
+}
+.itinerary-section .timeline-item h3{
+  margin:0 0 5px;
+  font-size:25px;
+}
+.itinerary-section .timeline-item>p{
+  max-width:100%;
+  font-size:14px;
+  line-height:1.55;
+}
+.itinerary-section .timeline-palette.palette-expanded{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  justify-content:stretch;
+  gap:9px 7px;
+  margin:13px 0 0;
+}
+.itinerary-section .timeline-item:nth-child(even) .timeline-palette.palette-expanded{
+  justify-content:stretch;
+}
+.itinerary-section .timeline-palette.palette-expanded .palette-chip .palette-arch{
+  width:clamp(30px,3.2vw,44px);
+  height:clamp(39px,4vw,54px);
+}
+@media(max-width:760px){
+  .itinerary-section .day-panel{
+    min-height:280px;
+    max-height:58vh;
+  }
+  .itinerary-section .timeline-scroll{
+    max-height:58vh;
+    padding:5px 12px 18px;
+  }
+  .itinerary-section .timeline-scroll::before{
+    top:20px;
+    bottom:24px;
+    left:50%;
+  }
+  .itinerary-section .timeline-item,
+  .itinerary-section .timeline-item:has(.palette-expanded){
+    width:50%;
+    padding-top:15px;
+    padding-bottom:18px;
+  }
+  .itinerary-section .timeline-item:nth-child(odd){
+    margin-left:50%;
+    padding-left:21px;
+    padding-right:5px;
+  }
+  .itinerary-section .timeline-item:nth-child(even){
+    margin-left:0;
+    padding-left:5px;
+    padding-right:21px;
+  }
+  .itinerary-section .timeline-item>i{top:21px;left:-5px}
+  .itinerary-section .timeline-item:nth-child(even)>i{left:auto;right:-5px}
+  .itinerary-section .timeline-time{
+    font-size:14px;
+    line-height:1.3;
+    letter-spacing:0;
+  }
+  .itinerary-section .timeline-item h3{font-size:20px;line-height:1.12}
+  .itinerary-section .timeline-item>p{font-size:12px;line-height:1.45}
+  .itinerary-section .timeline-palette.palette-expanded{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px 4px;
+    margin-top:10px;
+  }
+  .itinerary-section .timeline-palette.palette-expanded .palette-chip .palette-arch{
+    width:clamp(27px,7vw,36px);
+    height:clamp(34px,9vw,44px);
+  }
+  .itinerary-section .timeline-palette.palette-expanded .palette-chip strong{
+    min-height:18px;
+    font-size:7px;
+  }
+  .itinerary-section .timeline-palette.palette-expanded .palette-chip code{font-size:8px}
+}
+@media(max-width:380px){
+  .itinerary-section .timeline-time{font-size:13px}
+  .itinerary-section .timeline-item h3{font-size:18px}
+  .itinerary-section .timeline-item:nth-child(odd){padding-left:17px}
+  .itinerary-section .timeline-item:nth-child(even){padding-right:17px}
+}
+
+
+/* Timeline finishing pass: first three events on the right, then alternate sides.
+   Draw the connecting rail per event so it continues through the full scroll height. */
+.itinerary-section .timeline-scroll::before{display:none}
+.itinerary-section .timeline-item::before{
+  content:"";
+  position:absolute;
+  top:25px;
+  bottom:-26px;
+  width:1px;
+  background:rgba(198,173,123,.72);
+  pointer-events:none;
+}
+.itinerary-section .timeline-item:nth-child(1),
+.itinerary-section .timeline-item:nth-child(2),
+.itinerary-section .timeline-item:nth-child(3),
+.itinerary-section .timeline-item:nth-child(5){
+  margin-left:50%;
+  padding-left:34px;
+  padding-right:12px;
+  text-align:left;
+}
+.itinerary-section .timeline-item:nth-child(1)::before,
+.itinerary-section .timeline-item:nth-child(2)::before,
+.itinerary-section .timeline-item:nth-child(3)::before,
+.itinerary-section .timeline-item:nth-child(5)::before{
+  left:0;
+  right:auto;
+}
+.itinerary-section .timeline-item:nth-child(1)>i,
+.itinerary-section .timeline-item:nth-child(2)>i,
+.itinerary-section .timeline-item:nth-child(3)>i,
+.itinerary-section .timeline-item:nth-child(5)>i{
+  left:-5px;
+  right:auto;
+}
+.itinerary-section .timeline-item:nth-child(4),
+.itinerary-section .timeline-item:nth-child(6){
+  margin-left:0;
+  padding-left:12px;
+  padding-right:34px;
+  text-align:right;
+}
+.itinerary-section .timeline-item:nth-child(4)::before,
+.itinerary-section .timeline-item:nth-child(6)::before{
+  left:auto;
+  right:0;
+}
+.itinerary-section .timeline-item:nth-child(4)>i,
+.itinerary-section .timeline-item:nth-child(6)>i{
+  left:auto;
+  right:-5px;
+}
+.itinerary-section .timeline-item:last-child::before{display:none}
+@media(max-width:760px){
+  .itinerary-section .timeline-item:nth-child(1),
+  .itinerary-section .timeline-item:nth-child(2),
+  .itinerary-section .timeline-item:nth-child(3),
+  .itinerary-section .timeline-item:nth-child(5){
+    margin-left:50%;
+    padding-left:21px;
+    padding-right:5px;
+    text-align:left;
+  }
+  .itinerary-section .timeline-item:nth-child(1)>i,
+  .itinerary-section .timeline-item:nth-child(2)>i,
+  .itinerary-section .timeline-item:nth-child(3)>i,
+  .itinerary-section .timeline-item:nth-child(5)>i{
+    left:-5px;
+    right:auto;
+  }
+  .itinerary-section .timeline-item:nth-child(1)::before,
+  .itinerary-section .timeline-item:nth-child(2)::before,
+  .itinerary-section .timeline-item:nth-child(3)::before,
+  .itinerary-section .timeline-item:nth-child(5)::before{
+    left:0;
+    right:auto;
+  }
+  .itinerary-section .timeline-item:nth-child(4),
+  .itinerary-section .timeline-item:nth-child(6){
+    margin-left:0;
+    padding-left:5px;
+    padding-right:21px;
+    text-align:right;
+  }
+  .itinerary-section .timeline-item:nth-child(4)>i,
+  .itinerary-section .timeline-item:nth-child(6)>i{
+    left:auto;
+    right:-5px;
+  }
+  .itinerary-section .timeline-item:nth-child(4)::before,
+  .itinerary-section .timeline-item:nth-child(6)::before{
+    left:auto;
+    right:0;
+  }
+}
+
+
+/* Corrected alternating order for every day: 1 right, 2 left, 3 right, etc.
+   Applies uniformly to the Haldi/Mehendi day, wedding day, and checkout day. */
+.itinerary-section .timeline-item,
+.itinerary-section .timeline-item:has(.palette-expanded){
+  box-sizing:border-box;
+  width:50%;
+}
+.itinerary-section .timeline-item:nth-child(odd),
+.itinerary-section .timeline-item:has(.palette-expanded):nth-child(odd){
+  margin-left:50%;
+  padding-left:34px;
+  padding-right:12px;
+  text-align:left;
+}
+.itinerary-section .timeline-item:nth-child(even),
+.itinerary-section .timeline-item:has(.palette-expanded):nth-child(even){
+  margin-left:0;
+  padding-left:12px;
+  padding-right:34px;
+  text-align:right;
+}
+.itinerary-section .timeline-item:nth-child(odd)::before{
+  left:0;
+  right:auto;
+}
+.itinerary-section .timeline-item:nth-child(even)::before{
+  left:auto;
+  right:0;
+}
+.itinerary-section .timeline-item:nth-child(odd)>i{
+  left:-5px;
+  right:auto;
+}
+.itinerary-section .timeline-item:nth-child(even)>i{
+  left:auto;
+  right:-5px;
+}
+/* Keep the connector continuous between event markers through the full scroll area. */
+.itinerary-section .timeline-item::before{
+  top:25px;
+  bottom:-26px;
+  display:block;
+}
+.itinerary-section .timeline-item:last-child::before{
+  display:none;
+}
+@media(max-width:760px){
+  .itinerary-section .timeline-item:nth-child(odd),
+  .itinerary-section .timeline-item:has(.palette-expanded):nth-child(odd){
+    margin-left:50%;
+    padding-left:21px;
+    padding-right:5px;
+    text-align:left;
+  }
+  .itinerary-section .timeline-item:nth-child(even),
+  .itinerary-section .timeline-item:has(.palette-expanded):nth-child(even){
+    margin-left:0;
+    padding-left:5px;
+    padding-right:21px;
+    text-align:right;
+  }
+  .itinerary-section .timeline-item:nth-child(odd)>i{left:-5px;right:auto}
+  .itinerary-section .timeline-item:nth-child(even)>i{left:auto;right:-5px}
+  .itinerary-section .timeline-item:nth-child(odd)::before{left:0;right:auto}
+  .itinerary-section .timeline-item:nth-child(even)::before{left:auto;right:0}
+}
+
+
+/* Final side alignment correction: anchor the timeline rail at the center and
+   explicitly place event 1/3/5 on the right, event 2/4/6 on the left.
+   This also applies to all wedding-day and checkout events. */
+.itinerary-section .timeline-scroll{
+  display:block!important;
+  position:relative;
+}
+.itinerary-section .timeline-item,
+.itinerary-section .timeline-item:has(.palette-expanded){
+  position:relative!important;
+  display:grid!important;
+  width:50%!important;
+  min-width:0!important;
+  box-sizing:border-box!important;
+  flex:none!important;
+}
+.itinerary-section .timeline-item:nth-child(odd),
+.itinerary-section .timeline-item:has(.palette-expanded):nth-child(odd){
+  margin-left:50%!important;
+  padding-left:34px!important;
+  padding-right:12px!important;
+  text-align:left!important;
+}
+.itinerary-section .timeline-item:nth-child(even),
+.itinerary-section .timeline-item:has(.palette-expanded):nth-child(even){
+  margin-left:0!important;
+  padding-left:12px!important;
+  padding-right:34px!important;
+  text-align:right!important;
+}
+.itinerary-section .timeline-item:nth-child(odd)>i{
+  left:-5px!important;
+  right:auto!important;
+}
+.itinerary-section .timeline-item:nth-child(even)>i{
+  left:auto!important;
+  right:-5px!important;
+}
+.itinerary-section .timeline-item:nth-child(odd)::before{
+  left:0!important;
+  right:auto!important;
+}
+.itinerary-section .timeline-item:nth-child(even)::before{
+  left:auto!important;
+  right:0!important;
+}
+.itinerary-section .timeline-item::before{
+  top:25px!important;
+  bottom:-26px!important;
+  display:block!important;
+}
+.itinerary-section .timeline-item:last-child::before{display:none!important}
+@media(max-width:760px){
+  .itinerary-section .timeline-item:nth-child(odd),
+  .itinerary-section .timeline-item:has(.palette-expanded):nth-child(odd){
+    margin-left:50%!important;
+    padding-left:21px!important;
+    padding-right:5px!important;
+    text-align:left!important;
+  }
+  .itinerary-section .timeline-item:nth-child(even),
+  .itinerary-section .timeline-item:has(.palette-expanded):nth-child(even){
+    margin-left:0!important;
+    padding-left:5px!important;
+    padding-right:21px!important;
+    text-align:right!important;
+  }
+}
+
+
+/* Finishing details: one uninterrupted vertical rail with short lead-in/tail,
+   and compact day selector tabs. */
+.itinerary-section .timeline-scroll{
+  padding-top:30px!important;
+  padding-bottom:34px!important;
+}
+.itinerary-section .timeline-scroll::before{
+  content:""!important;
+  position:absolute!important;
+  display:block!important;
+  left:50%!important;
+  top:10px!important;
+  bottom:14px!important;
+  width:1px!important;
+  background:rgba(198,173,123,.9)!important;
+  transform:translateX(-.5px)!important;
+  z-index:0!important;
+  pointer-events:none!important;
+}
+.itinerary-section .timeline-item{
+  z-index:1;
+  border-top:0!important;
+}
+.itinerary-section .timeline-item::before{
+  display:none!important;
+}
+.itinerary-section .timeline-item>i{
+  z-index:2;
+}
+.itinerary-section .day-tabs{
+  display:flex;
+  justify-content:center;
+  align-items:stretch;
+  gap:14px;
+  width:max-content;
+  max-width:100%;
+  margin:0 auto 28px;
+}
+.itinerary-section .day-tab{
+  flex:0 0 auto!important;
+  width:auto!important;
+  min-width:0!important;
+  padding:12px 22px!important;
+}
+.itinerary-section .day-tab strong{
+  white-space:nowrap;
+}
+@media(max-width:760px){
+  .itinerary-section .day-tabs{
+    width:100%;
+    justify-content:center;
+    gap:8px;
+    overflow-x:visible;
+  }
+  .itinerary-section .day-tab{
+    flex:1 1 0!important;
+    padding:11px 8px!important;
+  }
+  .itinerary-section .day-tab strong{
+    font-size:clamp(13px,3.4vw,17px);
+  }
+  .itinerary-section .day-tab span{
+    font-size:8px;
+    letter-spacing:.12em;
+  }
+  .itinerary-section .day-tab small{font-size:10px}
+  .itinerary-section .timeline-scroll{
+    padding-top:26px!important;
+    padding-bottom:30px!important;
+  }
+  .itinerary-section .timeline-scroll::before{
+    top:8px!important;
+    bottom:12px!important;
+  }
+}
