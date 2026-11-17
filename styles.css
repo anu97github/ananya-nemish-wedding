@@ -7116,3 +7116,26 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     object-position:center!important;
   }
 }
+
+
+/* Final micro-adjustment: move the venue copy slightly left and shorten
+   the map from its right edge while keeping its height unchanged. */
+@media(min-width:761px){
+  .venue-details-column{
+    padding-left:clamp(12px,2.4vw,40px)!important;
+    padding-right:0!important;
+  }
+  .venue-map-column{
+    justify-content:flex-start!important;
+  }
+  .venue-map-column .venue-directions-artwork{
+    width:104%!important;
+    max-width:none!important;
+    height:430px!important;
+    max-height:430px!important;
+    margin-left:-3%!important;
+    margin-right:0!important;
+    object-fit:fill!important;
+    clip-path:none!important;
+  }
+}
