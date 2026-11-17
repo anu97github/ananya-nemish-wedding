@@ -6822,11 +6822,16 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   box-shadow:0 10px 26px rgba(66,54,39,.08)!important;
 }
 @media(max-width:760px){
+  .venue-map-column{
+    height:auto!important;
+    min-height:0!important;
+  }
   .venue-map-column .venue-directions-artwork{
     width:100%!important;
     height:auto!important;
+    min-height:0!important;
     max-height:none!important;
-    aspect-ratio:2048 / 723!important;
+    aspect-ratio:auto!important;
     object-fit:contain!important;
     border-radius:5px!important;
   }
