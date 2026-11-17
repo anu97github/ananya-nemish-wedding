@@ -7353,10 +7353,10 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   border:0;
   border-radius:3px;
   box-shadow:none;
-  font-size:clamp(13px,1.12vw,16px);
+  font-size:clamp(15px,1.2vw,17px);
   font-weight:700;
   line-height:1.5;
-  letter-spacing:.025em;
+  letter-spacing:.01em;
   text-align:center;
   white-space:nowrap;
 }
