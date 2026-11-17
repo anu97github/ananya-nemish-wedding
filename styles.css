@@ -5215,16 +5215,15 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
 }
 
 
-/* Match the three celebration day tabs to the invitation text width,
-   with a subtle, even gap between each button. */
+/* Keep the original compact day-tab sizing and add only a modest gap. */
 .itinerary-section .day-tabs{
-  width:min(calc(100% - 40px),980px)!important;
-  max-width:980px!important;
-  gap:14px!important;
-  justify-content:stretch!important;
+  width:min(100% - 40px,760px)!important;
+  max-width:760px!important;
+  gap:18px!important;
+  justify-content:center!important;
 }
 .itinerary-section .day-tab{
-  flex:1 1 0!important;
+  flex:0 1 236px!important;
   width:auto!important;
   min-width:0!important;
 }
@@ -5238,6 +5237,6 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
 @media(max-width:380px){
   .itinerary-section .day-tabs{
     width:calc(100% - 24px)!important;
-    gap:6px!important;
+    gap:7px!important;
   }
 }
