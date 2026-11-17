@@ -7527,3 +7527,45 @@ main#home > section.hero,
 main#home > section.hero .hero-image{
   background-image:initial!important;
 }
+
+
+/* FINAL: use the supplied ivory watercolor-paper image itself as the shared
+   background. No per-section colour variants or generated gradients. */
+:root{--wedding-ivory-paper:url("/assets/ivory-watercolor-paper.webp")}
+main#home > section:not(.hero),
+main#home > .families-countdown-section,
+.site-footer,
+.site-footer-minimal{
+  background-color:#f5f1e8!important;
+  background-image:var(--wedding-ivory-paper)!important;
+  background-repeat:no-repeat!important;
+  background-position:center center!important;
+  background-size:cover!important;
+  background-attachment:scroll!important;
+}
+
+/* Remove the old independent fills from inner section wrappers so the
+   exact same reference image remains visible across the full section. */
+main#home .families-section,
+main#home .countdown-section,
+main#home .couple-section,
+main#home .itinerary-heading,
+main#home .day-tabs,
+main#home .day-panels,
+main#home .day-panel,
+main#home .timeline-scroll,
+main#home .timeline-track,
+main#home .venue-layout,
+main#home .venue-content,
+main#home .venue-map-column,
+main#home .note-section-inner{
+  background-color:transparent!important;
+  background-image:none!important;
+  box-shadow:none;
+}
+
+/* Preserve the opening hands hero and its image exactly. */
+main#home > section.hero,
+main#home > section.hero .hero-image{
+  background-image:initial!important;
+}
