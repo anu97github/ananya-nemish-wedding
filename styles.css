@@ -5561,3 +5561,33 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .site-footer-minimal .footer-thanks{font-size:10px!important;letter-spacing:.1em!important;margin:9px auto 6px!important}
   .site-footer-minimal .back-to-top{font-size:9px!important;letter-spacing:.12em!important}
 }
+
+
+/* Match the footer monogram to the original AN mark used by the site header.
+   Use the white artwork as an alpha mask and tint it olive; no image canvas. */
+.site-footer-minimal .footer-monogram{
+  display:block!important;
+  width:70px!important;
+  height:58px!important;
+  margin:0 auto 7px!important;
+  padding:0!important;
+  background-color:#5f7048!important;
+  background-image:none!important;
+  -webkit-mask-image:url("assets/an-monogram-white.png")!important;
+  mask-image:url("assets/an-monogram-white.png")!important;
+  -webkit-mask-repeat:no-repeat!important;
+  mask-repeat:no-repeat!important;
+  -webkit-mask-position:center!important;
+  mask-position:center!important;
+  -webkit-mask-size:contain!important;
+  mask-size:contain!important;
+  mix-blend-mode:normal!important;
+  object-fit:unset!important;
+}
+@media(max-width:600px){
+  .site-footer-minimal .footer-monogram{
+    width:62px!important;
+    height:50px!important;
+    margin-bottom:6px!important;
+  }
+}
