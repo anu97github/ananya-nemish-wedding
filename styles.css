@@ -5370,3 +5370,32 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     aspect-ratio:1.55 / 1;
   }
 }
+
+
+/* Final venue typography polish: soften the eyebrow and make arrival times
+   immediately scannable without changing the established layout. */
+.venue-details-column .eyebrow{
+  font-size:clamp(16px,1.3vw,18px);
+}
+.venue-details-column .stay-details span{
+  font-size:13px;
+  color:#987044;
+  letter-spacing:.2em;
+}
+.venue-details-column .stay-details strong{
+  font-size:18px;
+  color:#46583a;
+  letter-spacing:.075em;
+}
+.venue-details-column .stay-details small{
+  font-size:20px;
+  color:#8a663e;
+  font-weight:700;
+  line-height:1.35;
+}
+@media(max-width:760px){
+  .venue-details-column .eyebrow{font-size:14px}
+  .venue-details-column .stay-details span{font-size:12px}
+  .venue-details-column .stay-details strong{font-size:16px}
+  .venue-details-column .stay-details small{font-size:18px}
+}
