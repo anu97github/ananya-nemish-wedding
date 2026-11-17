@@ -5252,3 +5252,150 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     padding-inline:3px!important;
   }
 }
+
+
+/* Two-column venue layout: stay information on the left, location and map
+   preview on the right. The existing typography and map treatment are retained. */
+.venue-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);
+  align-items:center;
+  gap:clamp(34px,5vw,76px);
+  width:min(100%,1240px);
+  margin:0 auto;
+}
+.venue-details-column{
+  width:100%;
+  max-width:560px;
+  margin:0 auto;
+  text-align:center;
+}
+.venue-details-column .venue-description{
+  max-width:560px;
+  margin:20px auto 30px;
+}
+.venue-details-column .stay-details{
+  width:100%;
+  max-width:480px;
+  margin:0 auto;
+}
+.venue-map-column{
+  width:100%;
+  min-width:0;
+  text-align:center;
+}
+.venue-map-column .venue-address{
+  margin:0 auto 28px;
+  font-size:clamp(18px,2vw,24px);
+  line-height:1.5;
+}
+.venue-map-column .venue-map-preview{
+  width:100%;
+  max-width:none;
+  height:auto;
+  aspect-ratio:2.45 / 1;
+  min-height:300px;
+  margin:0;
+}
+@media(max-width:760px){
+  .venue-layout{
+    grid-template-columns:minmax(0,1fr);
+    gap:32px;
+  }
+  .venue-details-column,
+  .venue-map-column{
+    max-width:620px;
+  }
+  .venue-details-column .venue-description{
+    margin:16px auto 24px;
+  }
+  .venue-map-column .venue-address{
+    margin-bottom:16px;
+    font-size:17px;
+  }
+  .venue-map-column .venue-map-preview{
+    min-height:190px;
+    aspect-ratio:1.55 / 1;
+  }
+}
+
+
+/* Align the first line of both venue columns and make the map a little more compact. */
+.venue-layout{
+  align-items:stretch;
+}
+.venue-details-column,
+.venue-map-column{
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+.venue-details-column .eyebrow{
+  margin-top:0;
+  margin-bottom:8px;
+  font-size:clamp(18px,1.55vw,21px);
+  line-height:1.35;
+  letter-spacing:.19em;
+}
+.venue-details-column h2{
+  margin-top:8px;
+}
+.venue-map-column .venue-address{
+  margin-top:0;
+  margin-bottom:22px;
+  min-height:2.9em;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+.venue-map-column .venue-map-preview{
+  width:96%;
+  align-self:center;
+  aspect-ratio:2.7 / 1;
+  min-height:260px;
+  max-height:340px;
+}
+@media(max-width:760px){
+  .venue-details-column .eyebrow{
+    font-size:15px;
+    margin-bottom:8px;
+  }
+  .venue-map-column .venue-address{
+    min-height:0;
+  }
+  .venue-map-column .venue-map-preview{
+    width:100%;
+    min-height:190px;
+    max-height:none;
+    aspect-ratio:1.55 / 1;
+  }
+}
+
+
+/* Final venue typography polish: soften the eyebrow and make arrival times
+   immediately scannable without changing the established layout. */
+.venue-details-column .eyebrow{
+  font-size:clamp(16px,1.3vw,18px);
+}
+.venue-details-column .stay-details span{
+  font-size:13px;
+  color:#987044;
+  letter-spacing:.2em;
+}
+.venue-details-column .stay-details strong{
+  font-size:18px;
+  color:#46583a;
+  letter-spacing:.075em;
+}
+.venue-details-column .stay-details small{
+  font-size:20px;
+  color:#8a663e;
+  font-weight:700;
+  line-height:1.35;
+}
+@media(max-width:760px){
+  .venue-details-column .eyebrow{font-size:14px}
+  .venue-details-column .stay-details span{font-size:12px}
+  .venue-details-column .stay-details strong{font-size:16px}
+  .venue-details-column .stay-details small{font-size:18px}
+}
