@@ -7139,3 +7139,20 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     clip-path:none!important;
   }
 }
+
+
+/* Slightly narrow the map from its right edge only; preserve its height
+   and left alignment so the map labels retain their proportions. */
+@media(min-width:761px){
+  .venue-map-column .venue-directions-artwork{
+    width:98%!important;
+    max-width:none!important;
+    height:430px!important;
+    max-height:430px!important;
+    margin-left:-3%!important;
+    margin-right:0!important;
+    object-fit:fill!important;
+    object-position:left center!important;
+    clip-path:none!important;
+  }
+}
