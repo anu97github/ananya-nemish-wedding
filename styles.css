@@ -4426,3 +4426,237 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .site-footer-minimal .footer-date{font-size:10px;letter-spacing:.09em}
   .site-footer-minimal .footer-thanks{font-size:11px}
 }
+
+
+/* Vertical celebration timeline: compact day selectors and a readable time-led layout. */
+.itinerary-section .day-tabs{
+  display:flex;
+  justify-content:center;
+  align-items:stretch;
+  gap:12px;
+  width:min(100% - 40px,760px);
+  max-width:760px;
+  margin:0 auto 34px;
+  padding:0;
+  overflow:visible;
+}
+.itinerary-section .day-tab{
+  flex:0 1 236px;
+  min-width:0;
+  padding:11px 16px 10px;
+  gap:3px;
+  min-height:0;
+  border:1px solid rgba(198,173,123,.48);
+  background:rgba(255,255,255,.48);
+  text-align:center;
+}
+.itinerary-section .day-tab span{
+  font-size:8px;
+  letter-spacing:.19em;
+}
+.itinerary-section .day-tab strong{
+  font-size:clamp(16px,1.8vw,20px);
+  line-height:1.12;
+}
+.itinerary-section .day-tab small{font-size:10px}
+.itinerary-section .day-panel{
+  max-width:980px;
+  margin:0 auto;
+  padding:0 0 12px;
+}
+.itinerary-section .timeline-scroll{
+  --time-column:132px;
+  --timeline-gap:34px;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  position:relative;
+  max-width:980px;
+  margin:0 auto;
+  padding:8px 26px 24px;
+  overflow:visible;
+  overscroll-behavior:auto;
+  scroll-snap-type:none;
+  scrollbar-width:none;
+}
+.itinerary-section .timeline-scroll::-webkit-scrollbar{display:none}
+.itinerary-section .timeline-scroll::before{
+  content:"";
+  position:absolute;
+  top:25px;
+  bottom:42px;
+  left:calc(26px + var(--time-column) + var(--timeline-gap) / 2);
+  width:1px;
+  background:rgba(198,173,123,.62);
+}
+.itinerary-section .timeline-item,
+.itinerary-section .timeline-item:has(.palette-expanded){
+  display:grid;
+  grid-template-columns:var(--time-column) minmax(0,1fr);
+  column-gap:var(--timeline-gap);
+  row-gap:0;
+  flex:0 0 auto;
+  position:relative;
+  min-width:0;
+  width:100%;
+  padding:20px 0 23px;
+  border:0;
+  border-bottom:1px solid rgba(198,173,123,.25);
+  scroll-snap-align:none;
+}
+.itinerary-section .timeline-item:last-child{border-bottom:0}
+.itinerary-section .timeline-item>i{
+  position:absolute;
+  top:27px;
+  left:calc(var(--time-column) + var(--timeline-gap) / 2 - 5px);
+  z-index:1;
+  width:10px;
+  height:10px;
+  border:2px solid #f8f4ec;
+  border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 0 3px rgba(198,173,123,.16);
+}
+.itinerary-section .timeline-time{
+  grid-column:1;
+  grid-row:1 / span 3;
+  display:block;
+  padding:2px 0 0;
+  color:var(--olive);
+  font-size:13px;
+  line-height:1.5;
+  font-weight:700;
+  letter-spacing:.045em;
+  text-align:right;
+}
+.itinerary-section .timeline-item h3{
+  grid-column:2;
+  margin:0 0 5px;
+  color:var(--dark-olive);
+  font:500 25px/1.15 var(--serif);
+}
+.itinerary-section .timeline-item>p{
+  grid-column:2;
+  max-width:620px;
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.65;
+}
+.itinerary-section .timeline-palette.palette-expanded{
+  grid-column:2;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,76px));
+  justify-content:start;
+  gap:12px 15px;
+  width:100%;
+  max-width:none;
+  margin:16px 0 0;
+  padding:0;
+}
+.itinerary-section .timeline-palette.palette-expanded .palette-chip{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  min-width:0;
+  gap:5px;
+  text-align:center;
+}
+.itinerary-section .timeline-palette.palette-expanded .palette-chip .palette-arch{
+  width:44px;
+  height:54px;
+  border-radius:24px 24px 3px 3px;
+  box-shadow:0 2px 7px rgba(67,52,39,.1);
+}
+.itinerary-section .timeline-palette.palette-expanded .palette-chip strong{
+  display:block;
+  min-height:22px;
+  height:auto;
+  max-height:none;
+  color:#5d5045;
+  font-family:var(--serif),Georgia,serif;
+  font-size:10px;
+  line-height:1.2;
+  letter-spacing:.01em;
+}
+.itinerary-section .timeline-palette.palette-expanded .palette-chip code{
+  padding:0;
+  background:none;
+  color:#887665;
+  font-family:var(--serif),Georgia,serif;
+  font-size:10px;
+  line-height:1.2;
+  letter-spacing:.02em;
+}
+.itinerary-section .timeline-hint{display:none}
+
+@media(max-width:760px){
+  .itinerary-section .day-tabs{
+    width:calc(100% - 32px);
+    gap:7px;
+    margin-bottom:25px;
+  }
+  .itinerary-section .day-tab{
+    flex:1 1 0;
+    padding:10px 5px 9px;
+  }
+  .itinerary-section .day-tab span{font-size:7px;letter-spacing:.13em}
+  .itinerary-section .day-tab strong{font-size:clamp(13px,3.6vw,17px)}
+  .itinerary-section .day-tab small{font-size:9px}
+  .itinerary-section .timeline-scroll{
+    --time-column:88px;
+    --timeline-gap:25px;
+    padding:5px 17px 20px;
+  }
+  .itinerary-section .timeline-scroll::before{
+    top:22px;
+    bottom:34px;
+    left:calc(17px + var(--time-column) + var(--timeline-gap) / 2);
+  }
+  .itinerary-section .timeline-item,
+  .itinerary-section .timeline-item:has(.palette-expanded){
+    column-gap:var(--timeline-gap);
+    padding:17px 0 20px;
+  }
+  .itinerary-section .timeline-item>i{
+    top:23px;
+    left:calc(var(--time-column) + var(--timeline-gap) / 2 - 5px);
+  }
+  .itinerary-section .timeline-time{
+    padding-top:1px;
+    font-size:11px;
+    letter-spacing:0;
+  }
+  .itinerary-section .timeline-item h3{font-size:21px;margin-bottom:4px}
+  .itinerary-section .timeline-item>p{font-size:13px;line-height:1.55}
+  .itinerary-section .timeline-palette.palette-expanded{
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:10px 7px;
+    margin-top:13px;
+  }
+  .itinerary-section .timeline-palette.palette-expanded .palette-chip .palette-arch{
+    width:clamp(30px,9vw,42px);
+    height:clamp(40px,12vw,52px);
+  }
+  .itinerary-section .timeline-palette.palette-expanded .palette-chip strong{
+    min-height:24px;
+    font-size:8px;
+  }
+  .itinerary-section .timeline-palette.palette-expanded .palette-chip code{font-size:9px}
+}
+@media(max-width:380px){
+  .itinerary-section .day-tabs{width:calc(100% - 24px);gap:5px}
+  .itinerary-section .day-tab{padding-inline:3px}
+  .itinerary-section .day-tab span{font-size:6.5px}
+  .itinerary-section .day-tab strong{font-size:13px}
+  .itinerary-section .timeline-scroll{
+    --time-column:78px;
+    --timeline-gap:21px;
+    padding-inline:12px;
+  }
+  .itinerary-section .timeline-scroll::before{left:calc(12px + var(--time-column) + var(--timeline-gap) / 2)}
+  .itinerary-section .timeline-item>i{left:calc(var(--time-column) + var(--timeline-gap) / 2 - 5px)}
+  .itinerary-section .timeline-time{font-size:10px}
+  .itinerary-section .timeline-item h3{font-size:19px}
+  .itinerary-section .timeline-item>p{font-size:12px}
+}
