@@ -7171,3 +7171,61 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     padding:0!important;
   }
 }
+
+
+/* Soft peach-and-ivory watercolor wash for every section after the hero.
+   The broad, low-opacity blooms sit behind content and preserve text contrast. */
+.families-countdown-section,
+.couple-section,
+.itinerary-section,
+.venue-section,
+.couple-note-section,
+.site-footer{
+  background-color:#f8f3eb!important;
+  background-image:
+    radial-gradient(ellipse 42% 38% at 9% 14%,rgba(226,174,153,.20) 0%,rgba(226,174,153,.11) 36%,transparent 76%),
+    radial-gradient(ellipse 38% 42% at 88% 18%,rgba(239,211,184,.27) 0%,rgba(239,211,184,.12) 42%,transparent 78%),
+    radial-gradient(ellipse 48% 35% at 68% 88%,rgba(222,185,169,.16) 0%,rgba(222,185,169,.08) 40%,transparent 78%),
+    radial-gradient(ellipse 32% 38% at 24% 76%,rgba(242,224,201,.30) 0%,rgba(242,224,201,.12) 42%,transparent 80%),
+    linear-gradient(135deg,#f8f3eb 0%,#fbf7f0 48%,#f6efe8 100%)!important;
+  background-repeat:no-repeat!important;
+  background-size:cover!important;
+}
+
+/* Vary the watercolor blooms subtly from section to section so the page
+   feels continuous without looking like one repeated background tile. */
+.couple-section{
+  background-position:18% 12%,82% 20%,72% 90%,18% 78%,center!important;
+}
+.itinerary-section{
+  background-position:88% 14%,12% 30%,78% 82%,24% 72%,center!important;
+}
+.venue-section{
+  background-position:12% 18%,92% 24%,76% 86%,18% 74%,center!important;
+}
+.couple-note-section{
+  background-position:82% 12%,18% 26%,68% 92%,22% 78%,center!important;
+}
+.site-footer{
+  background-position:14% 12%,90% 24%,72% 84%,22% 76%,center!important;
+}
+
+/* Keep the footer illustration and decorative overlays layered above the wash. */
+.site-footer .footer-garden{
+  z-index:0;
+  pointer-events:none;
+}
+.site-footer .footer-content{
+  z-index:1;
+}
+
+@media(max-width:760px){
+  .families-countdown-section,
+  .couple-section,
+  .itinerary-section,
+  .venue-section,
+  .couple-note-section,
+  .site-footer{
+    background-size:180% 150%,180% 150%,190% 160%,180% 150%,cover!important;
+  }
+}
