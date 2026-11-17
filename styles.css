@@ -7971,7 +7971,7 @@ main#home .about-us-image{
   box-shadow:none!important;
   background:transparent!important;
   object-fit:contain!important;
-  mix-blend-mode:multiply;
+  mix-blend-mode:normal!important;
 }
 @media(max-width:760px){
   main#home .couple-section{
