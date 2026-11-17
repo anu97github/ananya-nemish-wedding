@@ -6935,3 +6935,45 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     right:-43px;
   }
 }
+
+
+/* Consistent illustrated event markers across all three celebration days. */
+.itinerary-section .timeline-item{position:relative}
+.itinerary-section .timeline-item .timeline-icon{
+  position:absolute;
+  top:18px;
+  display:grid;
+  place-items:center;
+  width:62px;
+  height:62px;
+  color:#9b7848;
+  background:rgba(250,247,239,.96);
+  border:1px solid rgba(183,148,91,.58);
+  border-radius:50%;
+  box-shadow:0 4px 13px rgba(91,75,48,.09);
+  z-index:2;
+}
+.itinerary-section .timeline-item .timeline-icon svg{
+  display:block;
+  width:37px;
+  height:37px;
+  overflow:visible;
+}
+.itinerary-section .timeline-item:nth-child(odd) .timeline-icon{left:-82px}
+.itinerary-section .timeline-item:nth-child(even) .timeline-icon{right:-82px}
+@media(max-width:760px){
+  .itinerary-section .timeline-item .timeline-icon{
+    top:17px;
+    width:43px;
+    height:43px;
+  }
+  .itinerary-section .timeline-item .timeline-icon svg{width:26px;height:26px}
+  .itinerary-section .timeline-item:nth-child(odd) .timeline-icon{left:-59px}
+  .itinerary-section .timeline-item:nth-child(even) .timeline-icon{right:-59px}
+}
+@media(max-width:380px){
+  .itinerary-section .timeline-item .timeline-icon{width:37px;height:37px}
+  .itinerary-section .timeline-item .timeline-icon svg{width:22px;height:22px}
+  .itinerary-section .timeline-item:nth-child(odd) .timeline-icon{left:-51px}
+  .itinerary-section .timeline-item:nth-child(even) .timeline-icon{right:-51px}
+}
