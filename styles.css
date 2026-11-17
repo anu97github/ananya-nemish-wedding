@@ -7285,3 +7285,57 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     background-size:190% 155%,185% 160%,195% 165%,185% 155%,175% 145%,190% 155%,185% 150%,cover!important;
   }
 }
+
+
+
+/* Compact, uniform transparent PNG illustrations opposite each event's copy. */
+.itinerary-section .timeline-item{overflow:visible!important}
+.itinerary-section .timeline-event-icon{
+  position:absolute!important;
+  top:30px!important;
+  width:clamp(76px,6.6vw,96px)!important;
+  height:96px!important;
+  aspect-ratio:1/1!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  display:block!important;
+  z-index:1!important;
+  opacity:1!important;
+  mix-blend-mode:multiply;
+  pointer-events:none!important;
+}
+.itinerary-section .timeline-item:nth-child(odd) .timeline-event-icon{
+  left:calc(-1 * clamp(88px,7.5vw,108px))!important;
+  right:auto!important;
+}
+.itinerary-section .timeline-item:nth-child(even) .timeline-event-icon{
+  right:calc(-1 * clamp(88px,7.5vw,108px))!important;
+  left:auto!important;
+}
+@media(max-width:760px){
+  .itinerary-section .timeline-event-icon{
+    top:30px!important;
+    width:54px!important;
+    height:64px!important;
+  }
+  .itinerary-section .timeline-item:nth-child(odd) .timeline-event-icon{left:-64px!important}
+  .itinerary-section .timeline-item:nth-child(even) .timeline-event-icon{right:-64px!important}
+}
+@media(max-width:390px){
+  .itinerary-section .timeline-event-icon{width:48px!important;height:56px!important}
+  .itinerary-section .timeline-item:nth-child(odd) .timeline-event-icon{left:-58px!important}
+  .itinerary-section .timeline-item:nth-child(even) .timeline-event-icon{right:-58px!important}
+}
+
+
+/* Transparent watercolor PNGs: render only the illustration, never a frame or tile. */
+.itinerary-section img.timeline-event-icon{
+  background:transparent!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  padding:0!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  mix-blend-mode:multiply;
+}
