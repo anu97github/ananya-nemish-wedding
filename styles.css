@@ -7826,3 +7826,7 @@ main#home > footer.site-footer{
   border-radius:0!important;
   object-fit:contain!important;
 }
+
+/* Final About Us image layout overrides */
+.couple-section{display:block;grid-template-columns:none;padding:clamp(28px,4vw,56px) clamp(18px,5vw,72px);background:transparent}
+.couple-about-image{display:block;width:min(100%,1120px);height:auto;max-height:720px;object-fit:contain;margin:0 auto;border:0;border-radius:0;box-shadow:none}
