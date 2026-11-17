@@ -7229,3 +7229,59 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     background-size:180% 150%,180% 150%,190% 160%,180% 150%,cover!important;
   }
 }
+
+
+/* Refined watercolor palette: soft peach, blush, warm cream and a whisper
+   of sage. Multiple feathered blooms add depth without sitting behind text
+   as strong patches or reducing contrast. */
+.families-countdown-section,
+.couple-section,
+.itinerary-section,
+.venue-section,
+.couple-note-section,
+.site-footer{
+  background-color:#f8f5ed!important;
+  background-image:
+    radial-gradient(ellipse 38% 34% at 8% 12%,rgba(224,174,151,.25) 0%,rgba(224,174,151,.13) 34%,transparent 76%),
+    radial-gradient(ellipse 32% 40% at 91% 10%,rgba(210,220,194,.29) 0%,rgba(210,220,194,.14) 39%,transparent 78%),
+    radial-gradient(ellipse 44% 32% at 72% 92%,rgba(238,207,185,.28) 0%,rgba(238,207,185,.13) 40%,transparent 80%),
+    radial-gradient(ellipse 30% 36% at 22% 82%,rgba(229,190,190,.19) 0%,rgba(229,190,190,.09) 40%,transparent 78%),
+    radial-gradient(ellipse 26% 28% at 52% 42%,rgba(244,231,207,.30) 0%,rgba(244,231,207,.12) 45%,transparent 82%),
+    radial-gradient(ellipse 25% 30% at 98% 64%,rgba(215,224,204,.18) 0%,rgba(215,224,204,.08) 42%,transparent 80%),
+    radial-gradient(ellipse 24% 26% at 2% 58%,rgba(242,213,199,.17) 0%,rgba(242,213,199,.08) 42%,transparent 80%),
+    linear-gradient(135deg,#f8f5ed 0%,#fbf8f1 48%,#f7f1e9 100%)!important;
+  background-repeat:no-repeat!important;
+  background-size:cover!important;
+}
+
+/* Let each section carry a slightly different watercolor composition,
+   while keeping the same gentle palette throughout the page. */
+.families-countdown-section{
+  background-position:4% 10%,94% 12%,76% 92%,18% 78%,54% 40%,100% 60%,0% 54%,center!important;
+}
+.couple-section{
+  background-position:16% 8%,88% 18%,80% 88%,28% 78%,50% 48%,98% 66%,2% 48%,center!important;
+}
+.itinerary-section{
+  background-position:92% 12%,8% 22%,74% 90%,18% 76%,48% 38%,100% 56%,0% 62%,center!important;
+}
+.venue-section{
+  background-position:10% 18%,94% 12%,72% 90%,24% 80%,52% 42%,98% 62%,0% 52%,center!important;
+}
+.couple-note-section{
+  background-position:86% 12%,12% 22%,68% 92%,24% 76%,50% 44%,98% 60%,2% 56%,center!important;
+}
+.site-footer{
+  background-position:12% 12%,92% 18%,72% 90%,20% 80%,54% 42%,100% 58%,0% 56%,center!important;
+}
+
+@media(max-width:760px){
+  .families-countdown-section,
+  .couple-section,
+  .itinerary-section,
+  .venue-section,
+  .couple-note-section,
+  .site-footer{
+    background-size:190% 155%,185% 160%,195% 165%,185% 155%,175% 145%,190% 155%,185% 150%,cover!important;
+  }
+}
