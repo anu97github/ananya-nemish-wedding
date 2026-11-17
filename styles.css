@@ -7156,3 +7156,18 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     clip-path:none!important;
   }
 }
+
+
+/* Keep a clean, empty couple-section canvas for the photo that will be added
+   in a later update. */
+.couple-section{
+  display:block!important;
+  min-height:clamp(420px,42vw,560px)!important;
+  padding:0!important;
+}
+@media(max-width:760px){
+  .couple-section{
+    min-height:320px!important;
+    padding:0!important;
+  }
+}
