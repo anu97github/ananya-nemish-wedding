@@ -6974,3 +6974,69 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     clip-path:inset(0 14% 0 14%)!important;
   }
 }
+
+
+/* Final venue map sizing: keep the original artwork completely intact and
+   fit it inside a column exactly as tall as the venue details. */
+@media(min-width:761px){
+  .venue-section{
+    padding:42px 24px!important;
+  }
+  .venue-layout{
+    width:100%!important;
+    max-width:1440px!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+    align-items:stretch!important;
+    gap:clamp(18px,2.2vw,32px)!important;
+  }
+  .venue-details-column{
+    max-width:760px!important;
+    justify-content:center!important;
+    align-self:stretch!important;
+  }
+  .venue-map-column{
+    display:flex!important;
+    align-items:stretch!important;
+    justify-content:center!important;
+    align-self:stretch!important;
+    height:auto!important;
+    min-height:0!important;
+    overflow:visible!important;
+    padding:0!important;
+  }
+  .venue-map-column .venue-directions-artwork{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    height:100%!important;
+    max-height:none!important;
+    min-height:0!important;
+    margin:0!important;
+    clip-path:none!important;
+    object-fit:contain!important;
+    object-position:center!important;
+    border:0!important;
+    outline:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+  }
+}
+@media(max-width:760px){
+  .venue-map-column{
+    overflow:visible!important;
+  }
+  .venue-map-column .venue-directions-artwork{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    height:auto!important;
+    max-height:none!important;
+    margin:0 auto!important;
+    clip-path:none!important;
+    object-fit:contain!important;
+    border:0!important;
+    outline:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+  }
+}
