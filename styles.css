@@ -7387,3 +7387,65 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     white-space:normal;
   }
 }
+
+
+/* Final page-wide watercolor paper treatment.
+   Preserve the hands hero; let all later sections share one warm ivory wash.
+   Transparent nested panels prevent hard-edged colour bands between sections. */
+:root{
+  --watercolor-ivory:#f8f5ed;
+}
+main#home > :not(.hero),
+main#home > .families-countdown-section,
+main#home .families-section,
+main#home .countdown-section,
+main#home .couple-section,
+main#home .celebrate-section,
+main#home .event-band,
+main#home .itinerary-section,
+main#home .venue-section,
+main#home .couple-note-section,
+main#home .rsvp-section,
+.site-footer{
+  background-color:var(--watercolor-ivory)!important;
+  background-image:
+    radial-gradient(ellipse 38% 34% at 8% 12%,rgba(224,174,151,.22) 0%,rgba(224,174,151,.11) 34%,transparent 76%),
+    radial-gradient(ellipse 32% 40% at 91% 10%,rgba(210,220,194,.26) 0%,rgba(210,220,194,.12) 39%,transparent 78%),
+    radial-gradient(ellipse 44% 32% at 72% 92%,rgba(238,207,185,.24) 0%,rgba(238,207,185,.11) 40%,transparent 80%),
+    radial-gradient(ellipse 30% 36% at 22% 82%,rgba(229,190,190,.17) 0%,rgba(229,190,190,.08) 40%,transparent 78%),
+    radial-gradient(ellipse 26% 28% at 52% 42%,rgba(244,231,207,.26) 0%,rgba(244,231,207,.10) 45%,transparent 82%),
+    linear-gradient(135deg,#f8f5ed 0%,#fbf8f1 48%,#f7f1e9 100%)!important;
+  background-repeat:no-repeat!important;
+  background-size:190% 155%,185% 160%,195% 165%,185% 155%,175% 145%,cover!important;
+  background-position:4% 10%,94% 12%,76% 92%,18% 78%,54% 40%,center!important;
+}
+
+/* Retain light translucent surfaces only where forms need separation;
+   decorative event and information bands remain part of the paper canvas. */
+main#home .rsvp-form{
+  background:rgba(255,253,249,.82)!important;
+}
+.site-footer .footer-garden{
+  z-index:0;
+  pointer-events:none;
+}
+.site-footer .footer-content{
+  z-index:1;
+}
+
+@media(max-width:760px){
+  main#home > :not(.hero),
+  main#home > .families-countdown-section,
+  main#home .families-section,
+  main#home .countdown-section,
+  main#home .couple-section,
+  main#home .celebrate-section,
+  main#home .event-band,
+  main#home .itinerary-section,
+  main#home .venue-section,
+  main#home .couple-note-section,
+  main#home .rsvp-section,
+  .site-footer{
+    background-size:190% 155%,185% 160%,195% 165%,185% 155%,175% 145%,cover!important;
+  }
+}
