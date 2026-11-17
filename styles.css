@@ -7471,3 +7471,59 @@ main#home .rsvp-form{
     background-size:190% 165%,185% 170%,195% 165%,185% 170%,175% 160%,170% 160%,cover!important;
   }
 }
+
+
+/* MATCH THE USER'S IVORY PAPER REFERENCE ACROSS EVERY POST-HERO SECTION.
+   The reference is a warm ivory handmade-paper texture with very faint,
+   cloudy watercolor mottling — not separate pastel section gradients. */
+:root{--reference-ivory:#f5f2e9}
+main#home section:not(.hero),
+main#home .families-countdown-section,
+main#home .families-section,
+main#home .countdown-section,
+main#home .couple-section,
+main#home .itinerary-section,
+main#home .venue-section,
+main#home .couple-note-section,
+main#home .note-section-inner,
+.site-footer,
+.site-footer-minimal{
+  background-color:var(--reference-ivory)!important;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 .075'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 65% 60% at 8% 12%,rgba(255,255,255,.30),transparent 72%),
+    radial-gradient(ellipse 58% 62% at 92% 82%,rgba(222,213,194,.17),transparent 76%),
+    radial-gradient(ellipse 50% 55% at 48% 48%,rgba(255,255,255,.18),transparent 80%),
+    linear-gradient(135deg,#f5f2e9 0%,#f8f6ef 48%,#f3f0e7 100%)!important;
+  background-repeat:repeat,no-repeat,no-repeat,no-repeat,no-repeat!important;
+  background-size:180px 180px,cover,cover,cover,cover!important;
+  background-position:center!important;
+  background-blend-mode:multiply,normal,normal,normal,normal!important;
+}
+
+/* These are sections inside the page's larger content blocks. Give them the
+   same paper surface too, so their old event-specific fills cannot show through. */
+main#home .celebrate-section,
+main#home .event-band,
+main#home .haldi-band,
+main#home .mehendi-band,
+main#home .wedding-band,
+main#home .day-panels,
+main#home .day-panel{
+  background-color:var(--reference-ivory)!important;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 .075'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 65% 60% at 8% 12%,rgba(255,255,255,.30),transparent 72%),
+    radial-gradient(ellipse 58% 62% at 92% 82%,rgba(222,213,194,.17),transparent 76%),
+    linear-gradient(135deg,#f5f2e9 0%,#f8f6ef 48%,#f3f0e7 100%)!important;
+  background-repeat:repeat,no-repeat,no-repeat,no-repeat!important;
+  background-size:180px 180px,cover,cover,cover!important;
+  background-position:center!important;
+  background-blend-mode:multiply,normal,normal,normal!important;
+}
+
+/* Keep the opening invitation photograph exactly as it is. */
+main#home > section.hero,
+main#home > section.hero .hero-image{
+  background-image:initial!important;
+}
