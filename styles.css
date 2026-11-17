@@ -5673,3 +5673,95 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .guestbook-submit{margin-top:12px!important}
   .guestbook-footnote{margin-top:9px!important}
 }
+
+
+/* Treat the keepsake as one continuous writing surface, not a card-within-a-card. */
+.guestbook-card{
+  max-width:660px!important;
+  margin:22px auto 0!important;
+  padding:10px!important;
+  border:1px solid rgba(168,132,81,.42)!important;
+  border-radius:4px!important;
+  background:#fffdf8!important;
+  box-shadow:0 12px 32px rgba(72,51,43,.07)!important;
+}
+.guestbook-card-inner{
+  padding:24px clamp(18px,3vw,30px) 20px!important;
+  border:0!important;
+  background:
+    repeating-linear-gradient(to bottom,transparent 0,transparent 43px,rgba(133,157,166,.16) 44px,transparent 45px),
+    #fffdf8!important;
+}
+.guestbook-topline{display:none!important}
+.guestbook-dear{
+  margin:4px 0 15px!important;
+  text-align:left!important;
+  font-size:clamp(24px,3.1vw,31px)!important;
+}
+.guestbook-form{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:5px!important;
+}
+.guestbook-form textarea{
+  display:block!important;
+  width:100%!important;
+  min-height:175px!important;
+  height:175px!important;
+  resize:vertical!important;
+  padding:8px 2px!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  color:#5b5148!important;
+  font:500 17px/2.05 var(--serif)!important;
+}
+.guestbook-form textarea:focus{
+  border:0!important;
+  box-shadow:none!important;
+  outline:0!important;
+}
+.guestbook-form textarea::placeholder{
+  color:#b5a99b!important;
+  font-style:italic!important;
+}
+.guestbook-name-label{
+  align-self:flex-end!important;
+  margin:8px 0 0!important;
+}
+.guestbook-form input[name="name"]{
+  width:min(100%,230px)!important;
+  padding:7px 2px!important;
+  border:0!important;
+  border-bottom:1px solid #c9b99f!important;
+  background:transparent!important;
+}
+.guestbook-submit{
+  width:min(100%,230px)!important;
+  min-height:44px!important;
+  margin:16px auto 0!important;
+  padding:11px 17px!important;
+  font-size:10px!important;
+  letter-spacing:.14em!important;
+}
+.guestbook-submit span:last-child{font-size:14px}
+.guestbook-footnote{
+  margin:12px auto 0!important;
+  text-align:center!important;
+  color:#9a8876!important;
+  font-size:12px!important;
+  font-style:italic!important;
+}
+@media(max-width:760px){
+  .guestbook-card{margin-top:18px!important;padding:7px!important}
+  .guestbook-card-inner{padding:19px 14px 16px!important}
+  .guestbook-dear{margin:3px 0 12px!important}
+  .guestbook-form textarea{
+    min-height:155px!important;
+    height:155px!important;
+    font-size:16px!important;
+  }
+  .guestbook-submit{width:min(100%,220px)!important;margin-top:13px!important}
+  .guestbook-footnote{font-size:11px!important}
+}
