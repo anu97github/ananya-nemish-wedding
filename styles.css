@@ -4940,3 +4940,71 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     right:0;
   }
 }
+
+
+/* Corrected alternating order for every day: 1 right, 2 left, 3 right, etc.
+   Applies uniformly to the Haldi/Mehendi day, wedding day, and checkout day. */
+.itinerary-section .timeline-item,
+.itinerary-section .timeline-item:has(.palette-expanded){
+  box-sizing:border-box;
+  width:50%;
+}
+.itinerary-section .timeline-item:nth-child(odd),
+.itinerary-section .timeline-item:has(.palette-expanded):nth-child(odd){
+  margin-left:50%;
+  padding-left:34px;
+  padding-right:12px;
+  text-align:left;
+}
+.itinerary-section .timeline-item:nth-child(even),
+.itinerary-section .timeline-item:has(.palette-expanded):nth-child(even){
+  margin-left:0;
+  padding-left:12px;
+  padding-right:34px;
+  text-align:right;
+}
+.itinerary-section .timeline-item:nth-child(odd)::before{
+  left:0;
+  right:auto;
+}
+.itinerary-section .timeline-item:nth-child(even)::before{
+  left:auto;
+  right:0;
+}
+.itinerary-section .timeline-item:nth-child(odd)>i{
+  left:-5px;
+  right:auto;
+}
+.itinerary-section .timeline-item:nth-child(even)>i{
+  left:auto;
+  right:-5px;
+}
+/* Keep the connector continuous between event markers through the full scroll area. */
+.itinerary-section .timeline-item::before{
+  top:25px;
+  bottom:-26px;
+  display:block;
+}
+.itinerary-section .timeline-item:last-child::before{
+  display:none;
+}
+@media(max-width:760px){
+  .itinerary-section .timeline-item:nth-child(odd),
+  .itinerary-section .timeline-item:has(.palette-expanded):nth-child(odd){
+    margin-left:50%;
+    padding-left:21px;
+    padding-right:5px;
+    text-align:left;
+  }
+  .itinerary-section .timeline-item:nth-child(even),
+  .itinerary-section .timeline-item:has(.palette-expanded):nth-child(even){
+    margin-left:0;
+    padding-left:5px;
+    padding-right:21px;
+    text-align:right;
+  }
+  .itinerary-section .timeline-item:nth-child(odd)>i{left:-5px;right:auto}
+  .itinerary-section .timeline-item:nth-child(even)>i{left:auto;right:-5px}
+  .itinerary-section .timeline-item:nth-child(odd)::before{left:0;right:auto}
+  .itinerary-section .timeline-item:nth-child(even)::before{left:auto;right:0}
+}
