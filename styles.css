@@ -7389,25 +7389,25 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
 }
 
 
-/* Final page-wide watercolor paper treatment.
-   Preserve the hands hero; let all later sections share one warm ivory wash.
-   Transparent nested panels prevent hard-edged colour bands between sections. */
-:root{
-  --watercolor-ivory:#f8f5ed;
+/* Blend the venue section into the map's warm paper tone.
+   Keep the uploaded map artwork unchanged and remove the frame around it. */
+.venue-section{
+  background:#FDF6E3!important;
 }
-main#home > :not(.hero),
+.venue-map-column .venue-directions-artwork{
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+
+
+/* One consistent ivory watercolor wash across the full website, from the
+   family details through the footer. The opening hands hero is intentionally
+   excluded. Keep nested family/countdown panels transparent so no bands form. */
+main#home > section:not(.hero),
 main#home > .families-countdown-section,
-main#home .families-section,
-main#home .countdown-section,
-main#home .couple-section,
-main#home .celebrate-section,
-main#home .event-band,
-main#home .itinerary-section,
-main#home .venue-section,
-main#home .couple-note-section,
-main#home .rsvp-section,
 .site-footer{
-  background-color:var(--watercolor-ivory)!important;
+  background-color:#f8f5ed!important;
   background-image:
     radial-gradient(ellipse 38% 34% at 8% 12%,rgba(224,174,151,.22) 0%,rgba(224,174,151,.11) 34%,transparent 76%),
     radial-gradient(ellipse 32% 40% at 91% 10%,rgba(210,220,194,.26) 0%,rgba(210,220,194,.12) 39%,transparent 78%),
@@ -7419,33 +7419,312 @@ main#home .rsvp-section,
   background-size:190% 155%,185% 160%,195% 165%,185% 155%,175% 145%,cover!important;
   background-position:4% 10%,94% 12%,76% 92%,18% 78%,54% 40%,center!important;
 }
+.families-countdown-section > .families-section,
+.families-countdown-section > .countdown-section{
+  background:transparent!important;
+  background-image:none!important;
+}
 
-/* Retain light translucent surfaces only where forms need separation;
-   decorative event and information bands remain part of the paper canvas. */
+
+/* FINAL OVERRIDE — warm ivory watercolor paper on every section after hero.
+   This is intentionally last in the stylesheet so it wins over earlier
+   section-specific gradients and background declarations. */
+:root{
+  --ivory-watercolor:#f8f5ed;
+}
+main#home > section:not(.hero),
+main#home > .families-countdown-section,
+.site-footer{
+  background-color:var(--ivory-watercolor)!important;
+  background-image:
+    radial-gradient(ellipse 48% 44% at 3% 4%,rgba(222,190,166,.28) 0%,rgba(222,190,166,.18) 22%,rgba(222,190,166,.07) 48%,transparent 76%),
+    radial-gradient(ellipse 42% 52% at 98% 8%,rgba(204,216,190,.28) 0%,rgba(204,216,190,.16) 28%,rgba(204,216,190,.06) 55%,transparent 80%),
+    radial-gradient(ellipse 54% 42% at 76% 100%,rgba(232,198,180,.26) 0%,rgba(232,198,180,.14) 30%,rgba(232,198,180,.05) 58%,transparent 82%),
+    radial-gradient(ellipse 38% 48% at 12% 88%,rgba(224,196,191,.22) 0%,rgba(224,196,191,.12) 32%,rgba(224,196,191,.04) 60%,transparent 82%),
+    radial-gradient(ellipse 34% 38% at 52% 46%,rgba(242,229,205,.34) 0%,rgba(242,229,205,.18) 32%,rgba(242,229,205,.06) 62%,transparent 84%),
+    radial-gradient(ellipse 28% 34% at 100% 68%,rgba(215,222,202,.20) 0%,rgba(215,222,202,.08) 48%,transparent 78%),
+    linear-gradient(135deg,#f8f5ed 0%,#fbf8f2 48%,#f6f1e8 100%)!important;
+  background-repeat:no-repeat!important;
+  background-size:160% 150%,155% 160%,165% 155%,155% 160%,150% 150%,145% 150%,cover!important;
+}
+
+/* The family and countdown content lives inside one wrapper; keep its
+   individual panels transparent so the watercolor remains continuous. */
+main#home .families-countdown-section,
+main#home .families-countdown-section > .families-section,
+main#home .families-countdown-section > .countdown-section{
+  background-color:transparent!important;
+  background-image:none!important;
+}
+
+/* Keep form readability while allowing the RSVP section's paper wash through. */
 main#home .rsvp-form{
-  background:rgba(255,253,249,.82)!important;
+  background:rgba(255,253,249,.84)!important;
 }
-.site-footer .footer-garden{
-  z-index:0;
-  pointer-events:none;
-}
-.site-footer .footer-content{
-  z-index:1;
-}
+.site-footer .footer-garden{z-index:0;pointer-events:none}
+.site-footer .footer-content{z-index:1}
 
 @media(max-width:760px){
-  main#home > :not(.hero),
+  main#home > section:not(.hero),
   main#home > .families-countdown-section,
-  main#home .families-section,
-  main#home .countdown-section,
-  main#home .couple-section,
-  main#home .celebrate-section,
-  main#home .event-band,
-  main#home .itinerary-section,
-  main#home .venue-section,
-  main#home .couple-note-section,
-  main#home .rsvp-section,
   .site-footer{
-    background-size:190% 155%,185% 160%,195% 165%,185% 155%,175% 145%,cover!important;
+    background-size:190% 165%,185% 170%,195% 165%,185% 170%,175% 160%,170% 160%,cover!important;
   }
+}
+
+
+/* MATCH THE USER'S IVORY PAPER REFERENCE ACROSS EVERY POST-HERO SECTION.
+   The reference is a warm ivory handmade-paper texture with very faint,
+   cloudy watercolor mottling — not separate pastel section gradients. */
+:root{--reference-ivory:#f5f2e9}
+main#home section:not(.hero),
+main#home .families-countdown-section,
+main#home .families-section,
+main#home .countdown-section,
+main#home .couple-section,
+main#home .itinerary-section,
+main#home .venue-section,
+main#home .couple-note-section,
+main#home .note-section-inner,
+.site-footer,
+.site-footer-minimal{
+  background-color:var(--reference-ivory)!important;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 .075'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 65% 60% at 8% 12%,rgba(255,255,255,.30),transparent 72%),
+    radial-gradient(ellipse 58% 62% at 92% 82%,rgba(222,213,194,.17),transparent 76%),
+    radial-gradient(ellipse 50% 55% at 48% 48%,rgba(255,255,255,.18),transparent 80%),
+    linear-gradient(135deg,#f5f2e9 0%,#f8f6ef 48%,#f3f0e7 100%)!important;
+  background-repeat:repeat,no-repeat,no-repeat,no-repeat,no-repeat!important;
+  background-size:180px 180px,cover,cover,cover,cover!important;
+  background-position:center!important;
+  background-blend-mode:multiply,normal,normal,normal,normal!important;
+}
+
+/* These are sections inside the page's larger content blocks. Give them the
+   same paper surface too, so their old event-specific fills cannot show through. */
+main#home .celebrate-section,
+main#home .event-band,
+main#home .haldi-band,
+main#home .mehendi-band,
+main#home .wedding-band,
+main#home .day-panels,
+main#home .day-panel{
+  background-color:var(--reference-ivory)!important;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 .075'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 65% 60% at 8% 12%,rgba(255,255,255,.30),transparent 72%),
+    radial-gradient(ellipse 58% 62% at 92% 82%,rgba(222,213,194,.17),transparent 76%),
+    linear-gradient(135deg,#f5f2e9 0%,#f8f6ef 48%,#f3f0e7 100%)!important;
+  background-repeat:repeat,no-repeat,no-repeat,no-repeat!important;
+  background-size:180px 180px,cover,cover,cover!important;
+  background-position:center!important;
+  background-blend-mode:multiply,normal,normal,normal!important;
+}
+
+/* Keep the opening invitation photograph exactly as it is. */
+main#home > section.hero,
+main#home > section.hero .hero-image{
+  background-image:initial!important;
+}
+
+
+/* FINAL: use the supplied ivory watercolor-paper image itself as the shared
+   background. No per-section colour variants or generated gradients. */
+:root{--wedding-ivory-paper:url("/assets/ivory-watercolor-paper.webp")}
+main#home > section:not(.hero),
+main#home > .families-countdown-section,
+.site-footer,
+.site-footer-minimal{
+  background-color:#f5f1e8!important;
+  background-image:var(--wedding-ivory-paper)!important;
+  background-repeat:no-repeat!important;
+  background-position:center center!important;
+  background-size:cover!important;
+  background-attachment:scroll!important;
+}
+
+/* Remove the old independent fills from inner section wrappers so the
+   exact same reference image remains visible across the full section. */
+main#home .families-section,
+main#home .countdown-section,
+main#home .couple-section,
+main#home .itinerary-heading,
+main#home .day-tabs,
+main#home .day-panels,
+main#home .day-panel,
+main#home .timeline-scroll,
+main#home .timeline-track,
+main#home .venue-layout,
+main#home .venue-content,
+main#home .venue-map-column,
+main#home .note-section-inner{
+  background-color:transparent!important;
+  background-image:none!important;
+  box-shadow:none;
+}
+
+/* Preserve the opening hands hero and its image exactly. */
+main#home > section.hero,
+main#home > section.hero .hero-image{
+  background-image:initial!important;
+}
+
+
+/* FINAL REFERENCE BACKGROUND — exact latest user-uploaded ivory watercolor. */
+:root{--ivory-watercolor-final:url("/assets/ivory%20watercolor%20paper%20final.webp")}
+main#home > section:not(.hero),
+.site-footer,
+.site-footer-minimal{
+  background-color:#f3efe6!important;
+  background-image:var(--ivory-watercolor-final)!important;
+  background-repeat:repeat-y!important;
+  background-position:top center!important;
+  background-size:100% auto!important;
+  background-attachment:scroll!important;
+}
+
+/* Inner layout wrappers must not paint their own colour over the shared paper. */
+main#home .families-section,
+main#home .countdown-section,
+main#home .itinerary-heading,
+main#home .day-tabs,
+main#home .day-panels,
+main#home .day-panel,
+main#home .timeline-scroll,
+main#home .timeline-track,
+main#home .venue-layout,
+main#home .venue-content,
+main#home .venue-map-column,
+main#home .note-section-inner{
+  background-color:transparent!important;
+  background-image:none!important;
+}
+
+/* Keep the first hands-image hero untouched. */
+main#home > section.hero,
+main#home > section.hero .hero-image{
+  background-image:initial!important;
+}
+
+
+/* APPROVED IVORY WATERCOLOR — shared post-hero background for every section.
+   The SVG uses the approved #F1E9E2 base with subtle watercolor blooms/grain. */
+:root{--approved-ivory-watercolor:url("/assets/ivory-watercolor-paper-final.svg")}
+main#home section:not(.hero),
+.site-footer,
+.site-footer-minimal{
+  background-color:#F1E9E2!important;
+  background-image:var(--approved-ivory-watercolor)!important;
+  background-repeat:no-repeat!important;
+  background-position:center center!important;
+  background-size:cover!important;
+  background-attachment:scroll!important;
+}
+
+/* Prevent nested section wrappers and event/venue bands from painting
+   their previous independent cream, green, pink or beige fills. */
+main#home div[class*="section"],
+main#home div[class*="band"],
+main#home .families-section,
+main#home .countdown-section,
+main#home .itinerary-heading,
+main#home .day-tabs,
+main#home .day-panels,
+main#home .day-panel,
+main#home .timeline-scroll,
+main#home .timeline-track,
+main#home .venue-layout,
+main#home .venue-content,
+main#home .venue-map-column,
+main#home .note-section-inner{
+  background-color:transparent!important;
+  background-image:none!important;
+}
+
+/* Re-apply the shared image to actual semantic sections after wrapper reset. */
+main#home section:not(.hero){
+  background-color:#F1E9E2!important;
+  background-image:var(--approved-ivory-watercolor)!important;
+  background-repeat:no-repeat!important;
+  background-position:center center!important;
+  background-size:cover!important;
+}
+
+/* Opening hands hero remains unchanged. */
+main#home > section.hero,
+main#home > section.hero .hero-image{
+  background-image:initial!important;
+}
+
+
+/* ONE CONTINUOUS PAGE CANVAS — approved #FAF7F5 watercolor image.
+   Background belongs to the document, not to individual section elements. */
+html,body{
+  min-height:100%;
+  background:#FAF7F5!important;
+}
+body{
+  position:relative;
+  isolation:isolate;
+  background-color:transparent!important;
+  background-image:url("/assets/watercolor-faf7f5.webp")!important;
+  background-repeat:no-repeat!important;
+  background-position:center top!important;
+  background-size:cover!important;
+  background-attachment:fixed!important;
+}
+main#home,
+main#home > section,
+main#home > section:not(.hero),
+.site-footer,
+.site-footer-minimal{
+  background:transparent!important;
+  background-color:transparent!important;
+  background-image:none!important;
+}
+
+/* Remove the visual seams between page sections; keep content spacing intact. */
+main#home > section,
+main#home > section + section{
+  border-top:0!important;
+  border-bottom:0!important;
+  box-shadow:none!important;
+}
+.families-countdown-section .countdown-section::before,
+.families-countdown-section .countdown-section::after{
+  display:none!important;
+  content:none!important;
+}
+
+/* All structural section wrappers reveal the same document-level watercolor. */
+main#home [class*="section"],
+main#home [class*="band"],
+main#home .itinerary-heading,
+main#home .day-tabs,
+main#home .day-panels,
+main#home .day-panel,
+main#home .timeline-scroll,
+main#home .timeline-track,
+main#home .venue-layout,
+main#home .venue-content,
+main#home .venue-map-column,
+main#home .note-section-inner{
+  background:transparent!important;
+  background-color:transparent!important;
+  background-image:none!important;
+}
+
+/* The opening hero photograph remains visible; the page canvas sits behind it. */
+main#home > section.hero,
+main#home > section.hero .hero-image{
+  background-color:transparent!important;
+}
+
+
+/* Conflict resolution: keep the approved continuous ivory watercolor
+   background and remove the old venue-only cream override. */
+.venue-section{
+  background-color:#F1E9E2!important;
+  background-image:var(--approved-ivory-watercolor)!important;
 }

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" preserveAspectRatio="xMidYMid slice">
+<defs>
+ <filter id="paper" x="-10%" y="-10%" width="120%" height="120%">
+  <feTurbulence type="fractalNoise" baseFrequency=".68" numOctaves="3" seed="19" stitchTiles="stitch"/>
+  <feColorMatrix type="saturate" values="0"/>
+  <feComponentTransfer><feFuncA type="table" tableValues="0 .075"/></feComponentTransfer>
+ </filter>
+ <filter id="wash" x="-25%" y="-25%" width="150%" height="150%">
+  <feTurbulence type="fractalNoise" baseFrequency=".012 .018" numOctaves="3" seed="7" result="noise"/>
+  <feDisplacementMap in="SourceGraphic" in2="noise" scale="34" xChannelSelector="R" yChannelSelector="G"/>
+  <feGaussianBlur stdDeviation="12"/>
+ </filter>
+ <radialGradient id="soft"><stop stop-color="#fffaf5" stop-opacity=".42"/><stop offset="1" stop-color="#fffaf5" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1536" height="1024" fill="#F1E9E2"/>
+<g filter="url(#wash)" opacity=".72">
+ <path d="M-90 10 C80 -70 170 5 300 -25 S510 12 560 90 S410 145 315 132 S130 210 20 170 S-80 105 -90 10Z" fill="#e8cbb9" opacity=".48"/>
+ <path d="M1120 -80 C1280 -10 1400 -35 1580 60 L1600 260 C1460 220 1400 175 1290 205 S1120 150 1080 80Z" fill="#e7c7b4" opacity=".43"/>
+ <path d="M-70 570 C80 500 140 575 210 625 S330 700 250 760 S90 730 -20 790Z" fill="#e8cbbb" opacity=".42"/>
+ <path d="M-40 940 C100 810 260 855 360 900 S520 980 600 1060 L-40 1080Z" fill="#e8c8b7" opacity=".40"/>
+ <path d="M920 1040 C1050 890 1120 930 1240 850 S1430 830 1580 900 L1600 1100Z" fill="#e9cbbb" opacity=".44"/>
+ <path d="M1280 600 C1390 520 1460 555 1580 500 L1600 710 C1490 680 1430 730 1320 700Z" fill="#e8cabb" opacity=".26"/>
+</g>
+<g opacity=".55">
+ <ellipse cx="750" cy="440" rx="650" ry="430" fill="url(#soft)"/>
+ <ellipse cx="220" cy="300" rx="360" ry="280" fill="url(#soft)"/>
+ <ellipse cx="1300" cy="820" rx="420" ry="300" fill="url(#soft)"/>
+</g>
+<rect width="100%" height="100%" filter="url(#paper)" opacity=".42"/>
+</svg>
