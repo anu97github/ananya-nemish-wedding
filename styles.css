@@ -5318,3 +5318,55 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     aspect-ratio:1.55 / 1;
   }
 }
+
+
+/* Align the first line of both venue columns and make the map a little more compact. */
+.venue-layout{
+  align-items:stretch;
+}
+.venue-details-column,
+.venue-map-column{
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+.venue-details-column .eyebrow{
+  margin-top:0;
+  margin-bottom:8px;
+  font-size:clamp(18px,1.55vw,21px);
+  line-height:1.35;
+  letter-spacing:.19em;
+}
+.venue-details-column h2{
+  margin-top:8px;
+}
+.venue-map-column .venue-address{
+  margin-top:0;
+  margin-bottom:22px;
+  min-height:2.9em;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+.venue-map-column .venue-map-preview{
+  width:96%;
+  align-self:center;
+  aspect-ratio:2.7 / 1;
+  min-height:260px;
+  max-height:340px;
+}
+@media(max-width:760px){
+  .venue-details-column .eyebrow{
+    font-size:15px;
+    margin-bottom:8px;
+  }
+  .venue-map-column .venue-address{
+    min-height:0;
+  }
+  .venue-map-column .venue-map-preview{
+    width:100%;
+    min-height:190px;
+    max-height:none;
+    aspect-ratio:1.55 / 1;
+  }
+}
