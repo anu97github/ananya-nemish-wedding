@@ -7840,17 +7840,20 @@ main#home .about-us-title{
   font:500 clamp(38px,5vw,58px)/1.1 var(--serif);
 }
 
-/* Keep the dress-code sentence aligned to the left and let it wrap naturally. */
+/* Present the dress code as two balanced, centered lines. */
 main#home .itinerary-heading .itinerary-dresscode-note{
-  text-align:left;
+  text-align:center;
   white-space:normal;
   max-width:1400px;
   margin-left:auto;
   margin-right:auto;
 }
+main#home .itinerary-dresscode-note .dresscode-line{
+  display:block;
+}
 @media(max-width:760px){
   main#home .itinerary-heading .itinerary-dresscode-note{
-    text-align:left;
+    text-align:center;
     white-space:normal;
   }
 }
