@@ -7656,3 +7656,67 @@ main#home > section.hero,
 main#home > section.hero .hero-image{
   background-image:initial!important;
 }
+
+
+/* ONE CONTINUOUS PAGE CANVAS — approved #FAF7F5 watercolor image.
+   Background belongs to the document, not to individual section elements. */
+html,body{
+  min-height:100%;
+  background:#FAF7F5!important;
+}
+body{
+  position:relative;
+  isolation:isolate;
+  background-color:transparent!important;
+  background-image:url("/assets/watercolor-faf7f5.webp")!important;
+  background-repeat:no-repeat!important;
+  background-position:center top!important;
+  background-size:cover!important;
+  background-attachment:fixed!important;
+}
+main#home,
+main#home > section,
+main#home > section:not(.hero),
+.site-footer,
+.site-footer-minimal{
+  background:transparent!important;
+  background-color:transparent!important;
+  background-image:none!important;
+}
+
+/* Remove the visual seams between page sections; keep content spacing intact. */
+main#home > section,
+main#home > section + section{
+  border-top:0!important;
+  border-bottom:0!important;
+  box-shadow:none!important;
+}
+.families-countdown-section .countdown-section::before,
+.families-countdown-section .countdown-section::after{
+  display:none!important;
+  content:none!important;
+}
+
+/* All structural section wrappers reveal the same document-level watercolor. */
+main#home [class*="section"],
+main#home [class*="band"],
+main#home .itinerary-heading,
+main#home .day-tabs,
+main#home .day-panels,
+main#home .day-panel,
+main#home .timeline-scroll,
+main#home .timeline-track,
+main#home .venue-layout,
+main#home .venue-content,
+main#home .venue-map-column,
+main#home .note-section-inner{
+  background:transparent!important;
+  background-color:transparent!important;
+  background-image:none!important;
+}
+
+/* The opening hero photograph remains visible; the page canvas sits behind it. */
+main#home > section.hero,
+main#home > section.hero .hero-image{
+  background-color:transparent!important;
+}
