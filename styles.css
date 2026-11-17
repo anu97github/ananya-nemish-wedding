@@ -7728,3 +7728,44 @@ main#home > section.hero .hero-image{
   background-color:#F1E9E2!important;
   background-image:var(--approved-ivory-watercolor)!important;
 }
+
+
+/* FOOTER CONTINUITY FIX
+   One page-wide watercolor canvas spans from the first post-hero content
+   through the footer. The footer remains semantic content inside main,
+   but no longer paints a separate background or visual section boundary. */
+html{
+  min-height:100%;
+  background-color:#FAF7F5!important;
+}
+body{
+  min-height:100vh;
+  background-color:#FAF7F5!important;
+  background-image:url("/assets/watercolor-faf7f5.webp")!important;
+  background-repeat:no-repeat!important;
+  background-position:center top!important;
+  background-size:100% 100%!important;
+  background-attachment:scroll!important;
+}
+main#home{
+  background:transparent!important;
+  background-color:transparent!important;
+  background-image:none!important;
+}
+main#home > section:not(.hero),
+main#home > .families-countdown-section,
+main#home > footer.site-footer,
+main#home > footer.site-footer-minimal,
+.site-footer,
+.site-footer-minimal{
+  background:transparent!important;
+  background-color:transparent!important;
+  background-image:none!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+main#home > footer.site-footer{
+  display:block;
+  margin:0!important;
+  width:100%;
+}
