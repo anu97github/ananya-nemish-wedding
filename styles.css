@@ -7769,3 +7769,40 @@ main#home > footer.site-footer{
   margin:0!important;
   width:100%;
 }
+
+
+/* Venue map preview: compact, naturally proportioned, and aligned with
+   the full height of the venue details column. */
+.venue-layout{
+  align-items:stretch!important;
+}
+.venue-map-column{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-width:0;
+  width:100%;
+  height:100%;
+}
+.venue-map-column .venue-map-preview{
+  display:block;
+  width:100%!important;
+  max-width:100%!important;
+  height:auto!important;
+  max-height:440px!important;
+  min-height:0!important;
+  aspect-ratio:auto!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  margin:0 auto!important;
+  border-radius:2px;
+}
+@media(max-width:760px){
+  .venue-map-column{
+    height:auto;
+  }
+  .venue-map-column .venue-map-preview{
+    width:100%!important;
+    max-height:360px!important;
+  }
+}
