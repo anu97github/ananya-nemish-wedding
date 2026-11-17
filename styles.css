@@ -7285,3 +7285,61 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     background-size:190% 155%,185% 160%,195% 165%,185% 155%,175% 145%,190% 155%,185% 150%,cover!important;
   }
 }
+
+
+/* Watercolor event illustrations: positioned opposite each event's text,
+   leaving the timeline rail, dots, descriptions and typography untouched. */
+.itinerary-section .timeline-item{overflow:visible!important}
+.itinerary-section .timeline-event-icon{
+  position:absolute!important;
+  top:34px!important;
+  width:clamp(82px,7.5vw,108px)!important;
+  height:100px!important;
+  display:block!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  z-index:1!important;
+  opacity:.97!important;
+  mix-blend-mode:multiply;
+  pointer-events:none!important;
+  -webkit-mask-image:radial-gradient(ellipse 78% 76% at 50% 50%,#000 58%,rgba(0,0,0,.82) 76%,transparent 100%);
+  mask-image:radial-gradient(ellipse 78% 76% at 50% 50%,#000 58%,rgba(0,0,0,.82) 76%,transparent 100%);
+  background-image:url("assets/timeline-icons-sprite.webp");
+  background-repeat:no-repeat;
+  background-size:500% 300%;
+}
+.itinerary-section .icon-check-in{background-position:0% 0%}
+.itinerary-section .icon-baale-yele-oota{background-position:25% 0%}
+.itinerary-section .icon-haldi{background-position:50% 0%}
+.itinerary-section .icon-mehendi{background-position:75% 0%}
+.itinerary-section .icon-dinner{background-position:100% 0%}
+.itinerary-section .icon-acoustic-night{background-position:0% 50%}
+.itinerary-section .icon-breakfast{background-position:25% 50%}
+.itinerary-section .icon-lunch{background-position:50% 50%}
+.itinerary-section .icon-wedding{background-position:75% 50%}
+.itinerary-section .icon-baraat{background-position:100% 50%}
+.itinerary-section .icon-varmala{background-position:0% 100%}
+.itinerary-section .icon-phere{background-position:25% 100%}
+.itinerary-section .icon-check-out{background-position:100% 100%}
+.itinerary-section .timeline-item:nth-child(odd) .timeline-event-icon{
+  left:calc(-1 * clamp(94px,8.5vw,122px))!important;
+  right:auto!important;
+}
+.itinerary-section .timeline-item:nth-child(even) .timeline-event-icon{
+  right:calc(-1 * clamp(94px,8.5vw,122px))!important;
+  left:auto!important;
+}
+@media(max-width:760px){
+  .itinerary-section .timeline-event-icon{
+    top:32px!important;
+    width:58px!important;
+    height:68px!important;
+  }
+  .itinerary-section .timeline-item:nth-child(odd) .timeline-event-icon{left:-68px!important}
+  .itinerary-section .timeline-item:nth-child(even) .timeline-event-icon{right:-68px!important}
+}
+@media(max-width:390px){
+  .itinerary-section .timeline-event-icon{width:50px!important;height:60px!important}
+  .itinerary-section .timeline-item:nth-child(odd) .timeline-event-icon{left:-58px!important}
+  .itinerary-section .timeline-item:nth-child(even) .timeline-event-icon{right:-58px!important}
+}
