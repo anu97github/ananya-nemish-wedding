@@ -6575,3 +6575,301 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     letter-spacing:.13em!important;
   }
 }
+
+
+/* Venue map is a non-interactive, image-only map panel. */
+.venue-map-column .venue-static-map{
+  position:relative;
+  width:96%;
+  max-width:none;
+  aspect-ratio:2.45 / 1;
+  min-height:260px;
+  max-height:340px;
+  align-self:center;
+  overflow:hidden;
+  border:1px solid rgba(198,173,123,.65);
+  border-radius:7px;
+  background:#f4efe5;
+  box-shadow:0 12px 28px rgba(66,54,39,.09);
+}
+.venue-static-map-tiles{
+  position:absolute;
+  inset:0;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-template-rows:repeat(2,minmax(0,1fr));
+}
+.venue-static-map-tiles img{
+  display:block;
+  width:100%;
+  height:100%;
+  min-width:0;
+  min-height:0;
+  object-fit:cover;
+}
+.venue-static-map-pin{
+  position:absolute;
+  left:60.65%;
+  top:40.6%;
+  width:22px;
+  height:22px;
+  transform:translate(-50%,-100%) rotate(-45deg);
+  border:2px solid #fff;
+  border-radius:50% 50% 50% 0;
+  background:#c94335;
+  box-shadow:0 2px 7px rgba(0,0,0,.28);
+}
+.venue-static-map-pin::after{
+  content:"";
+  position:absolute;
+  width:7px;
+  height:7px;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) rotate(45deg);
+  border-radius:50%;
+  background:#fff;
+}
+.venue-static-map-credit{
+  position:absolute;
+  right:5px;
+  bottom:4px;
+  padding:2px 5px;
+  border-radius:2px;
+  background:rgba(255,255,255,.82);
+  color:#5d625c;
+  font:10px/1.3 Arial,sans-serif;
+}
+.venue-details-column .venue-location{
+  max-width:100%;
+  font-size:clamp(13px,1.15vw,16px);
+  font-weight:700;
+  letter-spacing:.13em;
+  line-height:1.5;
+  white-space:normal;
+  font-variant-numeric:lining-nums;
+}
+@media(max-width:760px){
+  .venue-map-column .venue-static-map{
+    width:100%;
+    min-height:190px;
+    max-height:none;
+    aspect-ratio:1.55 / 1;
+  }
+  .venue-static-map-credit{font-size:9px}
+  .venue-details-column .venue-location{
+    font-size:10px;
+    letter-spacing:.1em;
+  }
+}
+
+
+/* Wider-area road map for the wedding venue and Bengaluru guest landmarks. */
+.venue-map-column .venue-static-map{
+  position:relative;
+  width:100%;
+  max-width:760px;
+  aspect-ratio:1 / 1;
+  min-height:0;
+  max-height:none;
+  align-self:center;
+  overflow:hidden;
+  border:1px solid rgba(198,173,123,.7);
+  border-radius:9px;
+  background:#f2eee7;
+  box-shadow:0 14px 34px rgba(66,54,39,.11);
+}
+.venue-static-map-tiles{
+  position:absolute;
+  inset:0;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-rows:repeat(2,minmax(0,1fr));
+}
+.venue-static-map-tiles img{
+  display:block;
+  width:100%;
+  height:100%;
+  min-width:0;
+  min-height:0;
+  object-fit:cover;
+}
+.venue-map-heading{
+  position:absolute;
+  z-index:3;
+  top:12px;
+  left:50%;
+  transform:translateX(-50%);
+  width:max-content;
+  max-width:90%;
+  padding:7px 13px;
+  border:1px solid rgba(103,117,76,.55);
+  border-radius:30px;
+  background:rgba(250,247,239,.94);
+  color:#4d5d3b;
+  font-family:inherit;
+  font-size:clamp(9px,1vw,13px);
+  font-weight:700;
+  letter-spacing:.15em;
+  text-align:center;
+}
+.venue-map-marker{
+  position:absolute;
+  z-index:4;
+  width:15px;
+  height:15px;
+  border:3px solid #fff;
+  border-radius:50% 50% 50% 0;
+  background:#b94d3d;
+  box-shadow:0 2px 7px rgba(0,0,0,.35);
+  transform:translate(-50%,-100%) rotate(-45deg);
+}
+.venue-map-marker--venue{left:56.9%;top:26.3%;width:23px;height:23px;background:#60764f}
+.venue-map-marker--adiyogi{left:54.4%;top:21.4%}
+.venue-map-marker--airport{left:51.6%;top:56%}
+.venue-map-marker--ksr{left:32.3%;top:88.3%}
+.venue-map-marker--indiranagar{left:42.2%;top:88.2%}
+.venue-map-marker--whitefield{left:57.8%;top:89.4%}
+.venue-map-callout{
+  position:absolute;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  max-width:34%;
+  padding:7px 9px;
+  border:1.3px solid rgba(83,100,61,.9);
+  border-radius:10px;
+  background:rgba(255,251,242,.95);
+  color:#403c2c;
+  box-shadow:0 2px 9px rgba(58,52,38,.12);
+  line-height:1.2;
+}
+.venue-map-callout strong{
+  font-family:inherit;
+  font-size:clamp(9px,.9vw,12px);
+  letter-spacing:.045em;
+  font-weight:700;
+}
+.venue-map-callout span{
+  font-size:clamp(8px,.78vw,10px);
+  line-height:1.25;
+}
+.venue-map-callout--venue{left:64%;top:9%;max-width:32%}
+.venue-map-callout--adiyogi{left:7%;top:8%;max-width:34%}
+.venue-map-callout--airport{left:64%;top:45%;max-width:33%}
+.venue-map-callout--ksr{left:3%;top:69%;max-width:31%}
+.venue-map-callout--indiranagar{left:34%;top:69%;max-width:31%}
+.venue-map-callout--whitefield{left:66%;top:73%;max-width:31%}
+.venue-static-map-credit{
+  position:absolute;
+  z-index:5;
+  right:5px;
+  bottom:4px;
+  padding:2px 5px;
+  border-radius:2px;
+  background:rgba(255,255,255,.88);
+  color:#5d625c;
+  font:10px/1.3 Arial,sans-serif;
+}
+@media(max-width:760px){
+  .venue-details-column .venue-location{
+    font-size:12px;
+    letter-spacing:.09em;
+  }
+  .venue-map-column .venue-static-map{
+    width:100%;
+    max-width:560px;
+    aspect-ratio:1 / 1;
+  }
+  .venue-map-heading{
+    top:8px;
+    padding:5px 8px;
+    font-size:8px;
+    letter-spacing:.1em;
+  }
+  .venue-map-callout{padding:5px 6px;border-radius:7px;gap:1px}
+  .venue-map-callout strong{font-size:8px;letter-spacing:.015em}
+  .venue-map-callout span{font-size:7px}
+  .venue-static-map-credit{font-size:8px}
+}
+
+
+/* Use the couple's supplied illustrated directions artwork in the venue panel. */
+.venue-map-column{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-width:0!important;
+}
+.venue-map-column{
+  align-self:stretch!important;
+  height:auto!important;
+  min-height:0!important;
+  justify-content:center!important;
+}
+.venue-map-column .venue-directions-artwork{
+  display:block!important;
+  width:auto!important;
+  max-width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:480px!important;
+  aspect-ratio:auto!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  align-self:center!important;
+  border:1px solid rgba(198,173,123,.55)!important;
+  border-radius:7px!important;
+  box-shadow:0 10px 26px rgba(66,54,39,.08)!important;
+}
+@media(max-width:760px){
+  .venue-map-column{
+    height:auto!important;
+    min-height:0!important;
+  }
+  .venue-map-column .venue-directions-artwork{
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    aspect-ratio:auto!important;
+    object-fit:contain!important;
+    border-radius:5px!important;
+  }
+}
+
+
+/* Discreet Google Maps shortcut beside the venue name. */
+.venue-details-column h2{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:clamp(8px,1.2vw,16px)!important;
+  flex-wrap:nowrap!important;
+}
+.venue-details-column .venue-directions-link{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex:0 0 auto!important;
+  color:#98764b!important;
+  font-family:Arial,sans-serif!important;
+  font-size:.48em!important;
+  font-weight:700!important;
+  line-height:1!important;
+  text-decoration:none!important;
+  text-shadow:0 0 .45px currentColor!important;
+  transform:translateY(-.12em)!important;
+  transition:color .2s ease,transform .2s ease!important;
+}
+.venue-details-column .venue-directions-link:hover,
+.venue-details-column .venue-directions-link:focus-visible{
+  color:#5d704f!important;
+  transform:translate(2px,-.22em)!important;
+  outline-offset:4px!important;
+}
+@media(max-width:760px){
+  .venue-details-column h2{gap:8px!important}
+  .venue-details-column .venue-directions-link{font-size:.5em!important}
+}
