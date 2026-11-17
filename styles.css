@@ -6818,7 +6818,10 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
 @media(max-width:760px){
   .venue-map-column .venue-directions-artwork{
     width:100%!important;
+    height:auto!important;
     max-height:none!important;
+    aspect-ratio:2048 / 723!important;
+    object-fit:contain!important;
     border-radius:5px!important;
   }
 }
