@@ -6873,3 +6873,286 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .venue-details-column h2{gap:8px!important}
   .venue-details-column .venue-directions-link{font-size:.5em!important}
 }
+
+
+/* Compact venue map: preserve its original proportions and align its height
+   with the venue details column on desktop. */
+@media(min-width:761px){
+  .venue-layout{align-items:stretch!important}
+  .venue-map-column{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    min-width:0!important;
+  }
+  .venue-map-column .venue-directions-artwork{
+    display:block!important;
+    width:auto!important;
+    max-width:100%!important;
+    height:auto!important;
+    max-height:460px!important;
+    min-height:0!important;
+    object-fit:contain!important;
+    object-position:center!important;
+    margin:0 auto!important;
+  }
+}
+@media(max-width:760px){
+  .venue-map-column .venue-directions-artwork{
+    width:100%!important;
+    height:auto!important;
+    max-height:none!important;
+    object-fit:contain!important;
+  }
+}
+
+
+/* Venue section refinement: blend the illustrated map into a warm parchment
+   background, enlarge it slightly, and close the desktop column gap. */
+.venue-section{
+  background:#F5F0E5!important;
+}
+@media(min-width:761px){
+  .venue-section{
+    padding:54px clamp(24px,3.5vw,64px) 52px!important;
+  }
+  .venue-layout{
+    width:min(100%,1680px)!important;
+    grid-template-columns:minmax(0,1.08fr) minmax(0,1fr)!important;
+    gap:clamp(16px,1.8vw,30px)!important;
+    align-items:center!important;
+  }
+  .venue-details-column{
+    max-width:760px!important;
+  }
+  .venue-map-column{
+    justify-content:center!important;
+    padding:0!important;
+  }
+  .venue-map-column .venue-directions-artwork{
+    width:100%!important;
+    max-width:660px!important;
+    max-height:520px!important;
+    margin:0 auto!important;
+  }
+}
+@media(max-width:760px){
+  .venue-section{
+    background:#F5F0E5!important;
+  }
+}
+
+
+/* Crop the built-in outer frame and empty side margins from the supplied map
+   artwork itself, so only the illustrated map remains visible. */
+.venue-map-column{
+  overflow:hidden!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+}
+.venue-map-column .venue-directions-artwork{
+  display:block!important;
+  width:138%!important;
+  max-width:none!important;
+  height:auto!important;
+  max-height:none!important;
+  margin-left:-19%!important;
+  clip-path:inset(0 14% 0 14%)!important;
+  border:0!important;
+  outline:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+@media(max-width:760px){
+  .venue-map-column{overflow:hidden!important}
+  .venue-map-column .venue-directions-artwork{
+    width:138%!important;
+    max-width:none!important;
+    margin-left:-19%!important;
+    clip-path:inset(0 14% 0 14%)!important;
+  }
+}
+
+
+/* Final venue map sizing: keep the original artwork completely intact and
+   fit it inside a column exactly as tall as the venue details. */
+@media(min-width:761px){
+  .venue-section{
+    padding:42px 24px!important;
+  }
+  .venue-layout{
+    width:100%!important;
+    max-width:1440px!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+    align-items:stretch!important;
+    gap:clamp(18px,2.2vw,32px)!important;
+  }
+  .venue-details-column{
+    max-width:760px!important;
+    justify-content:center!important;
+    align-self:stretch!important;
+  }
+  .venue-map-column{
+    display:flex!important;
+    align-items:stretch!important;
+    justify-content:center!important;
+    align-self:stretch!important;
+    height:auto!important;
+    min-height:0!important;
+    overflow:visible!important;
+    padding:0!important;
+  }
+  .venue-map-column .venue-directions-artwork{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    height:100%!important;
+    max-height:none!important;
+    min-height:0!important;
+    margin:0!important;
+    clip-path:none!important;
+    object-fit:contain!important;
+    object-position:center!important;
+    border:0!important;
+    outline:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+  }
+}
+@media(max-width:760px){
+  .venue-map-column{
+    overflow:visible!important;
+  }
+  .venue-map-column .venue-directions-artwork{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    height:auto!important;
+    max-height:none!important;
+    margin:0 auto!important;
+    clip-path:none!important;
+    object-fit:contain!important;
+    border:0!important;
+    outline:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+  }
+}
+
+
+/* Keep the map's full artwork visible, but size its displayed height to the
+   venue information block rather than letting the image set the section height. */
+@media(min-width:761px){
+  .venue-section{
+    padding:38px 24px!important;
+  }
+  .venue-layout{
+    align-items:center!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+    gap:clamp(18px,2.2vw,32px)!important;
+  }
+  .venue-details-column{
+    align-self:center!important;
+  }
+  .venue-map-column{
+    align-self:center!important;
+    height:auto!important;
+    min-height:0!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    overflow:visible!important;
+  }
+  .venue-map-column .venue-directions-artwork{
+    width:auto!important;
+    height:auto!important;
+    max-width:100%!important;
+    max-height:430px!important;
+    min-height:0!important;
+    margin:0 auto!important;
+    clip-path:none!important;
+    object-fit:contain!important;
+    object-position:center!important;
+  }
+}
+
+
+/* Bring the venue copy and map closer together; widen the map without
+   increasing its vertical footprint. */
+@media(min-width:761px){
+  .venue-section{
+    padding-left:clamp(18px,2vw,30px)!important;
+    padding-right:clamp(18px,2vw,30px)!important;
+  }
+  .venue-layout{
+    width:100%!important;
+    max-width:1760px!important;
+    grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr)!important;
+    gap:8px!important;
+  }
+  .venue-details-column{
+    max-width:none!important;
+    width:100%!important;
+    padding-left:clamp(28px,4vw,72px)!important;
+    padding-right:0!important;
+    justify-self:stretch!important;
+  }
+  .venue-map-column{
+    width:100%!important;
+    justify-content:flex-start!important;
+    padding-left:0!important;
+    padding-right:0!important;
+  }
+  .venue-map-column .venue-directions-artwork{
+    width:110%!important;
+    max-width:none!important;
+    height:430px!important;
+    max-height:430px!important;
+    margin:0 0 0 -3%!important;
+    clip-path:none!important;
+    object-fit:fill!important;
+    object-position:center!important;
+  }
+}
+
+
+/* Final micro-adjustment: move the venue copy slightly left and shorten
+   the map from its right edge while keeping its height unchanged. */
+@media(min-width:761px){
+  .venue-details-column{
+    padding-left:clamp(12px,2.4vw,40px)!important;
+    padding-right:0!important;
+  }
+  .venue-map-column{
+    justify-content:flex-start!important;
+  }
+  .venue-map-column .venue-directions-artwork{
+    width:104%!important;
+    max-width:none!important;
+    height:430px!important;
+    max-height:430px!important;
+    margin-left:-3%!important;
+    margin-right:0!important;
+    object-fit:fill!important;
+    clip-path:none!important;
+  }
+}
+
+
+/* Slightly narrow the map from its right edge only; preserve its height
+   and left alignment so the map labels retain their proportions. */
+@media(min-width:761px){
+  .venue-map-column .venue-directions-artwork{
+    width:98%!important;
+    max-width:none!important;
+    height:430px!important;
+    max-height:430px!important;
+    margin-left:-3%!important;
+    margin-right:0!important;
+    object-fit:fill!important;
+    object-position:left center!important;
+    clip-path:none!important;
+  }
+}
