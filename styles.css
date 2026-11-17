@@ -6444,3 +6444,69 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .guestbook-form input[name="name"]{width:min(100%,165px)!important;font-size:16px!important}
   .guestbook-submit{margin-top:12px!important;padding:10px 19px!important}
 }
+
+
+/* Inline keepsake guestbook — no open/close CTA, compact letter in the section. */
+.couple-note-section .note-section-inner{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.couple-note-section #coupleNoteTitle{
+  max-width:680px;
+  margin:10px auto 22px!important;
+  text-align:center!important;
+  font-size:clamp(23px,3vw,34px)!important;
+  line-height:1.22!important;
+}
+.couple-note-section .guestbook-card{
+  display:block!important;
+  width:min(100%,680px)!important;
+  max-width:680px!important;
+  margin:10px auto 0!important;
+}
+.couple-note-section .guestbook-card[hidden]{display:none!important}
+.couple-note-section .guestbook-card-inner{
+  padding:54px clamp(20px,4vw,38px) 18px!important;
+}
+.couple-note-section .guestbook-dear{
+  margin:0 0 12px!important;
+  font-size:clamp(19px,2.1vw,23px)!important;
+}
+.couple-note-section .guestbook-form textarea{
+  min-height:92px!important;
+  height:92px!important;
+  padding:10px 13px!important;
+  font-size:15px!important;
+  line-height:1.5!important;
+}
+.couple-note-section .guestbook-name-label{margin-top:5px!important}
+.couple-note-section .guestbook-form input[name="name"]{
+  padding:3px 2px 5px!important;
+  font-size:16px!important;
+}
+.couple-note-section .guestbook-submit{margin-top:11px!important}
+.couple-note-section .guestbook-feedback{margin:8px 0 0!important}
+@media(max-width:760px){
+  .couple-note-section #coupleNoteTitle{
+    margin:8px auto 17px!important;
+    font-size:24px!important;
+  }
+  .couple-note-section .guestbook-card{
+    width:100%!important;
+    margin-top:8px!important;
+  }
+  .couple-note-section .guestbook-card-inner{
+    padding:48px 15px 16px!important;
+  }
+  .couple-note-section .guestbook-dear{
+    font-size:19px!important;
+    margin-bottom:10px!important;
+  }
+  .couple-note-section .guestbook-form textarea{
+    min-height:88px!important;
+    height:88px!important;
+    font-size:14px!important;
+  }
+  .couple-note-section .guestbook-submit{margin-top:10px!important}
+}
