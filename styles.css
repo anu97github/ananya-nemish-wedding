@@ -5213,3 +5213,31 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   content:none!important;
   display:none!important;
 }
+
+
+/* Match the three celebration day tabs to the invitation text width,
+   with a subtle, even gap between each button. */
+.itinerary-section .day-tabs{
+  width:min(calc(100% - 40px),980px)!important;
+  max-width:980px!important;
+  gap:14px!important;
+  justify-content:stretch!important;
+}
+.itinerary-section .day-tab{
+  flex:1 1 0!important;
+  width:auto!important;
+  min-width:0!important;
+}
+@media(max-width:760px){
+  .itinerary-section .day-tabs{
+    width:calc(100% - 32px)!important;
+    max-width:none!important;
+    gap:9px!important;
+  }
+}
+@media(max-width:380px){
+  .itinerary-section .day-tabs{
+    width:calc(100% - 24px)!important;
+    gap:6px!important;
+  }
+}
