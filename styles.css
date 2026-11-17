@@ -7728,3 +7728,81 @@ main#home > section.hero .hero-image{
   background-color:#F1E9E2!important;
   background-image:var(--approved-ivory-watercolor)!important;
 }
+
+
+/* FOOTER CONTINUITY FIX
+   One page-wide watercolor canvas spans from the first post-hero content
+   through the footer. The footer remains semantic content inside main,
+   but no longer paints a separate background or visual section boundary. */
+html{
+  min-height:100%;
+  background-color:#FAF7F5!important;
+}
+body{
+  min-height:100vh;
+  background-color:#FAF7F5!important;
+  background-image:url("/assets/watercolor-faf7f5.webp")!important;
+  background-repeat:no-repeat!important;
+  background-position:center top!important;
+  background-size:100% 100%!important;
+  background-attachment:scroll!important;
+}
+main#home{
+  background:transparent!important;
+  background-color:transparent!important;
+  background-image:none!important;
+}
+main#home > section:not(.hero),
+main#home > .families-countdown-section,
+main#home > footer.site-footer,
+main#home > footer.site-footer-minimal,
+.site-footer,
+.site-footer-minimal{
+  background:transparent!important;
+  background-color:transparent!important;
+  background-image:none!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+main#home > footer.site-footer{
+  display:block;
+  margin:0!important;
+  width:100%;
+}
+
+
+/* Venue map preview: compact, naturally proportioned, and aligned with
+   the full height of the venue details column. */
+.venue-layout{
+  align-items:stretch!important;
+}
+.venue-map-column{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-width:0;
+  width:100%;
+  height:100%;
+}
+.venue-map-column .venue-map-preview{
+  display:block;
+  width:100%!important;
+  max-width:100%!important;
+  height:auto!important;
+  max-height:440px!important;
+  min-height:0!important;
+  aspect-ratio:auto!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  margin:0 auto!important;
+  border-radius:2px;
+}
+@media(max-width:760px){
+  .venue-map-column{
+    height:auto;
+  }
+  .venue-map-column .venue-map-preview{
+    width:100%!important;
+    max-height:360px!important;
+  }
+}
