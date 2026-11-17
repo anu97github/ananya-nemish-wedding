@@ -6830,33 +6830,33 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
 /* Discreet Google Maps shortcut beside the venue name. */
 .venue-details-column h2{
   display:flex!important;
-  align-items:baseline!important;
+  align-items:center!important;
   justify-content:center!important;
   gap:clamp(8px,1.2vw,16px)!important;
+  flex-wrap:nowrap!important;
 }
 .venue-details-column .venue-directions-link{
   display:inline-flex!important;
-  align-items:baseline!important;
+  align-items:center!important;
   justify-content:center!important;
   flex:0 0 auto!important;
   color:#98764b!important;
   font-family:Arial,sans-serif!important;
-  font-size:.52em!important;
-  font-weight:800!important;
+  font-size:.48em!important;
+  font-weight:700!important;
   line-height:1!important;
   text-decoration:none!important;
-  text-shadow:0 0 .55px currentColor, .45px 0 currentColor!important;
-  transform:none!important;
-  vertical-align:baseline!important;
+  text-shadow:0 0 .45px currentColor!important;
+  transform:translateY(-.12em)!important;
   transition:color .2s ease,transform .2s ease!important;
 }
 .venue-details-column .venue-directions-link:hover,
 .venue-details-column .venue-directions-link:focus-visible{
   color:#5d704f!important;
-  transform:translate(2px,-1px)!important;
+  transform:translate(2px,-.22em)!important;
   outline-offset:4px!important;
 }
 @media(max-width:760px){
   .venue-details-column h2{gap:8px!important}
-  .venue-details-column .venue-directions-link{font-size:.54em!important}
+  .venue-details-column .venue-directions-link{font-size:.5em!important}
 }
