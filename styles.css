@@ -7958,28 +7958,11 @@ main#home .couple-section .about-us-title{
   background-position:center bottom 2px;
   background-size:72% 1px;
 }
-main#home .about-us-image{
-  display:block!important;
-  width:min(100%,1120px)!important;
-  height:auto!important;
-  max-height:none!important;
-  margin:0 auto!important;
-  padding:0!important;
-  border:0!important;
-  border-radius:0!important;
-  outline:0!important;
-  box-shadow:none!important;
-  background:transparent!important;
-  object-fit:contain!important;
-  mix-blend-mode:normal!important;
-}
+
 @media(max-width:760px){
   main#home .couple-section{
     padding:14px 14px 26px!important;
     gap:16px!important;
-  }
-  main#home .about-us-image{
-    width:100%!important;
   }
 }
 
