@@ -7822,3 +7822,85 @@ main#home > footer.site-footer{
   border-radius:0!important;
   object-fit:contain!important;
 }
+
+/* Compact About Us heading directly beneath the countdown, ready for the
+   couple image to be added in a later update. */
+main#home .couple-section{
+  display:flex!important;
+  align-items:center;
+  justify-content:center;
+  min-height:0!important;
+  height:auto!important;
+  padding:18px 22px 26px!important;
+  text-align:center;
+}
+main#home .about-us-title{
+  margin:0;
+  color:var(--dark-olive);
+  font:500 clamp(38px,5vw,58px)/1.1 var(--serif);
+}
+
+/* Present the dress code as two balanced, centered lines. */
+main#home .itinerary-heading .itinerary-dresscode-note{
+  text-align:center;
+  white-space:normal;
+  max-width:1400px;
+  margin-left:auto;
+  margin-right:auto;
+}
+main#home .itinerary-dresscode-note .dresscode-line{
+  display:block;
+}
+@media(max-width:760px){
+  main#home .itinerary-heading .itinerary-dresscode-note{
+    text-align:center;
+    white-space:normal;
+  }
+}
+
+
+/* Display the newly supplied venue map as seamless artwork on the page canvas. */
+main#home .venue-map-column{
+  background:transparent!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+}
+main#home .venue-map-column .venue-map-preview{
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  height:auto!important;
+  max-height:460px!important;
+  min-height:0!important;
+  margin:0 auto!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  object-fit:contain!important;
+  mix-blend-mode:multiply;
+}
+@media(max-width:760px){
+  main#home .venue-map-column .venue-map-preview{
+    width:100%!important;
+    max-height:none!important;
+    margin:0 auto!important;
+  }
+}
+
+
+/* Match the dress-code copy to the site's Cormorant Garamond typography. */
+main#home .itinerary-heading .itinerary-dresscode-note{
+  font-family:var(--serif)!important;
+  font-weight:500!important;
+  letter-spacing:0!important;
+  color:#78665d!important;
+}
+main#home .itinerary-dresscode-note .dresscode-green{
+  font-family:var(--serif)!important;
+  font-weight:600!important;
+  color:var(--dark-olive)!important;
+}
