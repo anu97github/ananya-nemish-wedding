@@ -7399,3 +7399,28 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   border-radius:0!important;
   box-shadow:none!important;
 }
+
+
+/* One consistent ivory watercolor wash across the full website, from the
+   family details through the footer. The opening hands hero is intentionally
+   excluded. Keep nested family/countdown panels transparent so no bands form. */
+main#home > section:not(.hero),
+main#home > .families-countdown-section,
+.site-footer{
+  background-color:#f8f5ed!important;
+  background-image:
+    radial-gradient(ellipse 38% 34% at 8% 12%,rgba(224,174,151,.22) 0%,rgba(224,174,151,.11) 34%,transparent 76%),
+    radial-gradient(ellipse 32% 40% at 91% 10%,rgba(210,220,194,.26) 0%,rgba(210,220,194,.12) 39%,transparent 78%),
+    radial-gradient(ellipse 44% 32% at 72% 92%,rgba(238,207,185,.24) 0%,rgba(238,207,185,.11) 40%,transparent 80%),
+    radial-gradient(ellipse 30% 36% at 22% 82%,rgba(229,190,190,.17) 0%,rgba(229,190,190,.08) 40%,transparent 78%),
+    radial-gradient(ellipse 26% 28% at 52% 42%,rgba(244,231,207,.26) 0%,rgba(244,231,207,.10) 45%,transparent 82%),
+    linear-gradient(135deg,#f8f5ed 0%,#fbf8f1 48%,#f7f1e9 100%)!important;
+  background-repeat:no-repeat!important;
+  background-size:190% 155%,185% 160%,195% 165%,185% 155%,175% 145%,cover!important;
+  background-position:4% 10%,94% 12%,76% 92%,18% 78%,54% 40%,center!important;
+}
+.families-countdown-section > .families-section,
+.families-countdown-section > .countdown-section{
+  background:transparent!important;
+  background-image:none!important;
+}
