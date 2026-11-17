@@ -6873,3 +6873,65 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .venue-details-column h2{gap:8px!important}
   .venue-details-column .venue-directions-link{font-size:.5em!important}
 }
+
+
+/* Day-two timeline illustrations: quiet, stationery-inspired line art in the
+   open column opposite each alternating event card. */
+.itinerary-section #day-panel-2 .timeline-icon{
+  position:absolute;
+  top:19px;
+  display:grid;
+  place-items:center;
+  width:48px;
+  height:48px;
+  color:#a98249;
+  background:rgba(250,247,239,.94);
+  border:1px solid rgba(190,158,103,.48);
+  border-radius:50%;
+  box-shadow:0 3px 10px rgba(91,75,48,.07);
+  z-index:1;
+}
+.itinerary-section #day-panel-2 .timeline-icon svg{
+  display:block;
+  width:27px;
+  height:27px;
+}
+.itinerary-section #day-panel-2 .timeline-item:nth-child(odd) .timeline-icon{
+  left:-73px;
+}
+.itinerary-section #day-panel-2 .timeline-item:nth-child(even) .timeline-icon{
+  right:-73px;
+}
+@media(max-width:760px){
+  .itinerary-section #day-panel-2 .timeline-icon{
+    top:18px;
+    width:36px;
+    height:36px;
+  }
+  .itinerary-section #day-panel-2 .timeline-icon svg{
+    width:21px;
+    height:21px;
+  }
+  .itinerary-section #day-panel-2 .timeline-item:nth-child(odd) .timeline-icon{
+    left:-52px;
+  }
+  .itinerary-section #day-panel-2 .timeline-item:nth-child(even) .timeline-icon{
+    right:-52px;
+  }
+}
+@media(max-width:380px){
+  .itinerary-section #day-panel-2 .timeline-icon{
+    width:30px;
+    height:30px;
+  }
+  .itinerary-section #day-panel-2 .timeline-icon svg{
+    width:18px;
+    height:18px;
+  }
+  .itinerary-section #day-panel-2 .timeline-item:nth-child(odd) .timeline-icon{
+    left:-43px;
+  }
+  .itinerary-section #day-panel-2 .timeline-item:nth-child(even) .timeline-icon{
+    right:-43px;
+  }
+}
