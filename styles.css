@@ -4660,3 +4660,186 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .itinerary-section .timeline-item h3{font-size:19px}
   .itinerary-section .timeline-item>p{font-size:12px}
 }
+
+
+/* Timeline refinement: keep the day selector visible while the event list scrolls,
+   alternate event cards across the center rail, and restore the active olive tab. */
+.itinerary-section .day-tab.is-active,
+.itinerary-section .day-tab.is-active:hover,
+.itinerary-section .day-tab.is-active:focus,
+.itinerary-section .day-tab.is-active:focus-visible{
+  background:var(--dark-olive)!important;
+  border-color:var(--dark-olive)!important;
+  color:#fff!important;
+}
+.itinerary-section .day-tab.is-active span,
+.itinerary-section .day-tab.is-active small{
+  color:#e9dfc9!important;
+}
+.itinerary-section .day-panels{
+  max-width:980px;
+  margin:0 auto;
+}
+.itinerary-section .day-panel{
+  max-height:min(58vh,620px);
+  min-height:320px;
+  overflow:hidden;
+}
+.itinerary-section .timeline-scroll{
+  --rail-center:50%;
+  height:100%;
+  max-height:min(58vh,620px);
+  overflow-y:auto;
+  overflow-x:hidden;
+  padding:8px 22px 24px;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(180,138,69,.72) rgba(198,173,123,.12);
+  overscroll-behavior:contain;
+  scroll-behavior:smooth;
+}
+.itinerary-section .timeline-scroll::-webkit-scrollbar{
+  display:block;
+  width:7px;
+}
+.itinerary-section .timeline-scroll::-webkit-scrollbar-track{
+  background:rgba(198,173,123,.12);
+  border-radius:8px;
+}
+.itinerary-section .timeline-scroll::-webkit-scrollbar-thumb{
+  background:rgba(180,138,69,.72);
+  border-radius:8px;
+}
+.itinerary-section .timeline-scroll::before{
+  top:24px;
+  bottom:28px;
+  left:var(--rail-center);
+}
+.itinerary-section .timeline-item,
+.itinerary-section .timeline-item:has(.palette-expanded){
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  width:50%;
+  min-height:0;
+  padding:18px 34px 22px;
+  border-bottom:1px solid rgba(198,173,123,.25);
+  text-align:left;
+}
+.itinerary-section .timeline-item:nth-child(odd){
+  margin-left:50%;
+  padding-right:12px;
+  padding-left:34px;
+  text-align:left;
+}
+.itinerary-section .timeline-item:nth-child(even){
+  margin-left:0;
+  padding-left:12px;
+  padding-right:34px;
+  text-align:right;
+}
+.itinerary-section .timeline-item>i{
+  top:25px;
+  left:-5px;
+}
+.itinerary-section .timeline-item:nth-child(even)>i{
+  left:auto;
+  right:-5px;
+}
+.itinerary-section .timeline-time,
+.itinerary-section .timeline-item h3,
+.itinerary-section .timeline-item>p,
+.itinerary-section .timeline-palette.palette-expanded{
+  grid-column:1;
+  grid-row:auto;
+}
+.itinerary-section .timeline-time{
+  padding:0 0 5px;
+  text-align:inherit;
+  font-family:var(--serif),Georgia,serif;
+  font-size:16px;
+  line-height:1.35;
+  font-weight:600;
+  letter-spacing:.025em;
+  font-variant-numeric:lining-nums tabular-nums;
+}
+.itinerary-section .timeline-item h3{
+  margin:0 0 5px;
+  font-size:25px;
+}
+.itinerary-section .timeline-item>p{
+  max-width:100%;
+  font-size:14px;
+  line-height:1.55;
+}
+.itinerary-section .timeline-palette.palette-expanded{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  justify-content:stretch;
+  gap:9px 7px;
+  margin:13px 0 0;
+}
+.itinerary-section .timeline-item:nth-child(even) .timeline-palette.palette-expanded{
+  justify-content:stretch;
+}
+.itinerary-section .timeline-palette.palette-expanded .palette-chip .palette-arch{
+  width:clamp(30px,3.2vw,44px);
+  height:clamp(39px,4vw,54px);
+}
+@media(max-width:760px){
+  .itinerary-section .day-panel{
+    min-height:280px;
+    max-height:58vh;
+  }
+  .itinerary-section .timeline-scroll{
+    max-height:58vh;
+    padding:5px 12px 18px;
+  }
+  .itinerary-section .timeline-scroll::before{
+    top:20px;
+    bottom:24px;
+    left:50%;
+  }
+  .itinerary-section .timeline-item,
+  .itinerary-section .timeline-item:has(.palette-expanded){
+    width:50%;
+    padding-top:15px;
+    padding-bottom:18px;
+  }
+  .itinerary-section .timeline-item:nth-child(odd){
+    margin-left:50%;
+    padding-left:21px;
+    padding-right:5px;
+  }
+  .itinerary-section .timeline-item:nth-child(even){
+    margin-left:0;
+    padding-left:5px;
+    padding-right:21px;
+  }
+  .itinerary-section .timeline-item>i{top:21px;left:-5px}
+  .itinerary-section .timeline-item:nth-child(even)>i{left:auto;right:-5px}
+  .itinerary-section .timeline-time{
+    font-size:14px;
+    line-height:1.3;
+    letter-spacing:0;
+  }
+  .itinerary-section .timeline-item h3{font-size:20px;line-height:1.12}
+  .itinerary-section .timeline-item>p{font-size:12px;line-height:1.45}
+  .itinerary-section .timeline-palette.palette-expanded{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px 4px;
+    margin-top:10px;
+  }
+  .itinerary-section .timeline-palette.palette-expanded .palette-chip .palette-arch{
+    width:clamp(27px,7vw,36px);
+    height:clamp(34px,9vw,44px);
+  }
+  .itinerary-section .timeline-palette.palette-expanded .palette-chip strong{
+    min-height:18px;
+    font-size:7px;
+  }
+  .itinerary-section .timeline-palette.palette-expanded .palette-chip code{font-size:8px}
+}
+@media(max-width:380px){
+  .itinerary-section .timeline-time{font-size:13px}
+  .itinerary-section .timeline-item h3{font-size:18px}
+  .itinerary-section .timeline-item:nth-child(odd){padding-left:17px}
+  .itinerary-section .timeline-item:nth-child(even){padding-right:17px}
+}
