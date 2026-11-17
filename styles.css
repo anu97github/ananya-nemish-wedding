@@ -5482,3 +5482,82 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .site-footer-minimal .footer-thanks{grid-row:2;grid-column:1 / -1;text-align:center;font-size:10px!important}
   .site-footer-minimal .back-to-top{grid-row:3;grid-column:1 / -1;justify-self:center;font-size:9px!important}
 }
+
+
+/* Vertical, compact footer: keep each requested element on its own line. */
+.site-footer.site-footer-minimal{
+  min-height:0!important;
+  padding:24px 18px 22px!important;
+  background:linear-gradient(180deg,#f8f5ed 0%,#faf6ef 100%)!important;
+  text-align:center;
+}
+.site-footer-minimal .footer-content{
+  width:min(100%,760px)!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:0!important;
+  margin:0 auto!important;
+}
+.site-footer-minimal .footer-monogram{
+  display:block!important;
+  width:62px!important;
+  height:48px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  margin:0 auto 7px!important;
+  padding:0!important;
+  background:transparent!important;
+  mix-blend-mode:normal!important;
+}
+.site-footer-minimal .footer-identity{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  text-align:center!important;
+  margin:0!important;
+}
+.site-footer-minimal .footer-names{
+  margin:0!important;
+  color:#4e4838!important;
+  font-size:clamp(18px,2vw,23px)!important;
+  line-height:1.25!important;
+  letter-spacing:.2em!important;
+  white-space:nowrap;
+}
+.site-footer-minimal .footer-names i{padding:0 7px!important}
+.site-footer-minimal .footer-date{
+  margin:5px 0 0!important;
+  color:#84745d!important;
+  font-size:10px!important;
+  line-height:1.4!important;
+  letter-spacing:.14em!important;
+  white-space:normal!important;
+}
+.site-footer-minimal .footer-date span{padding:0 5px!important}
+.site-footer-minimal .footer-thanks{
+  margin:11px auto 7px!important;
+  color:#786d5d!important;
+  font-size:11px!important;
+  line-height:1.4!important;
+  letter-spacing:.13em!important;
+  white-space:normal!important;
+}
+.site-footer-minimal .back-to-top{
+  display:inline-block!important;
+  margin:0!important;
+  padding:0 0 3px!important;
+  color:#826b48!important;
+  font-size:10px!important;
+  line-height:1.4!important;
+  letter-spacing:.15em!important;
+}
+@media(max-width:600px){
+  .site-footer.site-footer-minimal{padding:19px 14px 18px!important}
+  .site-footer-minimal .footer-monogram{width:54px!important;height:42px!important;margin-bottom:6px!important}
+  .site-footer-minimal .footer-names{font-size:17px!important;letter-spacing:.15em!important}
+  .site-footer-minimal .footer-date{font-size:9px!important;letter-spacing:.09em!important}
+  .site-footer-minimal .footer-thanks{font-size:10px!important;letter-spacing:.1em!important;margin:9px auto 6px!important}
+  .site-footer-minimal .back-to-top{font-size:9px!important;letter-spacing:.12em!important}
+}
