@@ -7919,7 +7919,44 @@ main#home .couple-section{
   text-align:center!important;
 }
 main#home .about-us-title{
+  position:relative;
+  display:inline-block;
   margin:0!important;
+  padding:0 34px 13px;
+  color:var(--dark-olive)!important;
+  font-family:'Cormorant Garamond',Georgia,serif!important;
+  font-size:clamp(42px,6.2vw,76px)!important;
+  font-style:italic!important;
+  font-weight:600!important;
+  line-height:.98!important;
+  letter-spacing:-.035em!important;
+  text-transform:none!important;
+  text-shadow:0 1px 0 rgba(255,255,255,.35);
+}
+main#home .about-us-title::before,
+main#home .about-us-title::after{
+  position:absolute;
+  top:12%;
+  color:var(--gold)!important;
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:.42em;
+  font-style:normal;
+  font-weight:400;
+  line-height:1;
+}
+main#home .about-us-title::before{
+  content:'✧';
+  left:0;
+}
+main#home .about-us-title::after{
+  content:'✧';
+  right:0;
+}
+main#home .couple-section .about-us-title{
+  background-image:linear-gradient(90deg,transparent 8%,rgba(198,173,123,.8) 50%,transparent 92%);
+  background-repeat:no-repeat;
+  background-position:center bottom 2px;
+  background-size:72% 1px;
 }
 main#home .about-us-image{
   display:block!important;
