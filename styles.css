@@ -6806,10 +6806,10 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   display:block!important;
   width:100%!important;
   max-width:100%!important;
-  height:auto!important;
-  max-height:340px!important;
-  aspect-ratio:2048 / 723!important;
-  object-fit:contain!important;
+  height:420px!important;
+  max-height:none!important;
+  aspect-ratio:auto!important;
+  object-fit:fill!important;
   object-position:center!important;
   border:1px solid rgba(198,173,123,.55)!important;
   border-radius:7px!important;
