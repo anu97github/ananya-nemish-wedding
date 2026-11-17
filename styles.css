@@ -5215,28 +5215,41 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
 }
 
 
-/* Keep the original compact day-tab sizing and add only a modest gap. */
+/* Compact celebration day tabs: reduce each tab's width and separate them
+   with a clear, even gap. Preserve the established vertical styling. */
 .itinerary-section .day-tabs{
-  width:min(100% - 40px,760px)!important;
-  max-width:760px!important;
-  gap:18px!important;
+  display:flex!important;
+  width:max-content!important;
+  max-width:calc(100% - 40px)!important;
+  gap:24px!important;
   justify-content:center!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
 }
 .itinerary-section .day-tab{
-  flex:0 1 236px!important;
-  width:auto!important;
+  flex:0 0 220px!important;
+  width:220px!important;
   min-width:0!important;
+  padding:10px 12px 9px!important;
 }
 @media(max-width:760px){
   .itinerary-section .day-tabs{
     width:calc(100% - 32px)!important;
     max-width:none!important;
-    gap:9px!important;
+    gap:10px!important;
+  }
+  .itinerary-section .day-tab{
+    flex:1 1 0!important;
+    width:auto!important;
+    padding:10px 5px 9px!important;
   }
 }
 @media(max-width:380px){
   .itinerary-section .day-tabs{
     width:calc(100% - 24px)!important;
     gap:7px!important;
+  }
+  .itinerary-section .day-tab{
+    padding-inline:3px!important;
   }
 }
