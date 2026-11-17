@@ -6941,3 +6941,36 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     background:#F5F0E5!important;
   }
 }
+
+
+/* Crop the built-in outer frame and empty side margins from the supplied map
+   artwork itself, so only the illustrated map remains visible. */
+.venue-map-column{
+  overflow:hidden!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+}
+.venue-map-column .venue-directions-artwork{
+  display:block!important;
+  width:138%!important;
+  max-width:none!important;
+  height:auto!important;
+  max-height:none!important;
+  margin-left:-19%!important;
+  clip-path:inset(0 14% 0 14%)!important;
+  border:0!important;
+  outline:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+@media(max-width:760px){
+  .venue-map-column{overflow:hidden!important}
+  .venue-map-column .venue-directions-artwork{
+    width:138%!important;
+    max-width:none!important;
+    margin-left:-19%!important;
+    clip-path:inset(0 14% 0 14%)!important;
+  }
+}
