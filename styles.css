@@ -6510,3 +6510,22 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   }
   .couple-note-section .guestbook-submit{margin-top:10px!important}
 }
+
+
+/* Keep the guestbook section's supporting sentence on one line. */
+.couple-note-section #coupleNoteTitle{
+  width:100%!important;
+  max-width:none!important;
+  white-space:nowrap!important;
+  letter-spacing:-.025em!important;
+  font-size:clamp(18px,2.35vw,34px)!important;
+}
+@media(max-width:760px){
+  .couple-note-section #coupleNoteTitle{
+    width:100%!important;
+    max-width:none!important;
+    white-space:nowrap!important;
+    letter-spacing:-.045em!important;
+    font-size:clamp(10px,3.05vw,21px)!important;
+  }
+}
