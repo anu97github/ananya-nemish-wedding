@@ -6529,3 +6529,49 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     font-size:clamp(10px,3.05vw,21px)!important;
   }
 }
+
+
+/* Minimal footer: retain only the thank-you line and back-to-top link. */
+.site-footer.site-footer-minimal{
+  padding:26px 18px 24px!important;
+  text-align:center!important;
+  background:#f8f4ed!important;
+}
+.site-footer-minimal .footer-content{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:10px!important;
+  max-width:100%!important;
+}
+.site-footer-minimal .footer-thanks{
+  margin:0!important;
+  color:#786d5d!important;
+  font-size:clamp(11px,1.35vw,16px)!important;
+  line-height:1.5!important;
+  letter-spacing:.16em!important;
+  text-align:center!important;
+}
+.site-footer-minimal .back-to-top{
+  display:inline-block!important;
+  margin:0!important;
+  padding:0 0 5px!important;
+  color:#826b48!important;
+  font-size:clamp(10px,1.1vw,13px)!important;
+  line-height:1.5!important;
+  letter-spacing:.19em!important;
+  font-weight:700!important;
+}
+@media(max-width:760px){
+  .site-footer.site-footer-minimal{padding:22px 14px 20px!important}
+  .site-footer-minimal .footer-content{gap:9px!important}
+  .site-footer-minimal .footer-thanks{
+    font-size:10px!important;
+    letter-spacing:.1em!important;
+  }
+  .site-footer-minimal .back-to-top{
+    font-size:9px!important;
+    letter-spacing:.13em!important;
+  }
+}
