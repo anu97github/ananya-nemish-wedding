@@ -6977,3 +6977,84 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .itinerary-section .timeline-item:nth-child(odd) .timeline-icon{left:-51px}
   .itinerary-section .timeline-item:nth-child(even) .timeline-icon{right:-51px}
 }
+
+
+/* Complete wedding timeline icon pass — all events, all three days.
+   Keep the timeline page-scrolling (rather than trapping guests in a small
+   nested scroll box) and give each event a clearly readable keepsake-style
+   medallion in the open column opposite its details. */
+.itinerary-section .timeline-scroll{
+  max-height:none!important;
+  height:auto!important;
+  overflow:visible!important;
+  overflow-x:visible!important;
+  overflow-y:visible!important;
+}
+.itinerary-section .timeline-item .timeline-icon{
+  position:absolute!important;
+  top:16px!important;
+  display:grid!important;
+  place-items:center!important;
+  width:76px!important;
+  height:76px!important;
+  box-sizing:border-box!important;
+  color:#987342!important;
+  background:rgba(252,249,242,.98)!important;
+  border:1.5px solid rgba(183,148,91,.68)!important;
+  border-radius:50%!important;
+  box-shadow:0 5px 16px rgba(91,75,48,.10), inset 0 0 0 4px rgba(198,173,123,.08)!important;
+  opacity:1!important;
+  visibility:visible!important;
+  z-index:3!important;
+  pointer-events:none!important;
+}
+.itinerary-section .timeline-item .timeline-icon svg{
+  display:block!important;
+  width:46px!important;
+  height:46px!important;
+  overflow:visible!important;
+  stroke-width:2!important;
+}
+.itinerary-section .timeline-item:nth-child(odd) .timeline-icon{
+  left:-112px!important;
+  right:auto!important;
+}
+.itinerary-section .timeline-item:nth-child(even) .timeline-icon{
+  left:auto!important;
+  right:-112px!important;
+}
+@media(max-width:760px){
+  .itinerary-section .timeline-item .timeline-icon{
+    top:14px!important;
+    width:56px!important;
+    height:56px!important;
+  }
+  .itinerary-section .timeline-item .timeline-icon svg{
+    width:34px!important;
+    height:34px!important;
+  }
+  .itinerary-section .timeline-item:nth-child(odd) .timeline-icon{
+    left:-79px!important;
+    right:auto!important;
+  }
+  .itinerary-section .timeline-item:nth-child(even) .timeline-icon{
+    left:auto!important;
+    right:-79px!important;
+  }
+}
+@media(max-width:390px){
+  .itinerary-section .timeline-item .timeline-icon{
+    width:48px!important;
+    height:48px!important;
+  }
+  .itinerary-section .timeline-item .timeline-icon svg{
+    width:29px!important;
+    height:29px!important;
+  }
+  .itinerary-section .timeline-item:nth-child(odd) .timeline-icon{
+    left:-68px!important;
+  }
+  .itinerary-section .timeline-item:nth-child(even) .timeline-icon{
+    right:-68px!important;
+  }
+}
