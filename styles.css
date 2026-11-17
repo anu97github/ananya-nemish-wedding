@@ -6793,3 +6793,32 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .venue-map-callout span{font-size:7px}
   .venue-static-map-credit{font-size:8px}
 }
+
+
+/* Use the couple's supplied illustrated directions artwork in the venue panel. */
+.venue-map-column{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-width:0!important;
+}
+.venue-map-column .venue-directions-artwork{
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  height:auto!important;
+  max-height:340px!important;
+  aspect-ratio:2048 / 723!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  border:1px solid rgba(198,173,123,.55)!important;
+  border-radius:7px!important;
+  box-shadow:0 10px 26px rgba(66,54,39,.08)!important;
+}
+@media(max-width:760px){
+  .venue-map-column .venue-directions-artwork{
+    width:100%!important;
+    max-height:none!important;
+    border-radius:5px!important;
+  }
+}
