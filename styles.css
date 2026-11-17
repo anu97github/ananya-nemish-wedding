@@ -7823,15 +7823,34 @@ main#home > footer.site-footer{
   object-fit:contain!important;
 }
 
-/* About Us placeholder heading, ready for the couple image in a later update. */
+/* Compact About Us heading directly beneath the countdown, ready for the
+   couple image to be added in a later update. */
 main#home .couple-section{
   display:flex!important;
   align-items:center;
   justify-content:center;
+  min-height:0!important;
+  height:auto!important;
+  padding:18px 22px 26px!important;
   text-align:center;
 }
 main#home .about-us-title{
   margin:0;
   color:var(--dark-olive);
   font:500 clamp(38px,5vw,58px)/1.1 var(--serif);
+}
+
+/* Keep the dress-code sentence aligned to the left and let it wrap naturally. */
+main#home .itinerary-heading .itinerary-dresscode-note{
+  text-align:left;
+  white-space:normal;
+  max-width:1400px;
+  margin-left:auto;
+  margin-right:auto;
+}
+@media(max-width:760px){
+  main#home .itinerary-heading .itinerary-dresscode-note{
+    text-align:left;
+    white-space:normal;
+  }
 }
