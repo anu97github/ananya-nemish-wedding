@@ -6642,10 +6642,12 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
 }
 .venue-details-column .venue-location{
   max-width:100%;
-  font-size:clamp(10px,1.1vw,13px);
+  font-size:clamp(13px,1.15vw,16px);
+  font-weight:700;
   letter-spacing:.13em;
   line-height:1.5;
   white-space:normal;
+  font-variant-numeric:lining-nums;
 }
 @media(max-width:760px){
   .venue-map-column .venue-static-map{
@@ -6659,4 +6661,135 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     font-size:10px;
     letter-spacing:.1em;
   }
+}
+
+
+/* Wider-area road map for the wedding venue and Bengaluru guest landmarks. */
+.venue-map-column .venue-static-map{
+  position:relative;
+  width:100%;
+  max-width:760px;
+  aspect-ratio:1 / 1;
+  min-height:0;
+  max-height:none;
+  align-self:center;
+  overflow:hidden;
+  border:1px solid rgba(198,173,123,.7);
+  border-radius:9px;
+  background:#f2eee7;
+  box-shadow:0 14px 34px rgba(66,54,39,.11);
+}
+.venue-static-map-tiles{
+  position:absolute;
+  inset:0;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-rows:repeat(2,minmax(0,1fr));
+}
+.venue-static-map-tiles img{
+  display:block;
+  width:100%;
+  height:100%;
+  min-width:0;
+  min-height:0;
+  object-fit:cover;
+}
+.venue-map-heading{
+  position:absolute;
+  z-index:3;
+  top:12px;
+  left:50%;
+  transform:translateX(-50%);
+  width:max-content;
+  max-width:90%;
+  padding:7px 13px;
+  border:1px solid rgba(103,117,76,.55);
+  border-radius:30px;
+  background:rgba(250,247,239,.94);
+  color:#4d5d3b;
+  font-family:inherit;
+  font-size:clamp(9px,1vw,13px);
+  font-weight:700;
+  letter-spacing:.15em;
+  text-align:center;
+}
+.venue-map-marker{
+  position:absolute;
+  z-index:4;
+  width:15px;
+  height:15px;
+  border:3px solid #fff;
+  border-radius:50% 50% 50% 0;
+  background:#b94d3d;
+  box-shadow:0 2px 7px rgba(0,0,0,.35);
+  transform:translate(-50%,-100%) rotate(-45deg);
+}
+.venue-map-marker--venue{left:56.9%;top:26.3%;width:23px;height:23px;background:#60764f}
+.venue-map-marker--adiyogi{left:54.4%;top:21.4%}
+.venue-map-marker--airport{left:51.6%;top:56%}
+.venue-map-marker--ksr{left:32.3%;top:88.3%}
+.venue-map-marker--indiranagar{left:42.2%;top:88.2%}
+.venue-map-marker--whitefield{left:57.8%;top:89.4%}
+.venue-map-callout{
+  position:absolute;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  max-width:34%;
+  padding:7px 9px;
+  border:1.3px solid rgba(83,100,61,.9);
+  border-radius:10px;
+  background:rgba(255,251,242,.95);
+  color:#403c2c;
+  box-shadow:0 2px 9px rgba(58,52,38,.12);
+  line-height:1.2;
+}
+.venue-map-callout strong{
+  font-family:inherit;
+  font-size:clamp(9px,.9vw,12px);
+  letter-spacing:.045em;
+  font-weight:700;
+}
+.venue-map-callout span{
+  font-size:clamp(8px,.78vw,10px);
+  line-height:1.25;
+}
+.venue-map-callout--venue{left:64%;top:9%;max-width:32%}
+.venue-map-callout--adiyogi{left:7%;top:8%;max-width:34%}
+.venue-map-callout--airport{left:64%;top:45%;max-width:33%}
+.venue-map-callout--ksr{left:3%;top:69%;max-width:31%}
+.venue-map-callout--indiranagar{left:34%;top:69%;max-width:31%}
+.venue-map-callout--whitefield{left:66%;top:73%;max-width:31%}
+.venue-static-map-credit{
+  position:absolute;
+  z-index:5;
+  right:5px;
+  bottom:4px;
+  padding:2px 5px;
+  border-radius:2px;
+  background:rgba(255,255,255,.88);
+  color:#5d625c;
+  font:10px/1.3 Arial,sans-serif;
+}
+@media(max-width:760px){
+  .venue-details-column .venue-location{
+    font-size:12px;
+    letter-spacing:.09em;
+  }
+  .venue-map-column .venue-static-map{
+    width:100%;
+    max-width:560px;
+    aspect-ratio:1 / 1;
+  }
+  .venue-map-heading{
+    top:8px;
+    padding:5px 8px;
+    font-size:8px;
+    letter-spacing:.1em;
+  }
+  .venue-map-callout{padding:5px 6px;border-radius:7px;gap:1px}
+  .venue-map-callout strong{font-size:8px;letter-spacing:.015em}
+  .venue-map-callout span{font-size:7px}
+  .venue-static-map-credit{font-size:8px}
 }
