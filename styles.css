@@ -5975,3 +5975,26 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   }
   .guestbook-submit{padding:9px 18px!important;margin-top:13px!important}
 }
+
+
+/* Final guestbook polish: closer notebook rules and a slightly smaller heading. */
+.couple-note-section h2{
+  font-size:clamp(30px,3.8vw,52px)!important;
+}
+.guestbook-card-inner{
+  background-image:
+    linear-gradient(to right, transparent 0, transparent 60px, rgba(208,112,133,.48) 60px, rgba(208,112,133,.48) 62px, transparent 62px),
+    repeating-linear-gradient(to bottom, transparent 0, transparent 29px, rgba(119,157,173,.25) 30px, transparent 31px)!important;
+}
+.guestbook-form textarea{
+  line-height:30px!important;
+}
+@media(max-width:760px){
+  .couple-note-section h2{font-size:30px!important}
+  .guestbook-card-inner{
+    background-image:
+      linear-gradient(to right, transparent 0, transparent 43px, rgba(208,112,133,.48) 43px, rgba(208,112,133,.48) 45px, transparent 45px),
+      repeating-linear-gradient(to bottom, transparent 0, transparent 29px, rgba(119,157,173,.25) 30px, transparent 31px)!important;
+  }
+  .guestbook-form textarea{line-height:30px!important}
+}
