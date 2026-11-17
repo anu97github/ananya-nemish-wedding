@@ -7325,3 +7325,16 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .itinerary-section .timeline-item:nth-child(odd) .timeline-event-icon{left:-62px!important}
   .itinerary-section .timeline-item:nth-child(even) .timeline-event-icon{right:-62px!important}
 }
+
+
+/* Transparent watercolor PNGs: render only the illustration, never a frame or tile. */
+.itinerary-section img.timeline-event-icon{
+  background:transparent!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  padding:0!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  mix-blend-mode:multiply;
+}
