@@ -5213,3 +5213,42 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   content:none!important;
   display:none!important;
 }
+
+
+/* More compact celebration tabs with a slightly wider, even gap. */
+.itinerary-section .day-tabs{
+  display:flex!important;
+  width:max-content!important;
+  max-width:calc(100% - 40px)!important;
+  gap:28px!important;
+  justify-content:center!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+.itinerary-section .day-tab{
+  flex:0 0 195px!important;
+  width:195px!important;
+  min-width:0!important;
+  padding:10px 8px 9px!important;
+}
+@media(max-width:760px){
+  .itinerary-section .day-tabs{
+    width:calc(100% - 32px)!important;
+    max-width:none!important;
+    gap:11px!important;
+  }
+  .itinerary-section .day-tab{
+    flex:1 1 0!important;
+    width:auto!important;
+    padding:10px 5px 9px!important;
+  }
+}
+@media(max-width:380px){
+  .itinerary-section .day-tabs{
+    width:calc(100% - 24px)!important;
+    gap:8px!important;
+  }
+  .itinerary-section .day-tab{
+    padding-inline:3px!important;
+  }
+}
