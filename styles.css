@@ -7720,3 +7720,11 @@ main#home > section.hero,
 main#home > section.hero .hero-image{
   background-color:transparent!important;
 }
+
+
+/* Conflict resolution: keep the approved continuous ivory watercolor
+   background and remove the old venue-only cream override. */
+.venue-section{
+  background-color:#F1E9E2!important;
+  background-image:var(--approved-ivory-watercolor)!important;
+}
