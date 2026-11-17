@@ -5895,3 +5895,83 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   .guestbook-form input[name="name"]{width:min(100%,180px)!important;font-size:16px!important}
   .guestbook-submit{margin-top:17px!important;padding:9px 18px!important}
 }
+
+
+/* Match the guestbook open/close control to the compact olive send button. */
+.note-cta{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:16px!important;
+  width:auto!important;
+  min-width:0!important;
+  min-height:0!important;
+  padding:11px 23px!important;
+  border:1px solid #78845f!important;
+  border-radius:40px!important;
+  background:#78845f!important;
+  color:#fffdf6!important;
+  font:700 10px/1 var(--serif)!important;
+  letter-spacing:.15em!important;
+  box-shadow:none!important;
+}
+.note-cta:hover{
+  background:#586846!important;
+  border-color:#586846!important;
+  color:#fffdf6!important;
+  transform:translateY(-1px);
+}
+.note-cta span{font-size:13px!important;line-height:1!important}
+.guestbook-card{
+  width:min(100%,620px)!important;
+  max-width:620px!important;
+}
+.guestbook-card-inner{
+  min-height:340px!important;
+  padding-top:19px!important;
+  padding-bottom:18px!important;
+  background-image:
+    linear-gradient(to right, transparent 0, transparent 60px, rgba(208,112,133,.48) 60px, rgba(208,112,133,.48) 62px, transparent 62px),
+    repeating-linear-gradient(to bottom, transparent 0, transparent 45px, rgba(119,157,173,.25) 46px, transparent 47px)!important;
+}
+.guestbook-card-inner::before{left:60px}
+.guestbook-dear{
+  margin:0 0 8px!important;
+  font-size:clamp(21px,2.5vw,25px)!important;
+  line-height:1.25!important;
+}
+.guestbook-form textarea{
+  min-height:155px!important;
+  height:155px!important;
+  font-size:18px!important;
+  line-height:47px!important;
+}
+.guestbook-name-label{margin-top:2px!important}
+.guestbook-form input[name="name"]{padding:3px 0 5px!important}
+.guestbook-submit{
+  width:auto!important;
+  min-width:0!important;
+  padding:10px 20px!important;
+  margin-top:15px!important;
+  font-size:9px!important;
+}
+@media(max-width:760px){
+  .note-cta{padding:10px 19px!important;gap:13px!important;font-size:9px!important}
+  .guestbook-card{width:min(100%,100%)!important}
+  .guestbook-card-inner{
+    min-height:315px!important;
+    padding-top:17px!important;
+    background-image:
+      linear-gradient(to right, transparent 0, transparent 43px, rgba(208,112,133,.48) 43px, rgba(208,112,133,.48) 45px, transparent 45px),
+      repeating-linear-gradient(to bottom, transparent 0, transparent 42px, rgba(119,157,173,.25) 43px, transparent 44px)!important;
+  }
+  .guestbook-card-inner::before{left:43px}
+  .guestbook-dear{font-size:21px!important;margin-bottom:6px!important}
+  .guestbook-form textarea{
+    min-height:145px!important;
+    height:145px!important;
+    font-size:16px!important;
+    line-height:44px!important;
+  }
+  .guestbook-submit{padding:9px 18px!important;margin-top:13px!important}
+}
