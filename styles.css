@@ -7806,3 +7806,19 @@ main#home > footer.site-footer{
     max-height:360px!important;
   }
 }
+
+
+/* Let the watercolor map read as artwork on the shared page canvas,
+   not as a framed image/card. Keep its existing column and dimensions. */
+.venue-map-column,
+.venue-map-column .venue-map-preview{
+  background:transparent!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+}
+.venue-map-column .venue-map-preview{
+  mix-blend-mode:multiply;
+  border-radius:0!important;
+  object-fit:contain!important;
+}
