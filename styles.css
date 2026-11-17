@@ -6905,3 +6905,39 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
     object-fit:contain!important;
   }
 }
+
+
+/* Venue section refinement: blend the illustrated map into a warm parchment
+   background, enlarge it slightly, and close the desktop column gap. */
+.venue-section{
+  background:#F5F0E5!important;
+}
+@media(min-width:761px){
+  .venue-section{
+    padding:54px clamp(24px,3.5vw,64px) 52px!important;
+  }
+  .venue-layout{
+    width:min(100%,1680px)!important;
+    grid-template-columns:minmax(0,1.08fr) minmax(0,1fr)!important;
+    gap:clamp(16px,1.8vw,30px)!important;
+    align-items:center!important;
+  }
+  .venue-details-column{
+    max-width:760px!important;
+  }
+  .venue-map-column{
+    justify-content:center!important;
+    padding:0!important;
+  }
+  .venue-map-column .venue-directions-artwork{
+    width:100%!important;
+    max-width:660px!important;
+    max-height:520px!important;
+    margin:0 auto!important;
+  }
+}
+@media(max-width:760px){
+  .venue-section{
+    background:#F5F0E5!important;
+  }
+}
