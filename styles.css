@@ -7339,3 +7339,36 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   object-position:center!important;
   mix-blend-mode:multiply;
 }
+
+
+/* Highlighted guest attire reminder beneath the celebrations introduction. */
+.itinerary-heading .itinerary-dresscode-note{
+  display:inline-block;
+  max-width:720px;
+  margin:16px auto 0;
+  padding:11px 20px;
+  color:var(--dark-olive);
+  background:rgba(190,151,91,.12);
+  border:1px solid rgba(190,151,91,.42);
+  border-radius:3px;
+  font-size:13px;
+  line-height:1.65;
+  letter-spacing:.015em;
+}
+.itinerary-dresscode-note .dresscode-kicker{
+  display:block;
+  margin-bottom:2px;
+  color:var(--gold);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.17em;
+  text-transform:uppercase;
+}
+@media(max-width:600px){
+  .itinerary-heading .itinerary-dresscode-note{
+    display:block;
+    margin:14px 4px 0;
+    padding:10px 13px;
+    font-size:12px;
+  }
+}
