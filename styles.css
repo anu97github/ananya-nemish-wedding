@@ -7288,13 +7288,14 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
 
 
 
-/* High-resolution transparent PNG illustrations opposite each event's copy. */
+/* Compact, uniform transparent PNG illustrations opposite each event's copy. */
 .itinerary-section .timeline-item{overflow:visible!important}
 .itinerary-section .timeline-event-icon{
   position:absolute!important;
   top:30px!important;
-  width:clamp(96px,8.5vw,122px)!important;
-  height:112px!important;
+  width:clamp(76px,6.6vw,96px)!important;
+  height:96px!important;
+  aspect-ratio:1/1!important;
   object-fit:contain!important;
   object-position:center!important;
   display:block!important;
@@ -7304,26 +7305,26 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   pointer-events:none!important;
 }
 .itinerary-section .timeline-item:nth-child(odd) .timeline-event-icon{
-  left:calc(-1 * clamp(108px,9.5vw,136px))!important;
+  left:calc(-1 * clamp(88px,7.5vw,108px))!important;
   right:auto!important;
 }
 .itinerary-section .timeline-item:nth-child(even) .timeline-event-icon{
-  right:calc(-1 * clamp(108px,9.5vw,136px))!important;
+  right:calc(-1 * clamp(88px,7.5vw,108px))!important;
   left:auto!important;
 }
 @media(max-width:760px){
   .itinerary-section .timeline-event-icon{
     top:30px!important;
-    width:64px!important;
-    height:76px!important;
+    width:54px!important;
+    height:64px!important;
   }
-  .itinerary-section .timeline-item:nth-child(odd) .timeline-event-icon{left:-74px!important}
-  .itinerary-section .timeline-item:nth-child(even) .timeline-event-icon{right:-74px!important}
+  .itinerary-section .timeline-item:nth-child(odd) .timeline-event-icon{left:-64px!important}
+  .itinerary-section .timeline-item:nth-child(even) .timeline-event-icon{right:-64px!important}
 }
 @media(max-width:390px){
-  .itinerary-section .timeline-event-icon{width:54px!important;height:66px!important}
-  .itinerary-section .timeline-item:nth-child(odd) .timeline-event-icon{left:-62px!important}
-  .itinerary-section .timeline-item:nth-child(even) .timeline-event-icon{right:-62px!important}
+  .itinerary-section .timeline-event-icon{width:48px!important;height:56px!important}
+  .itinerary-section .timeline-item:nth-child(odd) .timeline-event-icon{left:-58px!important}
+  .itinerary-section .timeline-item:nth-child(even) .timeline-event-icon{right:-58px!important}
 }
 
 
