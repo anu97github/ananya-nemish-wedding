@@ -5203,3 +5203,13 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   left:auto!important;
   right:-5px!important;
 }
+
+
+/* Remove the older viewport-level rail that creates a second line on days
+   one and two. Keep the shared timeline-track rail and all event dots intact.
+   Day three is intentionally left unchanged. */
+.itinerary-section #day-panel-1 .timeline-scroll::before,
+.itinerary-section #day-panel-2 .timeline-scroll::before{
+  content:none!important;
+  display:none!important;
+}
