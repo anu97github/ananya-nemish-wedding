@@ -7569,3 +7569,40 @@ main#home > section.hero,
 main#home > section.hero .hero-image{
   background-image:initial!important;
 }
+
+
+/* FINAL REFERENCE BACKGROUND — exact latest user-uploaded ivory watercolor. */
+:root{--ivory-watercolor-final:url("/assets/ivory%20watercolor%20paper%20final.webp")}
+main#home > section:not(.hero),
+.site-footer,
+.site-footer-minimal{
+  background-color:#f3efe6!important;
+  background-image:var(--ivory-watercolor-final)!important;
+  background-repeat:repeat-y!important;
+  background-position:top center!important;
+  background-size:100% auto!important;
+  background-attachment:scroll!important;
+}
+
+/* Inner layout wrappers must not paint their own colour over the shared paper. */
+main#home .families-section,
+main#home .countdown-section,
+main#home .itinerary-heading,
+main#home .day-tabs,
+main#home .day-panels,
+main#home .day-panel,
+main#home .timeline-scroll,
+main#home .timeline-track,
+main#home .venue-layout,
+main#home .venue-content,
+main#home .venue-map-column,
+main#home .note-section-inner{
+  background-color:transparent!important;
+  background-image:none!important;
+}
+
+/* Keep the first hands-image hero untouched. */
+main#home > section.hero,
+main#home > section.hero .hero-image{
+  background-image:initial!important;
+}
