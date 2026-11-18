@@ -7991,3 +7991,20 @@ main#home .couple-section .about-us-title{
 }
 
 /* Deployment status check — no visual changes. */
+
+/* Match Meet the Couple to the light, regular-weight Countdown heading. */
+main#home .couple-section #meetCoupleTitle {
+  margin: 7px 0 0 !important;
+  padding: 0 !important;
+  color: #596544 !important;
+  font: italic 400 clamp(30px, 4vw, 43px)/1.05 var(--serif) !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+  text-shadow: none !important;
+  background: none !important;
+}
+main#home .couple-section #meetCoupleTitle::before,
+main#home .couple-section #meetCoupleTitle::after {
+  content: none !important;
+  display: none !important;
+}
