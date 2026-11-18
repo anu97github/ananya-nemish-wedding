@@ -8141,3 +8141,49 @@ main#home .couple-section > img{
     max-width: 100% !important;
   }
 }
+
+
+/* Portrait tablet hero: use the same full-height invitation artwork as mobile.
+   This avoids the oversized ivory bands around the shorter iPad-specific image.
+   The rule is limited to portrait/tablet widths and leaves laptop + phone layouts
+   unchanged. */
+@media (min-width: 768px) and (max-width: 1024px) {
+  main#home > section.hero.hero-editorial {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    background: var(--paper) !important;
+  }
+  main#home > section.hero.hero-editorial .hero-image {
+    position: relative !important;
+    inset: auto !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    z-index: 0 !important;
+  }
+  main#home > section.hero.hero-editorial .hero-image picture {
+    display: block !important;
+    width: 100% !important;
+  }
+  main#home > section.hero.hero-editorial .hero-image img {
+    display: block !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    object-fit: unset !important;
+    object-position: center top !important;
+    transform: none !important;
+  }
+  main#home > section.hero.hero-editorial .hero-content,
+  main#home > section.hero.hero-editorial .hero-image-fade {
+    display: none !important;
+  }
+}
