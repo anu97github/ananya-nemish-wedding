@@ -241,13 +241,13 @@
       submitButton.disabled = false;
       submitButton.innerHTML = '<span>SEND YOUR NOTE</span><span aria-hidden="true">↗</span>';
       if (result.ok) {
-        guestbookForm.reset();
         pendingSubmissionId = null;
         submissionIdField.value = '';
-        guestbookForm.hidden = true;
-        document.querySelector('.guestbook-dear')?.insertAdjacentHTML('afterend',
-          '<p class="guestbook-thankyou">Your note is tucked safely into our hearts. Thank you. ♡</p>');
-        submitButton.hidden = true;
+        guestbookCard.classList.add('is-submitted');
+        const thankyou = document.createElement('p');
+        thankyou.className = 'guestbook-thankyou';
+        thankyou.textContent = 'Your note is tucked safely into our hearts. Thank you. ♡';
+        guestbookCard.querySelector('.guestbook-card-inner').replaceChildren(thankyou);
       } else {
         showNoteFeedback(result.message || 'We could not save your note. Please try again.', true);
       }
