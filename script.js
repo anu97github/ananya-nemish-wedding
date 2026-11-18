@@ -63,7 +63,7 @@
 
   // Countdown to the first celebration.
   const countdown = document.getElementById('countdownClock');
-  const startAt = new Date('2027-02-02T14:00:00+05:30').getTime();
+  const startAt = new Date('2027-02-02T08:00:00+05:30').getTime();
   function updateCountdown() {
     if (!countdown) return;
     const remaining = Math.max(0, startAt - Date.now());
@@ -181,6 +181,14 @@
   }
   if (guestbookForm) {
     const feedback = document.getElementById('guestbookFeedback');
+    const nameField = document.getElementById('guestbookName');
+    // Names may contain letters from any language, combining marks, spaces,
+    // hyphens, periods and apostrophes. Remove digits and other symbols as typed.
+    nameField?.addEventListener('input', () => {
+      const cleaned = nameField.value.replace(/[^\p{L}\p{M} .’'-]/gu, '');
+      if (cleaned !== nameField.value) nameField.value = cleaned;
+      nameField.setCustomValidity(cleaned.trim() ? '' : 'Please enter your name using letters only.');
+    });
     const submitButton = guestbookForm.querySelector('.guestbook-submit');
     const submissionIdField = document.getElementById('guestbookSubmissionId');
     let pendingSubmissionId = null;
@@ -233,13 +241,13 @@
       submitButton.disabled = false;
       submitButton.innerHTML = '<span>SEND YOUR NOTE</span><span aria-hidden="true">↗</span>';
       if (result.ok) {
-        guestbookForm.reset();
         pendingSubmissionId = null;
         submissionIdField.value = '';
-        guestbookForm.hidden = true;
-        document.querySelector('.guestbook-dear')?.insertAdjacentHTML('afterend',
-          '<p class="guestbook-thankyou">Your note is tucked safely into our hearts. Thank you. ♡</p>');
-        submitButton.hidden = true;
+        guestbookCard.classList.add('is-submitted');
+        const thankyou = document.createElement('p');
+        thankyou.className = 'guestbook-thankyou';
+        thankyou.textContent = 'Your note is tucked safely into our hearts. Thank you. ♡';
+        guestbookCard.querySelector('.guestbook-card-inner').replaceChildren(thankyou);
       } else {
         showNoteFeedback(result.message || 'We could not save your note. Please try again.', true);
       }

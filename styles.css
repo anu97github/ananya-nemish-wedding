@@ -8141,3 +8141,117 @@ main#home .couple-section > img{
     max-width: 100% !important;
   }
 }
+
+
+/* Portrait tablet hero: use the same full-height invitation artwork as mobile.
+   This avoids the oversized ivory bands around the shorter iPad-specific image.
+   The rule is limited to portrait/tablet widths and leaves laptop + phone layouts
+   unchanged. */
+@media (min-width: 768px) and (max-width: 1024px) {
+  main#home > section.hero.hero-editorial {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    background: var(--paper) !important;
+  }
+  main#home > section.hero.hero-editorial .hero-image {
+    position: relative !important;
+    inset: auto !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    z-index: 0 !important;
+  }
+  main#home > section.hero.hero-editorial .hero-image picture {
+    display: block !important;
+    width: 100% !important;
+  }
+  main#home > section.hero.hero-editorial .hero-image img {
+    display: block !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    object-fit: unset !important;
+    object-position: center top !important;
+    transform: none !important;
+  }
+  main#home > section.hero.hero-editorial .hero-content,
+  main#home > section.hero.hero-editorial .hero-image-fade {
+    display: none !important;
+  }
+}
+
+
+/* Once a guest note is saved, keep only the centered thank-you message
+   inside the keepsake card. Guests can start over by refreshing the page. */
+.guestbook-card.is-submitted .guestbook-card-inner{
+  min-height:360px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding-top:clamp(42px,5vw,56px);
+  padding-bottom:clamp(42px,5vw,56px);
+}
+.guestbook-card.is-submitted .guestbook-thankyou{
+  width:100%;
+  margin:0;
+  text-align:center;
+}
+@media(max-width:760px){
+  .guestbook-card.is-submitted .guestbook-card-inner{
+    min-height:260px;
+  }
+}
+
+
+/* Precisely center the submitted confirmation in the full inner keepsake area.
+   Use a border-box height so padding cannot visually shift the text upward. */
+.guestbook-card.is-submitted .guestbook-card-inner{
+  box-sizing:border-box!important;
+  min-height:360px!important;
+  padding:32px!important;
+  display:grid!important;
+  place-items:center!important;
+}
+.guestbook-card.is-submitted .guestbook-thankyou{
+  width:100%!important;
+  margin:0!important;
+  text-align:center!important;
+}
+@media(max-width:760px){
+  .guestbook-card.is-submitted .guestbook-card-inner{
+    min-height:260px!important;
+    padding:24px!important;
+  }
+}
+
+
+/* Submitted guestbook: return to a compact keepsake height while centering
+   the confirmation precisely in both directions. */
+.guestbook-card.is-submitted .guestbook-card-inner{
+  box-sizing:border-box!important;
+  height:auto!important;
+  min-height:0!important;
+  padding:62px 32px!important;
+  display:grid!important;
+  place-items:center!important;
+}
+.guestbook-card.is-submitted .guestbook-thankyou{
+  width:100%!important;
+  margin:0!important;
+  text-align:center!important;
+}
+@media(max-width:760px){
+  .guestbook-card.is-submitted .guestbook-card-inner{
+    height:auto!important;
+    min-height:0!important;
+    padding:46px 20px!important;
+  }
+}
