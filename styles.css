@@ -8196,6 +8196,8 @@ main#home .couple-section > img{
   display:flex;
   align-items:center;
   justify-content:center;
+  padding-top:clamp(42px,5vw,56px);
+  padding-bottom:clamp(42px,5vw,56px);
 }
 .guestbook-card.is-submitted .guestbook-thankyou{
   width:100%;
