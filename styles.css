@@ -8067,3 +8067,8 @@ main#home .couple-section #meetCoupleTitle::after {
   transform: none !important;
   vertical-align: baseline !important;
 }
+
+/* Make the single trailing heart slightly smaller than the heading. */
+main#home .couple-section #meetCoupleTitle::after {
+  font-size: 0.8em !important;
+}
