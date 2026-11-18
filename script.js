@@ -63,7 +63,7 @@
 
   // Countdown to the first celebration.
   const countdown = document.getElementById('countdownClock');
-  const startAt = new Date('2027-02-02T14:00:00+05:30').getTime();
+  const startAt = new Date('2027-02-02T08:00:00+05:30').getTime();
   function updateCountdown() {
     if (!countdown) return;
     const remaining = Math.max(0, startAt - Date.now());
