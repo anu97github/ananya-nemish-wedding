@@ -161,7 +161,8 @@
               <label class="guestbook-honeypot" aria-hidden="true" tabindex="-1">Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
               <textarea id="guestbookMessage" name="message" rows="4" maxlength="1200" aria-label="Your note to Ananya and Nemish" placeholder="Write your message here…" required></textarea>
               <label class="guestbook-name-label" for="guestbookName">WITH LOVE,</label>
-              <input id="guestbookName" name="name" type="text" maxlength="100" autocomplete="name" placeholder="Your name" required>
+              <input id="guestbookName" name="name" type="text" maxlength="100" autocomplete="name" placeholder="Your name" aria-describedby="guestbookNameHint" required>
+              <small class="guestbook-name-hint" id="guestbookNameHint">Please use letters only. Spaces, hyphens and apostrophes are welcome.</small>
               <button class="guestbook-submit" type="submit"><span>SEND YOUR NOTE</span><span aria-hidden="true">↗</span></button>
               <p class="guestbook-feedback" id="guestbookFeedback" role="status" aria-live="polite" hidden></p>
             </form>
