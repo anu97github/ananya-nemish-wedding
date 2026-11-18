@@ -8008,3 +8008,45 @@ main#home .couple-section #meetCoupleTitle::after {
   content: none !important;
   display: none !important;
 }
+
+/* Match Meet the Couple to the exact Countdown title scale, with delicate hearts. */
+main#home .couple-section #meetCoupleTitle {
+  position: relative !important;
+  display: inline-block !important;
+  width: auto !important;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  font-size: clamp(42px, 5.6vw, 68px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: 0 !important;
+  color: #596544 !important;
+}
+main#home .couple-section #meetCoupleTitle::before {
+  content: '♡' !important;
+  display: block !important;
+  position: absolute !important;
+  top: 12% !important;
+  right: -0.55em !important;
+  left: auto !important;
+  color: #806d56 !important;
+  font: 400 0.38em/1 Georgia, serif !important;
+}
+main#home .couple-section #meetCoupleTitle::after {
+  content: '♡' !important;
+  display: block !important;
+  position: absolute !important;
+  bottom: -0.30em !important;
+  left: 50% !important;
+  right: auto !important;
+  top: auto !important;
+  color: #806d56 !important;
+  font: 400 0.30em/1 Georgia, serif !important;
+  transform: translateX(-50%) rotate(-12deg) !important;
+}
+@media (max-width: 760px) {
+  main#home .couple-section #meetCoupleTitle {
+    font-size: clamp(37px, 8vw, 48px) !important;
+    line-height: 1.08 !important;
+  }
+}
