@@ -8187,3 +8187,23 @@ main#home .couple-section > img{
     display: none !important;
   }
 }
+
+
+/* Once a guest note is saved, keep only the centered thank-you message
+   inside the keepsake card. Guests can start over by refreshing the page. */
+.guestbook-card.is-submitted .guestbook-card-inner{
+  min-height:360px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.guestbook-card.is-submitted .guestbook-thankyou{
+  width:100%;
+  margin:0;
+  text-align:center;
+}
+@media(max-width:760px){
+  .guestbook-card.is-submitted .guestbook-card-inner{
+    min-height:260px;
+  }
+}
