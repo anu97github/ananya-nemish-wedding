@@ -181,6 +181,14 @@
   }
   if (guestbookForm) {
     const feedback = document.getElementById('guestbookFeedback');
+    const nameField = document.getElementById('guestbookName');
+    // Names may contain letters from any language, combining marks, spaces,
+    // hyphens, periods and apostrophes. Remove digits and other symbols as typed.
+    nameField?.addEventListener('input', () => {
+      const cleaned = nameField.value.replace(/[^\\p{L}\\p{M} .’'-]/gu, '');
+      if (cleaned !== nameField.value) nameField.value = cleaned;
+      nameField.setCustomValidity(cleaned.trim() ? '' : 'Please enter your name using letters only.');
+    });
     const submitButton = guestbookForm.querySelector('.guestbook-submit');
     const submissionIdField = document.getElementById('guestbookSubmissionId');
     let pendingSubmissionId = null;
