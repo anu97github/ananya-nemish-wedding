@@ -52,7 +52,7 @@ function doPost(event) {
     const name = cleanText(params.name, CONFIG.maxNameLength);
     const message = cleanText(params.message, CONFIG.maxMessageLength);
     if (!name) throw new Error('Please enter your name.');
-    if (!/^[\\p{L}\\p{M}][\\p{L}\\p{M} .’'-]*$/u.test(name)) {
+    if (!/^[\p{L}\p{M}][\p{L}\p{M} .’'-]*$/u.test(name)) {
       throw new Error('Please use letters only in your name.');
     }
     if (!message) throw new Error('Please write a little note for the couple.');
