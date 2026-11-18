@@ -8231,3 +8231,27 @@ main#home .couple-section > img{
     padding:24px!important;
   }
 }
+
+
+/* Submitted guestbook: return to a compact keepsake height while centering
+   the confirmation precisely in both directions. */
+.guestbook-card.is-submitted .guestbook-card-inner{
+  box-sizing:border-box!important;
+  height:auto!important;
+  min-height:0!important;
+  padding:62px 32px!important;
+  display:grid!important;
+  place-items:center!important;
+}
+.guestbook-card.is-submitted .guestbook-thankyou{
+  width:100%!important;
+  margin:0!important;
+  text-align:center!important;
+}
+@media(max-width:760px){
+  .guestbook-card.is-submitted .guestbook-card-inner{
+    height:auto!important;
+    min-height:0!important;
+    padding:46px 20px!important;
+  }
+}
