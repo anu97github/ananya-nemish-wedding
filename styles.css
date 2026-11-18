@@ -8050,3 +8050,20 @@ main#home .couple-section #meetCoupleTitle::after {
     line-height: 1.08 !important;
   }
 }
+
+/* Keep only one full-size heart immediately after the final word. */
+main#home .couple-section #meetCoupleTitle::before {
+  content: none !important;
+  display: none !important;
+}
+main#home .couple-section #meetCoupleTitle::after {
+  content: '♡' !important;
+  position: static !important;
+  display: inline !important;
+  margin-left: 0.08em !important;
+  color: inherit !important;
+  font: inherit !important;
+  line-height: inherit !important;
+  transform: none !important;
+  vertical-align: baseline !important;
+}
