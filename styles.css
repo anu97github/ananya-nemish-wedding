@@ -8124,3 +8124,20 @@ main#home .couple-section > img{
   margin-left:auto!important;
   margin-right:auto!important;
 }
+
+ 
+/* Give the Meet the Couple artwork a little more breathing room.
+   Keep the complete original image visible and preserve its natural ratio. */
+main#home .couple-section > img{
+  width: min(100%, 1080px) !important;
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  margin: 0 auto !important;
+}
+@media (max-width: 760px) {
+  main#home .couple-section > img{
+    width: calc(100% - 16px) !important;
+    max-width: 100% !important;
+  }
+}
