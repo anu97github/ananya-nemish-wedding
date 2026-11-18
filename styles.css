@@ -8111,3 +8111,16 @@ main#home .venue-map-column .venue-map-preview {
     padding-right: 20px !important;
   }
 }
+
+
+/* Meet the Couple photo: keep it centered within the same page gutters
+   as the other post-hero sections. The heading styling remains unchanged. */
+main#home .couple-section > img{
+  display:block!important;
+  align-self:center!important;
+  width:auto!important;
+  max-width:100%!important;
+  height:auto!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
