@@ -8072,3 +8072,42 @@ main#home .couple-section #meetCoupleTitle::after {
 main#home .couple-section #meetCoupleTitle::after {
   font-size: 0.8em !important;
 }
+
+/* Consistent page gutters for every section below the opening hands image.
+   Keep the hero artwork edge-to-edge and align the remaining sections to one
+   shared left/right content boundary. */
+main#home > section:not(.hero) {
+  padding-left: clamp(22px, 4vw, 56px) !important;
+  padding-right: clamp(22px, 4vw, 56px) !important;
+}
+
+/* The venue content and map share one centered grid with equal outer gutters. */
+main#home .venue-layout {
+  width: 100% !important;
+  max-width: 1240px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  box-sizing: border-box !important;
+}
+main#home .venue-map-column {
+  min-width: 0 !important;
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+main#home .venue-map-column .venue-map-preview {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
+}
+@media (max-width: 760px) {
+  main#home > section:not(.hero) {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
