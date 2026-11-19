@@ -8405,6 +8405,25 @@ main#home .couple-section > img{
 }
 
 
+/* VISUAL SPACING FIX: pull timeline illustrations toward the center markers
+   and event copy toward illustrations without changing icon dimensions or typography. */
+@media (min-width:761px){
+  main#home .timeline-item.time-left .timeline-event-column .timeline-event-icon{
+    transform:translateX(-12px)!important;
+  }
+  main#home .timeline-item.time-left .timeline-event-column h3,
+  main#home .timeline-item.time-left .timeline-event-column p{
+    transform:translateX(-20px)!important;
+  }
+  main#home .timeline-item.event-left .timeline-event-column .timeline-event-icon{
+    transform:translateX(12px)!important;
+  }
+  main#home .timeline-item.event-left .timeline-event-column h3,
+  main#home .timeline-item.event-left .timeline-event-column p{
+    transform:translateX(20px)!important;
+  }
+}
+
 /* HARD OVERRIDE: keep itinerary panels full-height and prevent event copy clipping.
    Strengthened selectors also supersede the legacy oversized event-heading styles. */
 main#home .itinerary-section .day-panel,
