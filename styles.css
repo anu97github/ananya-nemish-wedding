@@ -8816,3 +8816,13 @@ main#home .couple-section #meetCoupleTitle::after {
     background-size:23px 23px,auto!important;
   }
 }
+
+/* Mobile fix: the guestbook card's letterUnfold clip-path was clipping
+   the medallion protruding above the card. Disable that clip on mobile. */
+@media (max-width:760px) {
+  .couple-note-section .guestbook-card.is-open {
+    animation:none!important;
+    clip-path:none!important;
+    -webkit-clip-path:none!important;
+  }
+}
