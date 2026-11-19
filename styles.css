@@ -8907,7 +8907,7 @@ main#home > .couple-note-section {
     padding-top:22px!important;
   }
 }
-/* Google Maps Start-style pill button for venue directions */
+/* Wedding-theme pill button for venue directions */
 .venue-details-column .venue-get-directions{
   margin:12px 0 18px!important;
   text-align:center!important;
@@ -8919,10 +8919,10 @@ main#home > .couple-note-section {
   gap:12px!important;
   min-height:44px!important;
   padding:7px 24px!important;
-  border:2px solid #4285f4!important;
+  border:2px solid #c9ad83!important;
   border-radius:999px!important;
-  background:#fff!important;
-  color:#1a73e8!important;
+  background:#fbf5f2!important;
+  color:#526746!important;
   font-family:Arial,Helvetica,sans-serif!important;
   font-size:16px!important;
   font-weight:500!important;
@@ -8937,12 +8937,12 @@ main#home > .couple-note-section {
   width:26px!important;
   height:26px!important;
   flex:0 0 26px!important;
-  color:#4285f4!important;
+  color:#98764b!important;
 }
 .venue-details-column .venue-get-directions a:hover,
 .venue-details-column .venue-get-directions a:focus-visible{
-  background:#f3f8ff!important;
-  color:#1967d2!important;
+  background:#f2e8df!important;
+  color:#4e5e3d!important;
   transform:translateY(-1px)!important;
   outline-offset:3px!important;
 }
