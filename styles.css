@@ -8374,3 +8374,56 @@ main#home .timeline-event-column .palette-chip{min-width:0}
   main#home .timeline-event-column p{font-size:16px!important;margin-left:0!important}
   main#home .timeline-event-column .timeline-palette{margin:14px 0 0!important}
 }
+
+
+/* Timeline correction: keep illustrations inside their event columns,
+   restore the original compact type scale, and reduce excessive spacing. */
+@media (min-width: 761px){
+  main#home .day-panels .timeline-track{
+    width:min(100%,980px)!important;
+    gap:26px!important;
+    margin:34px auto 0!important;
+    padding:8px 0 20px!important;
+  }
+  main#home .day-panels .timeline-item{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+    padding:0!important;
+    min-height:0!important;
+  }
+  main#home .timeline-event-column{
+    padding:6px 22px!important;
+    gap:0!important;
+  }
+  main#home .timeline-event-column .timeline-event-icon,
+  main#home .itinerary-section img.timeline-event-icon{
+    position:static!important;
+    inset:auto!important;
+    width:76px!important;
+    height:76px!important;
+    max-height:76px!important;
+    flex:none!important;
+    object-fit:contain!important;
+    margin:0 0 6px!important;
+    transform:none!important;
+  }
+  main#home .timeline-event-column h3{
+    font:500 24px/1.15 var(--serif)!important;
+    margin:0 0 5px!important;
+  }
+  main#home .timeline-event-column p{
+    font:400 12px/1.65 var(--serif)!important;
+    max-width:300px!important;
+    margin:0!important;
+  }
+  main#home .timeline-time-column{
+    font:700 11px/1.2 var(--serif)!important;
+    letter-spacing:.08em!important;
+    min-height:30px!important;
+    padding:0 22px!important;
+  }
+  main#home .timeline-event-column .timeline-palette{
+    width:min(100%,400px)!important;
+    margin:12px 0 0!important;
+  }
+  main#home .timeline-item.event-left .timeline-palette{margin-left:auto!important}
+}
