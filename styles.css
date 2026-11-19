@@ -8917,7 +8917,7 @@ main#home #itinerary .timeline-item .timeline-event-column .timeline-palette{
   width:100%!important;
   max-width:100%!important;
   justify-self:stretch!important;
-  margin:0!important;
+  margin:18px 0 0!important;
   padding:0!important;
   display:grid!important;
 }
