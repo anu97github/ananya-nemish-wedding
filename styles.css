@@ -8760,3 +8760,16 @@ main#home .couple-section #meetCoupleTitle::after {
     transform:translateX(-50%)!important;
   }
 }
+
+/* Mobile guest-note badge: layer the medallion above the card's top border. */
+@media (max-width:760px) {
+  .couple-note-section .guestbook-card::before {
+    position:absolute!important;
+    z-index:30!important;
+    isolation:isolate!important;
+  }
+  .couple-note-section .guestbook-card-inner {
+    position:relative!important;
+    z-index:1!important;
+  }
+}
