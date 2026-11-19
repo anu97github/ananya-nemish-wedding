@@ -8773,3 +8773,46 @@ main#home .couple-section #meetCoupleTitle::after {
     z-index:1!important;
   }
 }
+
+/* Definitive guest-note medallion fix: use a real element instead of the
+   repeatedly overridden guestbook-card pseudo-element. */
+.guestbook-card {
+  position:relative!important;
+  overflow:visible!important;
+}
+.guestbook-card::before {
+  content:none!important;
+  display:none!important;
+}
+.guestbook-card .guestbook-medallion {
+  position:absolute!important;
+  display:block!important;
+  z-index:50!important;
+  top:-22px!important;
+  left:50%!important;
+  width:54px!important;
+  height:54px!important;
+  min-width:54px!important;
+  max-width:54px!important;
+  aspect-ratio:1/1!important;
+  box-sizing:border-box!important;
+  transform:translateX(-50%)!important;
+  border:3px solid #d6bd8c!important;
+  border-radius:50%!important;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cg fill='none' stroke='%23fff8e8' stroke-width='1.65' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M24 37V13M24 25c-8 0-12-5-11-12 7 0 11 4 11 12M24 29c8 0 12-5 11-12-7 0-11 4-11 12Z'/%3E%3Cpath d='M20 37h8'/%3E%3C/g%3E%3C/svg%3E") center/27px 27px no-repeat,
+    radial-gradient(circle at 34% 28%,#dfc48f 0%,#bd9658 58%,#98703c 100%)!important;
+  box-shadow:0 3px 8px rgba(76,57,32,.2),inset 0 0 0 2px rgba(255,248,231,.4)!important;
+  pointer-events:none!important;
+}
+@media(max-width:760px) {
+  .guestbook-card .guestbook-medallion {
+    top:-19px!important;
+    width:46px!important;
+    height:46px!important;
+    min-width:46px!important;
+    max-width:46px!important;
+    border-width:2px!important;
+    background-size:23px 23px,auto!important;
+  }
+}
