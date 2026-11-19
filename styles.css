@@ -8952,3 +8952,10 @@ main#home #itinerary .timeline-item .timeline-event-column .timeline-palette .pa
     font-size:14px!important;
   }
 }
+
+
+/* Slightly more breathing room for palette labels, without shifting swatches. */
+main#home #itinerary .timeline-item .timeline-palette.palette-expanded .palette-chip strong,
+main#home #itinerary .timeline-item .timeline-palette.palette-expanded .palette-chip code{
+  padding-block:2px!important;
+}
