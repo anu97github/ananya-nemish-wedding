@@ -8826,3 +8826,84 @@ main#home .couple-section #meetCoupleTitle::after {
     -webkit-clip-path:none!important;
   }
 }
+
+/* Consistent post-countdown section spacing across desktop and mobile.
+   Reference gap: Countdown bottom (28px desktop / 22px mobile) +
+   Meet-the-Couple top (18px desktop / 14px mobile). */
+:root {
+  --wedding-section-padding-top:18px;
+  --wedding-section-padding-bottom:28px;
+}
+main#home > .families-countdown-section .countdown-section {
+  padding-bottom:var(--wedding-section-padding-bottom)!important;
+}
+main#home > .couple-section,
+main#home > .itinerary-section,
+main#home > .venue-section,
+main#home > .couple-note-section,
+main#home > footer.site-footer,
+main#home > footer.site-footer-minimal {
+  padding-top:var(--wedding-section-padding-top)!important;
+  padding-bottom:var(--wedding-section-padding-bottom)!important;
+}
+@media(max-width:760px) {
+  :root {
+    --wedding-section-padding-top:14px;
+    --wedding-section-padding-bottom:22px;
+  }
+  main#home > .families-countdown-section .countdown-section {
+    padding-bottom:var(--wedding-section-padding-bottom)!important;
+  }
+  main#home > .couple-section,
+  main#home > .itinerary-section,
+  main#home > .venue-section,
+  main#home > .couple-note-section,
+  main#home > footer.site-footer,
+  main#home > footer.site-footer-minimal {
+    padding-top:var(--wedding-section-padding-top)!important;
+    padding-bottom:var(--wedding-section-padding-bottom)!important;
+  }
+}
+
+/* User review adjustment: add extra breathing room after the Couple and Venue
+   sections where the following transition looked tighter. */
+main#home > .couple-section,
+main#home > .venue-section {
+  padding-bottom:42px!important;
+}
+@media(max-width:760px) {
+  main#home > .couple-section,
+  main#home > .venue-section {
+    padding-bottom:34px!important;
+  }
+}
+
+/* Stronger visible separation for the two transitions called out in review.
+   Increase the preceding section's bottom space AND following section's top
+   space so the visual gap is clearly larger than the standard transitions. */
+main#home > .couple-section {
+  padding-bottom:62px!important;
+}
+main#home > .itinerary-section {
+  padding-top:30px!important;
+}
+main#home > .venue-section {
+  padding-bottom:62px!important;
+}
+main#home > .couple-note-section {
+  padding-top:30px!important;
+}
+@media(max-width:760px) {
+  main#home > .couple-section {
+    padding-bottom:48px!important;
+  }
+  main#home > .itinerary-section {
+    padding-top:22px!important;
+  }
+  main#home > .venue-section {
+    padding-bottom:48px!important;
+  }
+  main#home > .couple-note-section {
+    padding-top:22px!important;
+  }
+}
