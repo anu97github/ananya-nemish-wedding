@@ -8702,3 +8702,20 @@ main#home .itinerary-dresscode-note .dresscode-green{
     right:auto!important;
   }
 }
+
+/* Mobile event artwork scale only.
+   The icon grid track stays 64px wide: scale the PNG within that same slot so
+   transparent canvas around the illustration does not make the artwork look tiny.
+   No event copy, time, timeline geometry, or column positions are changed. */
+@media (max-width:760px) {
+  main#home .itinerary-section .timeline-event-column .timeline-event-icon {
+    width:82px!important;
+    height:82px!important;
+    max-width:none!important;
+    max-height:none!important;
+    object-fit:contain!important;
+    object-position:center!important;
+    transform:scale(1.28)!important;
+    transform-origin:center center!important;
+  }
+}
