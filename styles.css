@@ -8908,16 +8908,19 @@ main#home > .couple-note-section {
   }
 }
 
-/* Dress-code palette headings: dedicated grid row above swatches, no overlap. */
-main#home .itinerary-section .timeline-event-column{
+/* Palette label layout fix: scope to the actual #itinerary section.
+   Labels get their own row above the swatches; left-side events align left,
+   Mehendi (right-side event) aligns right. No added spacing. */
+main#home #itinerary .timeline-item .timeline-event-column{
   grid-template-rows:auto auto auto auto!important;
 }
-main#home .itinerary-section .timeline-event-column .palette-title{
+main#home #itinerary .timeline-item .timeline-event-column .palette-title{
   grid-column:1/-1!important;
   grid-row:3!important;
-  align-self:start!important;
-  justify-self:stretch!important;
+  display:block!important;
   width:100%!important;
+  justify-self:stretch!important;
+  align-self:start!important;
   margin:0!important;
   padding:0!important;
   color:#596544!important;
@@ -8926,19 +8929,24 @@ main#home .itinerary-section .timeline-event-column .palette-title{
   line-height:1.2!important;
   font-weight:700!important;
   letter-spacing:.06em!important;
-  text-align:center!important;
 }
-main#home .itinerary-section .timeline-event-column .timeline-palette{
+main#home #itinerary .timeline-item.time-left .timeline-event-column .palette-title{
+  text-align:left!important;
+}
+main#home #itinerary .timeline-item.event-left .timeline-event-column .palette-title{
+  text-align:right!important;
+}
+main#home #itinerary .timeline-item .timeline-event-column .timeline-palette{
   grid-column:1/-1!important;
   grid-row:4!important;
   width:100%!important;
   max-width:100%!important;
+  justify-self:stretch!important;
   margin:0!important;
   padding:0!important;
-  justify-self:stretch!important;
 }
 @media(max-width:760px){
-  main#home .itinerary-section .timeline-event-column .palette-title{
+  main#home #itinerary .timeline-item .timeline-event-column .palette-title{
     font-size:14px!important;
   }
 }
