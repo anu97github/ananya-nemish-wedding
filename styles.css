@@ -8652,4 +8652,12 @@ main#home .itinerary-dresscode-note .dresscode-green{
   main#home .itinerary-section .timeline-item.event-left .timeline-time-column::after {
     left: -5px !important;
   }
+  /* Add a small gap between the time label and the connector dash. */
+  main#home .itinerary-section .timeline-item.time-left .timeline-time-column {
+    padding-right: 10px !important;
+  }
+  main#home .itinerary-section .timeline-item.event-left .timeline-time-column {
+    padding-left: 10px !important;
+  }
+
 }
