@@ -8466,3 +8466,17 @@ main#home .itinerary-dresscode-note .dresscode-green{
     letter-spacing:-.02em!important;
   }
 }
+
+/* Slightly enlarge all three celebration date tabs for better readability. */
+.itinerary-section .day-tab span{font-size:9px!important}
+.itinerary-section .day-tab strong{font-size:clamp(17px,1.9vw,21px)!important}
+.itinerary-section .day-tab small{font-size:11px!important}
+@media(max-width:760px){
+  .itinerary-section .day-tab span{font-size:9px!important}
+  .itinerary-section .day-tab strong{font-size:clamp(14px,3.6vw,18px)!important}
+  .itinerary-section .day-tab small{font-size:11px!important}
+}
+@media(max-width:380px){
+  .itinerary-section .day-tab span{font-size:7.5px!important}
+  .itinerary-section .day-tab strong{font-size:14px!important}
+}
