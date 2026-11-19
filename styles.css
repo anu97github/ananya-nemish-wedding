@@ -8735,3 +8735,13 @@ main#home .itinerary-dresscode-note .dresscode-green{
     transform-origin:center center!important;
   }
 }
+
+/* Accent only the requested words in the Meet the Couple and countdown headings,
+   using the same gold tone as "Celebrations". */
+main#home .couple-section #meetCoupleTitle .heading-accent,
+main#home #countdownTitle .heading-accent {
+  color:var(--gold)!important;
+}
+main#home .couple-section #meetCoupleTitle::after {
+  color:var(--gold)!important;
+}
