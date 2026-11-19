@@ -8304,8 +8304,8 @@ main#home .couple-section > img{
   main#home .timeline-event-column{
     display:grid!important; grid-template-columns:156px minmax(0,1fr)!important;
     grid-template-rows:auto auto auto!important; align-items:center!important;
-    column-gap:20px!important; row-gap:4px!important;
-    min-width:0!important; padding:0 30px!important; text-align:left!important;
+    column-gap:14px!important; row-gap:4px!important;
+    min-width:0!important; padding:0 18px!important; text-align:left!important;
   }
   main#home .timeline-item.time-left .timeline-event-column{
     grid-column:2!important; grid-row:1!important; justify-self:start!important;
@@ -8335,6 +8335,7 @@ main#home .couple-section > img{
   main#home .timeline-item.event-left .timeline-event-column{
     grid-column:1!important; grid-row:1!important;
     grid-template-columns:minmax(0,1fr) 156px!important;
+    column-gap:14px!important; padding:0 18px!important;
     justify-items:end!important; text-align:right!important;
   }
   main#home .timeline-item.event-left .timeline-event-column .timeline-event-icon{
