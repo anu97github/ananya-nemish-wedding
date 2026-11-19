@@ -8864,3 +8864,16 @@ main#home > footer.site-footer-minimal {
     padding-bottom:var(--wedding-section-padding-bottom)!important;
   }
 }
+
+/* User review adjustment: add extra breathing room after the Couple and Venue
+   sections where the following transition looked tighter. */
+main#home > .couple-section,
+main#home > .venue-section {
+  padding-bottom:42px!important;
+}
+@media(max-width:760px) {
+  main#home > .couple-section,
+  main#home > .venue-section {
+    padding-bottom:34px!important;
+  }
+}
