@@ -8908,48 +8908,37 @@ main#home > .couple-note-section {
   }
 }
 
-/* Dress-code palette headings for the three celebration events */
+/* Dress-code palette headings: dedicated grid row above swatches, no overlap. */
+main#home .itinerary-section .timeline-event-column{
+  grid-template-rows:auto auto auto auto!important;
+}
 main#home .itinerary-section .timeline-event-column .palette-title{
-  grid-column:2;
-  margin:14px 0 0;
-  color:#596544;
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:16px;
-  line-height:1.2;
-  font-weight:700;
-  letter-spacing:.06em;
-  text-align:left;
+  grid-column:1/-1!important;
+  grid-row:3!important;
+  align-self:start!important;
+  justify-self:stretch!important;
+  width:100%!important;
+  margin:0!important;
+  padding:0!important;
+  color:#596544!important;
+  font-family:'Cormorant Garamond',Georgia,serif!important;
+  font-size:16px!important;
+  line-height:1.2!important;
+  font-weight:700!important;
+  letter-spacing:.06em!important;
+  text-align:center!important;
+}
+main#home .itinerary-section .timeline-event-column .timeline-palette{
+  grid-column:1/-1!important;
+  grid-row:4!important;
+  width:100%!important;
+  max-width:100%!important;
+  margin:0!important;
+  padding:0!important;
+  justify-self:stretch!important;
 }
 @media(max-width:760px){
   main#home .itinerary-section .timeline-event-column .palette-title{
-    grid-column:1/-1!important;
-    grid-row:3!important;
-    margin:8px 0 0!important;
-    text-align:center!important;
     font-size:14px!important;
-  }
-  main#home .itinerary-section .timeline-event-column .timeline-palette{
-    grid-row:4!important;
-    margin-top:5px!important;
-  }
-}
-
-
-/* Fix palette heading placement: keep it on its own grid row without adding spacing. */
-@media(max-width:760px){
-  main#home .itinerary-section .timeline-event-column{
-    grid-template-rows:auto auto auto auto!important;
-  }
-  main#home .itinerary-section .timeline-event-column .palette-title{
-    grid-row:3!important;
-    margin:0!important;
-    align-self:start!important;
-    padding:0!important;
-    line-height:1.2!important;
-  }
-  main#home .itinerary-section .timeline-event-column .timeline-palette{
-    grid-row:4!important;
-    margin:0!important;
-    padding:0!important;
   }
 }
