@@ -8908,21 +8908,28 @@ main#home > .couple-note-section {
   }
 }
 
-/* Palette label layout fix: scope to the actual #itinerary section.
-   Labels get their own row above the swatches; left-side events align left,
-   Mehendi (right-side event) aligns right. No added spacing. */
-main#home #itinerary .timeline-item .timeline-event-column{
-  grid-template-rows:auto auto auto auto!important;
-}
-main#home #itinerary .timeline-item .timeline-event-column .palette-title{
+/* Palette heading lives inside the swatch grid so its edges align exactly
+   with the palette. Haldi/Wedding start at the grid's left edge; Mehendi ends
+   at its right edge. No added padding or margin. */
+main#home #itinerary .timeline-item .timeline-event-column .timeline-palette{
   grid-column:1/-1!important;
   grid-row:3!important;
-  display:block!important;
   width:100%!important;
+  max-width:100%!important;
   justify-self:stretch!important;
-  align-self:start!important;
   margin:0!important;
   padding:0!important;
+  display:grid!important;
+}
+main#home #itinerary .timeline-item .timeline-event-column .timeline-palette .palette-title{
+  grid-column:1/-1!important;
+  grid-row:1!important;
+  display:block!important;
+  width:100%!important;
+  margin:0!important;
+  padding:0!important;
+  align-self:start!important;
+  justify-self:stretch!important;
   color:#596544!important;
   font-family:'Cormorant Garamond',Georgia,serif!important;
   font-size:16px!important;
@@ -8930,23 +8937,18 @@ main#home #itinerary .timeline-item .timeline-event-column .palette-title{
   font-weight:700!important;
   letter-spacing:.06em!important;
 }
-main#home #itinerary .timeline-item.time-left .timeline-event-column .palette-title{
+main#home #itinerary .timeline-item.time-left .timeline-event-column .timeline-palette .palette-title{
   text-align:left!important;
 }
-main#home #itinerary .timeline-item.event-left .timeline-event-column .palette-title{
+main#home #itinerary .timeline-item.event-left .timeline-event-column .timeline-palette .palette-title{
   text-align:right!important;
 }
-main#home #itinerary .timeline-item .timeline-event-column .timeline-palette{
-  grid-column:1/-1!important;
-  grid-row:4!important;
-  width:100%!important;
-  max-width:100%!important;
-  justify-self:stretch!important;
-  margin:0!important;
-  padding:0!important;
+main#home #itinerary .timeline-item .timeline-event-column .timeline-palette .palette-chip{
+  grid-row:auto!important;
+  grid-column:auto!important;
 }
 @media(max-width:760px){
-  main#home #itinerary .timeline-item .timeline-event-column .palette-title{
+  main#home #itinerary .timeline-item .timeline-event-column .timeline-palette .palette-title{
     font-size:14px!important;
   }
 }
