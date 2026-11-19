@@ -8826,3 +8826,41 @@ main#home .couple-section #meetCoupleTitle::after {
     -webkit-clip-path:none!important;
   }
 }
+
+/* Consistent post-countdown section spacing across desktop and mobile.
+   Reference gap: Countdown bottom (28px desktop / 22px mobile) +
+   Meet-the-Couple top (18px desktop / 14px mobile). */
+:root {
+  --wedding-section-padding-top:18px;
+  --wedding-section-padding-bottom:28px;
+}
+main#home > .families-countdown-section .countdown-section {
+  padding-bottom:var(--wedding-section-padding-bottom)!important;
+}
+main#home > .couple-section,
+main#home > .itinerary-section,
+main#home > .venue-section,
+main#home > .couple-note-section,
+main#home > footer.site-footer,
+main#home > footer.site-footer-minimal {
+  padding-top:var(--wedding-section-padding-top)!important;
+  padding-bottom:var(--wedding-section-padding-bottom)!important;
+}
+@media(max-width:760px) {
+  :root {
+    --wedding-section-padding-top:14px;
+    --wedding-section-padding-bottom:22px;
+  }
+  main#home > .families-countdown-section .countdown-section {
+    padding-bottom:var(--wedding-section-padding-bottom)!important;
+  }
+  main#home > .couple-section,
+  main#home > .itinerary-section,
+  main#home > .venue-section,
+  main#home > .couple-note-section,
+  main#home > footer.site-footer,
+  main#home > footer.site-footer-minimal {
+    padding-top:var(--wedding-section-padding-top)!important;
+    padding-bottom:var(--wedding-section-padding-bottom)!important;
+  }
+}
