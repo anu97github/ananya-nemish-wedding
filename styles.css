@@ -1628,7 +1628,7 @@ body,button,input,select,textarea{
 .timeline-palette-title{margin:12px 0 0;color:var(--dark-olive);font:700 13px/1.35 var(--serif);letter-spacing:.02em}
 .timeline-palette-title+.timeline-palette{margin-top:6px}
 /* Event-specific placement for the Colours to Wear headings. */
-.timeline-event-column:has(.timeline-event-icon[src*="haldi.png"]) .timeline-palette-title{font-size:15px!important;transform:translate(-270px,-14px)!important;margin-top:0!important}
+.timeline-event-column:has(.timeline-event-icon[src*="haldi.png"]) .timeline-palette-title{font-size:15px!important;transform:translate(-10px,-14px)!important;margin-top:0!important}
 .timeline-event-column:has(.timeline-event-icon[src*="mehendi.png"]) .timeline-palette-title{font-size:15px!important;transform:translate(120px,-14px)!important}
 .timeline-event-column:has(.timeline-event-icon[src*="wedding.png"]) .timeline-palette-title{font-size:15px!important;transform:translate(120px,-14px)!important}
 
