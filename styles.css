@@ -8402,3 +8402,47 @@ main#home .couple-section > img{
   main#home .timeline-item.event-left .timeline-event-column h3{grid-column:2!important;grid-row:1!important;text-align:left!important}
   main#home .timeline-item.event-left .timeline-event-column p{grid-column:2!important;grid-row:2!important;text-align:left!important}
 }
+
+
+/* HARD OVERRIDE: keep itinerary panels full-height and prevent event copy clipping.
+   Strengthened selectors also supersede the legacy oversized event-heading styles. */
+main#home .itinerary-section .day-panel,
+main#home .itinerary-section .day-panels .day-panel{
+  max-height:none!important;
+  height:auto!important;
+  min-height:0!important;
+  overflow:visible!important;
+}
+main#home .itinerary-section .timeline-scroll{
+  height:auto!important;
+  max-height:none!important;
+  min-height:0!important;
+  overflow-y:visible!important;
+  overflow-x:visible!important;
+}
+main#home .itinerary-section .timeline-event-column h3,
+main#home .itinerary-section .timeline-item .timeline-event-column h3{
+  font-size:30px!important;
+  line-height:1.12!important;
+  font-weight:500!important;
+}
+main#home .itinerary-section .timeline-time-column,
+main#home .itinerary-section .timeline-time-column .timeline-time{
+  font-size:32px!important;
+  line-height:1.2!important;
+  font-weight:600!important;
+}
+main#home .itinerary-section .timeline-event-column p,
+main#home .itinerary-section .timeline-item .timeline-event-column p{
+  font-size:16px!important;
+  line-height:1.4!important;
+  max-width:520px!important;
+}
+@media(max-width:760px){
+  main#home .itinerary-section .timeline-event-column h3,
+  main#home .itinerary-section .timeline-item .timeline-event-column h3{font-size:25px!important}
+  main#home .itinerary-section .timeline-time-column,
+  main#home .itinerary-section .timeline-time-column .timeline-time{font-size:23px!important}
+  main#home .itinerary-section .timeline-event-column p,
+  main#home .itinerary-section .timeline-item .timeline-event-column p{font-size:15px!important}
+}
