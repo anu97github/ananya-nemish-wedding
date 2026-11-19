@@ -46,6 +46,14 @@
       const active = i === index;
       panel.classList.toggle('is-active', active);
       panel.hidden = !active;
+      if (active) {
+        // Hidden tab panels can defer lazy illustrations; load and decode every
+        // timeline icon as soon as its day is selected so they never appear blank.
+        panel.querySelectorAll('.timeline-event-icon').forEach(img => {
+          img.loading = 'eager';
+          if (!img.complete) img.decode?.().catch(() => {});
+        });
+      }
     });
     if (moveFocus) dayTabs[index]?.focus();
   }
