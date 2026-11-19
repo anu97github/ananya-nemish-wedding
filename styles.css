@@ -8639,10 +8639,11 @@ main#home .itinerary-dresscode-note .dresscode-green{
   }
 
   main#home .itinerary-section .timeline-time-column::after {
-    top: 50% !important;
+    /* Match the timeline dot center: dot is at 26px in the item; time row starts at 10px. */
+    top: 16px !important;
     height: 1px !important;
     transform: translateY(-50%) !important;
-    width: 11px !important;
+    width: 7px !important;
   }
 
   /* Leave a small visual breathing space before the circular marker. */
