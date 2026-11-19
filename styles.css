@@ -8255,3 +8255,194 @@ main#home .couple-section > img{
     padding:46px 20px!important;
   }
 }
+
+/* SINGLE SOURCE OF TRUTH — itinerary timeline layout, matching watercolor reference */
+@media (min-width:761px){
+  main#home .day-panels .timeline-track{
+    display:flex!important; flex-direction:column!important;
+    gap:42px!important; width:min(100%,1180px)!important;
+    margin:30px auto 0!important; padding:12px 0 26px!important;
+    position:relative!important;
+  }
+  main#home .day-panels .timeline-track::before{
+    content:""!important; position:absolute!important; top:0!important; bottom:0!important;
+    left:50%!important; width:1px!important; transform:translateX(-50%)!important;
+    background:rgba(190,151,86,.72)!important;
+  }
+  main#home .day-panels .timeline-item{
+    display:grid!important; grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+    align-items:start!important; position:relative!important; width:100%!important;
+    min-height:150px!important; padding:0!important; margin:0!important;
+    border:0!important; background:transparent!important; box-shadow:none!important;
+  }
+  main#home .timeline-dot{
+    position:absolute!important; left:50%!important; top:72px!important;
+    transform:translate(-50%,-50%)!important; z-index:3!important;
+    width:16px!important; height:16px!important; border-radius:50%!important;
+    background:#b88e4e!important; border:4px solid #f6eee4!important;
+    box-shadow:0 0 0 1px rgba(184,143,78,.4)!important;
+  }
+  main#home .timeline-time-column{
+    display:flex!important; align-items:center!important; min-height:150px!important;
+    padding:0 32px!important; position:relative!important;
+    color:#5f704e!important; font:600 31px/1.2 'Cormorant Garamond',Georgia,serif!important;
+    letter-spacing:0!important; white-space:nowrap!important;
+  }
+  main#home .timeline-time-column::after{
+    content:""!important; position:absolute!important; top:72px!important;
+    width:32px!important; height:1px!important; background:#b88e4e!important;
+    transform:translateY(-50%)!important;
+  }
+  main#home .timeline-item.time-left .timeline-time-column{
+    grid-column:1!important; grid-row:1!important; justify-content:flex-end!important; text-align:right!important;
+  }
+  main#home .timeline-item.time-left .timeline-time-column::after{right:-16px!important}
+  main#home .timeline-item.event-left .timeline-time-column{
+    grid-column:2!important; grid-row:1!important; justify-content:flex-start!important; text-align:left!important;
+  }
+  main#home .timeline-item.event-left .timeline-time-column::after{left:-16px!important}
+  main#home .timeline-event-column{
+    display:grid!important; grid-template-columns:156px minmax(0,1fr)!important;
+    grid-template-rows:auto auto auto!important; align-items:center!important;
+    column-gap:20px!important; row-gap:4px!important;
+    min-width:0!important; padding:0 30px!important; text-align:left!important;
+  }
+  main#home .timeline-item.time-left .timeline-event-column{
+    grid-column:2!important; grid-row:1!important; justify-self:start!important;
+  }
+  main#home .timeline-event-column .timeline-event-icon{
+    grid-column:1!important; grid-row:1/span 2!important;
+    display:block!important; width:156px!important; height:156px!important; max-height:156px!important;
+    object-fit:contain!important; object-position:center!important; margin:0!important;
+    position:static!important; transform:none!important; inset:auto!important;
+    border:0!important; outline:0!important; box-shadow:none!important; background:transparent!important;
+  }
+  main#home .timeline-event-column h3{
+    grid-column:2!important; grid-row:1!important; align-self:end!important;
+    margin:0!important; color:#596544!important;
+    font:500 34px/1.12 'Cormorant Garamond',Georgia,serif!important; text-align:left!important;
+  }
+  main#home .timeline-event-column p{
+    grid-column:2!important; grid-row:2!important; align-self:start!important;
+    margin:4px 0 0!important; max-width:430px!important;
+    color:#76665c!important; font:400 17px/1.4 'Cormorant Garamond',Georgia,serif!important;
+    text-align:left!important;
+  }
+  main#home .timeline-event-column .timeline-palette{
+    grid-column:1/-1!important; grid-row:3!important;
+    width:min(100%,500px)!important; margin:18px 0 0!important;
+  }
+  main#home .timeline-item.event-left .timeline-event-column{
+    grid-column:1!important; grid-row:1!important;
+    grid-template-columns:minmax(0,1fr) 156px!important;
+    justify-items:end!important; text-align:right!important;
+  }
+  main#home .timeline-item.event-left .timeline-event-column .timeline-event-icon{
+    grid-column:2!important; grid-row:1/span 2!important;
+  }
+  main#home .timeline-item.event-left .timeline-event-column h3{
+    grid-column:1!important; grid-row:1!important; text-align:right!important;
+  }
+  main#home .timeline-item.event-left .timeline-event-column p{
+    grid-column:1!important; grid-row:2!important; text-align:right!important;
+  }
+  main#home .timeline-item.event-left .timeline-palette{
+    grid-column:1/-1!important; grid-row:3!important; justify-self:end!important;
+  }
+  main#home .timeline-event-column .palette-chip strong,
+  main#home .timeline-event-column .palette-chip code{font-size:14px!important}
+}
+@media (max-width:760px){
+  main#home .day-panels .timeline-track{
+    display:flex!important; flex-direction:column!important; gap:28px!important;
+    margin:22px auto 0!important; padding:10px 0 16px!important; position:relative!important;
+  }
+  main#home .day-panels .timeline-track::before{
+    left:18px!important; top:0!important; bottom:0!important; transform:none!important;
+  }
+  main#home .day-panels .timeline-item{
+    display:grid!important; grid-template-columns:36px minmax(0,1fr)!important;
+    gap:8px!important; align-items:start!important; padding:0!important; min-height:0!important;
+  }
+  main#home .timeline-dot{left:18px!important;top:24px!important;transform:translateX(-50%)!important;width:15px!important;height:15px!important}
+  main#home .timeline-time-column{
+    grid-column:2!important; grid-row:1!important; justify-content:flex-start!important;
+    min-height:0!important; padding:0 8px!important; white-space:normal!important;
+    font:600 23px/1.2 'Cormorant Garamond',Georgia,serif!important;
+  }
+  main#home .timeline-time-column::after{display:none!important}
+  main#home .timeline-event-column{
+    grid-column:2!important; grid-row:2!important;
+    display:grid!important; grid-template-columns:92px minmax(0,1fr)!important;
+    grid-template-rows:auto auto auto!important; align-items:center!important;
+    column-gap:12px!important; row-gap:3px!important; padding:4px 8px 8px!important;
+    text-align:left!important;
+  }
+  main#home .timeline-event-column .timeline-event-icon{
+    grid-column:1!important; grid-row:1/span 2!important;
+    width:92px!important; height:92px!important; max-height:92px!important;
+    object-fit:contain!important; margin:0!important; position:static!important;
+  }
+  main#home .timeline-event-column h3{
+    grid-column:2!important; grid-row:1!important; align-self:end!important;
+    margin:0!important; font:500 27px/1.12 'Cormorant Garamond',Georgia,serif!important; text-align:left!important;
+  }
+  main#home .timeline-event-column p{
+    grid-column:2!important; grid-row:2!important; align-self:start!important;
+    margin:3px 0 0!important; font:400 15.5px/1.4 'Cormorant Garamond',Georgia,serif!important; text-align:left!important;
+  }
+  main#home .timeline-event-column .timeline-palette{
+    grid-column:1/-1!important; grid-row:3!important; width:100%!important; margin:14px 0 0!important;
+  }
+  main#home .timeline-item.event-left .timeline-event-column{
+    grid-column:2!important; grid-row:2!important;
+    grid-template-columns:92px minmax(0,1fr)!important; justify-items:start!important; text-align:left!important;
+  }
+  main#home .timeline-item.event-left .timeline-event-column .timeline-event-icon{grid-column:1!important;grid-row:1/span 2!important}
+  main#home .timeline-item.event-left .timeline-event-column h3{grid-column:2!important;grid-row:1!important;text-align:left!important}
+  main#home .timeline-item.event-left .timeline-event-column p{grid-column:2!important;grid-row:2!important;text-align:left!important}
+}
+
+
+/* HARD OVERRIDE: keep itinerary panels full-height and prevent event copy clipping.
+   Strengthened selectors also supersede the legacy oversized event-heading styles. */
+main#home .itinerary-section .day-panel,
+main#home .itinerary-section .day-panels .day-panel{
+  max-height:none!important;
+  height:auto!important;
+  min-height:0!important;
+  overflow:visible!important;
+}
+main#home .itinerary-section .timeline-scroll{
+  height:auto!important;
+  max-height:none!important;
+  min-height:0!important;
+  overflow-y:visible!important;
+  overflow-x:visible!important;
+}
+main#home .itinerary-section .timeline-event-column h3,
+main#home .itinerary-section .timeline-item .timeline-event-column h3{
+  font-size:30px!important;
+  line-height:1.12!important;
+  font-weight:500!important;
+}
+main#home .itinerary-section .timeline-time-column,
+main#home .itinerary-section .timeline-time-column .timeline-time{
+  font-size:26px!important;
+  line-height:1.2!important;
+  font-weight:600!important;
+}
+main#home .itinerary-section .timeline-event-column p,
+main#home .itinerary-section .timeline-item .timeline-event-column p{
+  font-size:16px!important;
+  line-height:1.4!important;
+  max-width:520px!important;
+}
+@media(max-width:760px){
+  main#home .itinerary-section .timeline-event-column h3,
+  main#home .itinerary-section .timeline-item .timeline-event-column h3{font-size:25px!important}
+  main#home .itinerary-section .timeline-time-column,
+  main#home .itinerary-section .timeline-time-column .timeline-time{font-size:22px!important}
+  main#home .itinerary-section .timeline-event-column p,
+  main#home .itinerary-section .timeline-item .timeline-event-column p{font-size:15px!important}
+}
