@@ -8545,3 +8545,27 @@ main#home .timeline-event-column .palette-chip{min-width:0}
   main#home .timeline-event-column h3{font-size:22px!important}
   main#home .timeline-event-column p{font-size:14px!important;line-height:1.45!important}
 }
+
+
+/* Final itinerary sizing/alignment pass */
+@media (min-width:761px){
+  main#home .day-panels .timeline-track{gap:30px!important;width:min(100%,1080px)!important;margin:30px auto 0!important;padding:8px 0 18px!important}
+  main#home .day-panels .timeline-item{align-items:center!important;padding:0!important;min-height:0!important}
+  main#home .timeline-time-column{font:600 22px/1.2 var(--serif)!important;letter-spacing:0!important;min-height:44px!important}
+  main#home .timeline-event-column{display:grid!important;grid-template-columns:124px minmax(0,1fr)!important;grid-template-rows:auto auto!important;align-items:center!important;column-gap:18px!important;row-gap:3px!important;padding:4px 26px!important;text-align:left!important}
+  main#home .timeline-event-column .timeline-event-icon{grid-column:1!important;grid-row:1/span 2!important;width:124px!important;height:124px!important;max-height:124px!important;object-fit:contain!important;margin:0!important}
+  main#home .timeline-event-column h3{grid-column:2!important;grid-row:1!important;font:500 31px/1.12 var(--serif)!important;margin:0!important;align-self:end!important;text-align:left!important}
+  main#home .timeline-event-column p{grid-column:2!important;grid-row:2!important;font:400 16px/1.5 var(--serif)!important;max-width:400px!important;margin:3px 0 0!important;text-align:left!important;align-self:start!important}
+  main#home .timeline-event-column .timeline-palette{grid-column:1/-1!important;grid-row:3!important;width:min(100%,460px)!important;margin:14px 0 0!important}
+  main#home .timeline-item.event-left .timeline-event-column{grid-column:1!important;grid-row:1!important;grid-template-columns:minmax(0,1fr) 124px!important;justify-items:end!important;text-align:right!important}
+  main#home .timeline-item.event-left .timeline-event-column .timeline-event-icon{grid-column:2!important;grid-row:1/span 2!important}
+  main#home .timeline-item.event-left .timeline-event-column h3{grid-column:1!important;grid-row:1!important;text-align:right!important}
+  main#home .timeline-item.event-left .timeline-event-column p{grid-column:1!important;grid-row:2!important;text-align:right!important}
+  main#home .timeline-item.event-left .timeline-palette{grid-column:1/-1!important;grid-row:3!important;justify-self:end!important}
+}
+@media (max-width:760px){
+  main#home .timeline-time-column{font-size:20px!important}
+  main#home .timeline-event-column .timeline-event-icon{width:84px!important;height:84px!important;max-height:84px!important}
+  main#home .timeline-event-column h3{font-size:26px!important}
+  main#home .timeline-event-column p{font-size:15px!important;line-height:1.45!important}
+}
