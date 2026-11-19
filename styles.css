@@ -8660,4 +8660,14 @@ main#home .itinerary-dresscode-note .dresscode-green{
     padding-left: 10px !important;
   }
 
+  /* Connect the connector directly to the dot's outer edge (no visible gap). */
+  main#home .itinerary-section .timeline-item.time-left .timeline-time-column::after {
+    right: 0 !important;
+    width: 7px !important;
+  }
+  main#home .itinerary-section .timeline-item.event-left .timeline-time-column::after {
+    left: 0 !important;
+    width: 7px !important;
+  }
+
 }
