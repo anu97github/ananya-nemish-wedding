@@ -1625,6 +1625,8 @@ body,button,input,select,textarea{
 .timeline-item h3{margin:9px 0 6px;color:var(--dark-olive);font:500 24px/1.15 var(--serif)}
 .timeline-item p{margin:0;max-width:190px;color:var(--muted);font-size:12px;line-height:1.65}
 .timeline-palette{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-top:12px;max-width:200px}
+.timeline-palette-title{margin:12px 0 0;color:var(--dark-olive);font:500 13px/1.35 var(--serif);letter-spacing:.02em}
+.timeline-palette-title+.timeline-palette{margin-top:6px}
 .timeline-palette span{width:18px;height:18px;border-radius:50%;background:var(--swatch);border:1px solid rgba(70,86,63,.15)}
 .timeline-palette b{flex-basis:100%;font-size:8px;line-height:1.5;letter-spacing:.07em;color:var(--dark-olive)}
 .timeline-hint{text-align:center;margin:0;color:var(--olive);font-size:9px;font-weight:700;letter-spacing:.18em}
