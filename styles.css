@@ -8907,3 +8907,36 @@ main#home > .couple-note-section {
     padding-top:22px!important;
   }
 }
+/* Theme-matched directions link beneath the venue address */
+.venue-details-column .venue-get-directions{
+  margin:-3px 0 18px!important;
+  text-align:center!important;
+}
+.venue-details-column .venue-get-directions a{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:10px!important;
+  color:#526746!important;
+  font-family:cursive!important;
+  font-size:clamp(18px,2.3vw,27px)!important;
+  font-style:italic!important;
+  font-weight:700!important;
+  text-decoration:none!important;
+  border-bottom:4px solid #d6a1a5!important;
+  padding:0 0 2px!important;
+  line-height:1.05!important;
+  transition:color .2s ease,transform .2s ease!important;
+}
+.venue-details-column .venue-get-directions a span{
+  color:#98764b!important;
+  font-family:Arial,sans-serif!important;
+  font-size:1.3em!important;
+  font-style:normal!important;
+  font-weight:600!important;
+}
+.venue-details-column .venue-get-directions a:hover,
+.venue-details-column .venue-get-directions a:focus-visible{
+  color:#8b7053!important;
+  transform:translateX(2px)!important;
+  outline-offset:4px!important;
+}
