@@ -8907,3 +8907,29 @@ main#home > .couple-note-section {
     padding-top:22px!important;
   }
 }
+
+/* Dress-code palette headings for the three celebration events */
+main#home .itinerary-section .timeline-event-column .palette-title{
+  grid-column:2;
+  margin:14px 0 0;
+  color:#596544;
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:16px;
+  line-height:1.2;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-align:left;
+}
+@media(max-width:760px){
+  main#home .itinerary-section .timeline-event-column .palette-title{
+    grid-column:1/-1!important;
+    grid-row:3!important;
+    margin:8px 0 0!important;
+    text-align:center!important;
+    font-size:14px!important;
+  }
+  main#home .itinerary-section .timeline-event-column .timeline-palette{
+    grid-row:4!important;
+    margin-top:5px!important;
+  }
+}
