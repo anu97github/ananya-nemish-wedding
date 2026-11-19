@@ -8627,3 +8627,78 @@ main#home .itinerary-dresscode-note .dresscode-green{
   main#home .itinerary-section .timeline-event-column .palette-chip strong,main#home .itinerary-section .timeline-event-column .palette-chip code{font-size:9px!important;line-height:1.2!important;}
   main#home .itinerary-section .timeline-event-column .palette-chip .palette-arch{width:34px!important;height:46px!important;}
 }
+
+/* Mobile timeline refinement: balance time labels with event headings and
+   center the short gold connector on the timeline dot. Desktop is unchanged. */
+@media (max-width: 760px) {
+  main#home .itinerary-section .timeline-time-column,
+  main#home .itinerary-section .timeline-time-column .timeline-time {
+    font-size: 17px !important;
+    line-height: 1.12 !important;
+    font-weight: 500 !important;
+  }
+
+  main#home .itinerary-section .timeline-time-column::after {
+    /* Match the timeline dot center: dot is at 26px in the item; time row starts at 10px. */
+    top: 16px !important;
+    height: 1px !important;
+    transform: translateY(-50%) !important;
+    width: 7px !important;
+  }
+
+  /* Leave a small visual breathing space before the circular marker. */
+  main#home .itinerary-section .timeline-item.time-left .timeline-time-column::after {
+    right: -5px !important;
+  }
+  main#home .itinerary-section .timeline-item.event-left .timeline-time-column::after {
+    left: -5px !important;
+  }
+  /* Add a small gap between the time label and the connector dash. */
+  main#home .itinerary-section .timeline-item.time-left .timeline-time-column {
+    padding-right: 10px !important;
+  }
+  main#home .itinerary-section .timeline-item.event-left .timeline-time-column {
+    padding-left: 10px !important;
+  }
+
+  /* Connect the connector directly to the dot's outer edge (no visible gap). */
+  main#home .itinerary-section .timeline-item.time-left .timeline-time-column::after {
+    right: 0 !important;
+    width: 10px !important;
+  }
+  main#home .itinerary-section .timeline-item.event-left .timeline-time-column::after {
+    left: 0 !important;
+    width: 10px !important;
+  }
+
+}
+
+/* FINAL mobile connector fix: position the short dashes from the timeline item,
+   not from the time-label column. This anchors their endpoints to the dot geometry. */
+@media (max-width:760px) {
+  main#home .itinerary-section .timeline-item .timeline-time-column::after {
+    display:none!important;
+  }
+  main#home .itinerary-section .timeline-item::after {
+    content:""!important;
+    display:block!important;
+    position:absolute!important;
+    top:26px!important; /* same vertical center as the dot */
+    width:10px!important;
+    height:1px!important;
+    background:#b88e4e!important;
+    transform:none!important;
+    z-index:2!important;
+    pointer-events:none!important;
+  }
+  /* left-side time: dash ends at the dot's outer left edge */
+  main#home .itinerary-section .timeline-item.time-left::after {
+    left:calc(50% - 17px)!important;
+    right:auto!important;
+  }
+  /* right-side time: dash starts at the dot's outer right edge */
+  main#home .itinerary-section .timeline-item.event-left::after {
+    left:calc(50% + 7px)!important;
+    right:auto!important;
+  }
+}
