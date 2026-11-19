@@ -8627,3 +8627,29 @@ main#home .itinerary-dresscode-note .dresscode-green{
   main#home .itinerary-section .timeline-event-column .palette-chip strong,main#home .itinerary-section .timeline-event-column .palette-chip code{font-size:9px!important;line-height:1.2!important;}
   main#home .itinerary-section .timeline-event-column .palette-chip .palette-arch{width:34px!important;height:46px!important;}
 }
+
+/* Mobile timeline refinement: balance time labels with event headings and
+   center the short gold connector on the timeline dot. Desktop is unchanged. */
+@media (max-width: 760px) {
+  main#home .itinerary-section .timeline-time-column,
+  main#home .itinerary-section .timeline-time-column .timeline-time {
+    font-size: 16px !important;
+    line-height: 1.12 !important;
+    font-weight: 500 !important;
+  }
+
+  main#home .itinerary-section .timeline-time-column::after {
+    top: 50% !important;
+    height: 1px !important;
+    transform: translateY(-50%) !important;
+    width: 13px !important;
+  }
+
+  /* Leave a small visual breathing space before the circular marker. */
+  main#home .itinerary-section .timeline-item.time-left .timeline-time-column::after {
+    right: -7px !important;
+  }
+  main#home .itinerary-section .timeline-item.event-left .timeline-time-column::after {
+    left: -7px !important;
+  }
+}
