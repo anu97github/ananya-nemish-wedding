@@ -8428,7 +8428,7 @@ main#home .itinerary-section .timeline-item .timeline-event-column h3{
 }
 main#home .itinerary-section .timeline-time-column,
 main#home .itinerary-section .timeline-time-column .timeline-time{
-  font-size:29px!important;
+  font-size:26px!important;
   line-height:1.2!important;
   font-weight:600!important;
 }
@@ -8442,7 +8442,7 @@ main#home .itinerary-section .timeline-item .timeline-event-column p{
   main#home .itinerary-section .timeline-event-column h3,
   main#home .itinerary-section .timeline-item .timeline-event-column h3{font-size:25px!important}
   main#home .itinerary-section .timeline-time-column,
-  main#home .itinerary-section .timeline-time-column .timeline-time{font-size:23px!important}
+  main#home .itinerary-section .timeline-time-column .timeline-time{font-size:22px!important}
   main#home .itinerary-section .timeline-event-column p,
   main#home .itinerary-section .timeline-item .timeline-event-column p{font-size:15px!important}
 }
