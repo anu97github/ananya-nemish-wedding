@@ -8672,3 +8672,33 @@ main#home .itinerary-dresscode-note .dresscode-green{
   }
 
 }
+
+/* FINAL mobile connector fix: position the short dashes from the timeline item,
+   not from the time-label column. This anchors their endpoints to the dot geometry. */
+@media (max-width:760px) {
+  main#home .itinerary-section .timeline-item .timeline-time-column::after {
+    display:none!important;
+  }
+  main#home .itinerary-section .timeline-item::after {
+    content:""!important;
+    display:block!important;
+    position:absolute!important;
+    top:26px!important; /* same vertical center as the dot */
+    width:10px!important;
+    height:1px!important;
+    background:#b88e4e!important;
+    transform:none!important;
+    z-index:2!important;
+    pointer-events:none!important;
+  }
+  /* left-side time: dash ends at the dot's outer left edge */
+  main#home .itinerary-section .timeline-item.time-left::after {
+    left:calc(50% - 17px)!important;
+    right:auto!important;
+  }
+  /* right-side time: dash starts at the dot's outer right edge */
+  main#home .itinerary-section .timeline-item.event-left::after {
+    left:calc(50% + 7px)!important;
+    right:auto!important;
+  }
+}
