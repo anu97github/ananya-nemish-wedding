@@ -8285,7 +8285,7 @@ main#home .couple-section > img{
   main#home .timeline-time-column{
     display:flex!important; align-items:center!important; min-height:150px!important;
     padding:0 32px!important; position:relative!important;
-    color:#5f704e!important; font:600 25px/1.2 'Cormorant Garamond',Georgia,serif!important;
+    color:#5f704e!important; font:600 31px/1.2 'Cormorant Garamond',Georgia,serif!important;
     letter-spacing:0!important; white-space:nowrap!important;
   }
   main#home .timeline-time-column::after{
@@ -8320,12 +8320,12 @@ main#home .couple-section > img{
   main#home .timeline-event-column h3{
     grid-column:2!important; grid-row:1!important; align-self:end!important;
     margin:0!important; color:#596544!important;
-    font:500 39px/1.12 'Cormorant Garamond',Georgia,serif!important; text-align:left!important;
+    font:500 34px/1.12 'Cormorant Garamond',Georgia,serif!important; text-align:left!important;
   }
   main#home .timeline-event-column p{
     grid-column:2!important; grid-row:2!important; align-self:start!important;
     margin:4px 0 0!important; max-width:430px!important;
-    color:#76665c!important; font:400 21px/1.45 'Cormorant Garamond',Georgia,serif!important;
+    color:#76665c!important; font:400 17px/1.4 'Cormorant Garamond',Georgia,serif!important;
     text-align:left!important;
   }
   main#home .timeline-event-column .timeline-palette{
@@ -8368,7 +8368,7 @@ main#home .couple-section > img{
   main#home .timeline-time-column{
     grid-column:2!important; grid-row:1!important; justify-content:flex-start!important;
     min-height:0!important; padding:0 8px!important; white-space:normal!important;
-    font:600 22px/1.2 'Cormorant Garamond',Georgia,serif!important;
+    font:600 23px/1.2 'Cormorant Garamond',Georgia,serif!important;
   }
   main#home .timeline-time-column::after{display:none!important}
   main#home .timeline-event-column{
@@ -8385,11 +8385,11 @@ main#home .couple-section > img{
   }
   main#home .timeline-event-column h3{
     grid-column:2!important; grid-row:1!important; align-self:end!important;
-    margin:0!important; font:500 29px/1.12 'Cormorant Garamond',Georgia,serif!important; text-align:left!important;
+    margin:0!important; font:500 27px/1.12 'Cormorant Garamond',Georgia,serif!important; text-align:left!important;
   }
   main#home .timeline-event-column p{
     grid-column:2!important; grid-row:2!important; align-self:start!important;
-    margin:3px 0 0!important; font:400 17px/1.45 'Cormorant Garamond',Georgia,serif!important; text-align:left!important;
+    margin:3px 0 0!important; font:400 15.5px/1.4 'Cormorant Garamond',Georgia,serif!important; text-align:left!important;
   }
   main#home .timeline-event-column .timeline-palette{
     grid-column:1/-1!important; grid-row:3!important; width:100%!important; margin:14px 0 0!important;
