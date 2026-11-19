@@ -8933,3 +8933,23 @@ main#home .itinerary-section .timeline-event-column .palette-title{
     margin-top:5px!important;
   }
 }
+
+
+/* Fix palette heading placement: keep it on its own grid row without adding spacing. */
+@media(max-width:760px){
+  main#home .itinerary-section .timeline-event-column{
+    grid-template-rows:auto auto auto auto!important;
+  }
+  main#home .itinerary-section .timeline-event-column .palette-title{
+    grid-row:3!important;
+    margin:0!important;
+    align-self:start!important;
+    padding:0!important;
+    line-height:1.2!important;
+  }
+  main#home .itinerary-section .timeline-event-column .timeline-palette{
+    grid-row:4!important;
+    margin:0!important;
+    padding:0!important;
+  }
+}
