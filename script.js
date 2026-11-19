@@ -89,8 +89,8 @@
   updateCountdown();
   if (countdown) window.setInterval(updateCountdown, 1000);
 
-  // Self-hosted wedding soundtrack. Try autoplay on load; if the browser blocks
-  // it, start/unmute on an ordinary click/tap anywhere on the invitation.
+  // Wedding soundtrack: attempt audible autoplay, then use muted autoplay
+  // fallback where browsers block audio on first load. Unmute on first interaction.
   const soundButton = document.getElementById('soundToggle');
   const soundLabel = document.getElementById('soundLabel');
   const weddingAudio = document.getElementById('weddingAudio');
@@ -100,6 +100,31 @@
     soundButton?.setAttribute('aria-pressed', String(on));
     soundButton?.setAttribute('aria-label', on ? 'Pause wedding music' : 'Play wedding music');
     if (soundLabel) soundLabel.textContent = label || (on ? (weddingAudio?.muted ? 'MUSIC PLAYING · MUTED' : 'MUSIC ON') : 'MUSIC OFF');
+  }
+
+  function removeAutoplayUnlock() {
+    window.removeEventListener('pointerdown', unlockAutoplaySound, true);
+    window.removeEventListener('touchstart', unlockAutoplaySound, true);
+    window.removeEventListener('keydown', unlockAutoplaySound, true);
+  }
+
+  async function unlockAutoplaySound(event) {
+    // The dedicated sound button handles its own toggle action.
+    if (event?.target?.closest?.('#soundToggle')) return;
+    if (!weddingAudio || weddingAudio.paused) return;
+    if (!weddingAudio.muted) {
+      removeAutoplayUnlock();
+      return;
+    }
+    weddingAudio.muted = false;
+    try {
+      await weddingAudio.play();
+      updateSound(true, 'MUSIC ON');
+      removeAutoplayUnlock();
+    } catch (_) {
+      weddingAudio.muted = true;
+      updateSound(true, 'MUSIC PLAYING · MUTED');
+    }
   }
 
   if (weddingAudio) {
@@ -113,7 +138,6 @@
     });
     weddingAudio.addEventListener('error', () => updateSound(false, 'MUSIC UNAVAILABLE'));
   }
-
 
   function toggleMusic() {
     if (!weddingAudio) return;
@@ -132,20 +156,24 @@
 
   soundButton?.addEventListener('click', toggleMusic);
 
-  // Make the initial autoplay attempt immediately. If audible autoplay is
-  // blocked, fall back to muted playback; a normal page tap will unmute it.
-  const initialPlay = weddingAudio?.play();
-  initialPlay?.then(() => updateSound(true, weddingAudio.muted ? 'MUSIC PLAYING · MUTED' : 'MUSIC ON'))
-    .catch(async () => {
-      if (!weddingAudio) return;
-      weddingAudio.muted = true;
-      try {
-        await weddingAudio.play();
-        updateSound(true, 'MUSIC PLAYING · MUTED');
-      } catch (_) {
-        updateSound(false, 'MUSIC OFF');
-      }
-    });
+  // First attempt unmuted autoplay; if blocked, start muted and wait to unmute
+  // on the first normal tap/click/keypress anywhere on the page.
+  if (weddingAudio) {
+    const initialPlay = weddingAudio.play();
+    initialPlay?.then(() => updateSound(true, weddingAudio.muted ? 'MUSIC PLAYING · MUTED' : 'MUSIC ON'))
+      .catch(async () => {
+        weddingAudio.muted = true;
+        try {
+          await weddingAudio.play();
+          updateSound(true, 'MUSIC PLAYING · MUTED');
+        } catch (_) {
+          updateSound(false, 'MUSIC OFF');
+        }
+      });
+    window.addEventListener('pointerdown', unlockAutoplaySound, true);
+    window.addEventListener('touchstart', unlockAutoplaySound, true);
+    window.addEventListener('keydown', unlockAutoplaySound, true);
+  }
   updateSound(false, 'LOADING MUSIC');
 
 
