@@ -8877,3 +8877,33 @@ main#home > .venue-section {
     padding-bottom:34px!important;
   }
 }
+
+/* Stronger visible separation for the two transitions called out in review.
+   Increase the preceding section's bottom space AND following section's top
+   space so the visual gap is clearly larger than the standard transitions. */
+main#home > .couple-section {
+  padding-bottom:62px!important;
+}
+main#home > .itinerary-section {
+  padding-top:30px!important;
+}
+main#home > .venue-section {
+  padding-bottom:62px!important;
+}
+main#home > .couple-note-section {
+  padding-top:30px!important;
+}
+@media(max-width:760px) {
+  main#home > .couple-section {
+    padding-bottom:48px!important;
+  }
+  main#home > .itinerary-section {
+    padding-top:22px!important;
+  }
+  main#home > .venue-section {
+    padding-bottom:48px!important;
+  }
+  main#home > .couple-note-section {
+    padding-top:22px!important;
+  }
+}
