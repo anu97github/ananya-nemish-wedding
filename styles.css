@@ -8745,3 +8745,18 @@ main#home #countdownTitle .heading-accent {
 main#home .couple-section #meetCoupleTitle::after {
   color:var(--gold)!important;
 }
+
+/* Mobile guest-note leaf medallion: keep the badge perfectly circular. */
+@media (max-width:760px) {
+  .couple-note-section .guestbook-card::before {
+    width:46px!important;
+    height:46px!important;
+    min-width:46px!important;
+    max-width:46px!important;
+    aspect-ratio:1/1!important;
+    box-sizing:border-box!important;
+    border-radius:50%!important;
+    left:50%!important;
+    transform:translateX(-50%)!important;
+  }
+}
