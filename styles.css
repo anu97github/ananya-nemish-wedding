@@ -8466,3 +8466,37 @@ main#home .itinerary-section .timeline-item .timeline-event-column p{
   main#home .itinerary-section .timeline-event-column p,
   main#home .itinerary-section .timeline-item .timeline-event-column p{font-size:15px!important}
 }
+
+
+/* Match the itinerary dress-code line to the keepsake-note heading typography.
+   Preserve the uppercase emphasis only on Indian or Indo-Western outfits. */
+main#home .itinerary-heading .itinerary-dresscode-note{
+  font-size:clamp(13px,1.35vw,20px)!important;
+  line-height:1.2!important;
+  letter-spacing:-.02em!important;
+  font-weight:500!important;
+}
+main#home .itinerary-dresscode-note .dresscode-green{
+  text-transform:uppercase!important;
+  font-weight:600!important;
+}
+@media(max-width:760px){
+  main#home .itinerary-heading .itinerary-dresscode-note{
+    font-size:clamp(9px,1.8vw,14px)!important;
+    letter-spacing:-.02em!important;
+  }
+}
+
+/* Slightly enlarge all three celebration date tabs for better readability. */
+.itinerary-section .day-tab span{font-size:9px!important}
+.itinerary-section .day-tab strong{font-size:clamp(17px,1.9vw,21px)!important}
+.itinerary-section .day-tab small{font-size:11px!important}
+@media(max-width:760px){
+  .itinerary-section .day-tab span{font-size:9px!important}
+  .itinerary-section .day-tab strong{font-size:clamp(14px,3.6vw,18px)!important}
+  .itinerary-section .day-tab small{font-size:11px!important}
+}
+@media(max-width:380px){
+  .itinerary-section .day-tab span{font-size:7.5px!important}
+  .itinerary-section .day-tab strong{font-size:14px!important}
+}
