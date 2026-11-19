@@ -8959,3 +8959,16 @@ main#home #itinerary .timeline-item .timeline-palette.palette-expanded .palette-
 main#home #itinerary .timeline-item .timeline-palette.palette-expanded .palette-chip code{
   padding-block:2px!important;
 }
+
+
+/* Align Colours to Wear with the first/last palette swatch, not the full palette container. */
+main#home #itinerary .timeline-item.time-left .timeline-event-column .timeline-palette .palette-title{
+  grid-column:1!important;
+  width:76px!important;
+  text-align:left!important;
+}
+main#home #itinerary .timeline-item.event-left .timeline-event-column .timeline-palette .palette-title{
+  grid-column:4!important;
+  width:76px!important;
+  text-align:right!important;
+}
