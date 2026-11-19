@@ -1630,7 +1630,7 @@ body,button,input,select,textarea{
 /* Event-specific placement for the Colours to Wear headings. */
 .timeline-event-column:has(.timeline-event-icon[src*="haldi.png"]) .timeline-palette-title{font-size:15px!important;transform:translate(70px,-14px)!important;margin-top:0!important}
 .timeline-event-column:has(.timeline-event-icon[src*="mehendi.png"]) .timeline-palette-title{font-size:15px!important;transform:translate(120px,-14px)!important}
-.timeline-event-column:has(.timeline-event-icon[src*="wedding.png"]) .timeline-palette-title{font-size:15px!important;transform:translate(120px,-14px)!important}
+.timeline-event-column:has(.timeline-event-icon[src*="wedding.png"]) .timeline-palette-title{font-size:15px!important;transform:translate(-120px,-14px)!important}
 
 .timeline-palette span{width:18px;height:18px;border-radius:50%;background:var(--swatch);border:1px solid rgba(70,86,63,.15)}
 .timeline-palette b{flex-basis:100%;font-size:8px;line-height:1.5;letter-spacing:.07em;color:var(--dark-olive)}
