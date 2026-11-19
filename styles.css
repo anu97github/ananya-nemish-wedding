@@ -5951,7 +5951,7 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
 .guestbook-submit{
   width:auto!important;
   min-width:0!important;
-  padding:10px 20px!important;
+  padding:9px 22px!important;
   margin-top:15px!important;
   font-size:9px!important;
 }
@@ -6268,7 +6268,7 @@ body,button,input,select,textarea{font-family:'Cormorant Garamond',Georgia,serif
   margin:0!important;
   padding:11px 14px!important;
   border:1px solid rgba(177,151,108,.68)!important;
-  border-radius:5px!important;
+  border-radius:999px!important;
   background:rgba(255,253,248,.56)!important;
   color:#49372b!important;
   font:italic 15px/1.55 var(--serif)!important;
@@ -8933,9 +8933,9 @@ main#home > .couple-note-section {
   transition:background .2s ease,color .2s ease,transform .2s ease!important;
 }
 .venue-details-column .venue-get-directions .directions-icon{
-  width:25px!important;
-  height:25px!important;
-  flex:0 0 25px!important;
+  width:27px!important;
+  height:27px!important;
+  flex:0 0 27px!important;
   color:#98764b!important;
 }
 .venue-details-column .venue-get-directions a:hover,
