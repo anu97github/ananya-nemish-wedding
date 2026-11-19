@@ -18,6 +18,14 @@
 </head>
 <body>
   <audio id="weddingAudio" preload="auto" loop playsinline aria-label="Wedding soundtrack"><source src="/assets/wedding-song.mp3" type="audio/mpeg"></audio>
+  <div class="music-entry is-dismissed" id="musicEntry" aria-hidden="true">
+    <div class="music-entry-card">
+      <p class="music-entry-eyebrow">A LITTLE LOVE GOES A LONG WAY</p>
+      <p class="music-entry-message">A soundtrack for our celebration</p>
+      <button class="music-entry-start" id="musicEntryStart" type="button">ENTER WITH MUSIC <span aria-hidden="true">↗</span></button>
+      <button class="music-entry-skip" id="musicEntrySkip" type="button">CONTINUE WITHOUT MUSIC</button>
+    </div>
+  </div>
   <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false" aria-label="Turn wedding music on">
     <span class="sound-symbol" aria-hidden="true">♫</span><span id="soundLabel">SOUND OFF</span>
   </button>
