@@ -8907,3 +8907,31 @@ main#home > .couple-note-section {
     padding-top:22px!important;
   }
 }
+
+/* Browser autoplay fallback: an intentional one-click start enables audible playback. */
+.music-entry {
+  position:fixed;inset:0;z-index:10001;display:grid;place-items:center;
+  padding:24px;background:rgba(250,248,242,.96);backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);opacity:1;visibility:visible;
+  transition:opacity .35s ease,visibility .35s ease;
+}
+.music-entry.is-dismissed {opacity:0;visibility:hidden;pointer-events:none}
+.music-entry-card {
+  width:min(100%,420px);padding:clamp(28px,6vw,48px) 24px;text-align:center;
+  border:1px solid rgba(198,173,123,.6);outline:1px solid rgba(198,173,123,.32);
+  outline-offset:5px;background:rgba(255,251,244,.72);
+}
+.music-entry-eyebrow {margin:0;color:var(--gold);font-size:11px;letter-spacing:.24em;line-height:1.8}
+.music-entry-message {margin:18px 0 28px;color:var(--dark-olive);font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(24px,5vw,32px);line-height:1.25}
+.music-entry-start {
+  display:inline-flex;align-items:center;justify-content:center;gap:14px;
+  min-height:54px;width:min(100%,320px);padding:14px 24px;border:0;border-radius:999px;
+  background:var(--olive);color:#fff;font-size:12px;font-weight:600;letter-spacing:.18em;
+  cursor:pointer;transition:transform .2s,background .2s;
+}
+.music-entry-start:hover {transform:translateY(-2px);background:var(--dark-olive)}
+.music-entry-skip {
+  display:block;margin:20px auto 0;padding:10px 12px;border:0;background:transparent;
+  color:var(--ink);font-size:10px;letter-spacing:.14em;cursor:pointer;
+}
+@media(prefers-reduced-motion:reduce){.music-entry{transition:none}}
