@@ -8451,7 +8451,7 @@ main#home .itinerary-section .timeline-item .timeline-event-column p{
 /* Match the itinerary dress-code line to the keepsake-note heading typography.
    Preserve the uppercase emphasis only on Indian or Indo-Western outfits. */
 main#home .itinerary-heading .itinerary-dresscode-note{
-  font-size:clamp(16px,1.8vw,26px)!important;
+  font-size:clamp(14px,1.5vw,22px)!important;
   line-height:1.2!important;
   letter-spacing:-.02em!important;
   font-weight:500!important;
@@ -8462,7 +8462,7 @@ main#home .itinerary-dresscode-note .dresscode-green{
 }
 @media(max-width:760px){
   main#home .itinerary-heading .itinerary-dresscode-note{
-    font-size:clamp(10px,2.3vw,17px)!important;
+    font-size:clamp(10px,2.0vw,15px)!important;
     letter-spacing:-.02em!important;
   }
 }
