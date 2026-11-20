@@ -89,7 +89,7 @@
   updateCountdown();
   if (countdown) window.setInterval(updateCountdown, 1000);
 
-  // Monogram: slow zoom from tiny to settled; then type TAP TO UNVEIL letter by letter.
+  // Slow blurred monogram zoom, then immediate cursive type-on prompt.
   const intro = document.getElementById('invitationIntro');
   const introLogo = intro?.querySelector('.intro-logo');
   const introOpenButton = document.getElementById('introOpenButton');
@@ -119,15 +119,16 @@
 
   function typePrompt() {
     if (!introOpenButton) return;
-    const phrase = 'TAP TO UNVEIL';
+    const phrase = 'Tap to Unveil';
     introOpenButton.hidden = false;
     introOpenButton.textContent = '';
     introOpenButton.classList.add('is-visible');
     let index = 0;
-    const step = reducedMotion ? 110 : 190;
+    const step = reducedMotion ? 85 : 125;
+    // First character appears immediately, with no delay after the logo settles.
+    introOpenButton.textContent = phrase[index++];
     promptTimer = window.setInterval(() => {
-      introOpenButton.textContent += phrase[index];
-      index++;
+      introOpenButton.textContent += phrase[index++];
       if (index >= phrase.length) {
         window.clearInterval(promptTimer);
         promptTimer = null;
@@ -139,24 +140,25 @@
     if (!introLogo) { typePrompt(); return; }
     introLogo.style.opacity = '0';
     introLogo.style.transform = 'scale(.018)';
+    introLogo.style.filter = 'blur(14px)';
     const duration = reducedMotion ? 5200 : 7600;
     const frames = [
-      { opacity: 0, transform: 'scale(.018)', offset: 0 },
-      { opacity: .12, transform: 'scale(.06)', offset: .14 },
-      { opacity: .4, transform: 'scale(.18)', offset: .34 },
-      { opacity: .8, transform: 'scale(.42)', offset: .56 },
-      { opacity: 1, transform: 'scale(.78)', offset: .76 },
-      { opacity: 1, transform: 'scale(1.04)', offset: .91 },
-      { opacity: 1, transform: 'scale(1)', offset: 1 }
+      { opacity: 0, transform: 'scale(.018)', filter: 'blur(14px)', offset: 0 },
+      { opacity: .16, transform: 'scale(.06)', filter: 'blur(11px)', offset: .14 },
+      { opacity: .42, transform: 'scale(.18)', filter: 'blur(8px)', offset: .34 },
+      { opacity: .78, transform: 'scale(.42)', filter: 'blur(5px)', offset: .56 },
+      { opacity: 1, transform: 'scale(.78)', filter: 'blur(2.5px)', offset: .76 },
+      { opacity: 1, transform: 'scale(1.04)', filter: 'blur(.5px)', offset: .91 },
+      { opacity: 1, transform: 'scale(1)', filter: 'blur(0px)', offset: 1 }
     ];
     if (typeof introLogo.animate === 'function') {
       try {
         const motion = introLogo.animate(frames, {
-          duration, delay: 250, easing: 'cubic-bezier(.16,.7,.2,1)', fill: 'forwards'
+          duration, delay: 120, easing: 'cubic-bezier(.16,.7,.2,1)', fill: 'forwards'
         });
         motion.finished.then(typePrompt).catch(() => {});
         return;
-      } catch (animationError) { /* fallback below */ }
+      } catch (animationError) { /* CSS fallback below */ }
     }
     introLogo.classList.add('fallback-zoom');
     introLogo.addEventListener('animationend', typePrompt, { once: true });
