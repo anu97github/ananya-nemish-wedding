@@ -97,7 +97,8 @@
   const soundLabel = document.getElementById('soundLabel');
   const weddingAudio = document.getElementById('weddingAudio');
   let intentionallyPaused = false;
-  let promptTimer = null;\n  let promptStarted = false;
+  let promptTimer = null;
+  let promptStarted = false;\n  let promptStarted = false;
 
   function updateSound(on, label) {
     soundButton?.setAttribute('aria-pressed', String(on));
@@ -118,7 +119,8 @@
   }
 
   function typePrompt() {
-    if (!introOpenButton) return;
+    if (!introOpenButton || promptStarted) return;
+    promptStarted = true;
     const phrase = 'Tap to Unveil';
     introOpenButton.hidden = false;
     introOpenButton.textContent = '';
