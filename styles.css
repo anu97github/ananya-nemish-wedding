@@ -9093,30 +9093,17 @@ body.intro-active .sound-toggle{visibility:hidden;opacity:0;pointer-events:none}
   }
 }
 
-/* Website focus reveal: the page beneath the cover begins softly blurred and
-   fades into crisp focus while the cover is opening. */
+/* Initial website state. The actual reveal is driven by a Web Animations API
+   sequence in script.js, rather than relying on class-triggered CSS transitions. */
 body.intro-active main#home {
   opacity: 0;
-  filter: blur(12px);
-  transform: scale(.985);
-  /* Establish the transition before the click changes the reveal state. */
-  transition:
-    opacity 1.15s cubic-bezier(.22,.72,.18,1) .08s,
-    filter 1.15s cubic-bezier(.22,.72,.18,1) .08s,
-    transform 1.15s cubic-bezier(.22,.72,.18,1) .08s;
-  will-change: opacity, filter, transform;
-}
-body.intro-active.website-revealing main#home {
-  opacity: 1;
-  filter: blur(0);
-  transform: scale(1);
+  filter: blur(16px);
+  transform: scale(.975);
 }
 @media (prefers-reduced-motion: reduce) {
-  body.intro-active main#home,
-  body.intro-active.website-revealing main#home {
+  body.intro-active main#home {
     opacity: 1;
     filter: none;
     transform: none;
-    transition: none;
   }
 }
