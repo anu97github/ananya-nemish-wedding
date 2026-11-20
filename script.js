@@ -177,7 +177,7 @@
     intro.setAttribute('aria-hidden', 'true');
     window.setTimeout(() => { intro.hidden = true; document.body.classList.remove('intro-active'); }, 480);
   }
-  introOpenButton?.addEventListener('click', openInvitation);
+  intro?.addEventListener('click', openInvitation);
   function toggleMusic() {
     if (!weddingAudio) return;
     if (weddingAudio.paused) startWeddingMusic();
