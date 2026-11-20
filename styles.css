@@ -8963,3 +8963,23 @@ main#home > .couple-note-section {
 }
 
 /* Deployment retry trigger: harmless stylesheet comment. */
+
+
+/* Consistent palette-heading alignment across desktop and mobile: left edge starts at first swatch. */
+main#home .timeline-event-column .timeline-palette-title{
+  grid-column:1/-1!important; grid-row:3!important;
+  transform:none!important; margin:0!important;
+  width:100%!important; text-align:left!important;
+  font-size:15px!important; font-weight:700!important;
+}
+main#home .timeline-event-column .timeline-palette{
+  grid-row:4!important;
+}
+@media(max-width:760px){
+  main#home .itinerary-section .timeline-event-column .timeline-palette-title{
+    grid-column:1/-1!important; grid-row:3!important;
+    transform:none!important; margin:0!important;
+    width:100%!important; text-align:left!important;
+    font-size:15px!important; font-weight:700!important;
+  }
+}
