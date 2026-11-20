@@ -9052,6 +9052,9 @@ body.intro-active .sound-toggle{visibility:hidden;opacity:0;pointer-events:none}
 }
 .intro-logo.fallback-zoom{animation:intro-logo-zoom 7.6s cubic-bezier(.16,.7,.2,1) forwards}
 .intro-open-button{
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;-webkit-user-select:none;
+  touch-action:manipulation;
   margin:2px 0 0;padding:13px 8px;border:0;background:transparent;
   color:#536F4A;font-family:'Great Vibes',cursive;font-size:clamp(34px,4.6vw,48px);
   font-weight:400;letter-spacing:.015em;line-height:1.15;
@@ -9061,6 +9064,7 @@ body.intro-active .sound-toggle{visibility:hidden;opacity:0;pointer-events:none}
 .intro-open-button[hidden]{display:none}
 .intro-open-button.is-visible{opacity:1;transform:translateY(0)}
 .intro-open-button:focus-visible{outline:1px solid #BDA77D;outline-offset:7px}
+.intro-open-button:focus:not(:focus-visible){outline:none}
 @keyframes intro-logo-zoom{
   0%{opacity:0;transform:scale(.018);filter:blur(14px)}
   14%{opacity:.16;transform:scale(.06);filter:blur(11px)}
