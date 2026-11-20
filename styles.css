@@ -9052,7 +9052,7 @@ body.intro-active .sound-toggle{visibility:hidden;opacity:0;pointer-events:none}
 }
 .intro-logo.fallback-zoom{animation:intro-logo-zoom 7.6s cubic-bezier(.16,.7,.2,1) forwards}
 .intro-open-button{
-  margin:18px 0 0;padding:13px 8px;border:0;background:transparent;
+  margin:2px 0 0;padding:13px 8px;border:0;background:transparent;
   color:#536F4A;font-family:'Great Vibes',cursive;font-size:clamp(34px,4.6vw,48px);
   font-weight:400;letter-spacing:.015em;line-height:1.15;
   cursor:pointer;opacity:0;transform:translateY(4px);white-space:pre;
@@ -9072,7 +9072,7 @@ body.intro-active .sound-toggle{visibility:hidden;opacity:0;pointer-events:none}
 }
 @media(max-width:600px){
   .intro-logo{width:min(310px,76vw);height:min(310px,76vw)}
-  .intro-open-button{margin-top:16px;font-size:clamp(30px,8vw,40px)}
+  .intro-open-button{margin-top:2px;font-size:clamp(30px,8vw,40px)}
 }
 @media(prefers-reduced-motion:reduce){
   .intro-logo.fallback-zoom{animation-duration:5.2s}
