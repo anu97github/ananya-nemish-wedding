@@ -9113,27 +9113,29 @@ body.intro-active .sound-toggle{visibility:hidden;opacity:0;pointer-events:none}
 }
 
 
-/* Additional invitation-cover typography and restrained ornament */
-.invitation-intro .intro-kicker{
-  position:absolute;top:clamp(42px,8vh,78px);left:20px;right:20px;
-  margin:0;text-align:center;color:#9A8159;
-  font:600 10px/1.3 'Cormorant Garamond',serif;letter-spacing:.34em;
-  opacity:.88;
+
+/* Minimal decorative invitation-cover ornaments — no additional copy */
+.intro-ornament{
+  position:absolute;left:50%;width:74px;height:14px;transform:translateX(-50%);
+  pointer-events:none;opacity:.7;
 }
-.invitation-intro .intro-footer{
-  position:absolute;bottom:clamp(43px,8vh,78px);left:20px;right:20px;
-  display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;
-  color:#8D7959;
+.intro-ornament-top{top:clamp(29px,5.2vw,52px)}
+.intro-ornament-bottom{bottom:clamp(29px,5.2vw,52px)}
+.intro-ornament::before,.intro-ornament::after{
+  content:"";position:absolute;top:50%;width:27px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(173,139,79,.65));
 }
-.invitation-intro .intro-date{font:600 11px/1.2 'Cormorant Garamond',serif;letter-spacing:.24em}
-.invitation-intro .intro-location{font:500 9px/1.2 'Cormorant Garamond',serif;letter-spacing:.28em;opacity:.82}
-.invitation-intro .intro-footer::before{
-  content:"";width:52px;height:1px;margin-bottom:3px;
-  background:linear-gradient(90deg,transparent,#BDA77D,transparent);
+.intro-ornament::before{right:calc(50% + 8px)}
+.intro-ornament::after{left:calc(50% + 8px);transform:scaleX(-1)}
+.intro-ornament span{
+  position:absolute;left:50%;top:50%;width:7px;height:7px;
+  border:1px solid rgba(173,139,79,.65);transform:translate(-50%,-50%) rotate(45deg);
+}
+.intro-ornament span::before{
+  content:"";position:absolute;inset:1px;background:rgba(173,139,79,.15);
 }
 @media(max-width:600px){
- .invitation-intro .intro-kicker{top:clamp(35px,7vh,56px);font-size:9px;letter-spacing:.26em}
- .invitation-intro .intro-footer{bottom:clamp(36px,7vh,56px);gap:7px}
- .invitation-intro .intro-date{font-size:10px;letter-spacing:.18em}
- .invitation-intro .intro-location{font-size:8px;letter-spacing:.21em}
+  .intro-ornament-top{top:clamp(28px,5vh,40px)}
+  .intro-ornament-bottom{bottom:clamp(28px,5vh,40px)}
 }
+
