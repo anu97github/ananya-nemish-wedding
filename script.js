@@ -189,12 +189,12 @@
       { opacity: 0 },
       { opacity: 1 }
     ] : [
-      { opacity: 0, filter: 'blur(26px)', transform: 'scale(.94)' },
-      { opacity: 0.32, filter: 'blur(17px)', transform: 'scale(.965)', offset: 0.28 },
-      { opacity: 0.72, filter: 'blur(7px)', transform: 'scale(.985)', offset: 0.68 },
+      { opacity: 0, filter: 'blur(14px)', transform: 'scale(.965)' },
+      { opacity: 0.5, filter: 'blur(8px)', transform: 'scale(.98)', offset: 0.32 },
+      { opacity: 0.82, filter: 'blur(3px)', transform: 'scale(.992)', offset: 0.72 },
       { opacity: 1, filter: 'blur(0)', transform: 'scale(1)' }
     ], {
-      duration: reducedMotion ? 900 : 2400,
+      duration: reducedMotion ? 900 : 2100,
       delay: reducedMotion ? 0 : 180,
       easing: 'cubic-bezier(.16,.72,.18,1)',
       fill: 'forwards'
