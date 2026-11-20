@@ -9111,3 +9111,29 @@ body.intro-active .sound-toggle{visibility:hidden;opacity:0;pointer-events:none}
 .couple-note-section .guestbook-card .guestbook-medallion {
   z-index:100!important;
 }
+
+
+/* Additional invitation-cover typography and restrained ornament */
+.invitation-intro .intro-kicker{
+  position:absolute;top:clamp(42px,8vh,78px);left:20px;right:20px;
+  margin:0;text-align:center;color:#9A8159;
+  font:600 10px/1.3 'Cormorant Garamond',serif;letter-spacing:.34em;
+  opacity:.88;
+}
+.invitation-intro .intro-footer{
+  position:absolute;bottom:clamp(43px,8vh,78px);left:20px;right:20px;
+  display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;
+  color:#8D7959;
+}
+.invitation-intro .intro-date{font:600 11px/1.2 'Cormorant Garamond',serif;letter-spacing:.24em}
+.invitation-intro .intro-location{font:500 9px/1.2 'Cormorant Garamond',serif;letter-spacing:.28em;opacity:.82}
+.invitation-intro .intro-footer::before{
+  content:"";width:52px;height:1px;margin-bottom:3px;
+  background:linear-gradient(90deg,transparent,#BDA77D,transparent);
+}
+@media(max-width:600px){
+ .invitation-intro .intro-kicker{top:clamp(35px,7vh,56px);font-size:9px;letter-spacing:.26em}
+ .invitation-intro .intro-footer{bottom:clamp(36px,7vh,56px);gap:7px}
+ .invitation-intro .intro-date{font-size:10px;letter-spacing:.18em}
+ .invitation-intro .intro-location{font-size:8px;letter-spacing:.21em}
+}
