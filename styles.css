@@ -9043,8 +9043,8 @@ body.intro-active .sound-toggle{visibility:hidden;opacity:0;pointer-events:none}
 .intro-logo{
   display:block;width:min(370px,70vw);height:min(370px,70vw);
   background-color:#536F4A;
-  -webkit-mask-image:url("assets/intro-monogram.svg");
-  mask-image:url("assets/intro-monogram.svg");
+  -webkit-mask-image:url("assets/an-reverse.png");
+  mask-image:url("assets/an-reverse.png");
   -webkit-mask-position:center;-webkit-mask-size:contain;-webkit-mask-repeat:no-repeat;
   mask-position:center;mask-size:contain;mask-repeat:no-repeat;
   opacity:0;transform:scale(.018);filter:blur(14px);transform-origin:center;
@@ -9056,7 +9056,7 @@ body.intro-active .sound-toggle{visibility:hidden;opacity:0;pointer-events:none}
   color:#536F4A;font-family:'Great Vibes',cursive;font-size:clamp(34px,4.6vw,48px);
   font-weight:400;letter-spacing:.015em;line-height:1.15;
   cursor:pointer;opacity:0;transform:translateY(4px);white-space:pre;
-  transition:opacity .18s ease,transform .18s ease;
+  transition:opacity .04s linear,transform .04s linear;
 }
 .intro-open-button[hidden]{display:none}
 .intro-open-button.is-visible{opacity:1;transform:translateY(0)}
