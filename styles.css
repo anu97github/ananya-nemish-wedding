@@ -1625,6 +1625,13 @@ body,button,input,select,textarea{
 .timeline-item h3{margin:9px 0 6px;color:var(--dark-olive);font:500 24px/1.15 var(--serif)}
 .timeline-item p{margin:0;max-width:190px;color:var(--muted);font-size:12px;line-height:1.65}
 .timeline-palette{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-top:12px;max-width:200px}
+.timeline-palette-title{margin:12px 0 0;color:var(--dark-olive);font:700 13px/1.35 var(--serif);letter-spacing:.02em}
+.timeline-palette-title+.timeline-palette{margin-top:6px}
+/* Event-specific placement for the Colours to Wear headings. */
+.timeline-event-column:has(.timeline-event-icon[src*="haldi.png"]) .timeline-palette-title{font-size:15px!important;transform:translate(70px,-14px)!important;margin-top:0!important}
+.timeline-event-column:has(.timeline-event-icon[src*="mehendi.png"]) .timeline-palette-title{font-size:15px!important;transform:translate(120px,-14px)!important}
+.timeline-event-column:has(.timeline-event-icon[src*="wedding.png"]) .timeline-palette-title{font-size:15px!important;transform:translate(-120px,-14px)!important}
+
 .timeline-palette span{width:18px;height:18px;border-radius:50%;background:var(--swatch);border:1px solid rgba(70,86,63,.15)}
 .timeline-palette b{flex-basis:100%;font-size:8px;line-height:1.5;letter-spacing:.07em;color:var(--dark-olive)}
 .timeline-hint{text-align:center;margin:0;color:var(--olive);font-size:9px;font-weight:700;letter-spacing:.18em}
@@ -8328,9 +8335,13 @@ main#home .couple-section > img{
     color:#76665c!important; font:400 17px/1.4 'Cormorant Garamond',Georgia,serif!important;
     text-align:left!important;
   }
+  main#home .timeline-event-column .timeline-palette-title{
+    grid-column:2!important; grid-row:3!important; align-self:start!important;
+    margin:12px 0 0!important; font-weight:700!important; text-align:left!important;
+  }
   main#home .timeline-event-column .timeline-palette{
-    grid-column:1/-1!important; grid-row:3!important;
-    width:min(100%,500px)!important; margin:18px 0 0!important;
+    grid-column:1/-1!important; grid-row:4!important;
+    width:min(100%,500px)!important; margin:6px 0 0!important;
   }
   main#home .timeline-item.event-left .timeline-event-column{
     grid-column:1!important; grid-row:1!important;
@@ -8347,8 +8358,11 @@ main#home .couple-section > img{
   main#home .timeline-item.event-left .timeline-event-column p{
     grid-column:1!important; grid-row:2!important; text-align:right!important;
   }
+  main#home .timeline-item.event-left .timeline-event-column .timeline-palette-title{
+    grid-column:1!important; grid-row:3!important; text-align:right!important;
+  }
   main#home .timeline-item.event-left .timeline-palette{
-    grid-column:1/-1!important; grid-row:3!important; justify-self:end!important;
+    grid-column:1/-1!important; grid-row:4!important; justify-self:end!important;
   }
   main#home .timeline-event-column .palette-chip strong,
   main#home .timeline-event-column .palette-chip code{font-size:14px!important}
@@ -8623,7 +8637,8 @@ main#home .itinerary-dresscode-note .dresscode-green{
   main#home .itinerary-section .timeline-item.event-left .timeline-event-column .timeline-event-icon{grid-column:2!important;grid-row:1/span 2!important;}
   main#home .itinerary-section .timeline-item.event-left .timeline-event-column h3{grid-column:1!important;grid-row:1!important;text-align:right!important;}
   main#home .itinerary-section .timeline-item.event-left .timeline-event-column p{grid-column:1!important;grid-row:2!important;text-align:right!important;}
-  main#home .itinerary-section .timeline-event-column .timeline-palette{grid-column:1/-1!important;grid-row:3!important;width:100%!important;max-width:100%!important;margin:8px 0 0!important;justify-self:stretch!important;}
+  main#home .itinerary-section .timeline-event-column .timeline-palette-title{grid-column:1/-1!important;grid-row:3!important;margin:8px 0 0!important;font-weight:700!important;text-align:inherit!important;}
+  main#home .itinerary-section .timeline-event-column .timeline-palette{grid-column:1/-1!important;grid-row:4!important;width:100%!important;max-width:100%!important;margin:4px 0 0!important;justify-self:stretch!important;}
   main#home .itinerary-section .timeline-event-column .palette-chip strong,main#home .itinerary-section .timeline-event-column .palette-chip code{font-size:9px!important;line-height:1.2!important;}
   main#home .itinerary-section .timeline-event-column .palette-chip .palette-arch{width:34px!important;height:46px!important;}
 }
@@ -8945,4 +8960,61 @@ main#home > .couple-note-section {
   color:#4e5e3d!important;
   transform:translateY(-1px)!important;
   outline-offset:3px!important;
+}
+
+/* Deployment retry trigger: harmless stylesheet comment. */
+
+
+/* Consistent palette-heading alignment across desktop and mobile: left edge starts at first swatch. */
+main#home .timeline-event-column .timeline-palette-title{
+  grid-column:1/-1!important; grid-row:3!important;
+  transform:none!important; margin:0!important;
+  width:100%!important; text-align:left!important;
+  font-size:15px!important; font-weight:700!important;
+}
+main#home .timeline-event-column .timeline-palette{
+  grid-row:4!important;
+}
+@media(max-width:760px){
+  main#home .itinerary-section .timeline-event-column .timeline-palette-title{
+    grid-column:1/-1!important; grid-row:3!important;
+    transform:none!important; margin:0!important;
+    width:100%!important; text-align:left!important;
+    font-size:15px!important; font-weight:700!important;
+  }
+}
+
+/* Align Colours to Wear with first swatch edge across desktop and mobile. */
+main#home .timeline-event-column .timeline-palette-title{
+  grid-column:1/-1!important; grid-row:3!important;
+  box-sizing:border-box!important; width:100%!important;
+  padding-left:calc((100% / 4 - clamp(48px,4.5vw,64px)) / 2)!important;
+  margin:0!important; transform:none!important; text-align:left!important;
+}
+@media(max-width:760px){
+  main#home .itinerary-section .timeline-event-column .timeline-palette-title{
+    grid-column:1/-1!important; grid-row:3!important;
+    box-sizing:border-box!important; width:100%!important;
+    padding-left:calc((100% / 4 - clamp(44px,11vw,58px)) / 2)!important;
+    margin:0!important; transform:none!important; text-align:left!important;
+  }
+}
+
+
+/* Mehendi heading: right edge aligns with Dark Green swatch edge on desktop and mobile. */
+main#home .timeline-event-column:has(.timeline-event-icon[src*="mehendi.png"]) .timeline-palette-title{
+  grid-column:1/-1!important; grid-row:3!important;
+  box-sizing:border-box!important; width:100%!important;
+  padding-left:0!important;
+  padding-right:calc((100% / 4 - clamp(48px,4.5vw,64px)) / 2)!important;
+  margin:0!important; transform:none!important; text-align:right!important;
+}
+@media(max-width:760px){
+  main#home .itinerary-section .timeline-event-column:has(.timeline-event-icon[src*="mehendi.png"]) .timeline-palette-title{
+    grid-column:1/-1!important; grid-row:3!important;
+    box-sizing:border-box!important; width:100%!important;
+    padding-left:0!important;
+    padding-right:calc((100% / 4 - clamp(44px,11vw,58px)) / 2)!important;
+    margin:0!important; transform:none!important; text-align:right!important;
+  }
 }
