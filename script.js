@@ -89,7 +89,7 @@
   updateCountdown();
   if (countdown) window.setInterval(updateCountdown, 1000);
 
-  // The intro logo uses the Web Animations API so the zoom reliably plays on page load.
+  // Logo intro: always animate on load, even when reduced-motion is enabled (shorter in that case).
   const intro = document.getElementById('invitationIntro');
   const introLogo = intro?.querySelector('.intro-logo');
   const introOpenButton = document.getElementById('introOpenButton');
@@ -132,27 +132,32 @@
       revealTapPrompt();
       return;
     }
-    if (reducedMotion) {
-      introLogo.style.opacity = '1';
-      introLogo.style.transform = 'scale(1)';
-      revealTapPrompt();
-      return;
-    }
-    const logoMotion = introLogo.animate([
-      { opacity: 0, transform: 'scale(0.035)', offset: 0 },
-      { opacity: 1, transform: 'scale(0.48)', offset: 0.22 },
-      { opacity: 1, transform: 'scale(1.22)', offset: 0.68 },
-      { opacity: 1, transform: 'scale(0.96)', offset: 0.86 },
+    // Initialize visibly tiny before starting; this prevents a final-size flash.
+    introLogo.style.opacity = '0';
+    introLogo.style.transform = 'scale(.035)';
+    const duration = reducedMotion ? 1400 : 2600;
+    const frames = [
+      { opacity: 0, transform: 'scale(.035)', offset: 0 },
+      { opacity: 1, transform: 'scale(.48)', offset: .24 },
+      { opacity: 1, transform: 'scale(1.18)', offset: .68 },
+      { opacity: 1, transform: 'scale(.96)', offset: .86 },
       { opacity: 1, transform: 'scale(1)', offset: 1 }
-    ], {
-      duration: 2400,
-      delay: 220,
-      easing: 'cubic-bezier(.18,.78,.24,1)',
-      fill: 'forwards'
-    });
-    logoMotion.finished.then(revealTapPrompt).catch(() => {});
+    ];
+    if (typeof introLogo.animate === 'function') {
+      try {
+        const motion = introLogo.animate(frames, {
+          duration, delay: 180, easing: 'cubic-bezier(.18,.78,.24,1)', fill: 'forwards'
+        });
+        motion.finished.then(revealTapPrompt).catch(() => {});
+        return;
+      } catch (animationError) {
+        // Fall through to CSS animation if Web Animations API is unavailable or fails.
+      }
+    }
+    introLogo.classList.add('fallback-zoom');
+    introLogo.addEventListener('animationend', revealTapPrompt, { once: true });
   }
-  // Delay one frame so the initial tiny state is painted before zooming begins.
+  // Two animation frames ensure the tiny starting state is painted first.
   requestAnimationFrame(() => requestAnimationFrame(playIntroLogoAnimation));
 
   function openInvitation() {
@@ -165,7 +170,6 @@
       document.body.classList.remove('intro-active');
     }, 480);
   }
-
   introOpenButton?.addEventListener('click', openInvitation);
 
   function toggleMusic() {
