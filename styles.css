@@ -9078,3 +9078,17 @@ body.intro-active .sound-toggle{visibility:hidden;opacity:0;pointer-events:none}
   .intro-logo.fallback-zoom{animation-duration:5.2s}
   .intro-open-button,.invitation-intro{transition:none}
 }
+
+
+/* Click-to-unveil transition: the warm ivory cover expands from the guest's
+   tap point, creating a gentle reveal rather than an abrupt static dismissal. */
+.invitation-intro.intro-transitioning {
+  will-change: clip-path, opacity;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .invitation-intro.intro-transitioning {
+    animation: none !important;
+    transition: none !important;
+  }
+}
