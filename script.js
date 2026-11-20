@@ -89,12 +89,12 @@
   updateCountdown();
   if (countdown) window.setInterval(updateCountdown, 1000);
 
-  // The invitation's first tap is the browser-approved gesture that starts music.
+  // Minimal animated logo intro. Start music only from the visitor's tap.
+  const intro = document.getElementById('invitationIntro');
+  const introOpenButton = document.getElementById('introOpenButton');
   const soundButton = document.getElementById('soundToggle');
   const soundLabel = document.getElementById('soundLabel');
   const weddingAudio = document.getElementById('weddingAudio');
-  const intro = document.getElementById('invitationIntro');
-  const introOpenButton = document.getElementById('introOpenButton');
   let intentionallyPaused = false;
 
   function updateSound(on, label) {
@@ -113,39 +113,30 @@
   }
 
   function startWeddingMusic() {
-    if (!weddingAudio) return Promise.resolve(false);
+    if (!weddingAudio) return;
     intentionallyPaused = false;
     weddingAudio.muted = false;
-    return weddingAudio.play().then(() => {
-      updateSound(true, 'MUSIC ON');
-      return true;
-    }).catch(() => {
-      // The invitation still opens if audio is unavailable or blocked.
-      updateSound(false, 'MUSIC OFF');
-      return false;
-    });
+    weddingAudio.play().then(() => updateSound(true, 'MUSIC ON'))
+      .catch(() => updateSound(false, 'MUSIC OFF'));
   }
 
   function openInvitation() {
-    // Called synchronously from the guest's click/tap, preserving autoplay permission.
     startWeddingMusic();
-    if (intro) {
-      intro.classList.add('is-opening');
-      intro.setAttribute('aria-hidden', 'true');
-      window.setTimeout(() => {
-        intro.hidden = true;
-        document.body.classList.remove('intro-active');
-      }, 720);
-    }
+    if (!intro) return;
+    intro.classList.add('intro-closing');
+    intro.setAttribute('aria-hidden', 'true');
+    window.setTimeout(() => {
+      intro.hidden = true;
+      document.body.classList.remove('intro-active');
+    }, 420);
   }
 
   introOpenButton?.addEventListener('click', openInvitation);
 
   function toggleMusic() {
     if (!weddingAudio) return;
-    if (weddingAudio.paused) {
-      startWeddingMusic();
-    } else {
+    if (weddingAudio.paused) startWeddingMusic();
+    else {
       intentionallyPaused = true;
       weddingAudio.pause();
       updateSound(false, 'MUSIC OFF');
