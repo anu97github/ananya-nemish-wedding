@@ -9046,21 +9046,21 @@ body.intro-active .sound-toggle{visibility:hidden;opacity:0;pointer-events:none}
 .intro-logo{
   display:block;width:min(235px,58vw);height:auto;max-height:220px;object-fit:contain;
   opacity:0;transform:scale(.08);
-  animation:an-logo-arrive 2.05s cubic-bezier(.18,.78,.24,1) .15s forwards;
+  animation:an-logo-arrive 2.6s cubic-bezier(.18,.78,.24,1) .15s forwards;
   transform-origin:center center;
 }
 .intro-open-button{
-  margin:34px 0 0;padding:14px 8px 12px;border:0;background:transparent;
+  margin:36px 0 0;padding:14px 8px 12px;border:0;background:transparent;
   color:var(--dark-olive,#667348);font:600 11px/1 var(--sans);
   letter-spacing:.24em;cursor:pointer;opacity:0;
-  animation:intro-prompt-in .5s ease 2.15s forwards;
+  animation:intro-prompt-in .5s ease 2.75s forwards;
 }
 .intro-open-button:focus-visible{outline:1px solid var(--gold,#c5a46d);outline-offset:7px}
 @keyframes an-logo-arrive{
   0%{opacity:0;transform:scale(.08)}
-  18%{opacity:1;transform:scale(.36)}
-  58%{opacity:1;transform:scale(1.32)}
-  78%{opacity:1;transform:scale(.94)}
+  22%{opacity:1;transform:scale(.42)}
+  60%{opacity:1;transform:scale(1.34)}
+  82%{opacity:1;transform:scale(.94)}
   100%{opacity:1;transform:scale(1)}
 }
 @keyframes intro-prompt-in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
