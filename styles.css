@@ -9111,3 +9111,50 @@ body.intro-active .sound-toggle{visibility:hidden;opacity:0;pointer-events:none}
 .couple-note-section .guestbook-card .guestbook-medallion {
   z-index:100!important;
 }
+
+
+
+/* Minimal decorative invitation-cover ornaments — no additional copy */
+.intro-ornament{
+  position:absolute;left:50%;width:74px;height:14px;transform:translateX(-50%);
+  pointer-events:none;opacity:.7;
+}
+.intro-ornament-top{top:clamp(29px,5.2vw,52px)}
+.intro-ornament-bottom{bottom:clamp(29px,5.2vw,52px)}
+.intro-ornament::before,.intro-ornament::after{
+  content:"";position:absolute;top:50%;width:27px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(173,139,79,.65));
+}
+.intro-ornament::before{right:calc(50% + 8px)}
+.intro-ornament::after{left:calc(50% + 8px);transform:scaleX(-1)}
+.intro-ornament span{
+  position:absolute;left:50%;top:50%;width:7px;height:7px;
+  border:1px solid rgba(173,139,79,.65);transform:translate(-50%,-50%) rotate(45deg);
+}
+.intro-ornament span::before{
+  content:"";position:absolute;inset:1px;background:rgba(173,139,79,.15);
+}
+@media(max-width:600px){
+  .intro-ornament-top{top:clamp(28px,5vh,40px)}
+  .intro-ornament-bottom{bottom:clamp(28px,5vh,40px)}
+}
+
+
+/* Soft botanical corner flourishes inspired by embossed invitation motifs */
+.invitation-intro .intro-botanical{
+  position:absolute;width:clamp(105px,18vw,185px);height:clamp(105px,18vw,185px);
+  background:url("assets/intro-botanical-corner.svg") center/contain no-repeat;
+  opacity:.26;pointer-events:none;z-index:0;
+}
+.invitation-intro .intro-botanical.tl{top:clamp(42px,7vw,70px);left:clamp(32px,6vw,70px)}
+.invitation-intro .intro-botanical.tr{top:clamp(42px,7vw,70px);right:clamp(32px,6vw,70px);transform:scaleX(-1)}
+.invitation-intro .intro-botanical.bl{bottom:clamp(42px,7vw,70px);left:clamp(32px,6vw,70px);transform:scaleY(-1)}
+.invitation-intro .intro-botanical.br{bottom:clamp(42px,7vw,70px);right:clamp(32px,6vw,70px);transform:scale(-1)}
+.invitation-intro .intro-logo,.invitation-intro .intro-open-button{position:relative;z-index:1}
+@media(max-width:600px){
+ .invitation-intro .intro-botanical{width:clamp(76px,23vw,118px);height:clamp(76px,23vw,118px);opacity:.21}
+ .invitation-intro .intro-botanical.tl{top:52px;left:26px}
+ .invitation-intro .intro-botanical.tr{top:52px;right:26px}
+ .invitation-intro .intro-botanical.bl{bottom:52px;left:26px}
+ .invitation-intro .intro-botanical.br{bottom:52px;right:26px}
+}
