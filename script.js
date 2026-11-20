@@ -185,13 +185,16 @@
     const website = document.getElementById('home');
     document.body.classList.add('website-revealing');
     intro.classList.add('intro-transitioning');
-    const websiteReveal = !reducedMotion && website?.animate ? website.animate([
+    const websiteReveal = website?.animate ? website.animate(reducedMotion ? [
+      { opacity: 0 },
+      { opacity: 1 }
+    ] : [
       { opacity: 0, filter: 'blur(16px)', transform: 'scale(.975)' },
       { opacity: 0.45, filter: 'blur(8px)', transform: 'scale(.988)', offset: 0.38 },
       { opacity: 1, filter: 'blur(0)', transform: 'scale(1)' }
     ], {
-      duration: 1450,
-      delay: 120,
+      duration: reducedMotion ? 650 : 1450,
+      delay: reducedMotion ? 0 : 120,
       easing: 'cubic-bezier(.22,.72,.18,1)',
       fill: 'forwards'
     }) : null;
@@ -205,18 +208,17 @@
       intro.classList.remove('intro-transitioning');
     };
 
-    if (reducedMotion) {
-      finishTransition();
-      return;
-    }
-
-    // A soft ivory veil expands from the exact tap point, then reveals the site.
-    const transition = intro.animate([
+    // Keep the unveil perceptible even when reduced-motion is enabled; in that
+    // case use a short fade without blur/scale rather than finishing instantly.
+    const transition = intro.animate(reducedMotion ? [
+      { opacity: 1 },
+      { opacity: 0 }
+    ] : [
       { clipPath: `circle(0% at ${originX}% ${originY}%)`, opacity: 1 },
       { clipPath: `circle(150% at ${originX}% ${originY}%)`, opacity: 1, offset: 0.68 },
       { clipPath: `circle(150% at ${originX}% ${originY}%)`, opacity: 0 }
     ], {
-      duration: 1050,
+      duration: reducedMotion ? 650 : 1050,
       easing: 'cubic-bezier(.22,.72,.18,1)',
       fill: 'forwards'
     });
