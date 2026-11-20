@@ -9039,6 +9039,23 @@ body.intro-active .sound-toggle{visibility:hidden;opacity:0;pointer-events:none}
   color:#536F4A;transition:opacity .48s ease,visibility .48s ease;
 }
 .invitation-intro[hidden]{display:none}
+
+/* Subtle champagne-gold invitation frame — decorative only, background remains unchanged */
+.invitation-intro::before{
+  content:"";position:absolute;inset:clamp(17px,3.2vw,34px);
+  border:1px solid rgba(173,139,79,.42);pointer-events:none;
+}
+.invitation-intro::after{
+  content:"";position:absolute;inset:clamp(23px,4.2vw,45px);
+  border:1px solid rgba(173,139,79,.22);pointer-events:none;
+  background:
+    linear-gradient(135deg,rgba(173,139,79,.45) 0 1px,transparent 1px 100%) top left/14px 14px no-repeat,
+    linear-gradient(225deg,rgba(173,139,79,.45) 0 1px,transparent 1px 100%) top right/14px 14px no-repeat,
+    linear-gradient(45deg,rgba(173,139,79,.45) 0 1px,transparent 1px 100%) bottom left/14px 14px no-repeat,
+    linear-gradient(315deg,rgba(173,139,79,.45) 0 1px,transparent 1px 100%) bottom right/14px 14px no-repeat;
+  pointer-events:none;
+}
+
 .invitation-intro.intro-closing{opacity:0;visibility:hidden;pointer-events:none}
 .intro-logo{
   display:block;width:min(370px,70vw);height:min(370px,70vw);
