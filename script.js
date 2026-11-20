@@ -154,7 +154,7 @@
     if (typeof introLogo.animate === 'function') {
       try {
         const motion = introLogo.animate(frames, {
-          duration, delay: 120, easing: 'cubic-bezier(.16,.7,.2,1)', fill: 'forwards'
+          duration, delay: 0, easing: 'cubic-bezier(.16,.7,.2,1)', fill: 'forwards'
         });
         motion.finished.then(typePrompt).catch(() => {});
         return;
