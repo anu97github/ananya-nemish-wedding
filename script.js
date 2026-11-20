@@ -89,7 +89,7 @@
   updateCountdown();
   if (countdown) window.setInterval(updateCountdown, 1000);
 
-  // Logo intro: always animate on load, even when reduced-motion is enabled (shorter in that case).
+  // Slow, deliberate logo formation and delayed typewriter prompt.
   const intro = document.getElementById('invitationIntro');
   const introLogo = intro?.querySelector('.intro-logo');
   const introOpenButton = document.getElementById('introOpenButton');
@@ -103,83 +103,70 @@
     soundButton?.setAttribute('aria-label', on ? 'Pause wedding music' : 'Play wedding music');
     if (soundLabel) soundLabel.textContent = label || (on ? 'MUSIC ON' : 'MUSIC OFF');
   }
-
   if (weddingAudio) {
     weddingAudio.volume = 0.58;
     weddingAudio.addEventListener('play', () => updateSound(true, 'MUSIC ON'));
-    weddingAudio.addEventListener('pause', () => {
-      if (intentionallyPaused) updateSound(false, 'MUSIC OFF');
-    });
+    weddingAudio.addEventListener('pause', () => { if (intentionallyPaused) updateSound(false, 'MUSIC OFF'); });
     weddingAudio.addEventListener('error', () => updateSound(false, 'MUSIC UNAVAILABLE'));
   }
-
   function startWeddingMusic() {
     if (!weddingAudio) return;
     intentionallyPaused = false;
     weddingAudio.muted = false;
-    weddingAudio.play().then(() => updateSound(true, 'MUSIC ON'))
-      .catch(() => updateSound(false, 'MUSIC OFF'));
+    weddingAudio.play().then(() => updateSound(true, 'MUSIC ON')).catch(() => updateSound(false, 'MUSIC OFF'));
   }
 
   function revealTapPrompt() {
     if (!introOpenButton) return;
     introOpenButton.hidden = false;
+    introOpenButton.classList.remove('is-visible');
+    // The label itself is revealed like a slow handwritten/type-in line.
+    introOpenButton.textContent = 'TAP TO OPEN';
     requestAnimationFrame(() => introOpenButton.classList.add('is-visible'));
   }
 
   function playIntroLogoAnimation() {
-    if (!introLogo) {
-      revealTapPrompt();
-      return;
-    }
-    // Initialize visibly tiny before starting; this prevents a final-size flash.
+    if (!introLogo) { revealTapPrompt(); return; }
     introLogo.style.opacity = '0';
-    introLogo.style.transform = 'scale(.035)';
-    const duration = reducedMotion ? 1400 : 2600;
+    introLogo.style.transform = 'scale(.025)';
+    const duration = reducedMotion ? 3000 : 4800;
     const frames = [
-      { opacity: 0, transform: 'scale(.035)', offset: 0 },
-      { opacity: 1, transform: 'scale(.48)', offset: .24 },
-      { opacity: 1, transform: 'scale(1.18)', offset: .68 },
-      { opacity: 1, transform: 'scale(.96)', offset: .86 },
+      { opacity: 0, transform: 'scale(.025)', offset: 0 },
+      { opacity: .35, transform: 'scale(.12)', offset: .16 },
+      { opacity: 1, transform: 'scale(.48)', offset: .42 },
+      { opacity: 1, transform: 'scale(.88)', offset: .72 },
+      { opacity: 1, transform: 'scale(1.045)', offset: .88 },
       { opacity: 1, transform: 'scale(1)', offset: 1 }
     ];
     if (typeof introLogo.animate === 'function') {
       try {
         const motion = introLogo.animate(frames, {
-          duration, delay: 180, easing: 'cubic-bezier(.18,.78,.24,1)', fill: 'forwards'
+          duration, delay: 240, easing: 'cubic-bezier(.16,.72,.22,1)', fill: 'forwards'
         });
         motion.finished.then(revealTapPrompt).catch(() => {});
         return;
-      } catch (animationError) {
-        // Fall through to CSS animation if Web Animations API is unavailable or fails.
-      }
+      } catch (animationError) { /* Use the CSS fallback below. */ }
     }
     introLogo.classList.add('fallback-zoom');
     introLogo.addEventListener('animationend', revealTapPrompt, { once: true });
   }
-  // Two animation frames ensure the tiny starting state is painted first.
-  requestAnimationFrame(() => requestAnimationFrame(playIntroLogoAnimation));
+  // Wait until the image is decoded to avoid a blank/late logo during its entrance.
+  const runIntro = () => requestAnimationFrame(() => requestAnimationFrame(playIntroLogoAnimation));
+  if (introLogo?.decode) introLogo.decode().then(runIntro).catch(runIntro);
+  else runIntro();
 
   function openInvitation() {
     startWeddingMusic();
     if (!intro) return;
     intro.classList.add('intro-closing');
     intro.setAttribute('aria-hidden', 'true');
-    window.setTimeout(() => {
-      intro.hidden = true;
-      document.body.classList.remove('intro-active');
-    }, 480);
+    window.setTimeout(() => { intro.hidden = true; document.body.classList.remove('intro-active'); }, 480);
   }
   introOpenButton?.addEventListener('click', openInvitation);
-
   function toggleMusic() {
     if (!weddingAudio) return;
     if (weddingAudio.paused) startWeddingMusic();
-    else {
-      intentionallyPaused = true;
-      weddingAudio.pause();
-      updateSound(false, 'MUSIC OFF');
-    }
+    else { intentionallyPaused = true; weddingAudio.pause(); updateSound(false, 'MUSIC OFF'); }
   }
   soundButton?.addEventListener('click', toggleMusic);
   updateSound(false, 'MUSIC OFF');
