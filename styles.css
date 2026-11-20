@@ -9095,15 +9095,9 @@ body.intro-active .sound-toggle{visibility:hidden;opacity:0;pointer-events:none}
 
 /* Initial website state. The actual reveal is driven by a Web Animations API
    sequence in script.js, rather than relying on class-triggered CSS transitions. */
+/* Stronger blur-to-sharp reveal, animated explicitly in script.js. */
 body.intro-active main#home {
   opacity: 0;
-  filter: blur(16px);
-  transform: scale(.975);
-}
-@media (prefers-reduced-motion: reduce) {
-  body.intro-active main#home {
-    opacity: 1;
-    filter: none;
-    transform: none;
-  }
+  filter: blur(26px);
+  transform: scale(.94);
 }
