@@ -9018,3 +9018,10 @@ main#home .timeline-event-column:has(.timeline-event-icon[src*="mehendi.png"]) .
     margin:0!important; transform:none!important; text-align:right!important;
   }
 }
+
+/* Mobile-only small offsets for Colours to Wear headings. Desktop alignment stays unchanged. */
+@media(max-width:760px){
+  main#home .itinerary-section .timeline-event-column:has(.timeline-event-icon[src*="haldi.png"]) .timeline-palette-title{transform:translateX(14px)!important}
+  main#home .itinerary-section .timeline-event-column:has(.timeline-event-icon[src*="mehendi.png"]) .timeline-palette-title{transform:translateX(-14px)!important}
+  main#home .itinerary-section .timeline-event-column:has(.timeline-event-icon[src*="wedding.png"]) .timeline-palette-title{transform:translateX(14px)!important}
+}
