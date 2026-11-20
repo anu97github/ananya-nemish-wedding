@@ -156,7 +156,7 @@
         const motion = introLogo.animate(frames, {
           duration, delay: 0, easing: 'cubic-bezier(.16,.7,.2,1)', fill: 'forwards'
         });
-        motion.finished.then(typePrompt).catch(() => {});
+        motion.onfinish = typePrompt;
         return;
       } catch (animationError) { /* CSS fallback below */ }
     }
