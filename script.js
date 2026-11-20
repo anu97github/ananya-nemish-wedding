@@ -159,13 +159,13 @@
           duration, delay: 0, easing: 'cubic-bezier(.16,.7,.2,1)', fill: 'forwards'
         });
         // Start typing during the final settling phase; onfinish is a guarded fallback.
-        window.setTimeout(typePrompt, Math.round(duration * 0.78));
+        window.setTimeout(typePrompt, Math.round(duration * 0.48));
         motion.onfinish = typePrompt;
         return;
       } catch (animationError) { /* CSS fallback below */ }
     }
     introLogo.classList.add('fallback-zoom');
-    window.setTimeout(typePrompt, Math.round(duration * 0.78));
+    window.setTimeout(typePrompt, Math.round(duration * 0.48));
     introLogo.addEventListener('animationend', typePrompt, { once: true });
   }
   requestAnimationFrame(() => requestAnimationFrame(playIntroLogoAnimation));
