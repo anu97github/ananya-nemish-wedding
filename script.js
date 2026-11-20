@@ -180,6 +180,9 @@
     const originX = Math.max(0, Math.min(100, (clickX / window.innerWidth) * 100));
     const originY = Math.max(0, Math.min(100, (clickY / window.innerHeight) * 100));
 
+    // Start the website itself in a soft, blurred state and bring it into focus
+    // as the invitation cover expands away.
+    document.body.classList.add('website-revealing');
     intro.classList.add('intro-transitioning');
     intro.style.setProperty('--intro-origin-x', originX + '%');
     intro.style.setProperty('--intro-origin-y', originY + '%');
@@ -187,7 +190,7 @@
 
     const finishTransition = () => {
       intro.hidden = true;
-      document.body.classList.remove('intro-active');
+      document.body.classList.remove('intro-active', 'website-revealing');
       intro.classList.remove('intro-transitioning');
     };
 
