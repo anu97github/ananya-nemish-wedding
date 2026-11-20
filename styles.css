@@ -9098,6 +9098,6 @@ body.intro-active .sound-toggle{visibility:hidden;opacity:0;pointer-events:none}
 /* Stronger blur-to-sharp reveal, animated explicitly in script.js. */
 body.intro-active main#home {
   opacity: 0;
-  filter: blur(26px);
-  transform: scale(.94);
+  filter: blur(14px);
+  transform: scale(.965);
 }
