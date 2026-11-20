@@ -9028,35 +9028,24 @@ main#home .timeline-event-column:has(.timeline-event-icon[src*="mehendi.png"]) .
 
 
 
-/* Watercolor intro + explicit JS-driven monogram entrance */
+/* Wedding intro: exact paper background, crisp SVG logo, JS zoom entrance */
 body.intro-active{overflow:hidden}
 body.intro-active .sound-toggle{visibility:hidden;opacity:0;pointer-events:none}
 .invitation-intro{
   position:fixed;inset:0;z-index:2600;display:flex;flex-direction:column;
   align-items:center;justify-content:center;gap:0;
   min-height:100vh;min-height:100svh;padding:24px;overflow:hidden;
-  background-color:#F1E9E2;
-  background-image:
-    radial-gradient(ellipse 52% 38% at 0% 0%,rgba(222,192,176,.48) 0%,rgba(222,192,176,.18) 56%,transparent 100%),
-    radial-gradient(ellipse 42% 32% at 100% 10%,rgba(228,198,179,.36) 0%,rgba(228,198,179,.12) 62%,transparent 100%),
-    radial-gradient(ellipse 46% 38% at 0% 68%,rgba(226,199,181,.32) 0%,rgba(226,199,181,.1) 62%,transparent 100%),
-    radial-gradient(ellipse 54% 34% at 100% 100%,rgba(226,197,178,.42) 0%,rgba(226,197,178,.14) 65%,transparent 100%),
-    radial-gradient(ellipse 36% 28% at 70% 52%,rgba(255,250,246,.46) 0%,transparent 100%);
-  background-size:cover;background-position:center;
+  background:#F1E9E2 url("assets/ivory-watercolor-paper-final.svg") center/cover no-repeat;
   color:#5F7757;transition:opacity .48s ease,visibility .48s ease;
 }
 .invitation-intro[hidden]{display:none}
 .invitation-intro.intro-closing{opacity:0;visibility:hidden;pointer-events:none}
 .intro-logo{
-  display:block;width:min(250px,58vw);height:min(202px,48vw);
-  opacity:1;transform:scale(1);transform-origin:center;
-  background:#5F7757;
-  -webkit-mask-image:url("assets/an-monogram-white.png");
-  mask-image:url("assets/an-monogram-white.png");
-  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
-  -webkit-mask-position:center;mask-position:center;
-  -webkit-mask-size:contain;mask-size:contain;
+  display:block;width:min(300px,66vw);height:auto;max-height:min(300px,66vw);
+  object-fit:contain;opacity:0;transform:scale(.035);transform-origin:center;
+  will-change:transform,opacity;
 }
+.intro-logo.fallback-zoom{animation:intro-logo-zoom 2.45s cubic-bezier(.18,.78,.24,1) forwards}
 .intro-open-button{
   margin:32px 0 0;padding:15px 10px 13px;border:0;background:transparent;
   color:#5F7757;font:600 11px/1 var(--sans);letter-spacing:.24em;
@@ -9066,11 +9055,19 @@ body.intro-active .sound-toggle{visibility:hidden;opacity:0;pointer-events:none}
 .intro-open-button[hidden]{display:none}
 .intro-open-button.is-visible{opacity:1;transform:translateY(0)}
 .intro-open-button:focus-visible{outline:1px solid #BDA77D;outline-offset:7px}
+@keyframes intro-logo-zoom{
+  0%{opacity:0;transform:scale(.035)}
+  24%{opacity:1;transform:scale(.48)}
+  68%{opacity:1;transform:scale(1.18)}
+  86%{opacity:1;transform:scale(.96)}
+  100%{opacity:1;transform:scale(1)}
+}
 @media(max-width:600px){
-  .intro-logo{width:min(220px,62vw);height:min(180px,50vw)}
+  .intro-logo{width:min(260px,68vw);max-height:68vw}
   .intro-open-button{margin-top:27px}
 }
 @media(prefers-reduced-motion:reduce){
-  .intro-open-button{transition:none}
-  .invitation-intro{transition:none}
+  /* Reduced-motion users still see the entrance, just at a shorter duration. */
+  .intro-logo.fallback-zoom{animation-duration:1.25s}
+  .intro-open-button,.invitation-intro{transition:none}
 }
