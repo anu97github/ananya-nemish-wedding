@@ -89,65 +89,70 @@
   updateCountdown();
   if (countdown) window.setInterval(updateCountdown, 1000);
 
-  // Self-hosted wedding soundtrack. Try autoplay on load; if the browser blocks
-  // it, start/unmute on an ordinary click/tap anywhere on the invitation.
+  // The invitation's first tap is the browser-approved gesture that starts music.
   const soundButton = document.getElementById('soundToggle');
   const soundLabel = document.getElementById('soundLabel');
   const weddingAudio = document.getElementById('weddingAudio');
+  const intro = document.getElementById('invitationIntro');
+  const introOpenButton = document.getElementById('introOpenButton');
   let intentionallyPaused = false;
 
   function updateSound(on, label) {
     soundButton?.setAttribute('aria-pressed', String(on));
     soundButton?.setAttribute('aria-label', on ? 'Pause wedding music' : 'Play wedding music');
-    if (soundLabel) soundLabel.textContent = label || (on ? (weddingAudio?.muted ? 'MUSIC PLAYING · MUTED' : 'MUSIC ON') : 'MUSIC OFF');
+    if (soundLabel) soundLabel.textContent = label || (on ? 'MUSIC ON' : 'MUSIC OFF');
   }
 
   if (weddingAudio) {
     weddingAudio.volume = 0.58;
-    weddingAudio.addEventListener('play', () => updateSound(true, weddingAudio.muted ? 'MUSIC PLAYING · MUTED' : 'MUSIC ON'));
-    weddingAudio.addEventListener('volumechange', () => {
-      if (!weddingAudio.paused) updateSound(true, weddingAudio.muted ? 'MUSIC PLAYING · MUTED' : 'MUSIC ON');
-    });
+    weddingAudio.addEventListener('play', () => updateSound(true, 'MUSIC ON'));
     weddingAudio.addEventListener('pause', () => {
       if (intentionallyPaused) updateSound(false, 'MUSIC OFF');
     });
     weddingAudio.addEventListener('error', () => updateSound(false, 'MUSIC UNAVAILABLE'));
   }
 
+  function startWeddingMusic() {
+    if (!weddingAudio) return Promise.resolve(false);
+    intentionallyPaused = false;
+    weddingAudio.muted = false;
+    return weddingAudio.play().then(() => {
+      updateSound(true, 'MUSIC ON');
+      return true;
+    }).catch(() => {
+      // The invitation still opens if audio is unavailable or blocked.
+      updateSound(false, 'MUSIC OFF');
+      return false;
+    });
+  }
+
+  function openInvitation() {
+    // Called synchronously from the guest's click/tap, preserving autoplay permission.
+    startWeddingMusic();
+    if (intro) {
+      intro.classList.add('is-opening');
+      intro.setAttribute('aria-hidden', 'true');
+      window.setTimeout(() => {
+        intro.hidden = true;
+        document.body.classList.remove('intro-active');
+      }, 720);
+    }
+  }
+
+  introOpenButton?.addEventListener('click', openInvitation);
 
   function toggleMusic() {
     if (!weddingAudio) return;
-    if (weddingAudio.paused || weddingAudio.muted) {
-      intentionallyPaused = false;
-      weddingAudio.muted = false;
-      const playRequest = weddingAudio.play();
-      playRequest?.then(() => updateSound(true, 'MUSIC ON'))
-        .catch(() => updateSound(false, 'MUSIC OFF'));
+    if (weddingAudio.paused) {
+      startWeddingMusic();
     } else {
       intentionallyPaused = true;
       weddingAudio.pause();
       updateSound(false, 'MUSIC OFF');
     }
   }
-
   soundButton?.addEventListener('click', toggleMusic);
-
-  // Make the initial autoplay attempt immediately. If audible autoplay is
-  // blocked, fall back to muted playback; a normal page tap will unmute it.
-  const initialPlay = weddingAudio?.play();
-  initialPlay?.then(() => updateSound(true, weddingAudio.muted ? 'MUSIC PLAYING · MUTED' : 'MUSIC ON'))
-    .catch(async () => {
-      if (!weddingAudio) return;
-      weddingAudio.muted = true;
-      try {
-        await weddingAudio.play();
-        updateSound(true, 'MUSIC PLAYING · MUTED');
-      } catch (_) {
-        updateSound(false, 'MUSIC OFF');
-      }
-    });
-  updateSound(false, 'LOADING MUSIC');
-
+  updateSound(false, 'MUSIC OFF');
 
   // Reveal event and venue bands gently as guests scroll through the invitation.
   const revealItems = [...document.querySelectorAll('.reveal-section')];
