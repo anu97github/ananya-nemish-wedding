@@ -9078,3 +9078,15 @@ body.intro-active .sound-toggle{visibility:hidden;opacity:0;pointer-events:none}
   .intro-logo.fallback-zoom{animation-duration:5.2s}
   .intro-open-button,.invitation-intro{transition:none}
 }
+
+
+/* Guestbook medallion: prevent the card reveal animation from clipping the badge on any device. */
+.couple-note-section .guestbook-card.is-open {
+  animation:none!important;
+  clip-path:none!important;
+  -webkit-clip-path:none!important;
+  overflow:visible!important;
+}
+.couple-note-section .guestbook-card .guestbook-medallion {
+  z-index:100!important;
+}
