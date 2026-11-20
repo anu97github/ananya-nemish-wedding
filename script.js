@@ -99,6 +99,7 @@
   let intentionallyPaused = false;
   let promptTimer = null;
   let promptStarted = false;
+  let introCanOpen = false;
 
   function updateSound(on, label) {
     soundButton?.setAttribute('aria-pressed', String(on));
@@ -134,8 +135,11 @@
       if (index >= phrase.length) {
         window.clearInterval(promptTimer);
         promptTimer = null;
+        introCanOpen = true;
       }
     }, step);
+    // Reduced-motion / synchronous fallback still has the same explicit unlock point.
+    if (phrase.length === 1) introCanOpen = true;
   }
 
   function playIntroLogoAnimation() {
@@ -177,7 +181,15 @@
     intro.setAttribute('aria-hidden', 'true');
     window.setTimeout(() => { intro.hidden = true; document.body.classList.remove('intro-active'); }, 480);
   }
-  intro?.addEventListener('click', openInvitation);
+  intro?.addEventListener('click', event => {
+    // Ignore taps anywhere on the cover until "Tap to Unveil" has fully typed in.
+    if (!introCanOpen) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+    openInvitation();
+  });
   function toggleMusic() {
     if (!weddingAudio) return;
     if (weddingAudio.paused) startWeddingMusic();
