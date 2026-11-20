@@ -180,10 +180,21 @@
     const originX = Math.max(0, Math.min(100, (clickX / window.innerWidth) * 100));
     const originY = Math.max(0, Math.min(100, (clickY / window.innerHeight) * 100));
 
-    // Start the website itself in a soft, blurred state and bring it into focus
-    // as the invitation cover expands away.
+    // Animate the actual website reveal with WAAPI, so the blur/fade is explicit
+    // and not dependent on a CSS transition being triggered by class timing.
+    const website = document.getElementById('home');
     document.body.classList.add('website-revealing');
     intro.classList.add('intro-transitioning');
+    const websiteReveal = !reducedMotion && website?.animate ? website.animate([
+      { opacity: 0, filter: 'blur(16px)', transform: 'scale(.975)' },
+      { opacity: 0.45, filter: 'blur(8px)', transform: 'scale(.988)', offset: 0.38 },
+      { opacity: 1, filter: 'blur(0)', transform: 'scale(1)' }
+    ], {
+      duration: 1450,
+      delay: 120,
+      easing: 'cubic-bezier(.22,.72,.18,1)',
+      fill: 'forwards'
+    }) : null;
     intro.style.setProperty('--intro-origin-x', originX + '%');
     intro.style.setProperty('--intro-origin-y', originY + '%');
     intro.setAttribute('aria-hidden', 'true');
