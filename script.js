@@ -170,12 +170,44 @@
   }
   requestAnimationFrame(() => requestAnimationFrame(playIntroLogoAnimation));
 
-  function openInvitation() {
+  function openInvitation(event) {
+    if (!intro || intro.classList.contains('intro-transitioning')) return;
+    // Keep music playback in the original user gesture so browsers allow it.
     startWeddingMusic();
-    if (!intro) return;
-    intro.classList.add('intro-closing');
+
+    const clickX = event?.clientX ?? window.innerWidth / 2;
+    const clickY = event?.clientY ?? window.innerHeight / 2;
+    const originX = Math.max(0, Math.min(100, (clickX / window.innerWidth) * 100));
+    const originY = Math.max(0, Math.min(100, (clickY / window.innerHeight) * 100));
+
+    intro.classList.add('intro-transitioning');
+    intro.style.setProperty('--intro-origin-x', originX + '%');
+    intro.style.setProperty('--intro-origin-y', originY + '%');
     intro.setAttribute('aria-hidden', 'true');
-    window.setTimeout(() => { intro.hidden = true; document.body.classList.remove('intro-active'); }, 480);
+
+    const finishTransition = () => {
+      intro.hidden = true;
+      document.body.classList.remove('intro-active');
+      intro.classList.remove('intro-transitioning');
+    };
+
+    if (reducedMotion) {
+      finishTransition();
+      return;
+    }
+
+    // A soft ivory veil expands from the exact tap point, then reveals the site.
+    const transition = intro.animate([
+      { clipPath: `circle(0% at ${originX}% ${originY}%)`, opacity: 1 },
+      { clipPath: `circle(150% at ${originX}% ${originY}%)`, opacity: 1, offset: 0.68 },
+      { clipPath: `circle(150% at ${originX}% ${originY}%)`, opacity: 0 }
+    ], {
+      duration: 1050,
+      easing: 'cubic-bezier(.22,.72,.18,1)',
+      fill: 'forwards'
+    });
+    transition.onfinish = finishTransition;
+    transition.oncancel = finishTransition;
   }
   intro?.addEventListener('click', openInvitation);
   function toggleMusic() {
