@@ -9144,7 +9144,7 @@ body.intro-active .sound-toggle{visibility:hidden;opacity:0;pointer-events:none}
 .invitation-intro .intro-botanical{
   position:absolute;width:clamp(105px,18vw,185px);height:clamp(105px,18vw,185px);
   background:url("assets/intro-botanical-corner.svg") center/contain no-repeat;
-  opacity:.26;pointer-events:none;z-index:0;
+  opacity:.34;pointer-events:none;z-index:0;
 }
 .invitation-intro .intro-botanical.tl{top:clamp(42px,7vw,70px);left:clamp(32px,6vw,70px)}
 .invitation-intro .intro-botanical.tr{top:clamp(42px,7vw,70px);right:clamp(32px,6vw,70px);transform:scaleX(-1)}
@@ -9152,9 +9152,24 @@ body.intro-active .sound-toggle{visibility:hidden;opacity:0;pointer-events:none}
 .invitation-intro .intro-botanical.br{bottom:clamp(42px,7vw,70px);right:clamp(32px,6vw,70px);transform:scale(-1)}
 .invitation-intro .intro-logo,.invitation-intro .intro-open-button{position:relative;z-index:1}
 @media(max-width:600px){
- .invitation-intro .intro-botanical{width:clamp(76px,23vw,118px);height:clamp(76px,23vw,118px);opacity:.21}
+ .invitation-intro .intro-botanical{width:clamp(76px,23vw,118px);height:clamp(76px,23vw,118px);opacity:.27}
  .invitation-intro .intro-botanical.tl{top:52px;left:26px}
  .invitation-intro .intro-botanical.tr{top:52px;right:26px}
  .invitation-intro .intro-botanical.bl{bottom:52px;left:26px}
  .invitation-intro .intro-botanical.br{bottom:52px;right:26px}
+}
+
+/* Additional leaf sprigs along the sides, balanced around the monogram */
+.invitation-intro .intro-botanical.side-left,
+.invitation-intro .intro-botanical.side-right{
+  width:clamp(82px,12vw,132px);height:clamp(82px,12vw,132px);
+  top:50%;opacity:.25;
+}
+.invitation-intro .intro-botanical.side-left{left:clamp(26px,5vw,58px);transform:translateY(-50%) rotate(-18deg)}
+.invitation-intro .intro-botanical.side-right{right:clamp(26px,5vw,58px);transform:translateY(-50%) scaleX(-1) rotate(-18deg)}
+@media(max-width:600px){
+ .invitation-intro .intro-botanical.side-left,
+ .invitation-intro .intro-botanical.side-right{width:70px;height:70px;opacity:.20;top:50%}
+ .invitation-intro .intro-botanical.side-left{left:12px}
+ .invitation-intro .intro-botanical.side-right{right:12px}
 }
