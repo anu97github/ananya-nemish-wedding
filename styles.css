@@ -9027,76 +9027,39 @@ main#home .timeline-event-column:has(.timeline-event-icon[src*="mehendi.png"]) .
 }
 
 
-/* Tap-to-open invitation cover: warm ivory, sage, antique champagne and blush. */
+
+/* Minimal animated AN logo opening layer */
 body.intro-active{overflow:hidden}
 .invitation-intro{
-  position:fixed;inset:0;z-index:2500;display:grid;place-items:center;
-  overflow:hidden;min-height:100vh;min-height:100svh;padding:28px 22px;
-  color:#f8f3e8;
-  background:
-    radial-gradient(ellipse at 50% 43%,rgba(213,220,195,.14),transparent 48%),
-    radial-gradient(ellipse at 15% 12%,rgba(239,222,196,.12),transparent 34%),
-    linear-gradient(138deg,#475a43 0%,#68795d 48%,#89927a 100%);
-  transition:opacity .68s ease,visibility .68s ease;
+  position:fixed;inset:0;z-index:2600;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:0;
+  min-height:100vh;min-height:100svh;padding:24px;
+  background:var(--paper,#fbf7f0);color:var(--dark-olive,#667348);
+  transition:opacity .42s ease,visibility .42s ease;
 }
 .invitation-intro[hidden]{display:none}
-.invitation-intro.is-opening{opacity:0;visibility:hidden;pointer-events:none}
-.intro-paper-grain{
-  position:absolute;inset:0;pointer-events:none;opacity:.23;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
+.invitation-intro.intro-closing{opacity:0;visibility:hidden;pointer-events:none}
+.intro-logo{
+  display:block;width:min(170px,42vw);height:auto;max-height:135px;object-fit:contain;
+  opacity:0;transform:translateY(-12vh) scale(.12);
+  animation:an-logo-arrive 1.55s cubic-bezier(.2,.75,.2,1) .1s forwards;
 }
-.intro-frame{
-  position:relative;z-index:1;width:min(590px,100%);min-height:min(790px,calc(100svh - 54px));
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:clamp(27px,6vh,58px) 24px;border:1px solid rgba(230,210,165,.62);
-  outline:1px solid rgba(230,210,165,.22);outline-offset:-9px;text-align:center;
-  box-shadow:0 24px 90px rgba(24,36,25,.2);
-  background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
-}
-.intro-frame:before,.intro-frame:after{
-  content:"✥";position:absolute;color:rgba(232,211,172,.82);font-size:17px;
-}
-.intro-frame:before{top:13px;left:18px}.intro-frame:after{right:18px;bottom:13px}
-.intro-botanical{
-  position:absolute;top:-5%;width:min(35vw,390px);height:110%;opacity:.19;pointer-events:none;
-  background-repeat:no-repeat;background-size:contain;background-position:center;
-}
-.intro-botanical-left{left:-7%;transform:rotate(-10deg);background-image:url("assets/floral-corners.svg")}
-.intro-botanical-right{right:-7%;transform:scaleX(-1) rotate(-10deg);background-image:url("assets/floral-corners.svg")}
-.intro-monogram{width:clamp(67px,10vw,92px);height:clamp(67px,10vw,92px);object-fit:contain;margin:0 auto clamp(24px,4vh,39px);filter:drop-shadow(0 2px 5px rgba(0,0,0,.12))}
-.intro-eyebrow{margin:0;color:#e4d4b2;font:600 9px/1.6 var(--sans);letter-spacing:.25em}
-.intro-script{margin:23px 0 5px;color:#f3e5cf;font:400 clamp(29px,5vw,39px)/1.15 var(--script)}
-.intro-names{margin:0;color:#fff9ed;font:400 clamp(51px,9vw,88px)/.98 var(--script);white-space:nowrap;text-shadow:0 3px 20px rgba(27,40,27,.16)}
-.intro-names span{color:#ddc69b;font-size:.66em;padding:0 5px}
-.intro-ornament{display:flex;align-items:center;justify-content:center;gap:12px;margin:28px auto 17px;color:#e5d0a8}
-.intro-ornament i{display:block;width:52px;height:1px;background:rgba(229,208,168,.76)}
-.intro-ornament b{font-size:13px;font-weight:400}
-.intro-date{margin:0;color:#fff5e6;font:600 clamp(11px,2vw,14px)/1.6 var(--sans);letter-spacing:.22em}
-.intro-place{margin:6px 0 0;color:#e5d8c0;font:500 9px/1.6 var(--sans);letter-spacing:.24em}
 .intro-open-button{
-  position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
-  width:140px;height:140px;margin:clamp(32px,6vh,53px) auto 0;padding:12px;border:1px solid rgba(234,215,179,.82);
-  border-radius:50%;background:radial-gradient(circle at 35% 28%,#f9f0dd 0%,#ead9b9 58%,#d2b98e 100%);
-  color:#58694e;box-shadow:0 10px 28px rgba(29,41,28,.2),inset 0 0 0 5px rgba(255,255,255,.22);
-  cursor:pointer;transition:transform .25s ease,box-shadow .25s ease;
+  margin:26px 0 0;padding:14px 8px 12px;border:0;background:transparent;
+  color:var(--dark-olive,#667348);font:600 11px/1 var(--sans);
+  letter-spacing:.24em;cursor:pointer;opacity:0;
+  animation:intro-prompt-in .48s ease 1.35s forwards;
 }
-.intro-open-button:before{content:"";position:absolute;inset:7px;border:1px solid rgba(143,111,65,.42);border-radius:50%;pointer-events:none}
-.intro-open-button:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(29,41,28,.26),inset 0 0 0 5px rgba(255,255,255,.28)}
-.intro-open-button:focus-visible{outline:3px solid #fff8e9;outline-offset:5px}
-.intro-seal{display:block;color:#8b7652;font:500 30px/1 var(--script);letter-spacing:-.05em}
-.intro-seal span{font-size:19px;padding:0 3px}
-.intro-open-label{color:#58694e;font:700 9px/1 var(--sans);letter-spacing:.2em}
-.intro-open-arrow{position:absolute;right:18px;bottom:19px;color:#9b8258;font-size:14px}
-.intro-footnote{margin:clamp(22px,4vh,35px) 0 0;color:rgba(246,237,220,.78);font:400 23px/1.1 var(--script)}
-@media(max-width:600px){
-  .invitation-intro{padding:18px 15px}
-  .intro-frame{min-height:calc(100svh - 36px);padding:30px 15px}
-  .intro-monogram{margin-bottom:25px}
-  .intro-botanical{width:62vw;opacity:.14}
-  .intro-botanical-left{left:-29%}.intro-botanical-right{right:-29%}
-  .intro-open-button{width:130px;height:130px;margin-top:37px}
-  .intro-script{margin-top:25px}
+.intro-open-button:focus-visible{outline:1px solid var(--gold,#c5a46d);outline-offset:7px}
+@keyframes an-logo-arrive{
+  0%{opacity:0;transform:translateY(-12vh) scale(.12)}
+  62%{opacity:1;transform:translateY(0) scale(1.16)}
+  82%{opacity:1;transform:translateY(0) scale(.96)}
+  100%{opacity:1;transform:translateY(0) scale(1)}
 }
+@keyframes intro-prompt-in{to{opacity:1}}
 @media(prefers-reduced-motion:reduce){
-  .invitation-intro,.intro-open-button{transition:none}
+  .intro-logo{animation:none;opacity:1;transform:none}
+  .intro-open-button{animation:none;opacity:1}
+  .invitation-intro{transition:none}
 }
