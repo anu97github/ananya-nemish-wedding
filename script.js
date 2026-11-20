@@ -89,65 +89,102 @@
   updateCountdown();
   if (countdown) window.setInterval(updateCountdown, 1000);
 
-  // Self-hosted wedding soundtrack. Try autoplay on load; if the browser blocks
-  // it, start/unmute on an ordinary click/tap anywhere on the invitation.
+  // Slow blurred monogram zoom, then immediate cursive type-on prompt.
+  const intro = document.getElementById('invitationIntro');
+  const introLogo = intro?.querySelector('.intro-logo');
+  const introOpenButton = document.getElementById('introOpenButton');
   const soundButton = document.getElementById('soundToggle');
   const soundLabel = document.getElementById('soundLabel');
   const weddingAudio = document.getElementById('weddingAudio');
   let intentionallyPaused = false;
+  let promptTimer = null;
+  let promptStarted = false;
 
   function updateSound(on, label) {
     soundButton?.setAttribute('aria-pressed', String(on));
     soundButton?.setAttribute('aria-label', on ? 'Pause wedding music' : 'Play wedding music');
-    if (soundLabel) soundLabel.textContent = label || (on ? (weddingAudio?.muted ? 'MUSIC PLAYING · MUTED' : 'MUSIC ON') : 'MUSIC OFF');
+    if (soundLabel) soundLabel.textContent = label || (on ? 'MUSIC ON' : 'MUSIC OFF');
   }
-
   if (weddingAudio) {
     weddingAudio.volume = 0.58;
-    weddingAudio.addEventListener('play', () => updateSound(true, weddingAudio.muted ? 'MUSIC PLAYING · MUTED' : 'MUSIC ON'));
-    weddingAudio.addEventListener('volumechange', () => {
-      if (!weddingAudio.paused) updateSound(true, weddingAudio.muted ? 'MUSIC PLAYING · MUTED' : 'MUSIC ON');
-    });
-    weddingAudio.addEventListener('pause', () => {
-      if (intentionallyPaused) updateSound(false, 'MUSIC OFF');
-    });
+    weddingAudio.addEventListener('play', () => updateSound(true, 'MUSIC ON'));
+    weddingAudio.addEventListener('pause', () => { if (intentionallyPaused) updateSound(false, 'MUSIC OFF'); });
     weddingAudio.addEventListener('error', () => updateSound(false, 'MUSIC UNAVAILABLE'));
   }
-
-
-  function toggleMusic() {
+  function startWeddingMusic() {
     if (!weddingAudio) return;
-    if (weddingAudio.paused || weddingAudio.muted) {
-      intentionallyPaused = false;
-      weddingAudio.muted = false;
-      const playRequest = weddingAudio.play();
-      playRequest?.then(() => updateSound(true, 'MUSIC ON'))
-        .catch(() => updateSound(false, 'MUSIC OFF'));
-    } else {
-      intentionallyPaused = true;
-      weddingAudio.pause();
-      updateSound(false, 'MUSIC OFF');
-    }
+    intentionallyPaused = false;
+    weddingAudio.muted = false;
+    weddingAudio.play().then(() => updateSound(true, 'MUSIC ON')).catch(() => updateSound(false, 'MUSIC OFF'));
   }
 
-  soundButton?.addEventListener('click', toggleMusic);
-
-  // Make the initial autoplay attempt immediately. If audible autoplay is
-  // blocked, fall back to muted playback; a normal page tap will unmute it.
-  const initialPlay = weddingAudio?.play();
-  initialPlay?.then(() => updateSound(true, weddingAudio.muted ? 'MUSIC PLAYING · MUTED' : 'MUSIC ON'))
-    .catch(async () => {
-      if (!weddingAudio) return;
-      weddingAudio.muted = true;
-      try {
-        await weddingAudio.play();
-        updateSound(true, 'MUSIC PLAYING · MUTED');
-      } catch (_) {
-        updateSound(false, 'MUSIC OFF');
+  function typePrompt() {
+    if (!introOpenButton || promptStarted) return;
+    promptStarted = true;
+    const phrase = 'Tap to Unveil';
+    introOpenButton.hidden = false;
+    introOpenButton.textContent = '';
+    introOpenButton.classList.add('is-visible');
+    let index = 0;
+    const step = reducedMotion ? 85 : 125;
+    // First character appears immediately, with no delay after the logo settles.
+    introOpenButton.textContent = phrase[index++];
+    promptTimer = window.setInterval(() => {
+      introOpenButton.textContent += phrase[index++];
+      if (index >= phrase.length) {
+        window.clearInterval(promptTimer);
+        promptTimer = null;
       }
-    });
-  updateSound(false, 'LOADING MUSIC');
+    }, step);
+  }
 
+  function playIntroLogoAnimation() {
+    if (!introLogo) { typePrompt(); return; }
+    introLogo.style.opacity = '0';
+    introLogo.style.transform = 'scale(.018)';
+    introLogo.style.filter = 'blur(14px)';
+    const duration = reducedMotion ? 5200 : 7600;
+    const frames = [
+      { opacity: 0, transform: 'scale(.018)', filter: 'blur(14px)', offset: 0 },
+      { opacity: .16, transform: 'scale(.06)', filter: 'blur(11px)', offset: .14 },
+      { opacity: .42, transform: 'scale(.18)', filter: 'blur(8px)', offset: .34 },
+      { opacity: .78, transform: 'scale(.42)', filter: 'blur(5px)', offset: .56 },
+      { opacity: 1, transform: 'scale(.78)', filter: 'blur(2.5px)', offset: .76 },
+      { opacity: 1, transform: 'scale(1.04)', filter: 'blur(.5px)', offset: .91 },
+      { opacity: 1, transform: 'scale(1)', filter: 'blur(0px)', offset: 1 }
+    ];
+    if (typeof introLogo.animate === 'function') {
+      try {
+        const motion = introLogo.animate(frames, {
+          duration, delay: 0, easing: 'cubic-bezier(.16,.7,.2,1)', fill: 'forwards'
+        });
+        // Start typing during the final settling phase; onfinish is a guarded fallback.
+        window.setTimeout(typePrompt, Math.round(duration * 0.78));
+        motion.onfinish = typePrompt;
+        return;
+      } catch (animationError) { /* CSS fallback below */ }
+    }
+    introLogo.classList.add('fallback-zoom');
+    window.setTimeout(typePrompt, Math.round(duration * 0.78));
+    introLogo.addEventListener('animationend', typePrompt, { once: true });
+  }
+  requestAnimationFrame(() => requestAnimationFrame(playIntroLogoAnimation));
+
+  function openInvitation() {
+    startWeddingMusic();
+    if (!intro) return;
+    intro.classList.add('intro-closing');
+    intro.setAttribute('aria-hidden', 'true');
+    window.setTimeout(() => { intro.hidden = true; document.body.classList.remove('intro-active'); }, 480);
+  }
+  introOpenButton?.addEventListener('click', openInvitation);
+  function toggleMusic() {
+    if (!weddingAudio) return;
+    if (weddingAudio.paused) startWeddingMusic();
+    else { intentionallyPaused = true; weddingAudio.pause(); updateSound(false, 'MUSIC OFF'); }
+  }
+  soundButton?.addEventListener('click', toggleMusic);
+  updateSound(false, 'MUSIC OFF');
 
   // Reveal event and venue bands gently as guests scroll through the invitation.
   const revealItems = [...document.querySelectorAll('.reveal-section')];
