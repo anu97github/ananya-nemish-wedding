@@ -189,13 +189,14 @@
       { opacity: 0 },
       { opacity: 1 }
     ] : [
-      { opacity: 0, filter: 'blur(16px)', transform: 'scale(.975)' },
-      { opacity: 0.45, filter: 'blur(8px)', transform: 'scale(.988)', offset: 0.38 },
+      { opacity: 0, filter: 'blur(26px)', transform: 'scale(.94)' },
+      { opacity: 0.32, filter: 'blur(17px)', transform: 'scale(.965)', offset: 0.28 },
+      { opacity: 0.72, filter: 'blur(7px)', transform: 'scale(.985)', offset: 0.68 },
       { opacity: 1, filter: 'blur(0)', transform: 'scale(1)' }
     ], {
-      duration: reducedMotion ? 650 : 1450,
-      delay: reducedMotion ? 0 : 120,
-      easing: 'cubic-bezier(.22,.72,.18,1)',
+      duration: reducedMotion ? 900 : 2400,
+      delay: reducedMotion ? 0 : 180,
+      easing: 'cubic-bezier(.16,.72,.18,1)',
       fill: 'forwards'
     }) : null;
     intro.style.setProperty('--intro-origin-x', originX + '%');
