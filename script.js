@@ -89,8 +89,9 @@
   updateCountdown();
   if (countdown) window.setInterval(updateCountdown, 1000);
 
-  // Minimal animated logo intro. Start music only from the visitor's tap.
+  // The intro logo uses the Web Animations API so the zoom reliably plays on page load.
   const intro = document.getElementById('invitationIntro');
+  const introLogo = intro?.querySelector('.intro-logo');
   const introOpenButton = document.getElementById('introOpenButton');
   const soundButton = document.getElementById('soundToggle');
   const soundLabel = document.getElementById('soundLabel');
@@ -120,6 +121,40 @@
       .catch(() => updateSound(false, 'MUSIC OFF'));
   }
 
+  function revealTapPrompt() {
+    if (!introOpenButton) return;
+    introOpenButton.hidden = false;
+    requestAnimationFrame(() => introOpenButton.classList.add('is-visible'));
+  }
+
+  function playIntroLogoAnimation() {
+    if (!introLogo) {
+      revealTapPrompt();
+      return;
+    }
+    if (reducedMotion) {
+      introLogo.style.opacity = '1';
+      introLogo.style.transform = 'scale(1)';
+      revealTapPrompt();
+      return;
+    }
+    const logoMotion = introLogo.animate([
+      { opacity: 0, transform: 'scale(0.035)', offset: 0 },
+      { opacity: 1, transform: 'scale(0.48)', offset: 0.22 },
+      { opacity: 1, transform: 'scale(1.22)', offset: 0.68 },
+      { opacity: 1, transform: 'scale(0.96)', offset: 0.86 },
+      { opacity: 1, transform: 'scale(1)', offset: 1 }
+    ], {
+      duration: 2400,
+      delay: 220,
+      easing: 'cubic-bezier(.18,.78,.24,1)',
+      fill: 'forwards'
+    });
+    logoMotion.finished.then(revealTapPrompt).catch(() => {});
+  }
+  // Delay one frame so the initial tiny state is painted before zooming begins.
+  requestAnimationFrame(() => requestAnimationFrame(playIntroLogoAnimation));
+
   function openInvitation() {
     startWeddingMusic();
     if (!intro) return;
@@ -128,7 +163,7 @@
     window.setTimeout(() => {
       intro.hidden = true;
       document.body.classList.remove('intro-active');
-    }, 420);
+    }, 480);
   }
 
   introOpenButton?.addEventListener('click', openInvitation);
