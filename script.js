@@ -89,7 +89,7 @@
   updateCountdown();
   if (countdown) window.setInterval(updateCountdown, 1000);
 
-  // Slow, deliberate logo formation and delayed typewriter prompt.
+  // Monogram: slow zoom from tiny to settled; then type TAP TO UNVEIL letter by letter.
   const intro = document.getElementById('invitationIntro');
   const introLogo = intro?.querySelector('.intro-logo');
   const introOpenButton = document.getElementById('introOpenButton');
@@ -97,6 +97,7 @@
   const soundLabel = document.getElementById('soundLabel');
   const weddingAudio = document.getElementById('weddingAudio');
   let intentionallyPaused = false;
+  let promptTimer = null;
 
   function updateSound(on, label) {
     soundButton?.setAttribute('aria-pressed', String(on));
@@ -116,44 +117,51 @@
     weddingAudio.play().then(() => updateSound(true, 'MUSIC ON')).catch(() => updateSound(false, 'MUSIC OFF'));
   }
 
-  function revealTapPrompt() {
+  function typePrompt() {
     if (!introOpenButton) return;
+    const phrase = 'TAP TO UNVEIL';
     introOpenButton.hidden = false;
-    introOpenButton.classList.remove('is-visible');
-    // The label itself is revealed like a slow handwritten/type-in line.
-    introOpenButton.textContent = 'TAP TO OPEN';
-    requestAnimationFrame(() => introOpenButton.classList.add('is-visible'));
+    introOpenButton.textContent = '';
+    introOpenButton.classList.add('is-visible');
+    let index = 0;
+    const step = reducedMotion ? 110 : 190;
+    promptTimer = window.setInterval(() => {
+      introOpenButton.textContent += phrase[index];
+      index++;
+      if (index >= phrase.length) {
+        window.clearInterval(promptTimer);
+        promptTimer = null;
+      }
+    }, step);
   }
 
   function playIntroLogoAnimation() {
-    if (!introLogo) { revealTapPrompt(); return; }
+    if (!introLogo) { typePrompt(); return; }
     introLogo.style.opacity = '0';
-    introLogo.style.transform = 'scale(.025)';
-    const duration = reducedMotion ? 3000 : 4800;
+    introLogo.style.transform = 'scale(.018)';
+    const duration = reducedMotion ? 5200 : 7600;
     const frames = [
-      { opacity: 0, transform: 'scale(.025)', offset: 0 },
-      { opacity: .35, transform: 'scale(.12)', offset: .16 },
-      { opacity: 1, transform: 'scale(.48)', offset: .42 },
-      { opacity: 1, transform: 'scale(.88)', offset: .72 },
-      { opacity: 1, transform: 'scale(1.045)', offset: .88 },
+      { opacity: 0, transform: 'scale(.018)', offset: 0 },
+      { opacity: .12, transform: 'scale(.06)', offset: .14 },
+      { opacity: .4, transform: 'scale(.18)', offset: .34 },
+      { opacity: .8, transform: 'scale(.42)', offset: .56 },
+      { opacity: 1, transform: 'scale(.78)', offset: .76 },
+      { opacity: 1, transform: 'scale(1.04)', offset: .91 },
       { opacity: 1, transform: 'scale(1)', offset: 1 }
     ];
     if (typeof introLogo.animate === 'function') {
       try {
         const motion = introLogo.animate(frames, {
-          duration, delay: 240, easing: 'cubic-bezier(.16,.72,.22,1)', fill: 'forwards'
+          duration, delay: 250, easing: 'cubic-bezier(.16,.7,.2,1)', fill: 'forwards'
         });
-        motion.finished.then(revealTapPrompt).catch(() => {});
+        motion.finished.then(typePrompt).catch(() => {});
         return;
-      } catch (animationError) { /* Use the CSS fallback below. */ }
+      } catch (animationError) { /* fallback below */ }
     }
     introLogo.classList.add('fallback-zoom');
-    introLogo.addEventListener('animationend', revealTapPrompt, { once: true });
+    introLogo.addEventListener('animationend', typePrompt, { once: true });
   }
-  // Wait until the image is decoded to avoid a blank/late logo during its entrance.
-  const runIntro = () => requestAnimationFrame(() => requestAnimationFrame(playIntroLogoAnimation));
-  if (introLogo?.decode) introLogo.decode().then(runIntro).catch(runIntro);
-  else runIntro();
+  requestAnimationFrame(() => requestAnimationFrame(playIntroLogoAnimation));
 
   function openInvitation() {
     startWeddingMusic();
