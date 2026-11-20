@@ -97,7 +97,7 @@
   const soundLabel = document.getElementById('soundLabel');
   const weddingAudio = document.getElementById('weddingAudio');
   let intentionallyPaused = false;
-  let promptTimer = null;
+  let promptTimer = null;\n  let promptStarted = false;
 
   function updateSound(on, label) {
     soundButton?.setAttribute('aria-pressed', String(on));
@@ -156,12 +156,12 @@
         const motion = introLogo.animate(frames, {
           duration, delay: 0, easing: 'cubic-bezier(.16,.7,.2,1)', fill: 'forwards'
         });
-        motion.onfinish = typePrompt;
+        // Start typing as the logo enters its settling phase, not after the entire animation.\n        window.setTimeout(typePrompt, Math.round(duration * 0.91));\n        motion.onfinish = typePrompt;
         return;
       } catch (animationError) { /* CSS fallback below */ }
     }
     introLogo.classList.add('fallback-zoom');
-    introLogo.addEventListener('animationend', typePrompt, { once: true });
+    window.setTimeout(typePrompt, Math.round(duration * 0.91));\n    introLogo.addEventListener('animationend', typePrompt, { once: true });
   }
   requestAnimationFrame(() => requestAnimationFrame(playIntroLogoAnimation));
 
