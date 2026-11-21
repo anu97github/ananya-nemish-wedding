@@ -9173,3 +9173,5 @@ body.intro-active .sound-toggle{visibility:hidden;opacity:0;pointer-events:none}
  .invitation-intro .intro-botanical.side-left{left:12px}
  .invitation-intro .intro-botanical.side-right{right:12px}
 }
+
+/* Deployment smoke test: harmless comment-only commit. */
