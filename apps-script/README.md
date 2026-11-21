@@ -36,3 +36,11 @@ If the endpoint ever needs to be redeployed:
 - The endpoint applies required-field validation, length limits, a honeypot field, duplicate-submission protection, a script lock around writes, and protection against spreadsheet formula injection.
 - Keep spreadsheet sharing restricted to people who should be able to read guest names and personal messages.
 - Do not delete or recreate the existing **Guestbook** tab while it is connected to the website. Renaming the workbook is safe as long as its spreadsheet ID remains unchanged.
+
+## Daily website visit counter
+
+- The Apps Script backend supports a `visit` POST action that increments the daily total for each page load, including refreshes, in a separate **Website Visits** tab.
+- The tab columns are **Serial No.**, **Date**, and **Visit Count**. One row is maintained per calendar day; counts are incremented under a script lock to avoid concurrent updates being lost.
+- The website sends a lightweight, fire-and-forget request on each page load. This is a raw page-load counter, not unique visitors, and may be affected by blockers/network failures.
+- To provision the tab ahead of time, run `setupWebsiteVisitsSheet()` in Apps Script. The endpoint will also create the tab automatically on the first counted visit.
+- **Deployment note:** Apps Script code is hosted separately from the website. After merging, copy the updated `apps-script/Code.gs` into the Apps Script editor and update/redeploy the existing web app deployment to use the new version. Website code alone cannot activate the backend counter until Apps Script is redeployed.
