@@ -2,6 +2,22 @@
   'use strict';
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Count each page load/refresh in the backend's daily Website Visits total.
+  // This is a raw visit counter, not unique visitors or sessions.
+  const visitEndpoint = String(window.GUESTBOOK_CONFIG?.endpoint || '').trim();
+  if (visitEndpoint) {
+    const visitPayload = 'action=visit';
+    try {
+      if (navigator.sendBeacon) {
+        const queued = navigator.sendBeacon(visitEndpoint, new Blob([visitPayload], { type: 'application/x-www-form-urlencoded;charset=UTF-8' }));
+        if (!queued) fetch(visitEndpoint, { method: 'POST', mode: 'no-cors', body: visitPayload, keepalive: true }).catch(() => {});
+      } else {
+        fetch(visitEndpoint, { method: 'POST', mode: 'no-cors', body: visitPayload, keepalive: true }).catch(() => {});
+      }
+    } catch (visitError) { /* analytics must never interrupt the invitation site */ }
+  }
+
+
   // Always begin at the invitation cover on a full refresh.
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   if (performance.getEntriesByType('navigation')[0]?.type === 'reload' && location.hash) {
