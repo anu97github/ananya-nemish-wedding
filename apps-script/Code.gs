@@ -6,10 +6,69 @@ const CONFIG = {
   spreadsheetId: '1a_7lwgZq_hPP3Lz9hzzMgy2OHlkteaG5sJHNyra5_pI',
   sheetName: 'Guestbook',
   headers: ['Date & Time', 'Sender Name', 'Message'],
+
   maxNameLength: 100,
   maxMessageLength: 1200,
   dedupeSeconds: 21600
 };
+
+
+/** Creates or formats the daily website visit-count tab. Safe to rerun. */
+function setupWebsiteVisitsSheet() {
+  const spreadsheet = SpreadsheetApp.openById(CONFIG.spreadsheetId);
+  const sheetName = 'Website Visits';
+  let sheet = spreadsheet.getSheetByName(sheetName);
+  if (!sheet) sheet = spreadsheet.insertSheet(sheetName);
+  sheet.getRange(1, 1, 1, 3).setValues([['Serial No.', 'Date', 'Visit Count']]);
+  sheet.setFrozenRows(1);
+  sheet.getRange(1, 1, 1, 3).setFontWeight('bold').setBackground('#e8eee4').setFontColor('#46563a');
+  sheet.setColumnWidth(1, 90);
+  sheet.setColumnWidth(2, 150);
+  sheet.setColumnWidth(3, 120);
+  sheet.getRange('B:B').setNumberFormat('dd mmm yyyy');
+  return spreadsheet.getUrl();
+}
+
+
+/** Counts each website page load/refresh in a daily total. */
+function recordWebsiteVisit() {
+  const lock = LockService.getScriptLock();
+  lock.waitLock(10000);
+  try {
+    const spreadsheet = SpreadsheetApp.openById(CONFIG.spreadsheetId);
+    const sheetName = 'Website Visits';
+    let sheet = spreadsheet.getSheetByName(sheetName);
+    if (!sheet) {
+      sheet = spreadsheet.insertSheet(sheetName);
+      sheet.getRange(1, 1, 1, 3).setValues([['Serial No.', 'Date', 'Visit Count']]);
+      sheet.setFrozenRows(1);
+      sheet.getRange(1, 1, 1, 3).setFontWeight('bold').setBackground('#e8eee4').setFontColor('#46563a');
+      sheet.setColumnWidth(1, 90);
+      sheet.setColumnWidth(2, 150);
+      sheet.setColumnWidth(3, 120);
+      sheet.getRange('B:B').setNumberFormat('dd mmm yyyy');
+    }
+    const tz = spreadsheet.getSpreadsheetTimeZone();
+    const todayKey = Utilities.formatDate(new Date(), tz, 'yyyy-MM-dd');
+    const lastRow = sheet.getLastRow();
+    if (lastRow >= 2) {
+      const dates = sheet.getRange(2, 2, lastRow - 1, 1).getValues();
+      for (let i = 0; i < dates.length; i++) {
+        const dateValue = dates[i][0];
+        if (dateValue instanceof Date && Utilities.formatDate(dateValue, tz, 'yyyy-MM-dd') === todayKey) {
+          const countCell = sheet.getRange(i + 2, 3);
+          countCell.setValue(Number(countCell.getValue() || 0) + 1);
+          return;
+        }
+      }
+    }
+    const serial = Math.max(1, sheet.getLastRow());
+    const day = new Date(todayKey + 'T12:00:00');
+    sheet.appendRow([serial, day, 1]);
+  } finally {
+    lock.releaseLock();
+  }
+}
 
 /** Creates or formats the Guestbook tab in the existing wedding spreadsheet. Safe to rerun. */
 function setupGuestbookSheet() {
@@ -40,6 +99,15 @@ function doGet() {
 /** Accepts the website's hidden-iframe form POST and saves one guest note. */
 function doPost(event) {
   const params = (event && event.parameter) || {};
+  if (String(params.action || '') === 'visit') {
+    try {
+      recordWebsiteVisit();
+      return HtmlService.createHtmlOutput('Visit recorded.');
+    } catch (visitError) {
+      console.error('Website visit counter failed', visitError);
+      return HtmlService.createHtmlOutput('Visit could not be recorded.');
+    }
+  }
   const submissionId = String(params.submissionId || '').trim();
   try {
     if (!/^[A-Za-z0-9_-]{8,100}$/.test(submissionId)) {
